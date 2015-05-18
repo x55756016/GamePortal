@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameRankViewController">
+            <connections>
+                <outlet property="cityRankTableView" destination="Pkb-H2-Z4y" id="n6k-lj-n6h"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Pkb-H2-Z4y">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="993-oa-pyj"/>
+                        <outlet property="delegate" destination="-1" id="dUe-jO-yUf"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Pkb-H2-Z4y" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GyT-tb-MfW"/>
+                <constraint firstAttribute="bottom" secondItem="Pkb-H2-Z4y" secondAttribute="bottom" id="RY7-9d-U8d"/>
+                <constraint firstAttribute="trailing" secondItem="Pkb-H2-Z4y" secondAttribute="trailing" id="vgP-mG-nVH"/>
+                <constraint firstItem="Pkb-H2-Z4y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xtC-Xy-WIL"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="Pkb-H2-Z4y"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="GyT-tb-MfW"/>
+                    <exclude reference="RY7-9d-U8d"/>
+                    <exclude reference="vgP-mG-nVH"/>
+                    <exclude reference="xtC-Xy-WIL"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="Pkb-H2-Z4y"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="GyT-tb-MfW"/>
+                    <include reference="RY7-9d-U8d"/>
+                    <include reference="vgP-mG-nVH"/>
+                    <include reference="xtC-Xy-WIL"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="207" y="359"/>
+        </view>
+    </objects>
+</document>

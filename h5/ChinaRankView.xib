@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameRankViewController">
+            <connections>
+                <outlet property="chinaRankTableView" destination="CI3-23-9P9" id="uIv-gC-cFf"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CI3-23-9P9">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="4Rd-Ca-WLg"/>
+                        <outlet property="delegate" destination="-1" id="pGt-RX-kLV"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="CI3-23-9P9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1ds-sJ-IgJ"/>
+                <constraint firstAttribute="trailing" secondItem="CI3-23-9P9" secondAttribute="trailing" id="8Km-Hz-6Nj"/>
+                <constraint firstAttribute="bottom" secondItem="CI3-23-9P9" secondAttribute="bottom" id="gto-6m-Tb0"/>
+                <constraint firstItem="CI3-23-9P9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ygQ-Kp-mmu"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="CI3-23-9P9"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="1ds-sJ-IgJ"/>
+                    <exclude reference="8Km-Hz-6Nj"/>
+                    <exclude reference="gto-6m-Tb0"/>
+                    <exclude reference="ygQ-Kp-mmu"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="CI3-23-9P9"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="1ds-sJ-IgJ"/>
+                    <include reference="8Km-Hz-6Nj"/>
+                    <include reference="gto-6m-Tb0"/>
+                    <include reference="ygQ-Kp-mmu"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="322" y="416"/>
+        </view>
+    </objects>
+</document>

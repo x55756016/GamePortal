@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController">
+            <connections>
+                <outlet property="classifyTableView" destination="kU0-tb-5T0" id="xNh-dq-Kh3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kU0-tb-5T0">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="6AL-T3-p8v"/>
+                        <outlet property="delegate" destination="-1" id="nhC-Nj-wMh"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="kU0-tb-5T0" secondAttribute="bottom" id="Ah3-2L-XiK"/>
+                <constraint firstItem="kU0-tb-5T0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DvK-4k-TDt"/>
+                <constraint firstAttribute="trailing" secondItem="kU0-tb-5T0" secondAttribute="trailing" id="OQ0-lW-tir"/>
+                <constraint firstItem="kU0-tb-5T0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fOw-BX-QSx"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="kU0-tb-5T0"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="Ah3-2L-XiK"/>
+                    <exclude reference="DvK-4k-TDt"/>
+                    <exclude reference="OQ0-lW-tir"/>
+                    <exclude reference="fOw-BX-QSx"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="kU0-tb-5T0"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="Ah3-2L-XiK"/>
+                    <include reference="DvK-4k-TDt"/>
+                    <include reference="OQ0-lW-tir"/>
+                    <include reference="fOw-BX-QSx"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="238" y="353"/>
+        </view>
+    </objects>
+</document>

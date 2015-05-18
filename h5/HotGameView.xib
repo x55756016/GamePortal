@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController">
+            <connections>
+                <outlet property="hotGameTableView" destination="eiC-To-W7T" id="Rpb-lF-TRY"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eiC-To-W7T">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="m3Z-mu-fp0"/>
+                        <outlet property="delegate" destination="-1" id="1DV-bu-pKV"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="eiC-To-W7T" secondAttribute="trailing" id="Cs2-m1-SHP"/>
+                <constraint firstAttribute="bottom" secondItem="eiC-To-W7T" secondAttribute="bottom" id="ShE-Nj-exw"/>
+                <constraint firstItem="eiC-To-W7T" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kyX-WS-inY"/>
+                <constraint firstItem="eiC-To-W7T" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zeH-i7-vTl"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="eiC-To-W7T"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="Cs2-m1-SHP"/>
+                    <exclude reference="ShE-Nj-exw"/>
+                    <exclude reference="kyX-WS-inY"/>
+                    <exclude reference="zeH-i7-vTl"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="eiC-To-W7T"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="Cs2-m1-SHP"/>
+                    <include reference="ShE-Nj-exw"/>
+                    <include reference="kyX-WS-inY"/>
+                    <include reference="zeH-i7-vTl"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="468" y="306"/>
+        </view>
+    </objects>
+</document>
