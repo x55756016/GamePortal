@@ -258,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddq-mU-egW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-667.5" y="384.75"/>
+            <point key="canvasLocation" x="-756" y="291"/>
         </scene>
         <!--我的Controller-->
         <scene sceneID="qet-be-jya">
@@ -1428,7 +1428,7 @@
                         <viewControllerLayoutGuide type="bottom" id="WZR-jj-Jsd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fzP-Ve-QpD">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dz7-N4-wm7">
@@ -1550,7 +1550,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TtB-4E-rce" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-740" y="1271"/>
+            <point key="canvasLocation" x="-634" y="1282"/>
         </scene>
         <!--聊天框-->
         <scene sceneID="iip-v4-thX">
@@ -1704,7 +1704,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="他的游戏" id="vop-gX-5ib">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="80" id="Hbx-8I-wZh">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="Hbx-8I-wZh">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hbx-8I-wZh" id="S9Q-zP-E9V">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1712,7 +1712,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sQ5-xp-pst">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                                     </variation>
                                                 </view>
                                             </subviews>
@@ -1732,7 +1732,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="他的荣誉墙" id="jF9-LX-8Vb">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="80" id="WLk-oi-Tum">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="WLk-oi-Tum">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WLk-oi-Tum" id="78Y-di-tEt">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1746,7 +1746,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="Oug-Xa-xae" secondAttribute="trailing" id="5nl-7a-rRK"/>
                                                 <constraint firstItem="Oug-Xa-xae" firstAttribute="leading" secondItem="78Y-di-tEt" secondAttribute="leading" id="7EB-X7-2jX"/>
                                                 <constraint firstAttribute="bottom" secondItem="Oug-Xa-xae" secondAttribute="bottom" constant="-121" id="cvL-lx-BQC">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="-1"/>
                                                 </constraint>
                                             </constraints>
                                             <variation key="default">
@@ -4072,7 +4072,7 @@
                         <outlet property="pageControl" destination="GnM-1w-LXT" id="GiK-vP-Peh"/>
                         <segue destination="eNr-0Y-WJG" kind="show" identifier="PushGameInfo" id="gO3-eT-hSS"/>
                         <segue destination="iOZ-tB-4tL" kind="show" identifier="showFriendInfo" id="ibz-Ui-e2Z"/>
-                        <segue destination="AVK-f1-A26" kind="show" identifier="StartGameSegue" id="btw-uh-God"/>
+                        <segue destination="NGF-ku-C98" kind="show" identifier="StartGameSegue" id="bXQ-RE-HK5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Rw-KH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4136,7 +4136,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTg-3X-nQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="789" y="-1173"/>
+            <point key="canvasLocation" x="751" y="-785"/>
         </scene>
         <!--游戏列表Navigation-->
         <scene sceneID="0WA-eU-D9o">
@@ -4153,22 +4153,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0tS-q1-v1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-868.5" y="-2565"/>
-        </scene>
-        <!--Game Web Navgation View Controller-->
-        <scene sceneID="4TW-dv-Ktw">
-            <objects>
-                <navigationController id="AVK-f1-A26" customClass="GameWebNavgationViewController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Ue-46-ilm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="NGF-ku-C98" kind="relationship" relationship="rootViewController" id="xbN-7u-YGy"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jQY-PR-9MO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-891" y="-2068.5"/>
         </scene>
         <!--游戏列表Controller-->
         <scene sceneID="4vh-Ll-GgZ">
@@ -4388,7 +4372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVl-Jc-5M8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2133" y="-2058"/>
+            <point key="canvasLocation" x="1926" y="-1872"/>
         </scene>
         <!--查找游戏Navigation-->
         <scene sceneID="mWs-4K-h5d">
@@ -4431,7 +4415,7 @@
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="eub-4p-O1c" userLabel="游戏详情" customClass="GameDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="TTo-bA-f1i">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="680"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -4742,10 +4726,10 @@
         <image name="userDefaultHead" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ibz-Ui-e2Z"/>
-        <segue reference="foh-gx-4Hm"/>
-        <segue reference="d0U-lo-Ceb"/>
         <segue reference="AHW-Ly-SfO"/>
-        <segue reference="WTG-Qz-ySa"/>
+        <segue reference="zVw-oc-Kg7"/>
+        <segue reference="Z3Z-TK-MJb"/>
+        <segue reference="iID-OB-lrr"/>
+        <segue reference="FuQ-bi-L0s"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -189,4 +189,17 @@ UIKIT_EXTERN NSString *userFolderPath;
 //    return contactsArray;
 //}
 
++(void)showHttpErrorMsg:(NSString*)errorMsg
+{
+    errorMsg=[@"连接服务器失败，请联系客服。" stringByAppendingString:errorMsg];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示"
+                                                   message:errorMsg
+                                                  delegate:self
+                                         cancelButtonTitle:nil
+                                         otherButtonTitles:@"确定", nil];
+    
+    
+    [alert show];
+
+}
 @end

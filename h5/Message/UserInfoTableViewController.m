@@ -45,6 +45,9 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    FrindGameImageArray = [[NSMutableArray alloc] init];
+    FrindHistoryImageArray = [[NSMutableArray alloc] init];
+    
     
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     
@@ -127,6 +130,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)requestGetUserDetailFail:(ASIHTTPRequest *)request
 {
+    [KKUtility showHttpErrorMsg:request.responseString];
     NSLog(@"requestGetUserDetailFail");
 }
 
@@ -266,7 +270,6 @@ UIKIT_EXTERN NSString *userFolderPath;
     if([userGameArray count]<1)return;
     NSLog(@"userGameArray[%lu]%@", (unsigned long)userGameArray.count, userGameArray);
     
-    FrindGameImageArray = [[NSMutableArray alloc] init];
     for (int i = 0; i < [userGameArray count]; i++) {
         NSDictionary *gameInfo=[userGameArray objectAtIndex:i];
         NSString *path = [gameInfo objectForKey:@"Logo"];
@@ -279,8 +282,6 @@ UIKIT_EXTERN NSString *userFolderPath;
         image = [UIImage imageWithData: imageData];
             [KKUtility saveImageToLocal:image :path];
         }
-        //      CGSize size  = CGSizeMake(179, 208);
-        //      [ImageArray addObject:[self resizeImage:image scaledToSize:size]];
         [FrindGameImageArray addObject:image];
     }
 }
@@ -332,8 +333,6 @@ UIKIT_EXTERN NSString *userFolderPath;
     userAchievementArray = [dic objectForKey:@"ObjData"];
     if([userAchievementArray count]<1)return;
     NSLog(@"userAchievementArray[%lu]%@", (unsigned long)userAchievementArray.count, userAchievementArray);
-    
-    FrindHistoryImageArray = [[NSMutableArray alloc] init];
     for (int i = 0; i < [userAchievementArray count]; i++) {
         NSDictionary *historyInfo=[userAchievementArray objectAtIndex:i];
         NSString *path = [historyInfo objectForKey:@"PicPath"];
@@ -365,6 +364,11 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 5;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 20;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -430,33 +434,40 @@ UIKIT_EXTERN NSString *userFolderPath;
             @try {
                 if([FrindGameImageArray count]>0)
                 {
-                UIScrollView *imageScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 79)];  ;
+                UIScrollView *imageScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
                 imageScrollView.pagingEnabled = YES;
-                imageScrollView.showsHorizontalScrollIndicator = NO;
-                //            [isp setItemSize:CGSizeMake(79, 79)];
-                //           	 [UIScrollView :FrindGameImageArray];
+                imageScrollView.showsHorizontalScrollIndicator = YES;
+                //[isp setItemSize:CGSizeMake(79, 79)];
+                //[UIScrollView :FrindGameImageArray];
                 for (int i = 0; i < [FrindGameImageArray count]; i++) {
                     UIImage *image=[FrindGameImageArray objectAtIndex:i];
-                    
-                    
-                    UIButton *imagebutton = [[UIButton alloc] initWithFrame:CGRectMake(i*80, 0, 79, 79)] ;
+                    UIButton *imagebutton = [[UIButton alloc] initWithFrame:CGRectMake(i*80+10, 0, 70, 80)];
                     //UIButton *radarButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-//                    imageView.userInteractionEnabled=YES;//与用户交互
-//                    //为UIImageView添加点击手势
-//                    UITapGestureRecognizer *tap;
-//                    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-//                    tap.numberOfTapsRequired = 1;//tap次数
-//                    tap.numberOfTouchesRequired = 1;//手指数
-//                    [imageView addGestureRecognizer:tap];
+//                  imageView.userInteractionEnabled=YES;//与用户交互
+//                  //为UIImageView添加点击手势
+//                  UITapGestureRecognizer *tap;
+//                  tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+//                  tap.numberOfTapsRequired = 1;//tap次数
+//                  tap.numberOfTouchesRequired = 1;//手指数
+//                  [imageView addGestureRecognizer:tap];
                     imagebutton.tag=i;
                     imagebutton.layer.masksToBounds = YES;
                     imagebutton.layer.cornerRadius = 5.0f;
-//                    [imagebutton setImage:image forState:UIControlStateNormal];
-                    NSString *title=[[userGameArray objectAtIndex:i] objectForKey:@"Title"];
-//                    [imagebutton setTitle:title forState:UIControlStateNormal];
-                    [imagebutton setImage:image withTitle:title forState:UIControlStateNormal];
+//                  [imagebutton setImage:image forState:UIControlStateNormal];
+//                  [imagebutton setTitle:title forState:UIControlStateNormal];
+                    [imagebutton setImage:image forState:UIControlStateNormal];
                     [imagebutton addTarget:self action:@selector(goGameDetail:) forControlEvents:UIControlEventTouchUpInside];
                     [imageScrollView addSubview:imagebutton];
+                    
+                    
+                    NSString *title=[[userGameArray objectAtIndex:i] objectForKey:@"Title"];
+                    UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(i*80+10, 80, 70, 20)];
+                    titleLabel.text=title;
+                    titleLabel.textAlignment = NSTextAlignmentCenter;
+                    titleLabel.adjustsFontSizeToFitWidth = YES;
+                    [imageScrollView addSubview:titleLabel];
+                    
+                    
                     
                     [_FriendGameListView addSubview:imageScrollView];
                 }

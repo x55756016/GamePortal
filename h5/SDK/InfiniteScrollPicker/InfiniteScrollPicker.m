@@ -132,7 +132,7 @@
             float tOffset = (view.center.x - offset) - self.frame.size.width/4;
             
             if (tOffset < 0 || tOffset > self.frame.size.width) tOffset = 0;
-            float addHeight = (-1 * fabsf((tOffset)*2 - self.frame.size.width/2) + self.frame.size.width/2)/4;
+            float addHeight = (-1 * fabs((tOffset)*2 - self.frame.size.width/2) + self.frame.size.width/2)/4;
             
             if (addHeight < 0) addHeight = 0;
             
@@ -206,14 +206,14 @@
         
         dispatch_async(dispatch_get_main_queue(), ^ {
             
-            SEL selector = @selector(infiniteScrollPicker:didSelectAtImage:);
-            if ([[self firstAvailableUIViewController] respondsToSelector:selector])
-            {
-                #pragma clang diagnostic push
-                #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                [[self firstAvailableUIViewController] performSelector:selector withObject:self withObject:biggestView.image];
-                #pragma clang diagnostic pop
-            }
+//            SEL selector = @selector(infiniteScrollPicker:didSelectAtImage:);
+//            if ([[self firstAvailableUIViewController] respondsToSelector:selector])
+//            {
+//                #pragma clang diagnostic push
+//                #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+//                [[self firstAvailableUIViewController] performSelector:selector withObject:self withObject:biggestView.image];
+//                #pragma clang diagnostic pop
+//            }
             
             [self setScrollEnabled:YES];
             snapping = 0;

@@ -32,4 +32,6 @@
 +(void)saveImageToLocal:(UIImage *)image:(NSString*)imageName;
 
 +(NSString *)getImagePath:(NSString*)path:(NSString*)strType;
+
++(void)showHttpErrorMsg:(NSString*)errorMsg;
 @end
