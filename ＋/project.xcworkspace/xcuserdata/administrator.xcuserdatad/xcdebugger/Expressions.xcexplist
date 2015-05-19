@@ -3,22 +3,61 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "-[RadarAllTableViewController viewDidLoad]:RadarAllTableViewController.m">
+         contextName = "-[UserInfoTableViewController tableView:cellForRowAtIndexPath:]:UserInfoTableViewController.m">
       </ContextState>
       <ContextState
-         contextName = "-[RadarViewController PushRadioAll:]:RadarViewController.m">
-      </ContextState>
-      <ContextState
-         contextName = "-[GameWebViewController loadWebView]:GameWebViewController.m">
-      </ContextState>
-      <ContextState
-         contextName = "-[SquareTableViewController loadPlayerDataFinish:]:SquareTableViewController.m">
+         contextName = "-[RadarViewController prepareForSegue:sender:]:RadarViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[GameViewController loadMyGameConfig]:GameViewController.m">
       </ContextState>
       <ContextState
-         contextName = "-[RadarViewController prepareForSegue:sender:]:RadarViewController.m">
+         contextName = "-[RadarViewController PushRadioAll:]:RadarViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[GameWebViewController addGameFail:]:GameWebViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[GameWebViewController loadWebView]:GameWebViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[UserInfoTableViewController requestUserGameFinish:]:UserInfoTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "userGameArray">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[GameWebViewController addGameConfigComplete:]:GameWebViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[UserInfoTableViewController loadFriends]:UserInfoTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "friendsArray">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[UserInfoTableViewController DealUserAchievementData:]:UserInfoTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "userAchievementArray">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[GameDetailViewController loadGameDescImg]:GameDetailViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[InfiniteScrollPicker reloadView:]:InfiniteScrollPicker.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[RadarAllTableViewController viewDidLoad]:RadarAllTableViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[SquareTableViewController loadPlayerDataFinish:]:SquareTableViewController.m">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

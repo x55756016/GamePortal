@@ -1920,6 +1920,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="680"/>
                     <connections>
+                        <outlet property="AddFriendButton" destination="uT9-z5-2dK" id="g2T-tL-Atk"/>
                         <outlet property="FriendGameListView" destination="sQ5-xp-pst" id="1wL-jG-oT3"/>
                         <outlet property="FriendHistoryListView" destination="Oug-Xa-xae" id="hkC-4f-ZeT"/>
                         <outlet property="GameListCell" destination="Hbx-8I-wZh" id="EZ2-v9-AgE"/>
@@ -4326,7 +4327,7 @@
                         <viewControllerLayoutGuide type="bottom" id="kca-xK-9QE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Mh-nj-pnn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="680"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView tag="123" contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZr-Jy-9HG">
@@ -4726,10 +4727,10 @@
         <image name="userDefaultHead" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AHW-Ly-SfO"/>
+        <segue reference="Wkf-TW-zIW"/>
         <segue reference="zVw-oc-Kg7"/>
-        <segue reference="Z3Z-TK-MJb"/>
         <segue reference="iID-OB-lrr"/>
         <segue reference="FuQ-bi-L0s"/>
+        <segue reference="AHW-Ly-SfO"/>
     </inferredMetricsTieBreakers>
 </document>

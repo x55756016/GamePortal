@@ -8,6 +8,7 @@
 
 #import "InfiniteScrollPicker.h"
 #import "UIView+viewController.h"
+#import "ClickImage.h"
 
 @implementation InfiniteScrollPicker
 
@@ -53,7 +54,7 @@
         for (int i = 0; i < (_imageAry.count*5); i++)
         {
             // Place images into the bottom of view
-            UIImageView *temp = [[UIImageView alloc] initWithFrame:CGRectMake(i * _itemSize.width, self.frame.size.height - _itemSize.height, _itemSize.width, _itemSize.height)];
+            ClickImage *temp = [[ClickImage alloc] initWithFrame:CGRectMake(i * _itemSize.width, self.frame.size.height - _itemSize.height, _itemSize.width, _itemSize.height)];
             temp.image = [_imageAry objectAtIndex:i%_imageAry.count];
             [imageStore addObject:temp];
             [self addSubview:temp];
@@ -86,7 +87,7 @@
 
 - (void)setItemSize:(CGSize)itemSize
 {
-    itemSize = itemSize;
+    _itemSize = itemSize;
     [self initInfiniteScrollView];
 }
 
@@ -125,7 +126,7 @@
 
     for (int i = 0; i < imageStore.count; i++) {
         
-        UIImageView *view = [imageStore objectAtIndex:i];
+        ClickImage *view = [imageStore objectAtIndex:i];
         
         if (view.center.x > (offset - _itemSize.width ) && view.center.x < (offset + self.frame.size.width + _itemSize.width))
         {
@@ -149,7 +150,7 @@
             
         } else {
             view.frame = CGRectMake(view.frame.origin.x, self.frame.size.height, _itemSize.width, _itemSize.height);
-            for (UIImageView *imageView in view.subviews)
+            for (ClickImage *imageView in view.subviews)
             {
                 imageView.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
             }
@@ -174,15 +175,17 @@
 - (void)snapToAnEmotion
 {
     float biggestSize = 0;
-    UIImageView *biggestView;
+    ClickImage *biggestView;
     
     snapping = YES;
     
     float offset = self.contentOffset.x;
     
     for (int i = 0; i < imageStore.count; i++) {
-        UIImageView *view = [imageStore objectAtIndex:i];
-    
+        ClickImage *view = [imageStore objectAtIndex:i];
+        view.canClick=YES;
+//        [view setClickToViewController:(UIViewController*)[self touchesdelegate]];
+        
         if (view.center.x > offset && view.center.x < (offset + self.frame.size.width))
         {
             if (((view.center.x + view.frame.size.width) - view.center.x) > biggestSize)
@@ -204,8 +207,7 @@
         [self setScrollEnabled:NO];
         [self scrollRectToVisible:CGRectMake(newX, 0, self.frame.size.width, 1) animated:YES];
         
-        dispatch_async(dispatch_get_main_queue(), ^ {
-            
+        dispatch_async(dispatch_get_main_queue(), ^ {            
 //            SEL selector = @selector(infiniteScrollPicker:didSelectAtImage:);
 //            if ([[self firstAvailableUIViewController] respondsToSelector:selector])
 //            {
@@ -214,11 +216,25 @@
 //                [[self firstAvailableUIViewController] performSelector:selector withObject:self withObject:biggestView.image];
 //                #pragma clang diagnostic pop
 //            }
-            
+            self.biggestView=biggestView;
             [self setScrollEnabled:YES];
             snapping = 0;
         });
     });
 }
 
+- (void) touchesEnded: (NSSet *) touches withEvent: (UIEvent *) event {
+  
+    if (!self.dragging) {
+        //run at ios5 ,no effect;
+        [self.nextResponder touchesEnded: touches withEvent:event];
+        if (_touchesdelegate!=nil) {
+            
+            [_touchesdelegate scrollViewTouchesEnded:touches withEvent:event whichView:self];
+        }
+        NSLog(@"UITouchScrollView nextResponder touchesEnded");
+    }
+    [super touchesEnded: touches withEvent: event];
+    
+}
 @end

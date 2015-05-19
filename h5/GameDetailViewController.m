@@ -55,7 +55,7 @@
     
     for (int i = 0; i < descImgArr.count; i++)
     {
-        NSString *descImageStr = [descImgArr objectAtIndex:0];
+        NSString *descImageStr = [descImgArr objectAtIndex:i];
         UIImageView *descImageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.conScrollView.frame.size.width*i, 0, self.conScrollView.frame.size.width, self.conScrollView.frame.size.height)];
         [self.conScrollView addSubview:descImageView];
         [descImageView sd_setImageWithURL:[NSURL URLWithString:descImageStr] placeholderImage:[UIImage imageNamed:@""]];

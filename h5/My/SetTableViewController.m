@@ -33,14 +33,14 @@ UIKIT_EXTERN NSString *userFolderPath;
 //-----------------------UITableViewDataSource-----------------------------------------------------------//
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(section == 0)
     {
-        return 2;
+        return 3;
     }
     
     else if(section == 1)
@@ -49,11 +49,6 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
     
     else if(section == 2)
-    {
-        return 3;
-    }
-    
-    else if(section == 3)
     {
         return 1;
     }
@@ -66,19 +61,15 @@ UIKIT_EXTERN NSString *userFolderPath;
     
     if(indexPath.section == 0)
     {
-        if(indexPath.row == 0)
-        {
-            cell = self.imageCachePathCell;
-        }
-        
-        if(indexPath.row == 1)
-        {
-            cell = self.imageLoadCell;
-        }
-    }
-    
-    if(indexPath.section == 1)
-    {
+//        if(indexPath.row == 0)
+//        {
+//            cell = self.imageCachePathCell;
+//        }
+//        
+//        if(indexPath.row == 1)
+//        {
+//            cell = self.imageLoadCell;
+//        }
         if(indexPath.row == 0)
         {
             cell = self.alertCell;
@@ -91,9 +82,10 @@ UIKIT_EXTERN NSString *userFolderPath;
         {
             cell = self.upgradeCell;
         }
+
     }
     
-    if(indexPath.section == 2)
+    if(indexPath.section == 1)
     {
         if(indexPath.row == 0)
         {
@@ -109,13 +101,18 @@ UIKIT_EXTERN NSString *userFolderPath;
         }
     }
     
-    if(indexPath.section == 3)
+    if(indexPath.section == 2)
     {
         if(indexPath.row == 0)
         {
             cell = self.exitCell;
         }
+
     }
+    
+//    if(indexPath.section == 3)
+//    {
+//           }
     
     return cell;
 }
@@ -124,7 +121,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(indexPath.section == 3)
+    if(indexPath.section == 2)
     {
         if(indexPath.row == 0)
         {

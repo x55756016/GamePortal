@@ -189,16 +189,112 @@ UIKIT_EXTERN NSString *userFolderPath;
 //    return contactsArray;
 //}
 
-+(void)showHttpErrorMsg:(NSString*)errorMsg
++(void)showSystemErrorMsg:(NSString*)CustomerErrorMsg:(NSError*)error
 {
-    errorMsg=[@"连接服务器失败，请联系客服。" stringByAppendingString:errorMsg];
+    NSString *strMsg=@"系统异常。";
+    if(CustomerErrorMsg!=nil)
+    {
+        strMsg=[strMsg stringByAppendingString:CustomerErrorMsg];
+    }
+    if (error!=nil) {
+        strMsg=[strMsg stringByAppendingFormat:@"%@,%@",@" \n信息：", [error localizedDescription]];
+        NSArray* detailedErrors = [[error userInfo] objectForKey:NSLocalizedRecoveryOptionsErrorKey];
+        if(detailedErrors != nil && [detailedErrors count] > 0) {
+            for(NSError* detailedError in detailedErrors) {
+                strMsg=[strMsg stringByAppendingFormat:@"%@,%@",@" \n错误：",[detailedError userInfo]];
+            }
+            
+        }
+        
+    }
+    
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示"
-                                                   message:errorMsg
-                                                  delegate:self
+                                                   message:strMsg
+                                                  delegate:nil
+                                         cancelButtonTitle:nil
+                                         otherButtonTitles:@"确定", nil];
+    
+    [alert show];
+    
+}
+
+//[KKUtility showHttpErrorMsg:nil :request.error];
++(void)showHttpErrorMsg:(NSString*)CustomerErrorMsg:(NSError*)error
+{
+    NSString *strMsg=@"连接服务器失败，请重试或联系客服。";
+    if(CustomerErrorMsg!=nil)
+    {
+        strMsg=[strMsg stringByAppendingString:CustomerErrorMsg];
+    }
+    if (error!=nil) {
+        strMsg=[strMsg stringByAppendingFormat:@"%@,%@",@" \n信息：", [error localizedDescription]];
+        NSArray* detailedErrors = [[error userInfo] objectForKey:NSLocalizedRecoveryOptionsErrorKey];
+        if(detailedErrors != nil && [detailedErrors count] > 0) {
+            for(NSError* detailedError in detailedErrors) {
+                strMsg=[strMsg stringByAppendingFormat:@"%@,%@",@" \n错误：",[detailedError userInfo]];
+            }
+            
+        }
+        
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示"
+                                                   message:strMsg
+                                                  delegate:nil
                                          cancelButtonTitle:nil
                                          otherButtonTitles:@"确定", nil];
     
     
+    [alert show];
+
+}
+
+//保存好友信息至本地
++(void)saveFriendsToLocal:(NSArray *)FriendsArray:(NSString *)UserId
+{
+    @try {
+        
+        NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *dataListName = @"friendList";
+        NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:dataListName];
+        
+
+            if (![FriendsArray writeToFile:UserInfoFolder atomically:YES])
+            {
+                NSLog(@"保存好友信息失败");
+            }
+        
+
+    }
+    @catch (NSException *exception) {
+        
+        [self showSystemErrorMsg:exception.reason :nil];
+    }
+}
+//从本地获取好友信息
++(NSArray*)GetFriendsFromLocal:(NSString*)UserId
+{
+    NSArray *friendsArray;
+    NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *dataListName = @"friendList";
+    NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:dataListName];
+    
+    BOOL isUserInfoFolderCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserInfoFolder isDirectory:nil];
+    if (isUserInfoFolderCreate)
+    {
+        friendsArray = [NSArray arrayWithContentsOfFile:UserInfoFolder];
+    }
+    return friendsArray;
+
+}
+
++(void)justAlert:(NSString*)Message
+{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:Message
+                                                   message:nil
+                                                  delegate:nil
+                                         cancelButtonTitle:nil
+                                         otherButtonTitles:@"确定", nil];
     [alert show];
 
 }

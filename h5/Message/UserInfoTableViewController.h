@@ -10,7 +10,7 @@
 #import "RCIM.h"
 #import "InfiniteScrollPicker.h"
 
-@interface UserInfoTableViewController : UITableViewController
+@interface UserInfoTableViewController : UITableViewController<InfiniteScrollPickerTouchesDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *HeadTableViewCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *accountTableViewCell;
@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
 @property (strong, nonatomic)NSDictionary *FriendInfoDict;
+@property (weak, nonatomic) IBOutlet UIButton *AddFriendButton;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *GameListCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *HistoryListCell;

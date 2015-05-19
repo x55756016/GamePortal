@@ -288,16 +288,52 @@
     [self.gameWebView loadRequest:requestUrl];
     NSLog(@"GetGameInfoFromServerFinish");
     
-    kkWebHelp *kkweb=[kkWebHelp alloc];
-    kkweb.delegate=self;
     NSDictionary *gamedic= self.gameDetailDict;
-    [kkweb addMyGameToServer:gamedic :userInfo];
+    [self addMyGameToServer:gamedic];
+    
+}
+//----------------------------添加我的游戏完成事件－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+
+-(void)addMyGameToServer:(NSDictionary *)addGameDict
+{
+    NSLog(@"开始游戏[%@]", addGameDict);
+    
+    //用户点击开始后，把这个游戏加入到他玩过的游戏中
+    NSString *urlStr = ADD_GAME;
+    NSURL *url = [NSURL URLWithString:urlStr];
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    [request setTimeOutSeconds:5.0];
+    [request setDelegate:self.delegate];
+    [request setRequestMethod:@"POST"];
+    [request setPostValue:@"1.0" forKey:@"version"];
+    [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserId"]] forKey:@"UserId"];
+    [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserKey"]] forKey:@"UserKey"];
+    [request setPostValue:[NSString stringWithFormat:@"%@", [addGameDict objectForKey:@"ContentPageID"]] forKey:@"GameId"];
+    [request setDidFailSelector:@selector(addGameFail:)];
+    [request setDidFinishSelector:@selector(addGameFinish:)];
+    [request startAsynchronous];
+    
+//    [self.delegate addGameConfigComplete:@"addMyGameToServer Finish!"];
     
 }
 
+- (void)addGameFinish:(ASIHTTPRequest *)request
+{
+    NSLog(@"addGameFinish");
+}
+
+- (void)addGameFail:(ASIHTTPRequest *)request
+{
+    [KKUtility showHttpErrorMsg:nil :request.error];
+}
+
+//----------------------------结束添加我的游戏完成事件－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
 - (void)GetGameInfoFromServerFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"GetGameInfoFromServerFail");
+    [KKUtility showHttpErrorMsg:nil :request.error];
 }
 //---------------------------结束获取游戏详情---------
 
@@ -330,7 +366,7 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    NSLog(@"didFailLoadWithError");
+    [KKUtility showHttpErrorMsg:nil :error];
 }
 
 
@@ -370,7 +406,7 @@
 
 - (void)SendPlayGameInfoFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"SendPlayGameInfoFail");
+     [KKUtility showHttpErrorMsg:nil :request.error];
 }
 //------------------------------------
 
@@ -711,22 +747,7 @@
 }
 //-------------结束战绩墙分享----------------------------------------------------------------------------------------------------
 
-//----------------------------添加我的游戏完成事件－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 
-- (void)addGameFinish:(ASIHTTPRequest *)request
-{
-    NSLog(@"addGameFinish");
-}
-
-- (void)addGameFail:(ASIHTTPRequest *)request
-{
-    NSLog(@"addGameFail");
-}
-- (void)addGameConfigComplete:(NSString *)value
-{
-    NSLog(@"%@",value);
-}
-//----------------------------结束添加我的游戏完成事件－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 @end
 
 

@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		C312F5611B0442F200931578 /* libSunFlower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C312F5601B0442F200931578 /* libSunFlower.a */; };
-		C31DA0DC1B097B1D002964C5 /* kkWebHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = C31DA0DB1B097B1D002964C5 /* kkWebHelp.m */; };
 		C32D05AA1B007EF7006B1773 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32D05A81B007EF7006B1773 /* Main.storyboard */; };
 		C32D05AD1B009799006B1773 /* CustomerChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D05AC1B009799006B1773 /* CustomerChatViewController.m */; };
 		C32D05B11B01B037006B1773 /* HEXCMyUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D05B01B01B037006B1773 /* HEXCMyUIButton.m */; };
 		C3318EB01B02FEC900E7BCE4 /* GameWebNavgationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3318EAF1B02FEC900E7BCE4 /* GameWebNavgationViewController.m */; };
+		C331E81B1B0B191B004439A3 /* ClickImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C331E81A1B0B191B004439A3 /* ClickImage.m */; };
 		C33A83E91B072F5200331199 /* InfiniteScrollPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */; };
 		C33A83EA1B072F5200331199 /* UIView+viewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E81B072F5200331199 /* UIView+viewController.m */; };
 		C38E41231B048E4700F42B7D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41201B048E4700F42B7D /* libWeChatSDK.a */; };
@@ -182,8 +182,6 @@
 /* Begin PBXFileReference section */
 		C312F55F1B0442F200931578 /* IFlyFlowerCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFlyFlowerCollector.h; sourceTree = "<group>"; };
 		C312F5601B0442F200931578 /* libSunFlower.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSunFlower.a; sourceTree = "<group>"; };
-		C31DA0DA1B097B1D002964C5 /* kkWebHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kkWebHelp.h; sourceTree = "<group>"; };
-		C31DA0DB1B097B1D002964C5 /* kkWebHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kkWebHelp.m; sourceTree = "<group>"; };
 		C32D05A91B007EF7006B1773 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C32D05AB1B009799006B1773 /* CustomerChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerChatViewController.h; sourceTree = "<group>"; };
 		C32D05AC1B009799006B1773 /* CustomerChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerChatViewController.m; sourceTree = "<group>"; };
@@ -191,6 +189,8 @@
 		C32D05B01B01B037006B1773 /* HEXCMyUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXCMyUIButton.m; sourceTree = "<group>"; };
 		C3318EAE1B02FEC900E7BCE4 /* GameWebNavgationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameWebNavgationViewController.h; sourceTree = "<group>"; };
 		C3318EAF1B02FEC900E7BCE4 /* GameWebNavgationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameWebNavgationViewController.m; sourceTree = "<group>"; };
+		C331E8191B0B191B004439A3 /* ClickImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClickImage.h; sourceTree = "<group>"; };
+		C331E81A1B0B191B004439A3 /* ClickImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClickImage.m; sourceTree = "<group>"; };
 		C33A83E51B072F5200331199 /* InfiniteScrollPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteScrollPicker.h; sourceTree = "<group>"; };
 		C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfiniteScrollPicker.m; sourceTree = "<group>"; };
 		C33A83E71B072F5200331199 /* UIView+viewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+viewController.h"; sourceTree = "<group>"; };
@@ -589,6 +589,15 @@
 			name = GameWebPage;
 			sourceTree = "<group>";
 		};
+		C331E8181B0B191B004439A3 /* ClickImage */ = {
+			isa = PBXGroup;
+			children = (
+				C331E8191B0B191B004439A3 /* ClickImage.h */,
+				C331E81A1B0B191B004439A3 /* ClickImage.m */,
+			);
+			path = ClickImage;
+			sourceTree = "<group>";
+		};
 		C33A83E41B072F5200331199 /* InfiniteScrollPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -603,6 +612,7 @@
 		C38E411E1B048E4700F42B7D /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				C331E8181B0B191B004439A3 /* ClickImage */,
 				C33A83E41B072F5200331199 /* InfiniteScrollPicker */,
 				C38E41241B048EC100F42B7D /* Voice */,
 				C38E411F1B048E4700F42B7D /* WebChatSDK */,
@@ -1168,8 +1178,6 @@
 				C3C003FB1AFC51410049002A /* KKUtility.m */,
 				C3C003FE1AFC92EB0049002A /* CurrentUser.h */,
 				C3C003FF1AFC93020049002A /* CurrentUser.m */,
-				C31DA0DA1B097B1D002964C5 /* kkWebHelp.h */,
-				C31DA0DB1B097B1D002964C5 /* kkWebHelp.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1392,9 +1400,9 @@
 				CB6ED2061AD37A4100A33BB8 /* UIImage+WebP.m in Sources */,
 				CB6EFEA21AD61B6C00F597B6 /* MJRefreshGifHeader.m in Sources */,
 				CB6ED2031AD37A4100A33BB8 /* UIButton+WebCache.m in Sources */,
-				C31DA0DC1B097B1D002964C5 /* kkWebHelp.m in Sources */,
 				CB3929441ACC29570004FFB4 /* SMS_MBProgressHUD.m in Sources */,
 				CB3929431ACC29570004FFB4 /* SMS_MBProgressHUD+Add.m in Sources */,
+				C331E81B1B0B191B004439A3 /* ClickImage.m in Sources */,
 				CB7CDB7B1ACCD74200872B7E /* MyTableViewController.m in Sources */,
 				CB323E0B1ACA7C9B00C7FE83 /* ASIAuthenticationDialog.m in Sources */,
 				CB6EFE9F1AD61B6C00F597B6 /* MJRefreshConst.m in Sources */,
@@ -1652,7 +1660,7 @@
 					"$(PROJECT_DIR)/h5/SDK/WebChatSDK",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "838196f1-f140-4604-a638-bdf0fd9faa98";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1693,7 +1701,7 @@
 					"$(PROJECT_DIR)/h5/SDK/WebChatSDK",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "838196f1-f140-4604-a638-bdf0fd9faa98";
 				TARGETED_DEVICE_FAMILY = 1;

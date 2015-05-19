@@ -33,5 +33,16 @@
 
 +(NSString *)getImagePath:(NSString*)path:(NSString*)strType;
 
-+(void)showHttpErrorMsg:(NSString*)errorMsg;
+//显示系统错误
++(void)showSystemErrorMsg:(NSString*)CustomerErrorMsg:(NSError*)error;
+//显示网络错误
++(void)showHttpErrorMsg:(NSString*)CustomerErrorMsg:(NSError*)error;
+
+//保存好友信息至本地
++(void)saveFriendsToLocal:(NSArray *)FriendsArray:(NSString *)UserId;
+//从本地获取好友信息
++(NSArray*)GetFriendsFromLocal:(NSString*)UserId;
+//弹出提示框
++(void)justAlert:(NSString*)Message;
+
 @end

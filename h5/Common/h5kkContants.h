@@ -37,6 +37,8 @@
 
 //添加好友 egg：UserId=321938&UserKey=E10ADC3949&AreaId=1&GameId=0&lon=113.936372&lat=22.546721
 #define FIND_ADD                [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/FriendAdd"]
+//删除好友 egg：UserId=321976&UserKey=E10ADC3949&removeUserId=321938
+#define FriendRemove            [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/FriendRemove"]
 //获取单个玩家详细信息 egg：UserId=321938&UserKey=E10ADC3949&FriendId=321970
 #define USER_DETAIL             [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/FriendDetail"]
 //添加玩游戏动态 egg：UserId=321938&UserKey=E10ADC3949&AreaId=1&GameId=0&lon=113.936372&lat=22.546721

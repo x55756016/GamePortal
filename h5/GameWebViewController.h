@@ -11,7 +11,6 @@
 //科大讯飞sdk
 #import "iflyMSC/IFlyRecognizerViewDelegate.h"
 #import "WXApi.h"
-#import "kkWebHelp.h"
 
 //forward declare
 @class IFlyRecognizerView;
@@ -25,7 +24,7 @@
 @end
 
 
-@interface GameWebViewController : UIViewController <UIWebViewDelegate, UIAlertViewDelegate,UITextFieldDelegate,IFlyRecognizerViewDelegate,WXApiDelegate,UIActionSheetDelegate,addGameConfigCompleteDelegate>
+@interface GameWebViewController : UIViewController <UIWebViewDelegate, UIAlertViewDelegate,UITextFieldDelegate,IFlyRecognizerViewDelegate,WXApiDelegate,UIActionSheetDelegate>
 //带界面的听写识别对象
 @property (nonatomic,strong) IFlyRecognizerView * iflyRecognizerView;
 @property (nonatomic,weak)   UITextField         * textMsgField;

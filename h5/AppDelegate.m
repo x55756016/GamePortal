@@ -10,6 +10,7 @@
 #import <SMS_SDK/SMS_SDK.h>
 #import "MyNavigationController.h"
 #import "RCIM.h"
+#import "KKUtility.h"
 
 //免费短信
 #define appKey @"61105df6a660"
@@ -111,6 +112,7 @@ NSString *userFolderPath;
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
 #endif
 //    endedit
+        NSSetUncaughtExceptionHandler (&UncaughtExceptionHandler);
     }
     @catch(NSException *exception)
     {
@@ -118,6 +120,20 @@ NSString *userFolderPath;
     }
     
     return YES;
+}
+
+void UncaughtExceptionHandler(NSException *exception) {
+    NSArray *arr = [exception callStackSymbols];
+    NSString *reason = [exception reason];
+    NSString *name = [exception name];
+    
+    NSString *urlStr = [NSString stringWithFormat:@"系统异常：错误详情:<br>%@<br>--------------------------<br>%@<br>---------------------<br>%@",
+                        name,reason,[arr componentsJoinedByString:@"<br>"]];
+    
+//    NSURL *url = [NSURL URLWithString:[urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+//    [[UIApplication sharedApplication] openURL:url];
+    [KKUtility showSystemErrorMsg:urlStr:nil];
+    NSLog(@"%@",urlStr);  
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
