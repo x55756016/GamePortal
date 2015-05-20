@@ -16,7 +16,6 @@
 #import "iflyMSC/IFlySpeechConstant.h"
 #import "iflyMSC/IFlySpeechUtility.h"
 #import "iflyMSC/IFlySpeechSynthesizer.h"
-#import "IFlyFlowerCollector.h"
 #import "KKUtility.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, RCIMReceiveMessageDelegate,CLLocationManagerDelegate>

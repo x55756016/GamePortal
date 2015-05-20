@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C32A25041B0C3B4200861BD5 /* libSunFlower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C32A25031B0C3B4200861BD5 /* libSunFlower.a */; };
+		C32A25051B0C3EA200861BD5 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41251B048EC100F42B7D /* iflyMSC.framework */; };
 		C32D05AA1B007EF7006B1773 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32D05A81B007EF7006B1773 /* Main.storyboard */; };
 		C32D05AD1B009799006B1773 /* CustomerChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D05AC1B009799006B1773 /* CustomerChatViewController.m */; };
 		C32D05B11B01B037006B1773 /* HEXCMyUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D05B01B01B037006B1773 /* HEXCMyUIButton.m */; };
@@ -18,7 +18,6 @@
 		C33A83E91B072F5200331199 /* InfiniteScrollPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */; };
 		C33A83EA1B072F5200331199 /* UIView+viewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E81B072F5200331199 /* UIView+viewController.m */; };
 		C38E41231B048E4700F42B7D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41201B048E4700F42B7D /* libWeChatSDK.a */; };
-		C38E41261B048EC100F42B7D /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41251B048EC100F42B7D /* iflyMSC.framework */; };
 		C3A9947F1AF86C4C00B2D317 /* GameNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9947E1AF86C4C00B2D317 /* GameNavigationController.m */; };
 		C3A994821AF86DA300B2D317 /* GameListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A994811AF86DA300B2D317 /* GameListViewController.m */; };
 		C3A994871AF86F2900B2D317 /* GameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A994861AF86F2900B2D317 /* GameTableViewCell.m */; };
@@ -182,8 +181,6 @@
 
 /* Begin PBXFileReference section */
 		C32A25001B0C317000861BD5 /* KKUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KKUtility.m; path = h5/Common/KKUtility.m; sourceTree = "<group>"; };
-		C32A25021B0C3B4200861BD5 /* IFlyFlowerCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFlyFlowerCollector.h; sourceTree = "<group>"; };
-		C32A25031B0C3B4200861BD5 /* libSunFlower.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSunFlower.a; sourceTree = "<group>"; };
 		C32D05A91B007EF7006B1773 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C32D05AB1B009799006B1773 /* CustomerChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerChatViewController.h; sourceTree = "<group>"; };
 		C32D05AC1B009799006B1773 /* CustomerChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerChatViewController.m; sourceTree = "<group>"; };
@@ -200,7 +197,6 @@
 		C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfiniteScrollPicker.m; sourceTree = "<group>"; };
 		C33A83E71B072F5200331199 /* UIView+viewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+viewController.h"; sourceTree = "<group>"; };
 		C33A83E81B072F5200331199 /* UIView+viewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+viewController.m"; sourceTree = "<group>"; };
-		C38E41161B04847300F42B7D /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iflyMSC.framework; path = ../../../Downloads/SDK/iOS_voice_1.101_5552ef54/lib/iflyMSC.framework; sourceTree = "<group>"; };
 		C38E41201B048E4700F42B7D /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		C38E41211B048E4700F42B7D /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		C38E41221B048E4700F42B7D /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
@@ -526,11 +522,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C38E41261B048EC100F42B7D /* iflyMSC.framework in Frameworks */,
+				C32A25051B0C3EA200861BD5 /* iflyMSC.framework in Frameworks */,
 				CB4AC97F1AD6758200A85599 /* UIKit.framework in Frameworks */,
 				CB4AC97D1AD6757900A85599 /* SystemConfiguration.framework in Frameworks */,
 				CB4AC97B1AD6756900A85599 /* QuartzCore.framework in Frameworks */,
-				C32A25041B0C3B4200861BD5 /* libSunFlower.a in Frameworks */,
 				CB4AC9791AD6756300A85599 /* OpenGLES.framework in Frameworks */,
 				CBB4B0F41AF47FE9004BE59A /* libiOS_IMKit_v1_4_6.a in Frameworks */,
 				CB4AC9771AD6755900A85599 /* MapKit.framework in Frameworks */,
@@ -562,15 +557,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C32A25011B0C3B4200861BD5 /* sunflower */ = {
-			isa = PBXGroup;
-			children = (
-				C32A25021B0C3B4200861BD5 /* IFlyFlowerCollector.h */,
-				C32A25031B0C3B4200861BD5 /* libSunFlower.a */,
-			);
-			path = sunflower;
-			sourceTree = "<group>";
-		};
 		C32D05AE1B01B013006B1773 /* WebGameMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -637,7 +623,6 @@
 		C38E41241B048EC100F42B7D /* Voice */ = {
 			isa = PBXGroup;
 			children = (
-				C32A25011B0C3B4200861BD5 /* sunflower */,
 				C38E41251B048EC100F42B7D /* iflyMSC.framework */,
 			);
 			path = Voice;
@@ -891,7 +876,6 @@
 		CB323DC01ACA3D4600C7FE83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C38E41161B04847300F42B7D /* iflyMSC.framework */,
 				CB4AC97E1AD6758200A85599 /* UIKit.framework */,
 				CB4AC97C1AD6757900A85599 /* SystemConfiguration.framework */,
 				CB4AC97A1AD6756900A85599 /* QuartzCore.framework */,
@@ -1666,7 +1650,6 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/h5",
 					"$(PROJECT_DIR)/h5/SDK/WebChatSDK",
-					"$(PROJECT_DIR)/h5/SDK/Voice/sunflower",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1706,7 +1689,6 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/h5",
 					"$(PROJECT_DIR)/h5/SDK/WebChatSDK",
-					"$(PROJECT_DIR)/h5/SDK/Voice/sunflower",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";

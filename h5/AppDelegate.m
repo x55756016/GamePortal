@@ -13,8 +13,8 @@
 
 
 //免费短信
-#define appKey @"61105df6a660"
-#define appSecret @"bab3f2aca52cbd9cbf1dd04628c56f51"
+#define SMSappKey @"61105df6a660"
+#define SMSappSecret @"bab3f2aca52cbd9cbf1dd04628c56f51"
 
 //融云
 #define appKeyIM @"mgb7ka1nbspfg"
@@ -42,22 +42,22 @@ NSString *userFolderPath;
     [locationManager startUpdatingLocation];
     
     //初始化短信，appKey和appSecret从后台申请得到
-    [SMS_SDK registerApp:appKey withSecret:appSecret];
+    [SMS_SDK registerApp:SMSappKey withSecret:SMSappSecret];
     
     //初始化融云IM,传入App Key，deviceToken 暂时为空,等待获取权限
-    [RCIM initWithAppKey:appKeyIM deviceToken:nil];
+    [RCIM initWithAppKey:appKeyIM deviceToken:nil];    //设置接收消息的监听器。
+    [[RCIM sharedRCIM] setReceiveMessageDelegate:self];
     
     //初始化科大讯飞
     //创建语音配置,appid必须要传入，仅执行一次则可
     NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@,timeout=%@",KKAPPID_VALUE,TIMEOUT_VALUE];
     [IFlySpeechUtility createUtility:initString];
-    [IFlyFlowerCollector SetDebugMode:YES];
-    [IFlyFlowerCollector SetCaptureUncaughtException:YES];
-    [IFlyFlowerCollector SetAppid:KKAPPID_VALUE];
-    [IFlyFlowerCollector SetAutoLocation:YES];
+//    [IFlyFlowerCollector SetDebugMode:YES];
+//    [IFlyFlowerCollector SetCaptureUncaughtException:YES];
+//    [IFlyFlowerCollector SetAppid:KKAPPID_VALUE];
+//    [IFlyFlowerCollector SetAutoLocation:YES];
+
     
-    //设置接收消息的监听器。
-    [[RCIM sharedRCIM] setReceiveMessageDelegate:self];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
     //创建本地文件夹
