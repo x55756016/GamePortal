@@ -14,9 +14,15 @@
 #import "CurrentUser.h"
 #import "HEXCMyUIButton.h"
 
+
 #import "iflyMSC/IFlySpeechConstant.h"
+#import "iflyMSC/IFlyResourceUtil.h"
 #import "iflyMSC/IFlySpeechUtility.h"
-#import "iflyMSC/IFlyRecognizerView.h"
+#import "iflyMSC/IFlySpeechRecognizer.h"
+#import "iflyMSC/IFlyContact.h"
+#import "iflyMSC/IFlyDataUploader.h"
+#import "SBJson4.h"
+
 
 @interface GameWebViewController (){
     
@@ -24,7 +30,7 @@
     HEXCMyUIButton *myButton;
     UIView *TopBarView;
     UIView *ButtomBarView;
-    IFlySpeechSynthesizer * _iFlySpeechSynthesizer;
+
     NSDictionary *userInfo;
     
     enum WXScene _scene;
@@ -47,22 +53,35 @@
 
 - (void)viewDidLoad
 {
-//    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];  //设置状态栏
-
     [super viewDidLoad];
     [self regkeyNotification];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    //恢复状态栏方向
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
+    self.view.transform =CGAffineTransformIdentity;
     
     [WXApi registerApp:@"wx6f12d1a412f2bf36"];
     
-    //创建语音听写的对象
-    self.iflyRecognizerView= [[IFlyRecognizerView alloc] initWithCenter:self.view.center];
+    //科大讯飞创建语音听写的对象
+    // 创建识别对象
+    self.iFlySpeechRecognizer = [IFlySpeechRecognizer sharedInstance];
+    //请不要删除这句,createRecognizer是单例方法，需要重新设置代理
+    self.iFlySpeechRecognizer.delegate = self;
+    [self.iFlySpeechRecognizer setParameter:@"iat" forKey:[IFlySpeechConstant IFLY_DOMAIN]];
+    //设置采样率
+    //    [iflySpeechRecognizer setParameter:@"16000" forKey:[IFlySpeechConstant SAMPLE_RATE]];
+    //设置录音保存文件
+    //    [iflySpeechRecognizer setParameter:@"asr.pcm" forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
+    //设置为非语义模式
+    [self.iFlySpeechRecognizer setParameter:@"0" forKey:[IFlySpeechConstant ASR_SCH]];
+    //设置返回结果的数据格式，可设置为json，xml，plain，默认为json。
+    [self.iFlySpeechRecognizer setParameter:@"1000" forKey:@"vad_bos"];
+    //设置为麦克风输入模式
+    [self.iFlySpeechRecognizer setParameter:IFLY_AUDIO_SOURCE_MIC forKey:@"audio_source"];
     
-    //delegate需要设置，确保delegate回调可以正常返回
-    _iflyRecognizerView.delegate = self;
+    
     userInfo=[KKUtility getUserInfoFromLocalFile];
-    
     [self SendPlayGameInfoToServer];
     [self GetGameInfoFromServer];
     [self addLeftAndRightMenu];
@@ -70,22 +89,19 @@
     
 
 }
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    //恢复状态栏方向
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    //终止识别
-    [_iflyRecognizerView cancel];
-    [_iflyRecognizerView setDelegate:nil];
-    [self unregkeyNotification];
-    
-    if([landorprot isEqualToString:@"1"])
-    {
-        //恢复状态栏方向
-        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏
-    }
+    //科大讯飞取消识别
+    [self.iFlySpeechRecognizer cancel];
+    [self.iFlySpeechRecognizer setDelegate: nil];
 
+    [self unregkeyNotification];
 
 }
 //屏幕旋转完成事件
@@ -488,44 +504,102 @@
 //uitextfile 事件结束---------------------------------------
 
 
+//------------------启动科大讯飞及相关接口------------------------------------------------------------
 - (IBAction)StartVioceMsg:(id)sender
 {
     [self returnButtomHeightconstraint];
-    [_iflyRecognizerView setParameter: @"iat" forKey:[IFlySpeechConstant IFLY_DOMAIN]];
+    //启动科大讯飞合成会话
+    //设置为录音模式
+    [self.iFlySpeechRecognizer setParameter:IFLY_AUDIO_SOURCE_MIC forKey:@"audio_source"];
     
-    //设置结果数据格式，可设置为json，xml，plain，默认为json。
-    [_iflyRecognizerView setParameter:@"plain" forKey:[IFlySpeechConstant RESULT_TYPE]];
+    bool ret = [self.iFlySpeechRecognizer startListening];
     
-    [_iflyRecognizerView start];
-    
+    if (ret) {
+        
+
+    }
+
     NSLog(@"start listenning...");
 
 }
-
-#pragma mark IFlyRecognizerViewDelegate
-
-/** 识别结果回调方法
- @param resultArray 结果列表
- @param isLast YES 表示最后一个，NO表示后面还有结果
- */
-- (void)onResult:(NSArray *)resultArray isLast:(BOOL)isLast
+- (void) onResults:(NSArray *) results isLast:(BOOL)isLast
 {
-    NSMutableString *result = [[NSMutableString alloc] init];
-    NSDictionary *dic = [resultArray objectAtIndex:0];    
+    NSMutableString *resultString = [[NSMutableString alloc] init];
+    
+    NSDictionary *dic = results[0];
+    
     for (NSString *key in dic) {
-        [result appendFormat:@"%@",key];
+        [resultString appendFormat:@"%@",key];
     }
-    self.textMsgField.text = [NSString stringWithFormat:@"%@%@",self.textMsgField.text,result];
+    
+    //NSLog(@"听写结果：%@",resultString);
+    NSString * resultFromJson =  [self getResultFromJson:resultString];
+
+    self.textMsgField.text =[NSString stringWithFormat:@"%@%@", self.textMsgField.text,resultFromJson];
+    
+    NSLog(@"isLast=%d",isLast);
+}
+- (void) onError:(IFlySpeechError *) error
+{
+    NSString *text ;
+if (error.errorCode ==0 ) {
+        
+        if (self.textMsgField.text.length==0) {
+            
+            text = @"无识别结果";
+        }
+        else
+        {
+            text = @"识别成功";
+        }
+    }
+    else
+    {
+        text = [NSString stringWithFormat:@"发生错误：%d %@",error.errorCode,error.errorDesc];
+        
+        NSLog(@"%@",text);
+    }
+}
+-(NSString *) getResultFromJson:(NSString*)params
+{
+    if (params == NULL) {
+        return nil;
+    }
+    NSMutableString *tempStr = [[NSMutableString alloc] init];
+    
+    //返回的格式必须为utf8的,否则发生未知错误
+    NSString *jsonString = params;
+    
+    id block = ^(id obj, BOOL *ignored) {
+        NSDictionary *dic = obj;
+        
+        NSArray *wordArray = [dic objectForKey:@"ws"];
+        
+        for (int i = 0; i < [wordArray count]; i++) {
+            NSDictionary *wsDic = [wordArray objectAtIndex: i];
+            NSArray *cwArray = [wsDic objectForKey:@"cw"];
+            
+            for (int j = 0; j < [cwArray count]; j++) {
+                NSDictionary *wDic = [cwArray objectAtIndex:j];
+                NSString *str = [wDic objectForKey:@"w"];
+                [tempStr appendString: str];
+            }
+        }
+        
+    };
+    
+    id eh = ^(NSError *err) {
+        NSLog(@"json parser error");
+        //        self.output.string = err.description;
+    };
+    id parser = [SBJson4Parser parserWithBlock:block allowMultiRoot:NO unwrapRootArray:NO errorHandler:eh];
+    [parser parse:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    return tempStr;
 }
 
-/** 识别结束回调方法
- @param error 识别错误
- */
-- (void)onError:(IFlySpeechError *)error
-{
-    NSLog(@"errorCode:%d",[error errorCode]);
-}
-//------------------------------------------------------------------------------
+//-------------------结束科大讯飞-----------------------------------------------------------
 
 //发送弹幕
 - (IBAction)sendJsFunction:(id)sender

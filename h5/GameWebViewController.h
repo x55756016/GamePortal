@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "HEXCMyUIButton.h"
 //科大讯飞sdk
-#import "iflyMSC/IFlyRecognizerViewDelegate.h"
+#import "iflyMSC/IFlySpeechRecognizerDelegate.h"
 #import "WXApi.h"
 
 //forward declare
-@class IFlyRecognizerView;
+@class IFlyDataUploader;
+@class IFlySpeechRecognizer;
 
 @protocol sendMsgToWeChatViewDelegate <NSObject>
 - (void) sendImageContent;
@@ -24,9 +25,9 @@
 @end
 
 
-@interface GameWebViewController : UIViewController <UIWebViewDelegate, UIAlertViewDelegate,UITextFieldDelegate,IFlyRecognizerViewDelegate,WXApiDelegate,UIActionSheetDelegate>
-//带界面的听写识别对象
-@property (nonatomic,strong) IFlyRecognizerView * iflyRecognizerView;
+@interface GameWebViewController : UIViewController <UIWebViewDelegate, UIAlertViewDelegate,UITextFieldDelegate,IFlySpeechRecognizerDelegate,WXApiDelegate,UIActionSheetDelegate>
+//科大讯飞识别对象
+@property (nonatomic, strong) IFlySpeechRecognizer * iFlySpeechRecognizer;
 @property (nonatomic,weak)   UITextField         * textMsgField;
 
 @property (strong, nonatomic)NSDictionary *gameDetailDict;

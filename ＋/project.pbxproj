@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		C32A25051B0C3EA200861BD5 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41251B048EC100F42B7D /* iflyMSC.framework */; };
+		C32A251A1B0CBA6F00861BD5 /* SBJson4Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A250D1B0CBA6F00861BD5 /* SBJson4Parser.m */; };
+		C32A251B1B0CBA6F00861BD5 /* SBJson4StreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A250F1B0CBA6F00861BD5 /* SBJson4StreamParser.m */; };
+		C32A251C1B0CBA6F00861BD5 /* SBJson4StreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A25111B0CBA6F00861BD5 /* SBJson4StreamParserState.m */; };
+		C32A251D1B0CBA6F00861BD5 /* SBJson4StreamTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A25131B0CBA6F00861BD5 /* SBJson4StreamTokeniser.m */; };
+		C32A251E1B0CBA6F00861BD5 /* SBJson4StreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A25151B0CBA6F00861BD5 /* SBJson4StreamWriter.m */; };
+		C32A251F1B0CBA6F00861BD5 /* SBJson4StreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A25171B0CBA6F00861BD5 /* SBJson4StreamWriterState.m */; };
+		C32A25201B0CBA6F00861BD5 /* SBJson4Writer.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A25191B0CBA6F00861BD5 /* SBJson4Writer.m */; };
 		C32D05AA1B007EF7006B1773 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32D05A81B007EF7006B1773 /* Main.storyboard */; };
 		C32D05AD1B009799006B1773 /* CustomerChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D05AC1B009799006B1773 /* CustomerChatViewController.m */; };
 		C32D05B11B01B037006B1773 /* HEXCMyUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D05B01B01B037006B1773 /* HEXCMyUIButton.m */; };
@@ -181,6 +188,21 @@
 
 /* Begin PBXFileReference section */
 		C32A25001B0C317000861BD5 /* KKUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KKUtility.m; path = h5/Common/KKUtility.m; sourceTree = "<group>"; };
+		C32A250B1B0CBA6F00861BD5 /* SBJson4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4.h; sourceTree = "<group>"; };
+		C32A250C1B0CBA6F00861BD5 /* SBJson4Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4Parser.h; sourceTree = "<group>"; };
+		C32A250D1B0CBA6F00861BD5 /* SBJson4Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4Parser.m; sourceTree = "<group>"; };
+		C32A250E1B0CBA6F00861BD5 /* SBJson4StreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamParser.h; sourceTree = "<group>"; };
+		C32A250F1B0CBA6F00861BD5 /* SBJson4StreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamParser.m; sourceTree = "<group>"; };
+		C32A25101B0CBA6F00861BD5 /* SBJson4StreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamParserState.h; sourceTree = "<group>"; };
+		C32A25111B0CBA6F00861BD5 /* SBJson4StreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamParserState.m; sourceTree = "<group>"; };
+		C32A25121B0CBA6F00861BD5 /* SBJson4StreamTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamTokeniser.h; sourceTree = "<group>"; };
+		C32A25131B0CBA6F00861BD5 /* SBJson4StreamTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamTokeniser.m; sourceTree = "<group>"; };
+		C32A25141B0CBA6F00861BD5 /* SBJson4StreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamWriter.h; sourceTree = "<group>"; };
+		C32A25151B0CBA6F00861BD5 /* SBJson4StreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamWriter.m; sourceTree = "<group>"; };
+		C32A25161B0CBA6F00861BD5 /* SBJson4StreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamWriterState.h; sourceTree = "<group>"; };
+		C32A25171B0CBA6F00861BD5 /* SBJson4StreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamWriterState.m; sourceTree = "<group>"; };
+		C32A25181B0CBA6F00861BD5 /* SBJson4Writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4Writer.h; sourceTree = "<group>"; };
+		C32A25191B0CBA6F00861BD5 /* SBJson4Writer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4Writer.m; sourceTree = "<group>"; };
 		C32D05A91B007EF7006B1773 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C32D05AB1B009799006B1773 /* CustomerChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerChatViewController.h; sourceTree = "<group>"; };
 		C32D05AC1B009799006B1773 /* CustomerChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerChatViewController.m; sourceTree = "<group>"; };
@@ -557,6 +579,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C32A250A1B0CBA6F00861BD5 /* SBJson */ = {
+			isa = PBXGroup;
+			children = (
+				C32A250B1B0CBA6F00861BD5 /* SBJson4.h */,
+				C32A250C1B0CBA6F00861BD5 /* SBJson4Parser.h */,
+				C32A250D1B0CBA6F00861BD5 /* SBJson4Parser.m */,
+				C32A250E1B0CBA6F00861BD5 /* SBJson4StreamParser.h */,
+				C32A250F1B0CBA6F00861BD5 /* SBJson4StreamParser.m */,
+				C32A25101B0CBA6F00861BD5 /* SBJson4StreamParserState.h */,
+				C32A25111B0CBA6F00861BD5 /* SBJson4StreamParserState.m */,
+				C32A25121B0CBA6F00861BD5 /* SBJson4StreamTokeniser.h */,
+				C32A25131B0CBA6F00861BD5 /* SBJson4StreamTokeniser.m */,
+				C32A25141B0CBA6F00861BD5 /* SBJson4StreamWriter.h */,
+				C32A25151B0CBA6F00861BD5 /* SBJson4StreamWriter.m */,
+				C32A25161B0CBA6F00861BD5 /* SBJson4StreamWriterState.h */,
+				C32A25171B0CBA6F00861BD5 /* SBJson4StreamWriterState.m */,
+				C32A25181B0CBA6F00861BD5 /* SBJson4Writer.h */,
+				C32A25191B0CBA6F00861BD5 /* SBJson4Writer.m */,
+			);
+			path = SBJson;
+			sourceTree = "<group>";
+		};
 		C32D05AE1B01B013006B1773 /* WebGameMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -602,6 +646,7 @@
 		C38E411E1B048E4700F42B7D /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				C32A250A1B0CBA6F00861BD5 /* SBJson */,
 				CB323DA51ACA3B3000C7FE83 /* Reachability */,
 				CB6166951AD8DD5B00D9132F /* RCHttpRequest */,
 				CB323DF61ACA7C9B00C7FE83 /* ASIHTTPRequest */,
@@ -1391,6 +1436,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C32A251E1B0CBA6F00861BD5 /* SBJson4StreamWriter.m in Sources */,
 				C3C003FC1AFC51410049002A /* KKUtility.m in Sources */,
 				CB6166981AD8DD5C00D9132F /* RCHttpRequest.m in Sources */,
 				CBB3FE561ADD5AF7008D008B /* SnapChatViewController.m in Sources */,
@@ -1424,6 +1470,7 @@
 				CB323DAE1ACA3B7B00C7FE83 /* SVProgressHUD.m in Sources */,
 				C3A994AC1AF8781C00B2D317 /* FrontRankTableViewCell.m in Sources */,
 				CB39293A1ACC29570004FFB4 /* ForgetPwdViewController.m in Sources */,
+				C32A25201B0CBA6F00861BD5 /* SBJson4Writer.m in Sources */,
 				CB6ED2081AD37A4100A33BB8 /* UIImageView+WebCache.m in Sources */,
 				CB0A69B71AC92B74003F7775 /* main.m in Sources */,
 				C3A994AE1AF8781C00B2D317 /* BehindTableViewCell.m in Sources */,
@@ -1445,11 +1492,13 @@
 				CBE0A0581AEA22E200791FAB /* CustomPresentAnimation.m in Sources */,
 				CB87187D1ACE8F2000413FDD /* MeDetailAgeTableViewController.m in Sources */,
 				CB61669F1AD8F6F000D9132F /* ChatSettingViewController.m in Sources */,
+				C32A251A1B0CBA6F00861BD5 /* SBJson4Parser.m in Sources */,
 				C3A9949C1AF86FF100B2D317 /* GameWebViewController.m in Sources */,
 				CB61669C1AD8EF1C00D9132F /* ChatViewController.m in Sources */,
 				CB6ED1FD1AD37A4100A33BB8 /* SDWebImageCompat.m in Sources */,
 				CB6EFEA41AD61B6C00F597B6 /* MJRefreshLegendFooter.m in Sources */,
 				CB3929471ACC29570004FFB4 /* VerifyViewController.m in Sources */,
+				C32A251B1B0CBA6F00861BD5 /* SBJson4StreamParser.m in Sources */,
 				CB61CFAC1AEA3AB1008DEB9D /* PulsingRadarView.m in Sources */,
 				CB6ED2041AD37A4100A33BB8 /* UIImage+GIF.m in Sources */,
 				CB6ED2071AD37A4100A33BB8 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -1468,6 +1517,7 @@
 				C3CEEA721AFA3C9E0062970F /* HomeNavigationController.m in Sources */,
 				CB6EFEA31AD61B6C00F597B6 /* MJRefreshHeader.m in Sources */,
 				CB323E121ACA7C9B00C7FE83 /* ASINetworkQueue.m in Sources */,
+				C32A251F1B0CBA6F00861BD5 /* SBJson4StreamWriterState.m in Sources */,
 				CB927D6E1ADFE927002ED6E6 /* SquareTableViewCell.m in Sources */,
 				CBBAFDBA1AEC7C4900D46205 /* pinyin.c in Sources */,
 				CB61CFA11AEA2BD2008DEB9D /* RadarAllTableViewController.m in Sources */,
@@ -1478,6 +1528,7 @@
 				CB323E0E1ACA7C9B00C7FE83 /* ASIDownloadCache.m in Sources */,
 				CB83C9571AE9E5660075F045 /* FindNavigationController.m in Sources */,
 				C33A83EA1B072F5200331199 /* UIView+viewController.m in Sources */,
+				C32A251D1B0CBA6F00861BD5 /* SBJson4StreamTokeniser.m in Sources */,
 				CB6ED1FF1AD37A4100A33BB8 /* SDWebImageDownloader.m in Sources */,
 				CB6ED2091AD37A4100A33BB8 /* UIView+WebCacheOperation.m in Sources */,
 				CB9FEFEF1AD776100017FA8A /* UserDataModel.m in Sources */,
@@ -1495,6 +1546,7 @@
 				CB6ED2021AD37A4100A33BB8 /* SDWebImagePrefetcher.m in Sources */,
 				CB323DA81ACA3B3000C7FE83 /* Reachability.m in Sources */,
 				CBC4A5FA1ACE356B0082FA2B /* MeDetailLocalTableViewController.m in Sources */,
+				C32A251C1B0CBA6F00861BD5 /* SBJson4StreamParserState.m in Sources */,
 				C3A994A21AF877B300B2D317 /* SearchGamesViewController.m in Sources */,
 				CB323E0F1ACA7C9B00C7FE83 /* ASIFormDataRequest.m in Sources */,
 				CB3929461ACC29570004FFB4 /* SumbitViewController.m in Sources */,

@@ -32,6 +32,11 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     [super viewDidLoad];
     
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    if (kCLAuthorizationStatusDenied == status || kCLAuthorizationStatusRestricted == status) {
+        [KKUtility justAlert:@"请打开定位服务，否则无法使用雷达功能"];
+    }
+    
     CGSize radarSize = CGSizeMake([[UIScreen mainScreen]bounds].size.width, [[UIScreen mainScreen]bounds].size.width);
     self.pulsingRadarView = [[PulsingRadarView alloc]initWithFrame:CGRectMake(0, ([[UIScreen mainScreen]bounds].size.height-radarSize.height)/2,radarSize.width, radarSize.height)];
     self.pulsingRadarView.backgroundColor = [UIColor clearColor];

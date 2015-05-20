@@ -4727,10 +4727,10 @@
         <image name="userDefaultHead" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ibz-Ui-e2Z"/>
         <segue reference="bXQ-RE-HK5"/>
-        <segue reference="AHW-Ly-SfO"/>
-        <segue reference="WQ5-kw-hY5"/>
         <segue reference="iID-OB-lrr"/>
+        <segue reference="AHW-Ly-SfO"/>
         <segue reference="zVw-oc-Kg7"/>
     </inferredMetricsTieBreakers>
 </document>

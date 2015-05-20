@@ -44,7 +44,6 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     int pageIndex = 1;
     hotGamePageIndex = pageIndex;
     myGamePageIndex = pageIndex;

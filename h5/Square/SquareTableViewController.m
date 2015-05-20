@@ -39,6 +39,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
      
     //广告
@@ -52,7 +53,6 @@ UIKIT_EXTERN NSString *userFolderPath;
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
