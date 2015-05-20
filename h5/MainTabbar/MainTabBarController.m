@@ -72,7 +72,7 @@
 //－－ios6以后－－－－－－－－－－－－－－－－－－－－－
 -(BOOL)shouldAutorotate
 {
-    return YES;
+    return NO;
 }
 
 -(NSUInteger)supportedInterfaceOrientations

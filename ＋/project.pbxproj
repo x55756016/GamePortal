@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C32A25051B0C3EA200861BD5 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41251B048EC100F42B7D /* iflyMSC.framework */; };
-		C32A25091B0C443B00861BD5 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A25081B0C443B00861BD5 /* UIViewController+BackButtonHandler.m */; };
 		C32D05AA1B007EF7006B1773 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32D05A81B007EF7006B1773 /* Main.storyboard */; };
 		C32D05AD1B009799006B1773 /* CustomerChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D05AC1B009799006B1773 /* CustomerChatViewController.m */; };
 		C32D05B11B01B037006B1773 /* HEXCMyUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D05B01B01B037006B1773 /* HEXCMyUIButton.m */; };
@@ -182,8 +181,6 @@
 
 /* Begin PBXFileReference section */
 		C32A25001B0C317000861BD5 /* KKUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KKUtility.m; path = h5/Common/KKUtility.m; sourceTree = "<group>"; };
-		C32A25071B0C443B00861BD5 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
-		C32A25081B0C443B00861BD5 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		C32D05A91B007EF7006B1773 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C32D05AB1B009799006B1773 /* CustomerChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerChatViewController.h; sourceTree = "<group>"; };
 		C32D05AC1B009799006B1773 /* CustomerChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerChatViewController.m; sourceTree = "<group>"; };
@@ -560,15 +557,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C32A25061B0C443B00861BD5 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C32A25071B0C443B00861BD5 /* UIViewController+BackButtonHandler.h */,
-				C32A25081B0C443B00861BD5 /* UIViewController+BackButtonHandler.m */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		C32D05AE1B01B013006B1773 /* WebGameMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -614,8 +602,10 @@
 		C38E411E1B048E4700F42B7D /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				CB323DA51ACA3B3000C7FE83 /* Reachability */,
+				CB6166951AD8DD5B00D9132F /* RCHttpRequest */,
+				CB323DF61ACA7C9B00C7FE83 /* ASIHTTPRequest */,
 				CB6ED1D81AD37A4100A33BB8 /* SDWebImage */,
-				C32A25061B0C443B00861BD5 /* ViewController */,
 				C331E8181B0B191B004439A3 /* ClickImage */,
 				C33A83E41B072F5200331199 /* InfiniteScrollPicker */,
 				C38E41241B048EC100F42B7D /* Voice */,
@@ -661,8 +651,8 @@
 				C3A994971AF86FDC00B2D317 /* MoreGameViewController.h */,
 				C3A994951AF86FCE00B2D317 /* GameDetailViewController.m */,
 				C3A994941AF86FC400B2D317 /* GameDetailViewController.h */,
-				C3A9947D1AF86C4200B2D317 /* GameNavigationController.h */,
 				C3A9947E1AF86C4C00B2D317 /* GameNavigationController.m */,
+				C3A9947D1AF86C4200B2D317 /* GameNavigationController.h */,
 				C3A994801AF86D9B00B2D317 /* GameListViewController.h */,
 				C3A994811AF86DA300B2D317 /* GameListViewController.m */,
 			);
@@ -782,10 +772,10 @@
 		CB0A69B31AC92B74003F7775 /* h5 */ = {
 			isa = PBXGroup;
 			children = (
-				C38E411E1B048E4700F42B7D /* SDK */,
 				C32D05A81B007EF7006B1773 /* Main.storyboard */,
 				CB0A69B81AC92B74003F7775 /* AppDelegate.h */,
 				CB0A69B91AC92B74003F7775 /* AppDelegate.m */,
+				C38E411E1B048E4700F42B7D /* SDK */,
 				C3CEEA6C1AFA3BF80062970F /* Home */,
 				C3A9947C1AF8696700B2D317 /* GAME */,
 				CB3929191ACC29100004FFB4 /* LoginAndRegister */,
@@ -796,13 +786,10 @@
 				CB3929481ACC29E00004FFB4 /* My */,
 				CBB4B0C81AF47FE9004BE59A /* iOS_IMKit */,
 				CB886FE01AE0A8690093F914 /* Common */,
-				CB6166951AD8DD5B00D9132F /* RCHttpRequest */,
 				CB9FEFEC1AD776100017FA8A /* Models */,
 				CB6EFE841AD61B6C00F597B6 /* MJRefresh */,
-				CB323DF61ACA7C9B00C7FE83 /* ASIHTTPRequest */,
 				CB323DAF1ACA3CC500C7FE83 /* SMS_SDK */,
 				CB323DA91ACA3B7B00C7FE83 /* SVProgressHUD */,
-				CB323DA51ACA3B3000C7FE83 /* Reachability */,
 				CB0A69B41AC92B74003F7775 /* Supporting Files */,
 				C3FCFCA51AF7696F00E74036 /* entitlements.plist */,
 			);
@@ -864,7 +851,8 @@
 				CB323DA61ACA3B3000C7FE83 /* Reachability.h */,
 				CB323DA71ACA3B3000C7FE83 /* Reachability.m */,
 			);
-			path = Reachability;
+			name = Reachability;
+			path = ../Reachability;
 			sourceTree = "<group>";
 		};
 		CB323DA91ACA3B7B00C7FE83 /* SVProgressHUD */ = {
@@ -942,7 +930,8 @@
 				CB323E091ACA7C9B00C7FE83 /* ASINetworkQueue.m */,
 				CB323E0A1ACA7C9B00C7FE83 /* ASIProgressDelegate.h */,
 			);
-			path = ASIHTTPRequest;
+			name = ASIHTTPRequest;
+			path = ../ASIHTTPRequest;
 			sourceTree = "<group>";
 		};
 		CB3929191ACC29100004FFB4 /* LoginAndRegister */ = {
@@ -1048,7 +1037,8 @@
 				CB6166961AD8DD5C00D9132F /* RCHttpRequest.h */,
 				CB6166971AD8DD5C00D9132F /* RCHttpRequest.m */,
 			);
-			path = RCHttpRequest;
+			name = RCHttpRequest;
+			path = ../RCHttpRequest;
 			sourceTree = "<group>";
 		};
 		CB61CFA91AEA3A95008DEB9D /* PulsingRadarView */ = {
@@ -1447,7 +1437,6 @@
 				C3C3B2B41AFDC2B4003388E8 /* UIButton+ImageAndLabel.m in Sources */,
 				CB6EFEA11AD61B6C00F597B6 /* MJRefreshGifFooter.m in Sources */,
 				C3318EB01B02FEC900E7BCE4 /* GameWebNavgationViewController.m in Sources */,
-				C32A25091B0C443B00861BD5 /* UIViewController+BackButtonHandler.m in Sources */,
 				C3A994871AF86F2900B2D317 /* GameTableViewCell.m in Sources */,
 				CBE0A0541AEA222300791FAB /* RadarViewController.m in Sources */,
 				CB3929401ACC29570004FFB4 /* SectionsViewController.m in Sources */,

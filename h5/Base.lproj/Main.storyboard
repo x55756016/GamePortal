@@ -4720,17 +4720,17 @@
         <image name="setting_vip" width="31" height="24"/>
         <image name="tab_find_unselect" width="23" height="23"/>
         <image name="tab_friends_unselect" width="23" height="23"/>
-        <image name="tab_game_select" width="75" height="53"/>
+        <image name="tab_game_select" width="23" height="23"/>
         <image name="tab_main_unselect" width="23" height="23"/>
         <image name="tab_message_unselect" width="23" height="23"/>
         <image name="tab_my_unselect" width="23" height="23"/>
         <image name="userDefaultHead" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ibz-Ui-e2Z"/>
         <segue reference="bXQ-RE-HK5"/>
-        <segue reference="iID-OB-lrr"/>
         <segue reference="AHW-Ly-SfO"/>
+        <segue reference="WQ5-kw-hY5"/>
+        <segue reference="iID-OB-lrr"/>
         <segue reference="zVw-oc-Kg7"/>
     </inferredMetricsTieBreakers>
 </document>

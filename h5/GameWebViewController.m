@@ -79,6 +79,13 @@
     [_iflyRecognizerView cancel];
     [_iflyRecognizerView setDelegate:nil];
     [self unregkeyNotification];
+    
+    if([landorprot isEqualToString:@"1"])
+    {
+        //恢复状态栏方向
+        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏
+    }
+
 
 }
 //屏幕旋转完成事件
@@ -268,21 +275,23 @@
         NSLog(@"GameInfoDetail%@", self.gameDetailDict);
     }
     
-//    landorprot = [NSString stringWithFormat:@"%@", [self.gameDetailDict objectForKey:@"ScreenType"]];
-//    if([landorprot isEqualToString:@"1"])
-//    {
-//        NSLog(@"需要强制横屏");
-//        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];  //设置状态栏
-//        [UIView beginAnimations:@"changeToLandscapeMode" context:nil];
-//        [UIView setAnimationDelegate:self];
-//        [UIView setAnimationDuration:0.5f];
-//        self.view.transform = CGAffineTransformMakeRotation(M_PI/2);
-//        [UIView commitAnimations];
-//    }
-//    else
-//    {
-//        NSLog(@"不需要强制横屏");
-//    }
+    landorprot = [NSString stringWithFormat:@"%@", [self.gameDetailDict objectForKey:@"ScreenType"]];
+    if([landorprot isEqualToString:@"1"])
+    {
+        NSLog(@"需要强制横屏");
+        [UIView beginAnimations:@"changeToLandscapeMode" context:nil];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDuration:0.5f];
+        self.view.transform = CGAffineTransformMakeRotation(M_PI/2);
+        [UIView commitAnimations];
+        
+        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];  //设置状态栏
+        myButton.frame = CGRectMake(0, 150, 40, 40);
+    }
+    else
+    {
+        NSLog(@"不需要强制横屏");
+    }
     
     NSString *urlStr = [self.gameDetailDict objectForKey:@"Url"];
     NSString *reqStr = [NSString stringWithFormat:@"%@?UserId=%@&userkey=%@", urlStr,
