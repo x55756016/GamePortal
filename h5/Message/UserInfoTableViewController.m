@@ -432,7 +432,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         for (int i = 0; i < [userAchievementArray count]; i++) {
             NSDictionary *historyInfo=[userAchievementArray objectAtIndex:i];
             NSString *path = [historyInfo objectForKey:@"PicPath"];
-            path=[KKUtility getImagePath:path :@"s"];
+            path=[KKUtility getImagePath:path :@"b"];
             UIImage *image=[KKUtility getImageFromLocal:path];
             if(image==nil)
             {
@@ -536,39 +536,28 @@ UIKIT_EXTERN NSString *userFolderPath;
                 if(FrindGameImageArray!=nil && [FrindGameImageArray count]>0)
                 {
                     UIScrollView *imageScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
-                    imageScrollView.pagingEnabled = YES;
-                    imageScrollView.showsHorizontalScrollIndicator = YES;
-                //[isp setItemSize:CGSizeMake(79, 79)];
-                //[UIScrollView :FrindGameImageArray];
-                    for (int i = 0; i < [FrindGameImageArray count]; i++) {
-                    UIImage *image=[FrindGameImageArray objectAtIndex:i];
-                    UIButton *imagebutton = [[UIButton alloc] initWithFrame:CGRectMake(i*80+10, 0, 70, 80)];
-                    //UIButton *radarButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-//                  imageView.userInteractionEnabled=YES;//与用户交互
-//                  //为UIImageView添加点击手势
-//                  UITapGestureRecognizer *tap;
-//                  tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-//                  tap.numberOfTapsRequired = 1;//tap次数
-//                  tap.numberOfTouchesRequired = 1;//手指数
-//                  [imageView addGestureRecognizer:tap];
-                    imagebutton.tag=i;
-                    imagebutton.layer.masksToBounds = YES;
-                    imagebutton.layer.cornerRadius = 5.0f;
-//                  [imagebutton setImage:image forState:UIControlStateNormal];
-//                  [imagebutton setTitle:title forState:UIControlStateNormal];
-                    [imagebutton setImage:image forState:UIControlStateNormal];
-                    [imagebutton addTarget:self action:@selector(goGameDetail:) forControlEvents:UIControlEventTouchUpInside];
-                    [imageScrollView addSubview:imagebutton];
-                    
-                    
-                    NSString *title=[[userGameArray objectAtIndex:i] objectForKey:@"Title"];
-                    UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(i*80+10, 80, 70, 20)];
-                    titleLabel.text=title;
-                    titleLabel.textAlignment = NSTextAlignmentCenter;
-                    titleLabel.adjustsFontSizeToFitWidth = YES;
-                    [imageScrollView addSubview:titleLabel];
+                    long width=[FrindGameImageArray count]*(80+10);
+                    imageScrollView.contentSize =CGSizeMake(width,100);
+                    for (int i = 0; i < [FrindGameImageArray count]; i++){
+                        UIImage *image=[FrindGameImageArray objectAtIndex:i];
+                        UIButton *imagebutton = [[UIButton alloc] initWithFrame:CGRectMake(i*80+10, 0, 70, 80)];
+                        imagebutton.tag=i;
+                        imagebutton.layer.masksToBounds = YES;
+                        imagebutton.layer.cornerRadius = 5.0f;
+                        [imagebutton setImage:image forState:UIControlStateNormal];
+                        [imagebutton addTarget:self action:@selector(goGameDetail:) forControlEvents:UIControlEventTouchUpInside];
+                        [imageScrollView addSubview:imagebutton];
+                        
+                        
+                        NSString *title=[[userGameArray objectAtIndex:i] objectForKey:@"Title"];
+                        UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(i*80+10, 80, 70, 20)];
+                        titleLabel.text=title;
+                        titleLabel.textAlignment = NSTextAlignmentCenter;
+                        titleLabel.adjustsFontSizeToFitWidth = YES;
+                        [imageScrollView addSubview:titleLabel];
+
+                    }
                     [_FriendGameListView addSubview:imageScrollView];
-                }
                 }
             }
             @catch (NSException *exception) {

@@ -614,6 +614,7 @@
 		C38E411E1B048E4700F42B7D /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				CB6ED1D81AD37A4100A33BB8 /* SDWebImage */,
 				C32A25061B0C443B00861BD5 /* ViewController */,
 				C331E8181B0B191B004439A3 /* ClickImage */,
 				C33A83E41B072F5200331199 /* InfiniteScrollPicker */,
@@ -798,7 +799,6 @@
 				CB6166951AD8DD5B00D9132F /* RCHttpRequest */,
 				CB9FEFEC1AD776100017FA8A /* Models */,
 				CB6EFE841AD61B6C00F597B6 /* MJRefresh */,
-				CB6ED1D81AD37A4100A33BB8 /* SDWebImage */,
 				CB323DF61ACA7C9B00C7FE83 /* ASIHTTPRequest */,
 				CB323DAF1ACA3CC500C7FE83 /* SMS_SDK */,
 				CB323DA91ACA3B7B00C7FE83 /* SVProgressHUD */,
@@ -1097,7 +1097,8 @@
 				CB6ED1F81AD37A4100A33BB8 /* UIView+WebCacheOperation.h */,
 				CB6ED1F91AD37A4100A33BB8 /* UIView+WebCacheOperation.m */,
 			);
-			path = SDWebImage;
+			name = SDWebImage;
+			path = ../SDWebImage;
 			sourceTree = "<group>";
 		};
 		CB6EFE841AD61B6C00F597B6 /* MJRefresh */ = {

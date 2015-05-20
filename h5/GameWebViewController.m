@@ -577,13 +577,15 @@
     }
     else if (actionSheet.tag==2){
         if (buttonIndex == 0) {
-            [self sendLinkContent];
+            
             [self changeScene:WXSceneSession];
+            [self sendLinkContent];
             
         }
         else if (buttonIndex == 1) {
-            [self sendLinkContent];
+            
             [self changeScene:WXSceneTimeline];
+            [self sendLinkContent];
             
         }
         

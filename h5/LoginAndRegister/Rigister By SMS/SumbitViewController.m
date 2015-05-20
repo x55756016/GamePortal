@@ -11,6 +11,7 @@
 #import "SVProgressHUD.h"
 #import "ASIFormDataRequest.h"
 #import "h5kkContants.h"
+#import "AppDelegate.h"
 
 @interface SumbitViewController ()
 {
@@ -114,8 +115,15 @@
     [request setPostValue:self.pwdTextField.text forKey:@"Password"];
     [request setPostValue:self.phoneTextField.text forKey:@"Mobile"];
     [request setPostValue:self.nickNameTextField.text forKey:@"NickName"];
-    [request setPostValue:@"0" forKey:@"lon"];
-    [request setPostValue:@"0" forKey:@"lat"];
+    
+    AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    
+    
+    NSString *strlon=kkAppDelegate.currentlogingUser.Longitude;//经度
+    NSString *strlat=kkAppDelegate.currentlogingUser.Latitude;//纬度
+    
+    [request setPostValue:strlon forKey:@"lon"];
+    [request setPostValue:strlat forKey:@"lat"];
     [request startAsynchronous];
 }
 
