@@ -114,11 +114,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)searchGamesFinish:(ASIHTTPRequest *)request
+- (void)searchGamesFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"searchGamesFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
 //    NSLog(@"searchGamesdict[%@]",dict);
     
@@ -129,10 +129,10 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
 }
 
-- (void)searchGamesFail:(ASIHTTPRequest *)request
+- (void)searchGamesFail:(ASIHTTPRequest *)req
 {
     [SVProgressHUD dismiss];
-    [KKUtility showHttpErrorMsg:@"查询游戏失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"查询游戏失败 " :req.error];
 }
 
 //好友数据刷表
@@ -245,9 +245,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     //    NSLog(@"addGamedir[%@]",dic);
 }
 
-- (void)addGameFail:(ASIHTTPRequest *)request
+- (void)addGameFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"添加我玩过的游戏失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"添加我玩过的游戏失败 " :req.error];
 }
 
 //------------------------------------------------segue----------------------------------------------------------//

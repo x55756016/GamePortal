@@ -77,11 +77,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSLog(@"%@",request.url.path);
 }
 
-- (void)loadKKFinish:(ASIHTTPRequest *)request
+- (void)loadKKFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"loadKKFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
     NSLog(@"KKdict[%@]", dict);
     
@@ -94,9 +94,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
 }
 
-- (void)loadKKFail:(ASIHTTPRequest *)request
+- (void)loadKKFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"获取kk雷达数据失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"获取kk雷达数据失败 " :req.error];
 }
 //--------------------------------------结束加载KK数据-----------------------------------------------//
 

@@ -230,11 +230,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)loadHotGameFinish:(ASIHTTPRequest *)request
+- (void)loadHotGameFinish:(ASIHTTPRequest *)req
 {
 //    NSLog(@"loadHotGameFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
 //    NSLog(@"[%@]",dic);
     
@@ -249,9 +249,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self.hotGameTableView.footer endRefreshing];
 }
 
-- (void)loadHotGameFail:(ASIHTTPRequest *)request
+- (void)loadHotGameFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"获取热门游戏失败" :request.error];
+    [KKUtility showHttpErrorMsg:@"获取热门游戏失败" :req.error];
     //结束刷新状态
     [self.hotGameTableView reloadData];
     [self.hotGameTableView.header endRefreshing];
@@ -329,11 +329,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)loadMyGameFinish:(ASIHTTPRequest *)request
+- (void)loadMyGameFinish:(ASIHTTPRequest *)req
 {
 //    NSLog(@"loadMyGameFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
 //    NSLog(@"MyGame[%@]",dic);
     
@@ -348,10 +348,10 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self.myGameTableView.footer endRefreshing];
 }
 
-- (void)loadMyGameFail:(ASIHTTPRequest *)request
+- (void)loadMyGameFail:(ASIHTTPRequest *)req
 {
 //    NSLog(@"loadMyGameFail");
-    [KKUtility showHttpErrorMsg:@"获取我的游戏失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"获取我的游戏失败 " :req.error];
     //结束刷新状态
     [self.myGameTableView reloadData];
     [self.myGameTableView.header endRefreshing];
@@ -427,11 +427,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)loadGameClassifyFinish:(ASIHTTPRequest *)request
+- (void)loadGameClassifyFinish:(ASIHTTPRequest *)req
 {
 //    NSLog(@"loadGameClassifyFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
 //    NSLog(@"[%@]",dic);
     
@@ -446,10 +446,10 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self.classifyTableView.footer endRefreshing];
 }
 
-- (void)loadGameClassifyFail:(ASIHTTPRequest *)request
+- (void)loadGameClassifyFail:(ASIHTTPRequest *)req
 {
 //    NSLog(@"loadGameClassifyFail");
-    [KKUtility showHttpErrorMsg:@"获取游戏分类信息失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"获取游戏分类信息失败 " :req.error];
     //结束刷新状态
     [self.classifyTableView reloadData];
     [self.classifyTableView.header endRefreshing];
@@ -676,7 +676,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self performSegueWithIdentifier:@"PushWebGame" sender:addGameDict];
 }
 
-- (void)addGameFinish:(ASIHTTPRequest *)request
+- (void)addGameFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"addGameFinish");
 //    NSError *error;
@@ -685,9 +685,9 @@ UIKIT_EXTERN NSString *userFolderPath;
 //    NSLog(@"addGamedir[%@]",dic);
 }
 
-- (void)addGameFail:(ASIHTTPRequest *)request
+- (void)addGameFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"添加我玩的游戏失败" :request.error];
+    [KKUtility showHttpErrorMsg:@"添加我玩的游戏失败" :req.error];
 }
 
 //---------------------------------------更多----------------------------------------------//

@@ -126,10 +126,10 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)loadAdDataFinish:(ASIHTTPRequest *)request
+- (void)loadAdDataFinish:(ASIHTTPRequest *)req
 {
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
     NSLog(@"loadAdDataFinish");
     
@@ -142,9 +142,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self paintAd];
 }
 
-- (void)loadAdDataFail:(ASIHTTPRequest *)request
+- (void)loadAdDataFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"获取首页动态失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"获取首页动态失败 " :req.error];
     
     //结束刷新状态
     [self paintAd];
@@ -215,10 +215,10 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)loadPlayerDataFinish:(ASIHTTPRequest *)request
+- (void)loadPlayerDataFinish:(ASIHTTPRequest *)req
 {
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
     NSLog(@"loadPlayerDataFinish");
     
@@ -233,9 +233,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self.tableView.footer endRefreshing];
 }
 
-- (void)loadPlayerDataFail:(ASIHTTPRequest *)request
+- (void)loadPlayerDataFail:(ASIHTTPRequest *)req
 {
-     [KKUtility showHttpErrorMsg:@"获取玩家信息失败 " :request.error];
+     [KKUtility showHttpErrorMsg:@"获取玩家信息失败 " :req.error];
     
     //结束刷新状态
     [self.tableView reloadData];

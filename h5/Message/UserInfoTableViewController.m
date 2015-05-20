@@ -114,11 +114,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
 }
 
-- (void)loadFriendsFinish:(ASIHTTPRequest *)request
+- (void)loadFriendsFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"loadFriendsFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
     if([[dict objectForKey:@"IsSuccess"] integerValue])
     {
@@ -131,9 +131,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
 }
 
-- (void)loadFriendsFail:(ASIHTTPRequest *)request
+- (void)loadFriendsFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"获取好友信息失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"获取好友信息失败 " :req.error];
 }
 
 //__________结束获取所有好友－－－－－－－－－－－－－－
@@ -158,11 +158,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)requestGetUserDetailFinish:(ASIHTTPRequest *)request
+- (void)requestGetUserDetailFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"requestGetUserDetailFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
     //    NSLog(@"requestUserGame[%@]",dic);
     
@@ -178,9 +178,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self showUserInfo];
 }
 
-- (void)requestGetUserDetailFail:(ASIHTTPRequest *)request
+- (void)requestGetUserDetailFail:(ASIHTTPRequest *)req
 {
-  [KKUtility showHttpErrorMsg:@"获取用户详情失败 " :request.error];
+  [KKUtility showHttpErrorMsg:@"获取用户详情失败 " :req.error];
 }
 
 //显示用户信息
@@ -289,9 +289,9 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 }
 
-- (void)requestFriendAddFail:(ASIHTTPRequest *)request
+- (void)requestFriendAddFail:(ASIHTTPRequest *)req
 {
-   [KKUtility showHttpErrorMsg:@"添加好友失败 " :request.error];
+   [KKUtility showHttpErrorMsg:@"添加好友失败 " :req.error];
 }
 
 - (void)requestUserFriendRemoveFinish:(ASIHTTPRequest *)request
@@ -309,9 +309,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     
 }
 
-- (void)requestFriendRemoveFail:(ASIHTTPRequest *)request
+- (void)requestFriendRemoveFail:(ASIHTTPRequest *)req
 {
-   [KKUtility showHttpErrorMsg:@"删除好友失败 " :request.error];
+   [KKUtility showHttpErrorMsg:@"删除好友失败 " :req.error];
 }
 
 //－－－－－－－－－－结束添加好友
@@ -336,11 +336,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)requestUserGameFinish:(ASIHTTPRequest *)request
+- (void)requestUserGameFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"requestUserGameFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
     if([[dic objectForKey:@"IsSuccess"] integerValue])
     {
@@ -350,9 +350,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
 }
 
-- (void)requestUserGameFail:(ASIHTTPRequest *)request
+- (void)requestUserGameFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"获取好友游戏列表失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"获取好友游戏列表失败 " :req.error];
 }
 
 -(void)DealUserGameData:(NSDictionary *)dic
@@ -401,11 +401,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)requestUserAchievementFinish:(ASIHTTPRequest *)request
+- (void)requestUserAchievementFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"requestUserAchievementFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
     if([[dic objectForKey:@"IsSuccess"] integerValue])
     {
@@ -415,9 +415,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     
 }
 
-- (void)requestUserAchievementFail:(ASIHTTPRequest *)request
+- (void)requestUserAchievementFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"获取好友荣誉墙失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"获取好友荣誉墙失败 " :req.error];
 }
 
 -(void)DealUserAchievementData:(NSDictionary *)dic

@@ -86,11 +86,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)loadFriendsFinish:(ASIHTTPRequest *)request
+- (void)loadFriendsFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"loadFriendsFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
 //    NSLog(@"friendsdict[%@]",dict);
     
@@ -102,9 +102,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self sequence];
 }
 
-- (void)loadFriendsFail:(ASIHTTPRequest *)request
+- (void)loadFriendsFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"获取好友信息失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"获取好友信息失败 " :req.error];
     [self sequence];
 }
 

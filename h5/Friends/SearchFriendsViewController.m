@@ -78,11 +78,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)searchFriendFinish:(ASIHTTPRequest *)request
+- (void)searchFriendFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"searchFriendFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
 //    NSLog(@"searchFrienddict[%@]",dict);
     
@@ -93,10 +93,10 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
 }
 
-- (void)searchFriendFail:(ASIHTTPRequest *)request
+- (void)searchFriendFail:(ASIHTTPRequest *)req
 {
     [SVProgressHUD dismiss];
-   [KKUtility showHttpErrorMsg:@"查询好友失败 " :request.error];}
+   [KKUtility showHttpErrorMsg:@"查询好友失败 " :req.error];}
 
 //好友数据刷表
 -(void)searchFriendData:(NSDictionary *)dict

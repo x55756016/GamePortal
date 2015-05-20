@@ -200,19 +200,19 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)upLoadheadFinish:(ASIHTTPRequest *)request
+- (void)upLoadheadFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"上传头像成功");
     
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
     NSLog(@"upLoadheaddir[%@]",dic);
 }
 
-- (void)upLoadheadFail:(ASIHTTPRequest *)request
+- (void)upLoadheadFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"上传头像失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"上传头像失败 " :req.error];
 
 }
 
@@ -242,10 +242,10 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)requestFinished:(ASIHTTPRequest *)request
+- (void)requestFinished:(ASIHTTPRequest *)req
 {
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
 //    NSLog(@"requestFinishedDic%@", dic);
     

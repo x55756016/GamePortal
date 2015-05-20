@@ -123,11 +123,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)loadRankFinish:(ASIHTTPRequest *)request
+- (void)loadRankFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"loadRankFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
 //    NSLog(@"loadRankdir[%@]",dic);
     
@@ -137,9 +137,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
 }
 
-- (void)loadRankFail:(ASIHTTPRequest *)request
+- (void)loadRankFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"加载排行数据失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"加载排行数据失败 " :req.error];
 }
 
 //刷表

@@ -94,11 +94,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)loadTypeGameFinish:(ASIHTTPRequest *)request
+- (void)loadTypeGameFinish:(ASIHTTPRequest *)req
 {
 //    NSLog(@"loadTypeGameFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
     
     if([[dic objectForKey:@"IsSuccess"] integerValue])
@@ -122,9 +122,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self.tableView.footer endRefreshing];
 }
 
-- (void)loadTypeGameFail:(ASIHTTPRequest *)request
+- (void)loadTypeGameFail:(ASIHTTPRequest *)req
 {
-      [KKUtility showHttpErrorMsg:@"上传战绩图片失败 " :request.error];
+      [KKUtility showHttpErrorMsg:@"上传战绩图片失败 " :req.error];
     //结束刷新状态
     [self.tableView reloadData];
     [self.tableView.header endRefreshing];
@@ -239,14 +239,14 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self performSegueWithIdentifier:@"PushWebGame" sender:addGameDict];
 }
 
-- (void)addGameFinish:(ASIHTTPRequest *)request
+- (void)addGameFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"addGameFinish");
 }
 
-- (void)addGameFail:(ASIHTTPRequest *)request
+- (void)addGameFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"添加我玩过的游戏失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"添加我玩过的游戏失败 " :req.error];
 }
 
 //------------------------------------------------segue----------------------------------------------------------//

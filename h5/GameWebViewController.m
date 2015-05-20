@@ -254,10 +254,10 @@
     [request startAsynchronous];
     
 }
-- (void)GetGameInfoFromServerFinish:(ASIHTTPRequest *)request
+- (void)GetGameInfoFromServerFinish:(ASIHTTPRequest *)req
 {
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
     //    NSLog(@"requestUserGame[%@]",dic);
     
@@ -332,16 +332,16 @@
     NSLog(@"addGameFinish");
 }
 
-- (void)addGameFail:(ASIHTTPRequest *)request
+- (void)addGameFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"添加我玩过的游戏失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"添加我玩过的游戏失败 " :req.error];
 }
 
 //----------------------------结束添加我的游戏完成事件－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 
-- (void)GetGameInfoFromServerFail:(ASIHTTPRequest *)request
+- (void)GetGameInfoFromServerFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"获取游戏详情失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"获取游戏详情失败 " :req.error];
 }
 //---------------------------结束获取游戏详情---------
 
@@ -412,9 +412,9 @@
     NSLog(@"SendPlayGameInfoFinish");
 }
 
-- (void)SendPlayGameInfoFail:(ASIHTTPRequest *)request
+- (void)SendPlayGameInfoFail:(ASIHTTPRequest *)req
 {
-     [KKUtility showHttpErrorMsg:@"发送游戏动态失败 " :request.error];
+     [KKUtility showHttpErrorMsg:@"发送游戏动态失败 " :req.error];
 }
 //------------------------------------
 
@@ -684,13 +684,13 @@
     [request startAsynchronous];
 }
 
-- (void)upLoadGameImageToServerFinish:(ASIHTTPRequest *)request
+- (void)upLoadGameImageToServerFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"上传战绩图片成功");
     @try
     {
         NSError *error;
-        NSData *responseData = [request responseData];
+        NSData *responseData = [req responseData];
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
         NSNumber *picPath=[dic objectForKey:@"Name"];
        if([picPath intValue]==1)
@@ -708,9 +708,9 @@
         NSLog(@"%@",exception);
     }
 }
-- (void)upLoadGameImageToServerFail:(ASIHTTPRequest *)request
+- (void)upLoadGameImageToServerFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"上传战绩图片失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"上传战绩图片失败 " :req.error];
 }
 
 
@@ -749,9 +749,9 @@
     NSLog(@"更新战绩成功");
 }
 
-- (void)upDataGamePicImageFail:(ASIHTTPRequest *)request
+- (void)upDataGamePicImageFail:(ASIHTTPRequest *)req
 {
-     [KKUtility showHttpErrorMsg:@"更新战绩失败 " :request.error];
+     [KKUtility showHttpErrorMsg:@"更新战绩失败 " :req.error];
 }
 //-------------结束战绩墙分享----------------------------------------------------------------------------------------------------
 

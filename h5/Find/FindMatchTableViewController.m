@@ -64,11 +64,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)loadMatchFinish:(ASIHTTPRequest *)request
+- (void)loadMatchFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"loadMatchFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
 //    NSLog(@"Matchdict[%@]", dict);
     
@@ -80,9 +80,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self.tableView reloadData];
 }
 
-- (void)loadMatchFail:(ASIHTTPRequest *)request
+- (void)loadMatchFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"加载联赛数据失败 " :request.error];
+    [KKUtility showHttpErrorMsg:@"加载联赛数据失败 " :req.error];
     [self.tableView reloadData];
 }
 

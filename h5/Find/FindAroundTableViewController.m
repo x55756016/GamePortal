@@ -69,11 +69,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request startAsynchronous];
 }
 
-- (void)loadAroundFinish:(ASIHTTPRequest *)request
+- (void)loadAroundFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"loadAroundFinish");
     NSError *error;
-    NSData *responseData = [request responseData];
+    NSData *responseData = [req responseData];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
 //    NSLog(@"Arounddict[%@]", dict);
     
@@ -85,9 +85,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self.tableView reloadData];
 }
 
-- (void)loadAroundFail:(ASIHTTPRequest *)request
+- (void)loadAroundFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"加载附近数据失败" :request.error];
+    [KKUtility showHttpErrorMsg:@"加载附近数据失败" :req.error];
     [self.tableView reloadData];
 }
 
