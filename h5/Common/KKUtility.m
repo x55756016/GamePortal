@@ -221,7 +221,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 //[KKUtility showHttpErrorMsg:nil :request.error];
 +(void)showHttpErrorMsg:(NSString*)CustomerErrorMsg:(NSError*)error
 {
-    NSString *strMsg=@"连接服务器失败，请重试或联系客服。";
+    NSString *strMsg=@"连接服务器失败，请重试或联系客服 ";
     if(CustomerErrorMsg!=nil)
     {
         strMsg=[strMsg stringByAppendingString:CustomerErrorMsg];

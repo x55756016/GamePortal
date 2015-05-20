@@ -210,7 +210,8 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)upLoadheadFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"上传头像失败");
+    [KKUtility showHttpErrorMsg:@"上传头像失败 " :request.error];
+
 }
 
 //上传所有信息至服务器

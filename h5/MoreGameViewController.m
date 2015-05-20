@@ -15,6 +15,7 @@
 #import "MJRefresh.h"
 #import "GameWebViewController.h"
 #import "h5kkContants.h"
+#import "KKUtility.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -35,7 +36,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     typeGamePageIndex = 1;
     
     //获取用户信息
-    [self getUserInfo];
+     userInfo = [KKUtility getUserInfoFromLocalFile];
     
     //过滤分割线
     UILabel *footLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 0)];
@@ -51,19 +52,6 @@ UIKIT_EXTERN NSString *userFolderPath;
     [super didReceiveMemoryWarning];
 }
 
-//本地获取用户信息
--(void)getUserInfo
-{
-    NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:@"UserInfo.plist"];
-    
-    BOOL isUserInfoFolderCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserInfoFolder isDirectory:nil];
-    if (isUserInfoFolderCreate)
-    {
-        userInfo = [NSDictionary dictionaryWithContentsOfFile:UserInfoFolder];
-//        NSLog(@"userInfo[%@]", userInfo);
-    }
-}
 
 //上下拉加载
 -(void)UpAndDownPull
@@ -134,14 +122,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)loadTypeGameFail:(ASIHTTPRequest *)request
 {
-//    NSLog(@"loadTypeGameFail");
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络不好"
-                                                    message:nil
-                                                   delegate:nil
-                                          cancelButtonTitle:@"确定"
-                                          otherButtonTitles:nil];
-    [alert show];
-    
+      [KKUtility showHttpErrorMsg:@"上传战绩图片失败 " :request.error];
     //结束刷新状态
     [self.tableView reloadData];
     [self.tableView.header endRefreshing];
@@ -259,15 +240,11 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)addGameFinish:(ASIHTTPRequest *)request
 {
     NSLog(@"addGameFinish");
-//    NSError *error;
-//    NSData *responseData = [request responseData];
-//    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
-//    NSLog(@"addGamedir[%@]",dic);
 }
 
 - (void)addGameFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"addGameFail");
+    [KKUtility showHttpErrorMsg:@"添加我玩过的游戏失败 " :request.error];
 }
 
 //------------------------------------------------segue----------------------------------------------------------//

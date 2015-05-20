@@ -217,20 +217,6 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
 }
 
-//本地获取用户信息
--(void)getUserInfo
-{
-    NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:@"UserInfo.plist"];
-    
-    BOOL isUserInfoFolderCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserInfoFolder isDirectory:nil];
-    if (isUserInfoFolderCreate)
-    {
-        userInfo = [NSDictionary dictionaryWithContentsOfFile:UserInfoFolder];
-//        NSLog(@"userInfo[%@]", userInfo);
-    }
-}
-
 //本地用户信息
 -(void)showUserInfo
 {
@@ -251,7 +237,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 -(void)connectToRCServer
 {
     //本地获取用户信息
-    [self getUserInfo];
+     userInfo = [KKUtility getUserInfoFromLocalFile];
     NSLog(@"[LoginViewController]MsgToken[%@]", [userInfo objectForKey:@"MsgToken"]);
     
     //连接融云服务器

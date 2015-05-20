@@ -10,7 +10,7 @@
 #import <SMS_SDK/SMS_SDK.h>
 #import "MyNavigationController.h"
 #import "RCIM.h"
-#import "KKUtility.h"
+
 
 //免费短信
 #define appKey @"61105df6a660"
@@ -49,11 +49,11 @@ NSString *userFolderPath;
     
     //初始化科大讯飞
     //创建语音配置,appid必须要传入，仅执行一次则可
-    NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@,timeout=%@",APPID_VALUE,TIMEOUT_VALUE];
+    NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@,timeout=%@",KKAPPID_VALUE,TIMEOUT_VALUE];
     [IFlySpeechUtility createUtility:initString];
     [IFlyFlowerCollector SetDebugMode:YES];
     [IFlyFlowerCollector SetCaptureUncaughtException:YES];
-    [IFlyFlowerCollector SetAppid:APPID_VALUE];
+    [IFlyFlowerCollector SetAppid:KKAPPID_VALUE];
     [IFlyFlowerCollector SetAutoLocation:YES];
     
     //设置接收消息的监听器。
@@ -302,7 +302,7 @@ void UncaughtExceptionHandler(NSException *exception) {
 -(void)connectToRCServer
 {
     //本地获取用户信息
-    [self getUserInfo];
+    userInfoDict=[KKUtility getUserInfoFromLocalFile];
     NSLog(@"[AppDelegate]MsgToken[%@]", [userInfoDict objectForKey:@"MsgToken"]);
     
     //连接融云服务器
@@ -313,19 +313,7 @@ void UncaughtExceptionHandler(NSException *exception) {
     }];
 }
 
-//本地获取用户信息
--(void)getUserInfo
-{
-    NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:@"UserInfo.plist"];
-    
-    BOOL isUserInfoFolderCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserInfoFolder isDirectory:nil];
-    if (isUserInfoFolderCreate)
-    {
-        userInfoDict = [NSDictionary dictionaryWithContentsOfFile:UserInfoFolder];
-//        NSLog(@"userInfoDict[%@]", userInfoDict);
-    }
-}
+
 
 //-----------------------------------------------RCIMReceiveMessageDelegate--------------------------------------//
 //接收消息的监听器

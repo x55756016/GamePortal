@@ -75,7 +75,7 @@ UIKIT_EXTERN NSString *userFolderPath;
             
         });
     });
-}
+   }
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -133,7 +133,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)loadFriendsFail:(ASIHTTPRequest *)request
 {
-    [KKUtility showHttpErrorMsg:nil :request.error];
+    [KKUtility showHttpErrorMsg:@"获取好友信息失败 " :request.error];
 }
 
 //__________结束获取所有好友－－－－－－－－－－－－－－
@@ -180,7 +180,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)requestGetUserDetailFail:(ASIHTTPRequest *)request
 {
-  [KKUtility showHttpErrorMsg:nil :request.error];
+  [KKUtility showHttpErrorMsg:@"获取用户详情失败 " :request.error];
 }
 
 //显示用户信息
@@ -291,7 +291,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)requestFriendAddFail:(ASIHTTPRequest *)request
 {
-   [KKUtility showHttpErrorMsg:nil :request.error];
+   [KKUtility showHttpErrorMsg:@"添加好友失败 " :request.error];
 }
 
 - (void)requestUserFriendRemoveFinish:(ASIHTTPRequest *)request
@@ -311,7 +311,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)requestFriendRemoveFail:(ASIHTTPRequest *)request
 {
-   [KKUtility showHttpErrorMsg:nil :request.error];
+   [KKUtility showHttpErrorMsg:@"删除好友失败 " :request.error];
 }
 
 //－－－－－－－－－－结束添加好友
@@ -352,7 +352,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)requestUserGameFail:(ASIHTTPRequest *)request
 {
-    [KKUtility showHttpErrorMsg:nil :request.error];
+    [KKUtility showHttpErrorMsg:@"获取好友游戏列表失败 " :request.error];
 }
 
 -(void)DealUserGameData:(NSDictionary *)dic
@@ -417,7 +417,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)requestUserAchievementFail:(ASIHTTPRequest *)request
 {
-    [KKUtility showHttpErrorMsg:nil :request.error];
+    [KKUtility showHttpErrorMsg:@"获取好友荣誉墙失败 " :request.error];
 }
 
 -(void)DealUserAchievementData:(NSDictionary *)dic

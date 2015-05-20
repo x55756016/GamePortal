@@ -28,7 +28,7 @@
 #define GET_AROUND              [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/UserAround"]
 
 //科大讯飞sdk
-#define APPID_VALUE @"5552ef54"
+#define KKAPPID_VALUE @"5552ef54"
 #define TIMEOUT_VALUE         @"20000"            // timeout      连接超时的时间，以ms为单位
 
 

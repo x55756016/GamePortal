@@ -99,88 +99,96 @@
 
 -(void)addLeftAndRightMenu
 {
-    //tab bar view  始终居中显示
-//    TopBarView = [[UIView alloc] init] ;
-    TopBarView= (UIView *)[[[NSBundle mainBundle]loadNibNamed:@"TopMenuView" owner:self options:nil]objectAtIndex:0];
-    //[[TopBarView alloc] initWithNibName:@"TopMenuView" bundle:nil];
-    //view 设置半透明 圆角样式
-    TopBarView.layer.cornerRadius = 10;//设置圆角的大小
-    TopBarView.layer.backgroundColor = [[UIColor clearColor] CGColor];
-//    TopBarView.alpha = 0.5f;//设置透明
-    TopBarView.layer.masksToBounds = YES;
-    TopBarView.translatesAutoresizingMaskIntoConstraints=NO;
-    TopBarView.layer.borderColor = [UIColor whiteColor].CGColor;
-    TopBarView.layer.borderWidth = 0.1;
-    //设置坐标点在x轴中心位置
-    NSLayoutConstraint *Pointconstraint = [NSLayoutConstraint constraintWithItem:TopBarView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
-    [self.view addConstraint:Pointconstraint];
-    //高度
-    NSLayoutConstraint *TopHeightconstraint = [NSLayoutConstraint constraintWithItem:TopBarView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:40.0f];
-    [self.view addConstraint:TopHeightconstraint];
-    //距离父视图上面1个点
-    NSLayoutConstraint *Topconstraint = [NSLayoutConstraint constraintWithItem:TopBarView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0f constant:1.0f];
-    [self.view addConstraint:Topconstraint];
-    //距离父视图右边1个点
-    NSLayoutConstraint *TopRightconstraint = [NSLayoutConstraint constraintWithItem:TopBarView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:0.0f];
-    [self.view addConstraint:TopRightconstraint];
-    //距离父视图左边1个点
-    NSLayoutConstraint *Leftconstraint = [NSLayoutConstraint constraintWithItem:TopBarView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0f];
-    [self.view addConstraint:Leftconstraint];
-    TopBarView.hidden=YES;
-    [self.view addSubview:TopBarView];
-    //退出
-    UIButton *exitBtn=(UIButton *)[TopBarView viewWithTag:1];
-    [exitBtn addTarget:self action:@selector(exitAction:) forControlEvents:UIControlEventTouchUpInside];
-    //开启关闭弹幕
-    UIButton *msgSwichBtn=(UIButton *)[TopBarView viewWithTag:2];
-    [msgSwichBtn addTarget:self action:@selector(SwitchMsgPush:) forControlEvents:UIControlEventTouchUpInside];
-    //分享
-    UIButton *shareBtn=(UIButton *)[TopBarView viewWithTag:3];
-    [shareBtn addTarget:self action:@selector(ShareInfo:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    
-    ButtomBarView= (UIView *)[[[NSBundle mainBundle]loadNibNamed:@"ButtomMenuView" owner:self options:nil]objectAtIndex:0];
-    //view 设置半透明 圆角样式
-    ButtomBarView.layer.cornerRadius = 10;//设置圆角的大小
-    ButtomBarView.layer.backgroundColor = [[UIColor clearColor] CGColor];
-//  ButtomBarView.alpha = 0.5f;//设置透明
-    ButtomBarView.layer.masksToBounds = YES;
-    ButtomBarView.translatesAutoresizingMaskIntoConstraints=NO;
-    ButtomBarView.layer.borderColor = [UIColor whiteColor].CGColor;
-    ButtomBarView.layer.borderWidth = 0.1;
-    //设置坐标点在x轴中心位置
-    Pointconstraint = [NSLayoutConstraint constraintWithItem:ButtomBarView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
-    [self.view addConstraint:Pointconstraint];
-    //高度
-     ButtomHeightconstraint = [NSLayoutConstraint constraintWithItem:ButtomBarView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:40.0f];
-    [self.view addConstraint:ButtomHeightconstraint];
-    //距离父视图底线1个点
-    NSLayoutConstraint *Buttomconstraint = [NSLayoutConstraint constraintWithItem:ButtomBarView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:-1.0f];
-    [self.view addConstraint:Buttomconstraint];
-    //距离父视图右边1个点
-    TopRightconstraint = [NSLayoutConstraint constraintWithItem:ButtomBarView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:0.0f];
-    [self.view addConstraint:TopRightconstraint];
-    //距离父视图左边1个点
-    Leftconstraint = [NSLayoutConstraint constraintWithItem:ButtomBarView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0f];
-    [self.view addConstraint:Leftconstraint];
-    ButtomBarView.hidden=YES;
-    [self.view addSubview:ButtomBarView];
-   
+    @try {
+        //tab bar view  始终居中显示
+        //    TopBarView = [[UIView alloc] init] ;
+        TopBarView= (UIView *)[[[NSBundle mainBundle]loadNibNamed:@"TopMenuView" owner:self options:nil]objectAtIndex:0];
+        //[[TopBarView alloc] initWithNibName:@"TopMenuView" bundle:nil];
+        //view 设置半透明 圆角样式
+        TopBarView.layer.cornerRadius = 10;//设置圆角的大小
+        TopBarView.layer.backgroundColor = [[UIColor clearColor] CGColor];
+        //    TopBarView.alpha = 0.5f;//设置透明
+        TopBarView.layer.masksToBounds = YES;
+        TopBarView.translatesAutoresizingMaskIntoConstraints=NO;
+        TopBarView.layer.borderColor = [UIColor whiteColor].CGColor;
+        TopBarView.layer.borderWidth = 0.1;
+        TopBarView.hidden=YES;
+        [self.view addSubview:TopBarView];
+        //设置坐标点在x轴中心位置
+        NSLayoutConstraint *Pointconstraint = [NSLayoutConstraint constraintWithItem:TopBarView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
+        [self.view addConstraint:Pointconstraint];
+        //高度
+        NSLayoutConstraint *TopHeightconstraint = [NSLayoutConstraint constraintWithItem:TopBarView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:40.0f];
+        [self.view addConstraint:TopHeightconstraint];
+        //距离父视图上面1个点
+        NSLayoutConstraint *Topconstraint = [NSLayoutConstraint constraintWithItem:TopBarView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0f constant:1.0f];
+        [self.view addConstraint:Topconstraint];
+        //距离父视图右边1个点
+        NSLayoutConstraint *TopRightconstraint = [NSLayoutConstraint constraintWithItem:TopBarView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:0.0f];
+        [self.view addConstraint:TopRightconstraint];
+        //距离父视图左边1个点
+        NSLayoutConstraint *Leftconstraint = [NSLayoutConstraint constraintWithItem:TopBarView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0f];
+        [self.view addConstraint:Leftconstraint];
+       
+        //退出
+        UIButton *exitBtn=(UIButton *)[TopBarView viewWithTag:1];
+        [exitBtn addTarget:self action:@selector(exitAction:) forControlEvents:UIControlEventTouchUpInside];
+        //开启关闭弹幕
+        UIButton *msgSwichBtn=(UIButton *)[TopBarView viewWithTag:2];
+        [msgSwichBtn addTarget:self action:@selector(SwitchMsgPush:) forControlEvents:UIControlEventTouchUpInside];
+        //分享
+        UIButton *shareBtn=(UIButton *)[TopBarView viewWithTag:3];
+        [shareBtn addTarget:self action:@selector(ShareInfo:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        //buttom 工具栏
+        ButtomBarView= (UIView *)[[[NSBundle mainBundle]loadNibNamed:@"ButtomMenuView" owner:self options:nil]objectAtIndex:0];
+        //view 设置半透明 圆角样式
+        ButtomBarView.layer.cornerRadius = 10;//设置圆角的大小
+        ButtomBarView.layer.backgroundColor = [[UIColor clearColor] CGColor];
+        //  ButtomBarView.alpha = 0.5f;//设置透明
+        ButtomBarView.layer.masksToBounds = YES;
+        ButtomBarView.translatesAutoresizingMaskIntoConstraints=NO;
+        ButtomBarView.layer.borderColor = [UIColor whiteColor].CGColor;
+        ButtomBarView.layer.borderWidth = 0.1;
+        ButtomBarView.hidden=YES;
+        [self.view addSubview:ButtomBarView];
+        //设置坐标点在x轴中心位置
+        Pointconstraint = [NSLayoutConstraint constraintWithItem:ButtomBarView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
+        [self.view addConstraint:Pointconstraint];
+        //高度
+        ButtomHeightconstraint = [NSLayoutConstraint constraintWithItem:ButtomBarView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:40.0f];
+        [self.view addConstraint:ButtomHeightconstraint];
+        //距离父视图底线1个点
+        NSLayoutConstraint *Buttomconstraint = [NSLayoutConstraint constraintWithItem:ButtomBarView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:-1.0f];
+        [self.view addConstraint:Buttomconstraint];
+        //距离父视图右边1个点
+        TopRightconstraint = [NSLayoutConstraint constraintWithItem:ButtomBarView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:0.0f];
+        [self.view addConstraint:TopRightconstraint];
+        //距离父视图左边1个点
+        Leftconstraint = [NSLayoutConstraint constraintWithItem:ButtomBarView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0f];
+        [self.view addConstraint:Leftconstraint];
 
-    self.textMsgField=(UITextField *)[ButtomBarView viewWithTag:1];
-    self.textMsgField.delegate=self;
-    //语音
-    UIButton *startVoiceBtn=(UIButton *)[ButtomBarView viewWithTag:2];
-//    [startVoiceBtn setImage:[UIImage imageNamed:@"k_voice_default.png"] forState:UIControlStateNormal];
-//    [startVoiceBtn setImage:[UIImage imageNamed:@"k_voice_pressed.png"] forState:UIControlStateHighlighted];
-    [startVoiceBtn addTarget:self action:@selector(StartVioceMsg:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //发送
-    UIButton *btnSend=(UIButton *)[ButtomBarView viewWithTag:3];
-//    [btnSend setImage:[UIImage imageNamed:@"play_btn_send.png"] forState:UIControlStateNormal];
-    [btnSend addTarget:self action:@selector(sendJsFunction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        self.textMsgField=(UITextField *)[ButtomBarView viewWithTag:1];
+        self.textMsgField.delegate=self;
+        //语音
+        UIButton *startVoiceBtn=(UIButton *)[ButtomBarView viewWithTag:2];
+        //    [startVoiceBtn setImage:[UIImage imageNamed:@"k_voice_default.png"] forState:UIControlStateNormal];
+        //    [startVoiceBtn setImage:[UIImage imageNamed:@"k_voice_pressed.png"] forState:UIControlStateHighlighted];
+        [startVoiceBtn addTarget:self action:@selector(StartVioceMsg:) forControlEvents:UIControlEventTouchUpInside];
+        
+        //发送
+        UIButton *btnSend=(UIButton *)[ButtomBarView viewWithTag:3];
+        //    [btnSend setImage:[UIImage imageNamed:@"play_btn_send.png"] forState:UIControlStateNormal];
+        [btnSend addTarget:self action:@selector(sendJsFunction:) forControlEvents:UIControlEventTouchUpInside];
+        
 
+    }
+    @catch (NSException *exception) {
+        [KKUtility showSystemErrorMsg:exception.reason :nil];
+    }
     
 
 
@@ -326,14 +334,14 @@
 
 - (void)addGameFail:(ASIHTTPRequest *)request
 {
-    [KKUtility showHttpErrorMsg:nil :request.error];
+    [KKUtility showHttpErrorMsg:@"添加我玩过的游戏失败 " :request.error];
 }
 
 //----------------------------结束添加我的游戏完成事件－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 
 - (void)GetGameInfoFromServerFail:(ASIHTTPRequest *)request
 {
-    [KKUtility showHttpErrorMsg:nil :request.error];
+    [KKUtility showHttpErrorMsg:@"获取游戏详情失败 " :request.error];
 }
 //---------------------------结束获取游戏详情---------
 
@@ -406,7 +414,7 @@
 
 - (void)SendPlayGameInfoFail:(ASIHTTPRequest *)request
 {
-     [KKUtility showHttpErrorMsg:nil :request.error];
+     [KKUtility showHttpErrorMsg:@"发送游戏动态失败 " :request.error];
 }
 //------------------------------------
 
@@ -702,7 +710,7 @@
 }
 - (void)upLoadGameImageToServerFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"上传战绩图片失败");
+    [KKUtility showHttpErrorMsg:@"上传战绩图片失败 " :request.error];
 }
 
 
@@ -743,7 +751,7 @@
 
 - (void)upDataGamePicImageFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"更新战绩失败");
+     [KKUtility showHttpErrorMsg:@"更新战绩失败 " :request.error];
 }
 //-------------结束战绩墙分享----------------------------------------------------------------------------------------------------
 

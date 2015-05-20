@@ -17,6 +17,7 @@
 #import "MJRefresh.h"
 #import "GameWebViewController.h"
 #import "h5kkContants.h"
+#import "KKUtility.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -51,7 +52,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self initContentScrollView];
     
     //获取用户信息
-    [self getUserInfo];
+     userInfo = [KKUtility getUserInfoFromLocalFile];
     
     //上下拉加载
     [self UpAndDownPull];
@@ -107,20 +108,6 @@ UIKIT_EXTERN NSString *userFolderPath;
     self.hotGameTableView.tableFooterView = footLabel;
     self.myGameTableView.tableFooterView = footLabel;
     self.classifyTableView.tableFooterView = footLabel;
-}
-
-//本地获取用户信息
--(void)getUserInfo
-{
-    NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:@"UserInfo.plist"];
-    
-    BOOL isUserInfoFolderCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserInfoFolder isDirectory:nil];
-    if (isUserInfoFolderCreate)
-    {
-        userInfo = [NSDictionary dictionaryWithContentsOfFile:UserInfoFolder];
-//        NSLog(@"userInfo[%@]", userInfo);
-    }
 }
 
 //加载的数据保存至本地
@@ -262,8 +249,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)loadHotGameFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"loadHotGameFail");
-    
+    [KKUtility showHttpErrorMsg:@"获取热门游戏失败" :request.error];
     //结束刷新状态
     [self.hotGameTableView reloadData];
     [self.hotGameTableView.header endRefreshing];
@@ -363,7 +349,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)loadMyGameFail:(ASIHTTPRequest *)request
 {
 //    NSLog(@"loadMyGameFail");
-    
+    [KKUtility showHttpErrorMsg:@"获取我的游戏失败 " :request.error];
     //结束刷新状态
     [self.myGameTableView reloadData];
     [self.myGameTableView.header endRefreshing];
@@ -461,7 +447,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)loadGameClassifyFail:(ASIHTTPRequest *)request
 {
 //    NSLog(@"loadGameClassifyFail");
-    
+    [KKUtility showHttpErrorMsg:@"获取游戏分类信息失败 " :request.error];
     //结束刷新状态
     [self.classifyTableView reloadData];
     [self.classifyTableView.header endRefreshing];
@@ -699,7 +685,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)addGameFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"addGameFail");
+    [KKUtility showHttpErrorMsg:@"添加我玩的游戏失败" :request.error];
 }
 
 //---------------------------------------更多----------------------------------------------//

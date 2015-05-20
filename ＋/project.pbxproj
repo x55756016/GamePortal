@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C312F5611B0442F200931578 /* libSunFlower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C312F5601B0442F200931578 /* libSunFlower.a */; };
+		C32A25041B0C3B4200861BD5 /* libSunFlower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C32A25031B0C3B4200861BD5 /* libSunFlower.a */; };
 		C32D05AA1B007EF7006B1773 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32D05A81B007EF7006B1773 /* Main.storyboard */; };
 		C32D05AD1B009799006B1773 /* CustomerChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D05AC1B009799006B1773 /* CustomerChatViewController.m */; };
 		C32D05B11B01B037006B1773 /* HEXCMyUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D05B01B01B037006B1773 /* HEXCMyUIButton.m */; };
 		C3318EB01B02FEC900E7BCE4 /* GameWebNavgationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3318EAF1B02FEC900E7BCE4 /* GameWebNavgationViewController.m */; };
 		C331E81B1B0B191B004439A3 /* ClickImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C331E81A1B0B191B004439A3 /* ClickImage.m */; };
+		C331E81F1B0B702D004439A3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C331E81D1B0B702D004439A3 /* ViewController.m */; };
+		C331E8201B0B702D004439A3 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C331E81E1B0B702D004439A3 /* ViewController.xib */; };
 		C33A83E91B072F5200331199 /* InfiniteScrollPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */; };
 		C33A83EA1B072F5200331199 /* UIView+viewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E81B072F5200331199 /* UIView+viewController.m */; };
 		C38E41231B048E4700F42B7D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41201B048E4700F42B7D /* libWeChatSDK.a */; };
@@ -39,7 +41,6 @@
 		C3A994B71AF8798C00B2D317 /* CityRankView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3A994B61AF8798C00B2D317 /* CityRankView.xib */; };
 		C3A994B91AF8799600B2D317 /* ChinaRankView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3A994B81AF8799600B2D317 /* ChinaRankView.xib */; };
 		C3C003FC1AFC51410049002A /* KKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C003FB1AFC51410049002A /* KKUtility.m */; };
-		C3C003FD1AFC52160049002A /* KKUtility.h in Sources */ = {isa = PBXBuildFile; fileRef = C3C003FA1AFC51210049002A /* KKUtility.h */; };
 		C3C004001AFC93020049002A /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C003FF1AFC93020049002A /* CurrentUser.m */; };
 		C3C3B2B41AFDC2B4003388E8 /* UIButton+ImageAndLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3B2B31AFDC2B4003388E8 /* UIButton+ImageAndLabel.m */; };
 		C3CEEA6F1AFA3C4B0062970F /* HomeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CEEA6E1AFA3C4B0062970F /* HomeInfoViewController.m */; };
@@ -180,8 +181,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C312F55F1B0442F200931578 /* IFlyFlowerCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFlyFlowerCollector.h; sourceTree = "<group>"; };
-		C312F5601B0442F200931578 /* libSunFlower.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSunFlower.a; sourceTree = "<group>"; };
+		C32A25001B0C317000861BD5 /* KKUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KKUtility.m; path = h5/Common/KKUtility.m; sourceTree = "<group>"; };
+		C32A25021B0C3B4200861BD5 /* IFlyFlowerCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFlyFlowerCollector.h; sourceTree = "<group>"; };
+		C32A25031B0C3B4200861BD5 /* libSunFlower.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSunFlower.a; sourceTree = "<group>"; };
 		C32D05A91B007EF7006B1773 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C32D05AB1B009799006B1773 /* CustomerChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerChatViewController.h; sourceTree = "<group>"; };
 		C32D05AC1B009799006B1773 /* CustomerChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerChatViewController.m; sourceTree = "<group>"; };
@@ -191,6 +193,9 @@
 		C3318EAF1B02FEC900E7BCE4 /* GameWebNavgationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameWebNavgationViewController.m; sourceTree = "<group>"; };
 		C331E8191B0B191B004439A3 /* ClickImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClickImage.h; sourceTree = "<group>"; };
 		C331E81A1B0B191B004439A3 /* ClickImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClickImage.m; sourceTree = "<group>"; };
+		C331E81C1B0B702D004439A3 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C331E81D1B0B702D004439A3 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C331E81E1B0B702D004439A3 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		C33A83E51B072F5200331199 /* InfiniteScrollPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteScrollPicker.h; sourceTree = "<group>"; };
 		C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfiniteScrollPicker.m; sourceTree = "<group>"; };
 		C33A83E71B072F5200331199 /* UIView+viewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+viewController.h"; sourceTree = "<group>"; };
@@ -525,10 +530,10 @@
 				CB4AC97F1AD6758200A85599 /* UIKit.framework in Frameworks */,
 				CB4AC97D1AD6757900A85599 /* SystemConfiguration.framework in Frameworks */,
 				CB4AC97B1AD6756900A85599 /* QuartzCore.framework in Frameworks */,
+				C32A25041B0C3B4200861BD5 /* libSunFlower.a in Frameworks */,
 				CB4AC9791AD6756300A85599 /* OpenGLES.framework in Frameworks */,
 				CBB4B0F41AF47FE9004BE59A /* libiOS_IMKit_v1_4_6.a in Frameworks */,
 				CB4AC9771AD6755900A85599 /* MapKit.framework in Frameworks */,
-				C312F5611B0442F200931578 /* libSunFlower.a in Frameworks */,
 				CB4AC9761AD6753700A85599 /* libxml2.dylib in Frameworks */,
 				CB4AC9741AD6752000A85599 /* libstdc++.dylib in Frameworks */,
 				CB4AC9721AD6751600A85599 /* libsqlite3.dylib in Frameworks */,
@@ -557,11 +562,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C312F55E1B0442F200931578 /* sunflower */ = {
+		C32A25011B0C3B4200861BD5 /* sunflower */ = {
 			isa = PBXGroup;
 			children = (
-				C312F55F1B0442F200931578 /* IFlyFlowerCollector.h */,
-				C312F5601B0442F200931578 /* libSunFlower.a */,
+				C32A25021B0C3B4200861BD5 /* IFlyFlowerCollector.h */,
+				C32A25031B0C3B4200861BD5 /* libSunFlower.a */,
 			);
 			path = sunflower;
 			sourceTree = "<group>";
@@ -580,7 +585,6 @@
 		C3318EAD1B02FE8900E7BCE4 /* GameWebPage */ = {
 			isa = PBXGroup;
 			children = (
-				C312F55E1B0442F200931578 /* sunflower */,
 				C3A9949A1AF86FF100B2D317 /* GameWebViewController.h */,
 				C3A9949B1AF86FF100B2D317 /* GameWebViewController.m */,
 				C3318EAE1B02FEC900E7BCE4 /* GameWebNavgationViewController.h */,
@@ -633,6 +637,7 @@
 		C38E41241B048EC100F42B7D /* Voice */ = {
 			isa = PBXGroup;
 			children = (
+				C32A25011B0C3B4200861BD5 /* sunflower */,
 				C38E41251B048EC100F42B7D /* iflyMSC.framework */,
 			);
 			path = Voice;
@@ -760,6 +765,7 @@
 		CB0A69A81AC92B74003F7775 = {
 			isa = PBXGroup;
 			children = (
+				C32A25001B0C317000861BD5 /* KKUtility.m */,
 				CB0A69B31AC92B74003F7775 /* h5 */,
 				CB323DC01ACA3D4600C7FE83 /* Frameworks */,
 				CB0A69B21AC92B74003F7775 /* Products */,
@@ -830,6 +836,9 @@
 				CBB3FE551ADD5AF7008D008B /* SnapChatViewController.m */,
 				CBBAFDB41AEC7C4900D46205 /* SortByA_Z */,
 				CB83C94B1AE9D93A0075F045 /* CommonCell */,
+				C331E81C1B0B702D004439A3 /* ViewController.h */,
+				C331E81D1B0B702D004439A3 /* ViewController.m */,
+				C331E81E1B0B702D004439A3 /* ViewController.xib */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -1370,6 +1379,7 @@
 				C3A9948B1AF86F3C00B2D317 /* GameTableViewCell.xib in Resources */,
 				CB83C9611AE9E9030075F045 /* AroundTableViewCell.xib in Resources */,
 				CB83C9501AE9D93A0075F045 /* CommonTableViewCell.xib in Resources */,
+				C331E8201B0B702D004439A3 /* ViewController.xib in Resources */,
 				CBB4B0F51AF47FE9004BE59A /* RongCloud.bundle in Resources */,
 				CB927D6F1ADFE927002ED6E6 /* SquareTableViewCell.xib in Resources */,
 				C3A994B41AF8794F00B2D317 /* MyGame.xib in Resources */,
@@ -1393,7 +1403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3C003FD1AFC52160049002A /* KKUtility.h in Sources */,
+				C3C003FC1AFC51410049002A /* KKUtility.m in Sources */,
 				CB6166981AD8DD5C00D9132F /* RCHttpRequest.m in Sources */,
 				CBB3FE561ADD5AF7008D008B /* SnapChatViewController.m in Sources */,
 				CB0A69BA1AC92B74003F7775 /* AppDelegate.m in Sources */,
@@ -1464,7 +1474,6 @@
 				CBC4A5F91ACE356B0082FA2B /* MeDetailCitiesTableViewController.m in Sources */,
 				CB6EFEA01AD61B6C00F597B6 /* MJRefreshFooter.m in Sources */,
 				CB6ED2011AD37A4100A33BB8 /* SDWebImageManager.m in Sources */,
-				C3C003FC1AFC51410049002A /* KKUtility.m in Sources */,
 				CB6ED1FE1AD37A4100A33BB8 /* SDWebImageDecoder.m in Sources */,
 				CB4E60711ADFB40800471173 /* SquareTableViewController.m in Sources */,
 				CB42F8081ADE58E800F5376C /* ChatNavigationController.m in Sources */,
@@ -1477,6 +1486,7 @@
 				CB3CB2761ACD86500031E016 /* DataModifyTableViewController.m in Sources */,
 				CB323E101ACA7C9B00C7FE83 /* ASIHTTPRequest.m in Sources */,
 				CBE0A0501AEA108F00791FAB /* MatchTableViewCell.m in Sources */,
+				C331E81F1B0B702D004439A3 /* ViewController.m in Sources */,
 				CB323E0E1ACA7C9B00C7FE83 /* ASIDownloadCache.m in Sources */,
 				CB83C9571AE9E5660075F045 /* FindNavigationController.m in Sources */,
 				C33A83EA1B072F5200331199 /* UIView+viewController.m in Sources */,
@@ -1654,13 +1664,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/h5/iOS_IMKit",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/h5/sunflower",
 					"$(PROJECT_DIR)/h5",
-					"$(PROJECT_DIR)/h5/WebChatSDK",
 					"$(PROJECT_DIR)/h5/SDK/WebChatSDK",
+					"$(PROJECT_DIR)/h5/SDK/Voice/sunflower",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "838196f1-f140-4604-a638-bdf0fd9faa98";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1695,13 +1704,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/h5/iOS_IMKit",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/h5/sunflower",
 					"$(PROJECT_DIR)/h5",
-					"$(PROJECT_DIR)/h5/WebChatSDK",
 					"$(PROJECT_DIR)/h5/SDK/WebChatSDK",
+					"$(PROJECT_DIR)/h5/SDK/Voice/sunflower",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "838196f1-f140-4604-a638-bdf0fd9faa98";
 				TARGETED_DEVICE_FAMILY = 1;

@@ -95,7 +95,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)loadKKFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"loadKKFail");
+    [KKUtility showHttpErrorMsg:@"获取kk雷达数据失败 " :request.error];
 }
 //--------------------------------------结束加载KK数据-----------------------------------------------//
 

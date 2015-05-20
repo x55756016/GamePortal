@@ -45,7 +45,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     self.navigationItem.leftBarButtonItem=nil;
     
     //获取用户信息
-    [self getUserInfo];
+    locationUserInfo = [KKUtility getUserInfoFromLocalFile];
     
     //加载好友数据
     [self loadFriends];
@@ -314,19 +314,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
 }
 
-//----------------------------------本地获取用户信息------------------------------------------------------------//
--(void)getUserInfo
-{
-    NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:@"UserInfo.plist"];
-    
-    BOOL isUserInfoFolderCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserInfoFolder isDirectory:nil];
-    if (isUserInfoFolderCreate)
-    {
-        locationUserInfo = [NSDictionary dictionaryWithContentsOfFile:UserInfoFolder];
-//        NSLog(@"locationUserInfo[%@]", locationUserInfo);
-    }
-}
+
 
 //--------------------------------------加载好友数据------------------------------------------------------------//
 -(void)loadFriends
@@ -373,7 +361,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)loadFriendsFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"loadFriendsFail");
+    [KKUtility showHttpErrorMsg:@"获取好友信息失败 " :request.error];
 }
 
 //好友数据刷表

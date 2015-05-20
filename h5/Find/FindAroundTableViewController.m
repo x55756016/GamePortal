@@ -12,6 +12,7 @@
 #import "UIImageView+WebCache.h"
 #import "h5kkContants.h"
 #import "UserInfoTableViewController.h"
+#import "KKUtility.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -34,8 +35,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     self.tableView.tableFooterView = footLabel;
     
     //获取用户信息
-    [self getUserInfo];
-    
+    userInfo = [KKUtility getUserInfoFromLocalFile];    
     //加载附近数据
     [self loadAround];
 }
@@ -45,19 +45,6 @@ UIKIT_EXTERN NSString *userFolderPath;
     [super didReceiveMemoryWarning];
 }
 
-//本地获取用户信息
--(void)getUserInfo
-{
-    NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:@"UserInfo.plist"];
-    
-    BOOL isUserInfoFolderCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserInfoFolder isDirectory:nil];
-    if (isUserInfoFolderCreate)
-    {
-        userInfo = [NSDictionary dictionaryWithContentsOfFile:UserInfoFolder];
-//        NSLog(@"userInfo[%@]", userInfo);
-    }
-}
 
 //--------------------------------------加载附近数据-----------------------------------------------//
 -(void)loadAround
@@ -99,7 +86,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)loadAroundFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"loadAroundFail");
+    [KKUtility showHttpErrorMsg:@"加载附近数据失败" :request.error];
     [self.tableView reloadData];
 }
 

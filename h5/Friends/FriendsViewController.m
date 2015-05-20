@@ -20,6 +20,7 @@
 #import "RCHandShakeMessage.h"
 #import "AppDelegate.h"
 #import "ChatViewController.h"
+#import "KKUtility.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -45,7 +46,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     self.friendTableView.tableFooterView = footLabel;
     
     //获取用户信息
-    [self getUserInfo];
+     userInfo = [KKUtility getUserInfoFromLocalFile];
     
     //加载好友数据
     [self loadFriends];
@@ -54,20 +55,6 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-//本地获取用户信息
--(void)getUserInfo
-{
-    NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:@"UserInfo.plist"];
-    
-    BOOL isUserInfoFolderCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserInfoFolder isDirectory:nil];
-    if (isUserInfoFolderCreate)
-    {
-        userInfo = [NSDictionary dictionaryWithContentsOfFile:UserInfoFolder];
-//        NSLog(@"userInfo[%@]", userInfo);
-    }
 }
 
 //--------------------------------------加载好友数据-----------------------------------------------//
@@ -116,7 +103,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)loadFriendsFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"loadFriendsFail");
+    [KKUtility showHttpErrorMsg:@"获取好友信息失败 " :request.error];
     [self sequence];
 }
 
@@ -260,18 +247,23 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 -(void)chartTocustomerServices
 {
-    NSString *customerServiceUserId = [self getKeFuId];
-    CustomerChatViewController *temp = [[CustomerChatViewController alloc]init];
-    
-    temp.currentTarget = [self getKeFuId];
-    temp.conversationType = ConversationType_CUSTOMERSERVICE;
-    temp.currentTargetName = @"客服";
-    //temp.enableSettings = NO;
-    temp.enableVoIP = NO;
-    RCHandShakeMessage *textMsg = [[RCHandShakeMessage alloc] init];
-    [[RCIM sharedRCIM] sendMessage:ConversationType_CUSTOMERSERVICE targetId:customerServiceUserId content:textMsg delegate:nil];
-    temp.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:temp animated:YES];
+    @try {
+        NSString *customerServiceUserId = [self getKeFuId];
+        CustomerChatViewController *temp = [[CustomerChatViewController alloc]init];
+        
+        temp.currentTarget = [self getKeFuId];
+        temp.conversationType = ConversationType_CUSTOMERSERVICE;
+        temp.currentTargetName = @"客服";
+        //temp.enableSettings = NO;
+        temp.enableVoIP = NO;
+        RCHandShakeMessage *textMsg = [[RCHandShakeMessage alloc] init];
+        [[RCIM sharedRCIM] sendMessage:ConversationType_CUSTOMERSERVICE targetId:customerServiceUserId content:textMsg delegate:nil];
+        temp.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:temp animated:YES];
+    }
+    @catch (NSException *exception) {
+        [KKUtility showSystemErrorMsg:exception.reason :nil];
+    }
 
 }
 

@@ -95,8 +95,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)searchFriendFail:(ASIHTTPRequest *)request
 {
     [SVProgressHUD dismiss];
-    NSLog(@"searchFriendFail");
-}
+   [KKUtility showHttpErrorMsg:@"查询好友失败 " :request.error];}
 
 //好友数据刷表
 -(void)searchFriendData:(NSDictionary *)dict

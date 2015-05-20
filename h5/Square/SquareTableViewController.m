@@ -142,7 +142,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)loadAdDataFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"loadAdDataFail");
+    [KKUtility showHttpErrorMsg:@"获取首页动态失败 " :request.error];
     
     //结束刷新状态
     [self paintAd];
@@ -233,7 +233,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)loadPlayerDataFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"loadPlayerDataFail");
+     [KKUtility showHttpErrorMsg:@"获取玩家信息失败 " :request.error];
     
     //结束刷新状态
     [self.tableView reloadData];

@@ -13,6 +13,7 @@
 #import "FrontRankTableViewCell.h"
 #import "BehindTableViewCell.h"
 #import "h5kkContants.h"
+#import "KKUtility.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -34,7 +35,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self initContentScrollView];
     
     //获取用户信息
-    [self getUserInfo];
+     userInfo = [KKUtility getUserInfoFromLocalFile];
     
     //加载排行榜数据
     [self loadRankData];
@@ -91,20 +92,6 @@ UIKIT_EXTERN NSString *userFolderPath;
     self.cityRankTableView.tableFooterView = footLabel;
 }
 
-//本地获取用户信息
--(void)getUserInfo
-{
-    NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:@"UserInfo.plist"];
-    
-    BOOL isUserInfoFolderCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserInfoFolder isDirectory:nil];
-    if (isUserInfoFolderCreate)
-    {
-        userInfo = [NSDictionary dictionaryWithContentsOfFile:UserInfoFolder];
-//        NSLog(@"userInfo[%@]", userInfo);
-    }
-}
-
 //---------------------------------------------------------加载排行榜数据--------------------------------------------------------------//
 -(void)loadRankData
 {
@@ -151,7 +138,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)loadRankFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"loadRankFail");
+    [KKUtility showHttpErrorMsg:@"加载排行数据失败 " :request.error];
 }
 
 //刷表

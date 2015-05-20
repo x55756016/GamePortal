@@ -14,6 +14,7 @@
 #import "ASIFormDataRequest.h"
 #import "UIImageView+WebCache.h"
 #import "h5kkContants.h"
+#import "KKUtility.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -31,7 +32,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     [super viewDidLoad];
     
     //获取用户信息
-    [self getUserInfo];
+     userInfo = [KKUtility getUserInfoFromLocalFile];
     
     //过滤分割线
     UILabel *footLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 0)];
@@ -42,20 +43,6 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-//本地获取用户信息
--(void)getUserInfo
-{
-    NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:@"UserInfo.plist"];
-    
-    BOOL isUserInfoFolderCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserInfoFolder isDirectory:nil];
-    if (isUserInfoFolderCreate)
-    {
-        userInfo = [NSDictionary dictionaryWithContentsOfFile:UserInfoFolder];
-//        NSLog(@"userInfo[%@]", userInfo);
-    }
 }
 
 //------------------------------------------ Table view data source --------------------------------------------//
@@ -144,7 +131,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)searchGamesFail:(ASIHTTPRequest *)request
 {
     [SVProgressHUD dismiss];
-    NSLog(@"searchGamesFail");
+    [KKUtility showHttpErrorMsg:@"查询游戏失败 " :request.error];
 }
 
 //好友数据刷表
@@ -259,7 +246,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)addGameFail:(ASIHTTPRequest *)request
 {
-    NSLog(@"addGameFail");
+    [KKUtility showHttpErrorMsg:@"添加我玩过的游戏失败 " :request.error];
 }
 
 //------------------------------------------------segue----------------------------------------------------------//

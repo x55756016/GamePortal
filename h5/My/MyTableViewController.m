@@ -56,13 +56,8 @@ UIKIT_EXTERN NSString *userFolderPath;
 //本地获取用户信息
 -(void)getUserInfo
 {
-    NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:@"UserInfo.plist"];
-    
-    BOOL isUserInfoFolderCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserInfoFolder isDirectory:nil];
-    if (isUserInfoFolderCreate)
-    {
-        userInfo = [NSDictionary dictionaryWithContentsOfFile:UserInfoFolder];
+
+       userInfo = [KKUtility getUserInfoFromLocalFile];
 //        NSLog(@"userInfo[%@]", userInfo);
         
         //昵称
@@ -70,7 +65,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         
         //头像
         [self getUserIcon];
-    }
+    
 }
 
 -(void)getUserIcon
