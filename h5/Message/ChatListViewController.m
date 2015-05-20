@@ -21,6 +21,8 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSArray *friendsArray;
     NSDictionary *locationUserInfo;
     AppDelegate *appDelegate;
+    
+    ASIFormDataRequest *request;
 }
 @end
 
@@ -332,7 +334,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         NSString *urlStr = GET_FRIEND;
         NSURL *url = [NSURL URLWithString:urlStr];
         
-        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+        request = [ASIFormDataRequest requestWithURL:url];
         [request setTimeOutSeconds:5.0];
         [request setDelegate:self];
         [request setRequestMethod:@"POST"];
@@ -426,6 +428,12 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (IBAction)ShowCustomServicer:(id)sender {
    
+}
+
+- (void)dealloc
+{
+    [request setDelegate:nil];
+    [request cancel];
 }
 @end
 

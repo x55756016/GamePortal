@@ -29,6 +29,8 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSMutableArray *adArray;
     NSMutableArray *playerArray;
     
+    ASIFormDataRequest *request;
+    
 }
 @end
 
@@ -114,7 +116,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     NSString *urlStr = GET_FLASH_LIST;
     NSURL *url = [NSURL URLWithString:urlStr];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:5.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -200,7 +202,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     NSString *urlStr = GET_NEW_USER;
     NSURL *url = [NSURL URLWithString:urlStr];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:5.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -374,6 +376,12 @@ UIKIT_EXTERN NSString *userFolderPath;
 //        NSLog(@"pageIndex[%d]", pageIndex);
         self.pageControl.currentPage = pageIndex;
     }
+}
+
+- (void)dealloc
+{
+    [request setDelegate:nil];
+    [request cancel];
 }
 @end
 

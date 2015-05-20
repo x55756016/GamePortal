@@ -22,6 +22,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     NSDictionary *userInfo;
     NSMutableArray *AllAroundUserTmp;
+    ASIFormDataRequest *request;
 }
 @end
 
@@ -58,7 +59,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSString *urlStr = GET_KK_AROUND;
     NSURL *url = [NSURL URLWithString:urlStr];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:10.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -269,7 +270,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     
 }
 
-
+- (void)dealloc
+{
+    [request setDelegate:nil];
+    [request cancel];
+}
 
 @end
 

@@ -25,6 +25,8 @@ UIKIT_EXTERN NSString *userFolderPath;
     
     NSMutableArray *typeGameArray;
     int typeGamePageIndex;
+    
+    ASIFormDataRequest *request;
 }
 @end
 
@@ -80,7 +82,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSString *urlStr = GET_GAME_LIST;
     NSURL *url = [NSURL URLWithString:urlStr];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:5.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -222,7 +224,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSString *urlStr = ADD_GAME;
     NSURL *url = [NSURL URLWithString:urlStr];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:5.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -264,6 +266,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
 }
 
+- (void)dealloc
+{
+    [request setDelegate:nil];
+    [request cancel];
+}
 @end
 
 

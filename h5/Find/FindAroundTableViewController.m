@@ -20,6 +20,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     NSArray *aroundArray;
     NSDictionary *userInfo;
+    ASIFormDataRequest *request;
 }
 @end
 
@@ -52,7 +53,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSString *urlStr = GET_AROUND;
     NSURL *url = [NSURL URLWithString:urlStr];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:10.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -140,7 +141,11 @@ UIKIT_EXTERN NSString *userFolderPath;
         uitvc.FriendInfoDict = (NSDictionary *)sender;
     }
 }
-
+- (void)dealloc
+{
+    [request setDelegate:nil];
+    [request cancel];
+}
 @end
 
 

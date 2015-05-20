@@ -17,6 +17,7 @@
 @interface ForgetPwdViewController ()
 {
     UITextField *currentTextField;
+    ASIFormDataRequest *request;
 }
 @end
 
@@ -125,7 +126,7 @@
     NSURL *url = [NSURL URLWithString:urlStr];
     
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:5.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -246,6 +247,11 @@
     }
 }
 
+- (void)dealloc
+{
+    [request setDelegate:nil];
+    [request cancel];
+}
 @end
 
 

@@ -22,6 +22,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     NSArray *searchArry;
     NSDictionary *userInfo;
+    ASIFormDataRequest *request;
 }
 @end
 
@@ -101,7 +102,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSURL *url = [NSURL URLWithString:urlStr];
     
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:5.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -220,7 +221,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSString *urlStr = ADD_GAME;
     NSURL *url = [NSURL URLWithString:urlStr];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:5.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -260,7 +261,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
 }
 
-
+- (void)dealloc
+{
+    [request setDelegate:nil];
+    [request cancel];
+}
 @end
 
 

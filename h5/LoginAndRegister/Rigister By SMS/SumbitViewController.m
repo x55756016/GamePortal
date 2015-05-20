@@ -15,6 +15,8 @@
 @interface SumbitViewController ()
 {
     UITextField *currentTextField;
+    
+    ASIFormDataRequest *request;
 }
 @end
 
@@ -103,7 +105,7 @@
     NSURL *url = [NSURL URLWithString:urlStr];
     
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:5.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -205,7 +207,11 @@
 {
     currentTextField = textField;
 }
-
+- (void)dealloc
+{
+    [request setDelegate:nil];
+    [request cancel];
+}
 @end
 
 

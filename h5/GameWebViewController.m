@@ -35,7 +35,7 @@
     
     NSString *landorprot;//是否横屏显示
     
-
+    ASIFormDataRequest *request;
 
 }
 @end
@@ -244,7 +244,7 @@
     
     NSString *urlStr = Get_GameDetailInfo;
     NSURL *url = [NSURL URLWithString:urlStr];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:15.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -311,7 +311,7 @@
     NSString *urlStr = ADD_GAME;
     NSURL *url = [NSURL URLWithString:urlStr];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:5.0];
     [request setDelegate:self.delegate];
     [request setRequestMethod:@"POST"];
@@ -386,7 +386,7 @@
     
     NSString *urlStr = USER_AddKKAround;
     NSURL *url = [NSURL URLWithString:urlStr];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:5.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -672,7 +672,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"http://pic.h5kk.com/fileupload.php?id=%@&index=%@&game=%@", useridStr, currentTimeStr,gameId];
     NSURL *url = [NSURL URLWithString:urlStr];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:20.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -720,7 +720,7 @@
     NSString *urlStr = ADD_GameAchievement;
     NSURL *url = [NSURL URLWithString:urlStr];
      NSString *gameId = [NSString stringWithFormat:@"%@", [self.gameDetailDict objectForKey:@"ContentPageID"]];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:10.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -755,7 +755,11 @@
 }
 //-------------结束战绩墙分享----------------------------------------------------------------------------------------------------
 
-
+- (void)dealloc
+{
+    [request setDelegate:nil];
+    [request cancel];
+}
 @end
 
 

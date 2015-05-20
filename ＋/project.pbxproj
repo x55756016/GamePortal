@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C32A25051B0C3EA200861BD5 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41251B048EC100F42B7D /* iflyMSC.framework */; };
+		C32A25091B0C443B00861BD5 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A25081B0C443B00861BD5 /* UIViewController+BackButtonHandler.m */; };
 		C32D05AA1B007EF7006B1773 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32D05A81B007EF7006B1773 /* Main.storyboard */; };
 		C32D05AD1B009799006B1773 /* CustomerChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D05AC1B009799006B1773 /* CustomerChatViewController.m */; };
 		C32D05B11B01B037006B1773 /* HEXCMyUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D05B01B01B037006B1773 /* HEXCMyUIButton.m */; };
@@ -181,6 +182,8 @@
 
 /* Begin PBXFileReference section */
 		C32A25001B0C317000861BD5 /* KKUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KKUtility.m; path = h5/Common/KKUtility.m; sourceTree = "<group>"; };
+		C32A25071B0C443B00861BD5 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
+		C32A25081B0C443B00861BD5 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		C32D05A91B007EF7006B1773 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C32D05AB1B009799006B1773 /* CustomerChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerChatViewController.h; sourceTree = "<group>"; };
 		C32D05AC1B009799006B1773 /* CustomerChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerChatViewController.m; sourceTree = "<group>"; };
@@ -557,6 +560,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C32A25061B0C443B00861BD5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C32A25071B0C443B00861BD5 /* UIViewController+BackButtonHandler.h */,
+				C32A25081B0C443B00861BD5 /* UIViewController+BackButtonHandler.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		C32D05AE1B01B013006B1773 /* WebGameMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -602,6 +614,7 @@
 		C38E411E1B048E4700F42B7D /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				C32A25061B0C443B00861BD5 /* ViewController */,
 				C331E8181B0B191B004439A3 /* ClickImage */,
 				C33A83E41B072F5200331199 /* InfiniteScrollPicker */,
 				C38E41241B048EC100F42B7D /* Voice */,
@@ -1433,6 +1446,7 @@
 				C3C3B2B41AFDC2B4003388E8 /* UIButton+ImageAndLabel.m in Sources */,
 				CB6EFEA11AD61B6C00F597B6 /* MJRefreshGifFooter.m in Sources */,
 				C3318EB01B02FEC900E7BCE4 /* GameWebNavgationViewController.m in Sources */,
+				C32A25091B0C443B00861BD5 /* UIViewController+BackButtonHandler.m in Sources */,
 				C3A994871AF86F2900B2D317 /* GameTableViewCell.m in Sources */,
 				CBE0A0541AEA222300791FAB /* RadarViewController.m in Sources */,
 				CB3929401ACC29570004FFB4 /* SectionsViewController.m in Sources */,

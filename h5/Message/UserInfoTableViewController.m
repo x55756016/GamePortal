@@ -9,7 +9,6 @@
 #import "UserInfoTableViewController.h"
 #import "UIImageView+WebCache.h"
 #import "Reachability.h"
-#import "ASIFormDataRequest.h"
 #import "UserDataModel.h"
 #import "ChatViewController.h"
 #import "FriendsViewController.h"
@@ -42,6 +41,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSArray  *friendsArray;
     NSString *Userid;
     int currentUserIndex;
+    ASIFormDataRequest *request;
 }
 @end
 
@@ -98,7 +98,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         NSString *urlStr = GET_FRIEND;
         NSURL *url = [NSURL URLWithString:urlStr];
         
-        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+        request = [ASIFormDataRequest requestWithURL:url];
         [request setTimeOutSeconds:10.0];
         [request setDelegate:self];
         [request setRequestMethod:@"POST"];
@@ -143,7 +143,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSString *urlStr = USER_DETAIL;
     NSURL *url = [NSURL URLWithString:urlStr];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:10.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -248,7 +248,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         NSString *urlStr = FriendRemove;
         NSURL *url = [NSURL URLWithString:urlStr];
         
-        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+        request = [ASIFormDataRequest requestWithURL:url];
         [request setTimeOutSeconds:10.0];
         [request setDelegate:self];
         [request setRequestMethod:@"POST"];
@@ -266,7 +266,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         NSString *urlStr = FIND_ADD;
         NSURL *url = [NSURL URLWithString:urlStr];
         
-        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+        request = [ASIFormDataRequest requestWithURL:url];
         [request setTimeOutSeconds:10.0];
         [request setDelegate:self];
         [request setRequestMethod:@"POST"];
@@ -322,7 +322,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSString *urlStr = GET_MY_GAME;
     NSURL *url = [NSURL URLWithString:urlStr];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:10.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -387,7 +387,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSString *urlStr = GET_GAME_ACHIEVEMENT;
     NSURL *url = [NSURL URLWithString:urlStr];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:10.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -654,6 +654,12 @@ UIKIT_EXTERN NSString *userFolderPath;
 //    UIImageView *selectView= picker.biggestView;
 //    UIImage *image=selectView.image;
 //    ClickImage *image=selectView;
+}
+
+- (void)dealloc
+{
+    [request setDelegate:nil];
+    [request cancel];
 }
 @end
 

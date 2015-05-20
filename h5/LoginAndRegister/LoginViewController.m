@@ -23,6 +23,8 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSDictionary *userInfo;
     unsigned long accountTextFieldlength;  //账号长度
     unsigned long passwordTextFieldlength; //密码长度
+    
+    ASIFormDataRequest *request;
 }
 @end
 
@@ -113,7 +115,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSURL *url = [NSURL URLWithString:urlStr];
     
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:5.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -386,6 +388,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     return YES;
 }
 
+- (void)dealloc
+{
+    [request setDelegate:nil];
+    [request cancel];
+}
 @end
 
 

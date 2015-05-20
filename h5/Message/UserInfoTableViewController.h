@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RCIM.h"
 #import "InfiniteScrollPicker.h"
+#import "ASIFormDataRequest.h"
 
 @interface UserInfoTableViewController : UITableViewController<InfiniteScrollPickerTouchesDelegate>
 

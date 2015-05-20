@@ -19,6 +19,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     NSArray *matchArray;
     NSDictionary *userInfo;
+    ASIFormDataRequest *request;
 }
 @end
 
@@ -50,7 +51,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSString *urlStr = GET_ACTIVE_LIST;
     NSURL *url = [NSURL URLWithString:urlStr];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:10.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -119,6 +120,12 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)dealloc
+{
+    [request setDelegate:nil];
+    [request cancel];
 }
 
 @end

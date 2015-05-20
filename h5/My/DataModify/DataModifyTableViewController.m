@@ -22,6 +22,8 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSDictionary *userInfo;
     NSData *uploadImageData;
     NSString *currentTimeStr;
+    
+    ASIFormDataRequest *request;
 }
 @end
 
@@ -186,7 +188,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSString *urlStr = [NSString stringWithFormat:@"http://pic.h5kk.com/fileupload.php?id=%@&index=%@", useridStr, currentTimeStr];
     NSURL *url = [NSURL URLWithString:urlStr];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:20.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -221,7 +223,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSURL *url = [NSURL URLWithString:urlStr];
     
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:5.0];
     [request setDelegate:self];
     [request setRequestMethod:@"POST"];
@@ -520,7 +522,11 @@ UIKIT_EXTERN NSString *userFolderPath;
         NSLog(@"保存用户信息失败");
     }
 }
-
+- (void)dealloc
+{
+    [request setDelegate:nil];
+    [request cancel];
+}
 @end
 
 
