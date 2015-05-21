@@ -11,70 +11,121 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7D-kI-eeI">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7D-kI-eeI" userLabel="quiet">
                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="30" id="EwA-Fx-vFY">
+                            <variation key="heightClass=regular-widthClass=compact" constant="40"/>
+                        </constraint>
                         <constraint firstAttribute="height" constant="32" id="eAq-iW-yKE">
-                            <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                            <variation key="heightClass=regular-widthClass=compact" constant="40"/>
                         </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="退出" backgroundImage="m_background">
+                    <state key="normal" image="game_close">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="EwA-Fx-vFY"/>
                             <exclude reference="eAq-iW-yKE"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=compact">
                         <mask key="constraints">
+                            <include reference="EwA-Fx-vFY"/>
                             <include reference="eAq-iW-yKE"/>
                         </mask>
                     </variation>
                 </button>
-                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0p-Q4-bUN">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <state key="normal" image="m_share">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGk-sC-qOF">
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0p-Q4-bUN" userLabel="share">
                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="bs1-bH-vNw"/>
+                        <constraint firstAttribute="width" constant="30" id="Ihm-2j-ESg">
+                            <variation key="heightClass=regular-widthClass=compact" constant="40"/>
+                        </constraint>
+                        <constraint firstAttribute="height" constant="30" id="UQv-Gx-qfn">
+                            <variation key="heightClass=regular-widthClass=compact" constant="40"/>
+                        </constraint>
                     </constraints>
-                    <state key="normal" title="开启字幕" backgroundImage="m_background">
+                    <state key="normal" image="game_share">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="Ihm-2j-ESg"/>
+                            <exclude reference="UQv-Gx-qfn"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="Ihm-2j-ESg"/>
+                            <include reference="UQv-Gx-qfn"/>
+                        </mask>
+                    </variation>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGk-sC-qOF" userLabel="danmu">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="as5-yQ-mh3"/>
+                        <constraint firstAttribute="height" constant="30" id="bs1-bH-vNw">
+                            <variation key="heightClass=regular-widthClass=compact" constant="40"/>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <state key="normal" backgroundImage="game_barrage">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="as5-yQ-mh3"/>
                             <exclude reference="bs1-bH-vNw"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=compact">
                         <mask key="constraints">
+                            <include reference="as5-yQ-mh3"/>
                             <include reference="bs1-bH-vNw"/>
                         </mask>
                     </variation>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="弹幕开关" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWr-LK-iNh">
+                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="E7D-kI-eeI" firstAttribute="leading" secondItem="fO7-F4-g29" secondAttribute="leading" constant="10" id="Fxd-ls-9uH"/>
-                <constraint firstItem="E7D-kI-eeI" firstAttribute="top" secondItem="fO7-F4-g29" secondAttribute="top" constant="2" id="Lxj-l0-Tgg">
+                <constraint firstItem="vWr-LK-iNh" firstAttribute="centerY" secondItem="EGk-sC-qOF" secondAttribute="centerY" constant="-12" id="1q9-BF-x5V">
+                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                </constraint>
+                <constraint firstItem="EGk-sC-qOF" firstAttribute="leading" secondItem="vWr-LK-iNh" secondAttribute="trailing" constant="-40" id="9sc-u5-FQH">
                     <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                </constraint>
+                <constraint firstItem="E7D-kI-eeI" firstAttribute="leading" secondItem="fO7-F4-g29" secondAttribute="leading" constant="10" id="Fxd-ls-9uH"/>
+                <constraint firstAttribute="centerY" secondItem="EGk-sC-qOF" secondAttribute="centerY" constant="2.5" id="L3x-UI-BfJ"/>
+                <constraint firstItem="E7D-kI-eeI" firstAttribute="top" secondItem="fO7-F4-g29" secondAttribute="top" constant="2" id="Lxj-l0-Tgg">
+                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                 </constraint>
                 <constraint firstItem="EGk-sC-qOF" firstAttribute="top" secondItem="fO7-F4-g29" secondAttribute="top" constant="2" id="M5a-4F-0ic">
-                    <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                 </constraint>
-                <constraint firstItem="I0p-Q4-bUN" firstAttribute="top" secondItem="fO7-F4-g29" secondAttribute="top" constant="2" id="MWn-nO-98v"/>
-                <constraint firstAttribute="trailing" secondItem="I0p-Q4-bUN" secondAttribute="trailing" constant="24" id="UQL-hr-FOy"/>
+                <constraint firstItem="I0p-Q4-bUN" firstAttribute="top" secondItem="fO7-F4-g29" secondAttribute="top" constant="2" id="MWn-nO-98v">
+                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                </constraint>
+                <constraint firstAttribute="centerX" secondItem="EGk-sC-qOF" secondAttribute="centerX" constant="-42" id="PNJ-lk-gEY">
+                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="I0p-Q4-bUN" secondAttribute="trailing" constant="24" id="UQL-hr-FOy">
+                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                </constraint>
                 <constraint firstAttribute="trailing" secondItem="EGk-sC-qOF" secondAttribute="trailing" constant="66" id="UWH-G5-OnD">
-                    <variation key="heightClass=regular-widthClass=compact" constant="110"/>
+                    <variation key="heightClass=regular-widthClass=compact" constant="98"/>
                 </constraint>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -86,11 +137,16 @@
                     <exclude reference="E7D-kI-eeI"/>
                     <exclude reference="I0p-Q4-bUN"/>
                     <exclude reference="EGk-sC-qOF"/>
+                    <exclude reference="vWr-LK-iNh"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="Fxd-ls-9uH"/>
                     <exclude reference="Lxj-l0-Tgg"/>
+                    <exclude reference="1q9-BF-x5V"/>
+                    <exclude reference="9sc-u5-FQH"/>
+                    <exclude reference="L3x-UI-BfJ"/>
                     <exclude reference="M5a-4F-0ic"/>
+                    <exclude reference="PNJ-lk-gEY"/>
                     <exclude reference="UWH-G5-OnD"/>
                     <exclude reference="MWn-nO-98v"/>
                     <exclude reference="UQL-hr-FOy"/>
@@ -101,21 +157,27 @@
                     <include reference="E7D-kI-eeI"/>
                     <include reference="I0p-Q4-bUN"/>
                     <include reference="EGk-sC-qOF"/>
+                    <include reference="vWr-LK-iNh"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="Fxd-ls-9uH"/>
                     <include reference="Lxj-l0-Tgg"/>
+                    <include reference="1q9-BF-x5V"/>
+                    <include reference="9sc-u5-FQH"/>
+                    <include reference="L3x-UI-BfJ"/>
                     <include reference="M5a-4F-0ic"/>
-                    <include reference="UWH-G5-OnD"/>
+                    <include reference="PNJ-lk-gEY"/>
+                    <exclude reference="UWH-G5-OnD"/>
                     <include reference="MWn-nO-98v"/>
                     <include reference="UQL-hr-FOy"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="530.5" y="-630"/>
+            <point key="canvasLocation" x="530" y="-627.5"/>
         </view>
     </objects>
     <resources>
-        <image name="m_background" width="36" height="36"/>
-        <image name="m_share" width="32" height="32"/>
+        <image name="game_barrage" width="50" height="50"/>
+        <image name="game_close" width="50" height="50"/>
+        <image name="game_share" width="50" height="50"/>
     </resources>
 </document>

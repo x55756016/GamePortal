@@ -17,7 +17,10 @@
 #define SMSappSecret @"bab3f2aca52cbd9cbf1dd04628c56f51"
 
 //融云
-#define appKeyIM @"mgb7ka1nbspfg"
+//#define appKeyIM @"mgb7ka1nbspfg"
+
+#define appKeyIM @"8w7jv4qb70may"
+
 
 //用户信息保存目录
 NSString *userFolderPath;

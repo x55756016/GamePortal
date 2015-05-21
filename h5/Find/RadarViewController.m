@@ -32,6 +32,11 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     [super viewDidLoad];
     
+    UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,480)];
+    [bgImgView setImage:[UIImage imageNamed:@"kkRadar_bg.png"]];
+    [self.backView addSubview:bgImgView];
+    [self.backView sendSubviewToBack:bgImgView];
+    
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     if (kCLAuthorizationStatusDenied == status || kCLAuthorizationStatusRestricted == status) {
         [KKUtility justAlert:@"请打开定位服务，否则无法使用雷达功能"];

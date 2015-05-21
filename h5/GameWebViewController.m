@@ -42,6 +42,8 @@
     NSString *landorprot;//是否横屏显示
     
     ASIFormDataRequest *request;
+    
+    bool needAddMenuBar;//控制是否要初始化游戏菜单
 
 }
 @end
@@ -84,7 +86,7 @@
     userInfo=[KKUtility getUserInfoFromLocalFile];
     [self SendPlayGameInfoToServer];
     [self GetGameInfoFromServer];
-    [self addLeftAndRightMenu];
+    needAddMenuBar=true;
     [self addMenuButton];
     
 
@@ -92,16 +94,17 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
-    //恢复状态栏方向
-    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
     //科大讯飞取消识别
     [self.iFlySpeechRecognizer cancel];
     [self.iFlySpeechRecognizer setDelegate: nil];
-
     [self unregkeyNotification];
+    
+    [super viewWillDisappear:animated];
+
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    //恢复状态栏方向
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];
 
 }
 //屏幕旋转完成事件
@@ -226,8 +229,9 @@
     myButton.MoveEnable = YES;
     myButton.frame = CGRectMake(0, 150, 40, 40);
     //TabBar上按键图标设置
-    [myButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"k_default.png"]] forState:UIControlStateNormal];
-    [myButton setImage:[UIImage imageNamed:@"k_pressed.png"] forState:UIControlStateHighlighted];
+    [myButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"game_mianBtnNormal.png"]] forState:UIControlStateNormal];
+     [myButton setImage:[UIImage imageNamed:@"game_mianBtnWaiting.png"] forState:UIControlStateSelected];
+    [myButton setImage:[UIImage imageNamed:@"game_mianBtnSelected.png"] forState:UIControlStateHighlighted];
     [myButton setTag:10];
     flag = NO;//控制tabbar的显示与隐藏标志 NO为隐藏
     [myButton addTarget:self action:@selector(tabbarbtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -236,6 +240,11 @@
 //显示 隐藏tabbar
 - (void)tabbarbtn:(HEXCMyUIButton*)btn
 {
+    if(needAddMenuBar){
+        
+        [self addLeftAndRightMenu];
+        needAddMenuBar=false;
+    }
     UITextField *textFiled=(UITextField *)[ButtomBarView viewWithTag:1];
     [textFiled resignFirstResponder];
     [self returnButtomHeightconstraint];

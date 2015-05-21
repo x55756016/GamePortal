@@ -193,7 +193,20 @@ UIKIT_EXTERN NSString *userFolderPath;
     if (![userInfoDir writeToFile:filePath atomically:YES])
     {
         NSLog(@"保存用户信息失败");
+    }else
+    {
+        NSFileManager *fileMgr = [NSFileManager defaultManager];
+        BOOL bRet = [fileMgr fileExistsAtPath:filePath];
+        if (bRet) {
+            NSError *err;
+            [fileMgr removeItemAtPath:filePath error:&err];
+        }
+        if (![userInfoDir writeToFile:filePath atomically:YES])
+        {
+            NSLog(@"删除后保存用户信息失败");
+        }
     }
+    
     
     //标记已登录
     NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];

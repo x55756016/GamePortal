@@ -24,5 +24,6 @@
 - (IBAction)ShowUserInfo:(id)sender;
 
 - (IBAction)showAllFriendInfo:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *backView;
 
 @end

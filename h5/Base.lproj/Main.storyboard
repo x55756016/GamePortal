@@ -11,7 +11,7 @@
         <scene sceneID="3Tl-yB-QM9">
             <objects>
                 <navigationController id="F92-lo-rWR" customClass="FindNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="发现" image="tab_find_unselect" id="QdM-MC-0yX"/>
+                    <tabBarItem key="tabBarItem" title="发现" image="mainBoard_found" selectedImage="mainBoard_foundSelected" id="QdM-MC-0yX"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" translucent="NO" id="mNL-mn-Dp7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -264,7 +264,7 @@
         <scene sceneID="qet-be-jya">
             <objects>
                 <navigationController id="CHV-sL-DiG" userLabel="我的Controller" customClass="My1NavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" image="tab_my_unselect" id="EHC-mL-gzD"/>
+                    <tabBarItem key="tabBarItem" title="我的" image="mainBoard_me" selectedImage="mainBoard_meSelected" id="EHC-mL-gzD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" translucent="NO" id="KMS-3U-NgV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -282,7 +282,7 @@
         <scene sceneID="JFk-56-riC">
             <objects>
                 <navigationController id="NmV-UH-Fra" userLabel="首页navigation" customClass="SquareNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="首页" image="tab_main_unselect" id="iXr-pK-Upl"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="mainBoard_main" selectedImage="mainBoard_mainSelected" id="iXr-pK-Upl"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" translucent="NO" id="zTe-Tj-I4K">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1320,7 +1320,7 @@
         <scene sceneID="fCz-dF-vbm">
             <objects>
                 <navigationController id="Umk-du-p4l" userLabel="消息列表Navigation" customClass="ChatNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="消息" image="tab_message_unselect" id="Lso-6j-nsW"/>
+                    <tabBarItem key="tabBarItem" title="消息" image="mainBoard_message" selectedImage="mainBoard_messageSelected" id="Lso-6j-nsW"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" translucent="NO" id="YNz-tl-OiW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1338,7 +1338,7 @@
         <scene sceneID="HXl-LL-JxA">
             <objects>
                 <navigationController id="QQ2-8d-W9W" userLabel="好友Congtroler" customClass="FriendsNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="好友" image="tab_friends_unselect" id="CT9-oH-Jww"/>
+                    <tabBarItem key="tabBarItem" title="好友" image="mainBoard_friends" selectedImage="mainBoard_friendsSelected" id="CT9-oH-Jww"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" translucent="NO" id="bGj-eu-iCl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -4057,12 +4057,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="首页" id="vat-mo-aCy">
                         <barButtonItem key="backBarButtonItem" title="返回" id="02P-Ii-XwM"/>
-                        <barButtonItem key="leftBarButtonItem" image="tab_game_select" id="nVt-9u-K6s">
+                        <barButtonItem key="leftBarButtonItem" image="mainBoard_NavGame" id="nVt-9u-K6s">
                             <connections>
                                 <segue destination="sTW-I6-Yhy" kind="show" id="LdZ-9r-yM3"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="find" id="lk6-bj-msP">
+                        <barButtonItem key="rightBarButtonItem" image="mainBoard_NavFound" id="lk6-bj-msP">
                             <connections>
                                 <segue destination="ej8-bZ-nok" kind="show" id="l74-gW-OnK"/>
                             </connections>
@@ -4096,7 +4096,6 @@
                     <view key="view" contentMode="scaleToFill" id="ZdV-Jc-rRV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZWR-uy-H8A">
                         <barButtonItem key="backBarButtonItem" title="返回" id="e5v-fF-1Mj"/>
@@ -4107,6 +4106,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backView" destination="ZdV-Jc-rRV" id="oJ5-s7-nDj"/>
                         <segue destination="I8v-ts-Cxf" kind="show" identifier="showAllFriendInfo" id="TLh-3m-m7f"/>
                         <segue destination="iOZ-tB-4tL" kind="show" identifier="PushUserInfo" id="WQ5-kw-hY5"/>
                     </connections>
@@ -4170,7 +4170,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="jkh-kJ-piT">
                         <barButtonItem key="backBarButtonItem" title="返回" id="AOa-he-NSA"/>
-                        <barButtonItem key="rightBarButtonItem" image="find" id="Cxo-YO-MTp">
+                        <barButtonItem key="rightBarButtonItem" image="mainBoard_NavFound" id="Cxo-YO-MTp">
                             <connections>
                                 <segue destination="cMq-qF-Fz5" kind="show" id="AHW-Ly-SfO"/>
                             </connections>
@@ -4327,7 +4327,7 @@
                         <viewControllerLayoutGuide type="bottom" id="kca-xK-9QE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Mh-nj-pnn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="680"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView tag="123" contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZr-Jy-9HG">
@@ -4714,23 +4714,28 @@
         <image name="1_laba" width="42" height="42"/>
         <image name="1_liansai" width="42" height="42"/>
         <image name="bg_input" width="306" height="37"/>
-        <image name="find" width="21" height="21"/>
+        <image name="mainBoard_NavFound" width="69" height="69"/>
+        <image name="mainBoard_NavGame" width="69" height="69"/>
+        <image name="mainBoard_found" width="63" height="44"/>
+        <image name="mainBoard_foundSelected" width="63" height="44"/>
+        <image name="mainBoard_friends" width="50" height="50"/>
+        <image name="mainBoard_friendsSelected" width="50" height="50"/>
+        <image name="mainBoard_main" width="55" height="49"/>
+        <image name="mainBoard_mainSelected" width="55" height="49"/>
+        <image name="mainBoard_me" width="49" height="49"/>
+        <image name="mainBoard_meSelected" width="49" height="49"/>
+        <image name="mainBoard_message" width="55" height="49"/>
+        <image name="mainBoard_messageSelected" width="55" height="49"/>
         <image name="setting_account" width="32" height="31"/>
         <image name="setting_set" width="30" height="30"/>
         <image name="setting_vip" width="31" height="24"/>
-        <image name="tab_find_unselect" width="23" height="23"/>
-        <image name="tab_friends_unselect" width="23" height="23"/>
-        <image name="tab_game_select" width="23" height="23"/>
-        <image name="tab_main_unselect" width="23" height="23"/>
-        <image name="tab_message_unselect" width="23" height="23"/>
-        <image name="tab_my_unselect" width="23" height="23"/>
         <image name="userDefaultHead" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ibz-Ui-e2Z"/>
-        <segue reference="bXQ-RE-HK5"/>
-        <segue reference="iID-OB-lrr"/>
+        <segue reference="d0U-lo-Ceb"/>
         <segue reference="AHW-Ly-SfO"/>
+        <segue reference="WTG-Qz-ySa"/>
         <segue reference="zVw-oc-Kg7"/>
     </inferredMetricsTieBreakers>
 </document>

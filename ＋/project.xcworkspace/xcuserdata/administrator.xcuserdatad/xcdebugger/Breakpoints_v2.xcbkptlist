@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../h5/GameWebViewController.m"
-            timestampString = "453818154.276372"
+            timestampString = "453875583.130038"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
-            landmarkName = "-GetGameInfoFromServerFinish:"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-viewWillDisappear:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../h5/GameWebViewController.m"
-            timestampString = "453818490.561976"
+            filePath = "../h5/AppDelegate.m"
+            timestampString = "453883840.38338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "527"
-            endingLineNumber = "527"
-            landmarkName = "-onResults:isLast:"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "-connectToRCServer"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../h5/GameWebViewController.m"
-            timestampString = "453818490.561976"
+            filePath = "../h5/AppDelegate.m"
+            timestampString = "453883842.578886"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
-            landmarkName = "-StartVioceMsg:"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
+            landmarkName = "-connectToRCServer"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../h5/GameWebViewController.m"
-            timestampString = "453819183.237906"
+            filePath = "../h5/LoginAndRegister/LoginViewController.m"
+            timestampString = "453883962.541734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "545"
-            endingLineNumber = "545"
-            landmarkName = "-onError:"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "-saveUserInfo:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +73,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../h5/GameWebViewController.m"
-            timestampString = "453818444.975169"
+            filePath = "../h5/LoginAndRegister/LoginViewController.m"
+            timestampString = "453884385.822992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
-            landmarkName = "-StartVioceMsg:"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "-saveUserInfo:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../h5/LoginAndRegister/LoginViewController.m"
+            timestampString = "453884602.513812"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "-connectToRCServer"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

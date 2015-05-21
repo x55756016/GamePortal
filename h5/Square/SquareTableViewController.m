@@ -52,7 +52,10 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self UpAndDownPull];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    
+
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -176,7 +179,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         
         UIImageView *descImageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.adScrollView.frame.size.width*i, 0, self.adScrollView.frame.size.width, self.adScrollView.frame.size.height)];
         [self.adScrollView addSubview:descImageView];
-        [descImageView sd_setImageWithURL:[NSURL URLWithString:[adDic objectForKey:@"ImgUrl"]] placeholderImage:[UIImage imageNamed:@""]];
+        [descImageView sd_setImageWithURL:[NSURL URLWithString:[adDic objectForKey:@"ImgUrl"]] placeholderImage:[UIImage imageNamed:@"mainBoard_adLogoDefault"]];
     }
 }
 
