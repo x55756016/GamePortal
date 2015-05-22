@@ -15,9 +15,11 @@
 		C32A251E1B0CBA6F00861BD5 /* SBJson4StreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A25151B0CBA6F00861BD5 /* SBJson4StreamWriter.m */; };
 		C32A251F1B0CBA6F00861BD5 /* SBJson4StreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A25171B0CBA6F00861BD5 /* SBJson4StreamWriterState.m */; };
 		C32A25201B0CBA6F00861BD5 /* SBJson4Writer.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A25191B0CBA6F00861BD5 /* SBJson4Writer.m */; };
-		C32D05AA1B007EF7006B1773 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32D05A81B007EF7006B1773 /* Main.storyboard */; };
 		C32D05AD1B009799006B1773 /* CustomerChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D05AC1B009799006B1773 /* CustomerChatViewController.m */; };
 		C32D05B11B01B037006B1773 /* HEXCMyUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D05B01B01B037006B1773 /* HEXCMyUIButton.m */; };
+		C32D86371B0ED034008D7553 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32D05A81B007EF7006B1773 /* Main.storyboard */; };
+		C32D863A1B0ED299008D7553 /* SquareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32D863C1B0ED299008D7553 /* SquareTableViewCell.xib */; };
+		C32D86401B0EDDB1008D7553 /* matchWebInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D863F1B0EDDB1008D7553 /* matchWebInfoViewController.m */; };
 		C3318EB01B02FEC900E7BCE4 /* GameWebNavgationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3318EAF1B02FEC900E7BCE4 /* GameWebNavgationViewController.m */; };
 		C331E81B1B0B191B004439A3 /* ClickImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C331E81A1B0B191B004439A3 /* ClickImage.m */; };
 		C331E81F1B0B702D004439A3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C331E81D1B0B702D004439A3 /* ViewController.m */; };
@@ -166,7 +168,6 @@
 		CB87187D1ACE8F2000413FDD /* MeDetailAgeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB87187C1ACE8F2000413FDD /* MeDetailAgeTableViewController.m */; };
 		CB89060A1ACA35AD00D12F8F /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8906091ACA35AD00D12F8F /* MainTabBarController.m */; };
 		CB927D6E1ADFE927002ED6E6 /* SquareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB927D6C1ADFE927002ED6E6 /* SquareTableViewCell.m */; };
-		CB927D6F1ADFE927002ED6E6 /* SquareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB927D6D1ADFE927002ED6E6 /* SquareTableViewCell.xib */; };
 		CB94E6EA1ADD1C22004B35B8 /* UserInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB94E6E91ADD1C22004B35B8 /* UserInfoTableViewController.m */; };
 		CB9FEFEF1AD776100017FA8A /* UserDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9FEFEE1AD776100017FA8A /* UserDataModel.m */; };
 		CB9FEFF51AD7A0D00017FA8A /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9FEFF41AD7A0D00017FA8A /* ChatListViewController.m */; };
@@ -208,6 +209,9 @@
 		C32D05AC1B009799006B1773 /* CustomerChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerChatViewController.m; sourceTree = "<group>"; };
 		C32D05AF1B01B037006B1773 /* HEXCMyUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXCMyUIButton.h; sourceTree = "<group>"; };
 		C32D05B01B01B037006B1773 /* HEXCMyUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXCMyUIButton.m; sourceTree = "<group>"; };
+		C32D863D1B0ED29B008D7553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SquareTableViewCell.xib; sourceTree = "<group>"; };
+		C32D863E1B0EDDB1008D7553 /* matchWebInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matchWebInfoViewController.h; sourceTree = "<group>"; };
+		C32D863F1B0EDDB1008D7553 /* matchWebInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = matchWebInfoViewController.m; sourceTree = "<group>"; };
 		C3318EAE1B02FEC900E7BCE4 /* GameWebNavgationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameWebNavgationViewController.h; sourceTree = "<group>"; };
 		C3318EAF1B02FEC900E7BCE4 /* GameWebNavgationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameWebNavgationViewController.m; sourceTree = "<group>"; };
 		C331E8191B0B191B004439A3 /* ClickImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClickImage.h; sourceTree = "<group>"; };
@@ -465,7 +469,6 @@
 		CB8906091ACA35AD00D12F8F /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		CB927D6B1ADFE927002ED6E6 /* SquareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareTableViewCell.h; sourceTree = "<group>"; };
 		CB927D6C1ADFE927002ED6E6 /* SquareTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareTableViewCell.m; sourceTree = "<group>"; };
-		CB927D6D1ADFE927002ED6E6 /* SquareTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SquareTableViewCell.xib; sourceTree = "<group>"; };
 		CB94E6E81ADD1C22004B35B8 /* UserInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfoTableViewController.h; path = ../Message/UserInfoTableViewController.h; sourceTree = "<group>"; };
 		CB94E6E91ADD1C22004B35B8 /* UserInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoTableViewController.m; path = ../Message/UserInfoTableViewController.m; sourceTree = "<group>"; };
 		CB9FEFED1AD776100017FA8A /* UserDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataModel.h; sourceTree = "<group>"; };
@@ -820,8 +823,8 @@
 				C32D05A81B007EF7006B1773 /* Main.storyboard */,
 				CB0A69B81AC92B74003F7775 /* AppDelegate.h */,
 				CB0A69B91AC92B74003F7775 /* AppDelegate.m */,
-				C38E411E1B048E4700F42B7D /* SDK */,
 				C3CEEA6C1AFA3BF80062970F /* Home */,
+				C38E411E1B048E4700F42B7D /* SDK */,
 				C3A9947C1AF8696700B2D317 /* GAME */,
 				CB3929191ACC29100004FFB4 /* LoginAndRegister */,
 				CB8906071ACA358300D12F8F /* MainTabbar */,
@@ -1198,6 +1201,8 @@
 				CBE0A0551AEA22E200791FAB /* CustomPresentAnimation */,
 				C3C3B2B21AFDC2B4003388E8 /* UIButton+ImageAndLabel.h */,
 				C3C3B2B31AFDC2B4003388E8 /* UIButton+ImageAndLabel.m */,
+				C32D863E1B0EDDB1008D7553 /* matchWebInfoViewController.h */,
+				C32D863F1B0EDDB1008D7553 /* matchWebInfoViewController.m */,
 			);
 			path = Find;
 			sourceTree = "<group>";
@@ -1238,7 +1243,7 @@
 			children = (
 				CB927D6B1ADFE927002ED6E6 /* SquareTableViewCell.h */,
 				CB927D6C1ADFE927002ED6E6 /* SquareTableViewCell.m */,
-				CB927D6D1ADFE927002ED6E6 /* SquareTableViewCell.xib */,
+				C32D863C1B0ED299008D7553 /* SquareTableViewCell.xib */,
 			);
 			name = SquareCell;
 			path = Square/SquareCell;
@@ -1398,8 +1403,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C32D86371B0ED034008D7553 /* Main.storyboard in Resources */,
 				C3A994891AF86F3200B2D317 /* HotGameView.xib in Resources */,
-				C32D05AA1B007EF7006B1773 /* Main.storyboard in Resources */,
 				C3A994B71AF8798C00B2D317 /* CityRankView.xib in Resources */,
 				C3A994AB1AF8781C00B2D317 /* WorldRankView.xib in Resources */,
 				CB3CB2801ACD8A7A0031E016 /* local.plist in Resources */,
@@ -1414,7 +1419,7 @@
 				CB83C9501AE9D93A0075F045 /* CommonTableViewCell.xib in Resources */,
 				C331E8201B0B702D004439A3 /* ViewController.xib in Resources */,
 				CBB4B0F51AF47FE9004BE59A /* RongCloud.bundle in Resources */,
-				CB927D6F1ADFE927002ED6E6 /* SquareTableViewCell.xib in Resources */,
+				C32D863A1B0ED299008D7553 /* SquareTableViewCell.xib in Resources */,
 				C3A994B41AF8794F00B2D317 /* MyGame.xib in Resources */,
 				CBE0A0511AEA108F00791FAB /* MatchTableViewCell.xib in Resources */,
 				CB323DAD1ACA3B7B00C7FE83 /* SVProgressHUD.bundle in Resources */,
@@ -1491,6 +1496,7 @@
 				C32D05B11B01B037006B1773 /* HEXCMyUIButton.m in Sources */,
 				CBE0A0581AEA22E200791FAB /* CustomPresentAnimation.m in Sources */,
 				CB87187D1ACE8F2000413FDD /* MeDetailAgeTableViewController.m in Sources */,
+				C32D86401B0EDDB1008D7553 /* matchWebInfoViewController.m in Sources */,
 				CB61669F1AD8F6F000D9132F /* ChatSettingViewController.m in Sources */,
 				C32A251A1B0CBA6F00861BD5 /* SBJson4Parser.m in Sources */,
 				C3A9949C1AF86FF100B2D317 /* GameWebViewController.m in Sources */,
@@ -1568,6 +1574,14 @@
 				C32D05A91B007EF7006B1773 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C32D863C1B0ED299008D7553 /* SquareTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C32D863D1B0ED29B008D7553 /* Base */,
+			);
+			name = SquareTableViewCell.xib;
 			sourceTree = "<group>";
 		};
 		CB323DB01ACA3CC500C7FE83 /* SMS_SDKLocalizable.strings */ = {

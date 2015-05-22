@@ -76,7 +76,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <state key="normal" backgroundImage="game_barrage">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
@@ -92,21 +92,9 @@
                         </mask>
                     </variation>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="弹幕开关" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWr-LK-iNh">
-                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="vWr-LK-iNh" firstAttribute="centerY" secondItem="EGk-sC-qOF" secondAttribute="centerY" constant="-12" id="1q9-BF-x5V">
-                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
-                </constraint>
-                <constraint firstItem="EGk-sC-qOF" firstAttribute="leading" secondItem="vWr-LK-iNh" secondAttribute="trailing" constant="-40" id="9sc-u5-FQH">
-                    <variation key="heightClass=regular-widthClass=compact" constant="5"/>
-                </constraint>
                 <constraint firstItem="E7D-kI-eeI" firstAttribute="leading" secondItem="fO7-F4-g29" secondAttribute="leading" constant="10" id="Fxd-ls-9uH"/>
                 <constraint firstAttribute="centerY" secondItem="EGk-sC-qOF" secondAttribute="centerY" constant="2.5" id="L3x-UI-BfJ"/>
                 <constraint firstItem="E7D-kI-eeI" firstAttribute="top" secondItem="fO7-F4-g29" secondAttribute="top" constant="2" id="Lxj-l0-Tgg">
@@ -137,13 +125,10 @@
                     <exclude reference="E7D-kI-eeI"/>
                     <exclude reference="I0p-Q4-bUN"/>
                     <exclude reference="EGk-sC-qOF"/>
-                    <exclude reference="vWr-LK-iNh"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="Fxd-ls-9uH"/>
                     <exclude reference="Lxj-l0-Tgg"/>
-                    <exclude reference="1q9-BF-x5V"/>
-                    <exclude reference="9sc-u5-FQH"/>
                     <exclude reference="L3x-UI-BfJ"/>
                     <exclude reference="M5a-4F-0ic"/>
                     <exclude reference="PNJ-lk-gEY"/>
@@ -157,27 +142,24 @@
                     <include reference="E7D-kI-eeI"/>
                     <include reference="I0p-Q4-bUN"/>
                     <include reference="EGk-sC-qOF"/>
-                    <include reference="vWr-LK-iNh"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="Fxd-ls-9uH"/>
                     <include reference="Lxj-l0-Tgg"/>
-                    <include reference="1q9-BF-x5V"/>
-                    <include reference="9sc-u5-FQH"/>
                     <include reference="L3x-UI-BfJ"/>
-                    <include reference="M5a-4F-0ic"/>
+                    <exclude reference="M5a-4F-0ic"/>
                     <include reference="PNJ-lk-gEY"/>
                     <exclude reference="UWH-G5-OnD"/>
                     <include reference="MWn-nO-98v"/>
                     <include reference="UQL-hr-FOy"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="530" y="-627.5"/>
+            <point key="canvasLocation" x="530" y="-887.5"/>
         </view>
     </objects>
     <resources>
-        <image name="game_barrage" width="50" height="50"/>
-        <image name="game_close" width="50" height="50"/>
-        <image name="game_share" width="50" height="50"/>
+        <image name="game_barrage" width="40" height="40"/>
+        <image name="game_close" width="40" height="40"/>
+        <image name="game_share" width="40" height="40"/>
     </resources>
 </document>

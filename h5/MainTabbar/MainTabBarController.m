@@ -30,23 +30,23 @@
     //设置背景颜色
     //self.tabBar.barTintColor = [UIColor blackColor];
     @try{
-    UIImage *MainSelectdImage = [[UIImage imageNamed:@"tab_main_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *MainSelectdImage = [[UIImage imageNamed:@"mainBoard_mainSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UITabBarItem *MainItem = [self.tabBar.items objectAtIndex:0];
     MainItem.selectedImage = MainSelectdImage;
     
-    UIImage *MessageSelectdImage = [[UIImage imageNamed:@"tab_message_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *MessageSelectdImage = [[UIImage imageNamed:@"mainBoard_messageSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UITabBarItem *MessageItem = [self.tabBar.items objectAtIndex:1];
     MessageItem.selectedImage = MessageSelectdImage;
     
-    UIImage *FindSelectdImage = [[UIImage imageNamed:@"tab_find_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *FindSelectdImage = [[UIImage imageNamed:@"mainBoard_foundSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UITabBarItem *FindItem = [self.tabBar.items objectAtIndex:2];
     FindItem.selectedImage = FindSelectdImage;
     
-    UIImage *FriendsSelectdImage = [[UIImage imageNamed:@"tab_friends_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *FriendsSelectdImage = [[UIImage imageNamed:@"mainBoard_friendsSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UITabBarItem *FriendsItem = [self.tabBar.items objectAtIndex:3];
     FriendsItem.selectedImage = FriendsSelectdImage;
     
-    UIImage *MySelectdImage = [[UIImage imageNamed:@"tab_my_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *MySelectdImage = [[UIImage imageNamed:@"mainBoard_meSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UITabBarItem *MyItem = [self.tabBar.items objectAtIndex:4];
     MyItem.selectedImage = MySelectdImage;
     }
@@ -77,7 +77,7 @@
 
 -(NSUInteger)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskAllButUpsideDown;
+    return UIInterfaceOrientationMaskAll;
 }
 //－－结束 ios6以后－－－－－－－－－－－－－－－－－－－－－
 @end

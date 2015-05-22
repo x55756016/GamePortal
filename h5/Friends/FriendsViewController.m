@@ -141,7 +141,8 @@ UIKIT_EXTERN NSString *userFolderPath;
     self.sortedArrForArrays = [ChineseString getChineseStringArr:_dataArr sectionHeadsKeys:self.sectionHeadsKeys];
     
     //添加置顶内容
-    NSMutableArray *regularDataArr = [NSMutableArray arrayWithObjects:@"在线客服",@"新的朋友", @"群聊", nil];
+//    NSMutableArray *regularDataArr = [NSMutableArray arrayWithObjects:@"在线客服",@"新的朋友", @"群聊", nil];
+     NSMutableArray *regularDataArr = [NSMutableArray arrayWithObjects:@"在线客服", nil];
     [regularDataArr addObjectsFromArray:self.sortedArrForArrays];
     self.sortedArrForArrays = regularDataArr;
 
@@ -160,20 +161,30 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(section == 0 || section == 1|| section == 2)
+//    if(section == 0 || section == 1|| section == 2)
+//    {
+//        return 1;
+//    }
+    if(section == 0 )
     {
         return 1;
     }
+
     
     return  [[self.sortedArrForArrays objectAtIndex:section] count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if(section == 0 || section == 1|| section == 2)
+//    if(section == 0 || section == 1|| section == 2)
+//    {
+//        return nil;
+//    }
+    if(section == 0 )
     {
         return nil;
     }
+
     
     return [self.sectionHeadsKeys objectAtIndex:section];
 }
@@ -190,7 +201,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     CommonTableViewCell *commonTableViewCell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
-    if(indexPath.section > 2)
+    if(indexPath.section > 0)
     {
         ChineseString *str = (ChineseString *) [arr objectAtIndex:indexPath.row];
         
@@ -216,14 +227,14 @@ UIKIT_EXTERN NSString *userFolderPath;
     {
         [self chartTocustomerServices];
     }
-    else if (indexPath.section == 1)//新的朋友
-    {
-        
-    }
-    else if (indexPath.section == 2)//群聊
-    {
-        
-    }
+//    else if (indexPath.section == 1)//新的朋友
+//    {
+//        
+//    }
+//    else if (indexPath.section == 2)//群聊
+//    {
+//        
+//    }
     else
     {
         ChineseString *str = (ChineseString *) [arr objectAtIndex:indexPath.row];

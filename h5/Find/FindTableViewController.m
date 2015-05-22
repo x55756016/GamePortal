@@ -46,12 +46,12 @@
     
     else if(section == 1)
     {
-        return 2;
+        return 1;
     }
     
     else if(section == 2)
     {
-        return 2;
+        return 1;
     }
     return 0;
 }
@@ -74,10 +74,10 @@
         {
             cell = self.aroundTableViewCell;
         }
-        if(indexPath.row == 1)
-        {
-            cell = self.squareTableViewCell;
-        }
+//        if(indexPath.row == 1)
+//        {
+//            cell = self.squareTableViewCell;
+//        }
     }
     
     if(indexPath.section == 2)
@@ -86,10 +86,10 @@
         {
             cell = self.matchTableViewCell;
         }
-        if(indexPath.row == 1)
-        {
-            cell = self.kkBarTableViewCell;
-        }
+//        if(indexPath.row == 1)
+//        {
+//            cell = self.kkBarTableViewCell;
+//        }
     }
     
     return cell;

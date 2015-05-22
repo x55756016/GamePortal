@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 //    [self.navigationController setNavigationBarHidden:YES animated:NO];
      self.hidesBottomBarWhenPushed = YES;

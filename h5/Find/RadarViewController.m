@@ -31,15 +31,16 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    //加载背景图片
     UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,480)];
     [bgImgView setImage:[UIImage imageNamed:@"kkRadar_bg.png"]];
     [self.backView addSubview:bgImgView];
     [self.backView sendSubviewToBack:bgImgView];
-    
+    //判断是否开启定位
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     if (kCLAuthorizationStatusDenied == status || kCLAuthorizationStatusRestricted == status) {
         [KKUtility justAlert:@"请打开定位服务，否则无法使用雷达功能"];
+        return;
     }
     
     CGSize radarSize = CGSizeMake([[UIScreen mainScreen]bounds].size.width, [[UIScreen mainScreen]bounds].size.width);
@@ -56,7 +57,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     self.items = [[NSMutableArray alloc]init];
     AllAroundUserTmp=[[NSMutableArray alloc]init];
     self.AllUsers=[[NSMutableArray alloc]init];
-    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(addOrReplaceItem) userInfo:nil repeats:YES];
+//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addOrReplaceItem) userInfo:nil repeats:YES];
 }
 
 

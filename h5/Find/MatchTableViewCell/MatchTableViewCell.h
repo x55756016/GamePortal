@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *headImageView;
 @property (strong, nonatomic) IBOutlet UILabel *matchNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *matchDetailLabel;
+@property (strong, nonatomic) IBOutlet UIButton *btnOpenActiveDetail;
 
 @end

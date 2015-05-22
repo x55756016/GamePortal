@@ -12,6 +12,7 @@
 #import "UIImageView+WebCache.h"
 #import "h5kkContants.h"
 #import "KKUtility.h"
+#import "matchWebInfoViewController.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -38,6 +39,10 @@ UIKIT_EXTERN NSString *userFolderPath;
      userInfo = [KKUtility getUserInfoFromLocalFile];
     //加载联赛数据
     [self loadMatch];
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+    backItem.title = @"返回";    
+    self.navigationItem.backBarButtonItem = backItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -106,9 +111,12 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSDictionary *matchDict = matchArray[indexPath.row];
     cell.matchNameLabel.text = [matchDict objectForKey:@"Title"];
     cell.matchDetailLabel.text = [matchDict objectForKey:@"Summary"];
+    [cell.btnOpenActiveDetail addTarget:self action:@selector(OpenActiveDetail:) forControlEvents:UIControlEventTouchUpInside];
+
     
-    NSArray *descImgArray = [[matchDict objectForKey:@"DescImg"] componentsSeparatedByString:@"||"];
-    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[descImgArray objectAtIndex:0]] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
+//    NSArray *descImgArray = [[matchDict objectForKey:@"DescImg"] componentsSeparatedByString:@"||"];
+    NSString *strUrl=[matchDict objectForKey:@"Logo"];
+    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:strUrl] placeholderImage:[UIImage imageNamed:@"mainBoard_adLogoDefault"]];
     return cell;
 }
 
@@ -120,6 +128,56 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    NSDictionary *matchDict = matchArray[indexPath.row];
+//    NSString *strUrl=[NSString stringWithFormat:@"%@", [matchDict objectForKey:@"ContentPageID"]];
+//    
+//    NSString *strActive=[@"http://www.h5kk.com/KKActive/" stringByAppendingString:strUrl];
+//    strUrl =strActive;
+//    
+//    NSDictionary *adDic=[NSDictionary dictionaryWithObject:strUrl forKey:@"Url"];
+//    NSLog(@"查看联赛排名详情[%@]", adDic);
+//    [self performSegueWithIdentifier:@"openMatchInfoWeb" sender:adDic];
+    
+
+}
+- (IBAction)OpenActiveDetail:(id)sender
+{
+    @try {
+        UIButton *button = (UIButton *)sender;
+        MatchTableViewCell *cell = (MatchTableViewCell *)button.superview.superview.superview.superview;
+       
+        UITableView *tableView = (UITableView *)cell.superview;
+        if (![tableView isKindOfClass:[UITableView class]])
+        {
+            tableView = (UITableView *)tableView.superview;
+        }
+        //    NSLog(@"tag[%ld]", (long)tableView.tag);
+        NSIndexPath *indexPath = [tableView indexPathForCell:cell];
+        
+        
+        NSDictionary *matchDict = matchArray[indexPath.row];
+        NSString *strUrl=[NSString stringWithFormat:@"%@", [matchDict objectForKey:@"ContentPageID"]];
+        
+        NSString *strActive=[@"http://www.h5kk.com/KKActive/" stringByAppendingString:strUrl];
+        strUrl =strActive;
+        
+        NSDictionary *adDic=[NSDictionary dictionaryWithObject:strUrl forKey:@"Url"];
+        NSLog(@"查看联赛排名详情[%@]", adDic);
+        [self performSegueWithIdentifier:@"openMatchInfoWeb" sender:adDic];
+    }
+    @catch (NSException *exception) {
+        
+    }
+
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"openMatchInfoWeb"])
+    {
+        matchWebInfoViewController *gwvc = (matchWebInfoViewController *)[segue destinationViewController];
+        gwvc.matchInfoDict = (NSDictionary *)sender;
+    }
 }
 
 - (void)dealloc

@@ -54,14 +54,15 @@
 @synthesize gameWebView;
 
 - (void)viewDidLoad
-{
+{    //恢复状态栏方向
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
+    self.view.transform =CGAffineTransformIdentity;
+    
     [super viewDidLoad];
     [self regkeyNotification];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    //恢复状态栏方向
-    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
-    self.view.transform =CGAffineTransformIdentity;
+
     
     [WXApi registerApp:@"wx6f12d1a412f2bf36"];
     
@@ -102,7 +103,7 @@
     [super viewWillDisappear:animated];
 
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     //恢复状态栏方向
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];
 
@@ -132,11 +133,10 @@
         //[[TopBarView alloc] initWithNibName:@"TopMenuView" bundle:nil];
         //view 设置半透明 圆角样式
         TopBarView.layer.cornerRadius = 10;//设置圆角的大小
-        TopBarView.layer.backgroundColor = [[UIColor clearColor] CGColor];
-        //    TopBarView.alpha = 0.5f;//设置透明
+        TopBarView.layer.backgroundColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5 ] CGColor];
         TopBarView.layer.masksToBounds = YES;
         TopBarView.translatesAutoresizingMaskIntoConstraints=NO;
-        TopBarView.layer.borderColor = [UIColor whiteColor].CGColor;
+        TopBarView.layer.borderColor = [UIColor blackColor].CGColor;
         TopBarView.layer.borderWidth = 0.1;
         TopBarView.hidden=YES;
         [self.view addSubview:TopBarView];
@@ -171,12 +171,13 @@
         ButtomBarView= (UIView *)[[[NSBundle mainBundle]loadNibNamed:@"ButtomMenuView" owner:self options:nil]objectAtIndex:0];
         //view 设置半透明 圆角样式
         ButtomBarView.layer.cornerRadius = 10;//设置圆角的大小
-        ButtomBarView.layer.backgroundColor = [[UIColor clearColor] CGColor];
-        //  ButtomBarView.alpha = 0.5f;//设置透明
+        ButtomBarView.layer.backgroundColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5 ] CGColor];
+        
         ButtomBarView.layer.masksToBounds = YES;
         ButtomBarView.translatesAutoresizingMaskIntoConstraints=NO;
-        ButtomBarView.layer.borderColor = [UIColor whiteColor].CGColor;
+        ButtomBarView.layer.borderColor = [UIColor lightGrayColor].CGColor;
         ButtomBarView.layer.borderWidth = 0.1;
+
         ButtomBarView.hidden=YES;
         [self.view addSubview:ButtomBarView];
         //设置坐标点在x轴中心位置
@@ -713,8 +714,9 @@ if (error.errorCode ==0 ) {
         [message setThumbImage:[self screenShot]];
         
         WXWebpageObject *ext = [WXWebpageObject object];
-        ext.webpageUrl = @"http://www.h5kk.com/cms/DownLoad";
-        
+         NSString *urlStr = [self.gameDetailDict objectForKey:@"Url"];
+//        ext.webpageUrl = @"http://www.h5kk.com/cms/DownLoad";
+        ext.webpageUrl = urlStr;
         message.mediaObject = ext;
         SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
         req.bText = NO;
