@@ -22,6 +22,7 @@
 #import "iflyMSC/IFlyContact.h"
 #import "iflyMSC/IFlyDataUploader.h"
 #import "SBJson4.h"
+#import "Microphone.h"
 
 
 @interface GameWebViewController (){
@@ -44,6 +45,8 @@
     ASIFormDataRequest *request;
     
     bool needAddMenuBar;//控制是否要初始化游戏菜单
+    
+    Microphone *kkMicrophone;
 
 }
 @end
@@ -79,10 +82,13 @@
     //设置为非语义模式
     [self.iFlySpeechRecognizer setParameter:@"0" forKey:[IFlySpeechConstant ASR_SCH]];
     //设置返回结果的数据格式，可设置为json，xml，plain，默认为json。
-    [self.iFlySpeechRecognizer setParameter:@"1000" forKey:@"vad_bos"];
+    //前端点检测；静音超时时间，即用户多长时间不说话则当做超时处理
+    [self.iFlySpeechRecognizer setParameter:@"10000" forKey:@"vad_bos"];
+    [self.iFlySpeechRecognizer setParameter:@"10000" forKey:@"vad_eos"];
+    [self.iFlySpeechRecognizer setParameter:@"0" forKey:@"asr_ptt"];
     //设置为麦克风输入模式
     [self.iFlySpeechRecognizer setParameter:IFLY_AUDIO_SOURCE_MIC forKey:@"audio_source"];
-    
+    kkMicrophone=[[Microphone alloc] init];
     
     userInfo=[KKUtility getUserInfoFromLocalFile];
     [self SendPlayGameInfoToServer];
@@ -98,6 +104,7 @@
     //科大讯飞取消识别
     [self.iFlySpeechRecognizer cancel];
     [self.iFlySpeechRecognizer setDelegate: nil];
+    [kkMicrophone stopMicrophone];
     [self unregkeyNotification];
     
     [super viewWillDisappear:animated];
@@ -204,7 +211,17 @@
         UIButton *startVoiceBtn=(UIButton *)[ButtomBarView viewWithTag:2];
         //    [startVoiceBtn setImage:[UIImage imageNamed:@"k_voice_default.png"] forState:UIControlStateNormal];
         //    [startVoiceBtn setImage:[UIImage imageNamed:@"k_voice_pressed.png"] forState:UIControlStateHighlighted];
-        [startVoiceBtn addTarget:self action:@selector(StartVioceMsg:) forControlEvents:UIControlEventTouchUpInside];
+//        [startVoiceBtn addTarget:self action:@selector(StartVioceMsg:) forControlEvents:UIControlEventTouchUpInside];
+        //实例化长按手势监听
+        UILongPressGestureRecognizer *longPress =
+        [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                      action:@selector(handleTableviewCellLongPressed:)];
+        //代理
+        longPress.delegate = self;
+        longPress.minimumPressDuration = 0.1;
+        //将长按手势添加到需要实现长按操作的视图里
+        [startVoiceBtn addGestureRecognizer:longPress];
+        
         
         //发送
         UIButton *btnSend=(UIButton *)[ButtomBarView viewWithTag:3];
@@ -221,6 +238,125 @@
 
 }
 
+//------------------启动科大讯飞及相关接口------------------------------------------------------------
+//长按事件的实现方法
+- (void) handleTableviewCellLongPressed:(UILongPressGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer.state ==
+        UIGestureRecognizerStateBegan) {
+       // NSLog(@"UIGestureRecognizerStateBegan");
+        [self returnButtomHeightconstraint];
+        //启动科大讯飞合成会话
+        bool ret = [self.iFlySpeechRecognizer startListening];
+        if (ret) {
+            [kkMicrophone showMicrophone];
+            if([landorprot isEqualToString:@"1"])
+            {
+                [kkMicrophone Transform:M_PI/2];
+            }
+        }
+    }
+    if (gestureRecognizer.state ==
+        UIGestureRecognizerStateChanged) {
+        //NSLog(@"UIGestureRecognizerStateChanged");
+    }
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        //NSLog(@"UIGestureRecognizerStateEnded");
+        [self.iFlySpeechRecognizer stopListening];
+        [kkMicrophone stopMicrophone];
+    }
+    
+}
+
+- (void) onResults:(NSArray *) results isLast:(BOOL)isLast
+{
+    NSMutableString *resultString = [[NSMutableString alloc] init];
+    
+    NSDictionary *dic = results[0];
+    
+    for (NSString *key in dic) {
+        [resultString appendFormat:@"%@",key];
+    }
+    
+    //NSLog(@"听写结果：%@",resultString);
+    NSString * resultFromJson =  [self getResultFromJson:resultString];
+    
+    self.textMsgField.text =[NSString stringWithFormat:@"%@%@", self.textMsgField.text,resultFromJson];
+    
+    NSLog(@"isLast=%d",isLast);
+    
+}
+- (void) onVolumeChanged: (int)volume{
+    float volumeNum=(float)volume/100;
+    NSLog(@"volume=%d",volume);
+    
+    [kkMicrophone updateVoiceVolume:volumeNum];
+    
+}
+- (void) onEndOfSpeech
+{
+    [kkMicrophone stopMicrophone];
+}
+- (void) onError:(IFlySpeechError *) error
+{
+    NSString *text ;
+    if (error.errorCode ==0 ) {
+        
+        if (self.textMsgField.text.length==0) {
+            
+            text = @"无识别结果";
+        }
+        else
+        {
+            text = @"识别成功";
+        }
+    }
+    else
+    {
+        text = [NSString stringWithFormat:@"发生错误：%d %@",error.errorCode,error.errorDesc];
+        NSLog(@"%@",text);
+    }
+}
+-(NSString *) getResultFromJson:(NSString*)params
+{
+    if (params == NULL) {
+        return nil;
+    }
+    NSMutableString *tempStr = [[NSMutableString alloc] init];
+    
+    //返回的格式必须为utf8的,否则发生未知错误
+    NSString *jsonString = params;
+    
+    id block = ^(id obj, BOOL *ignored) {
+        NSDictionary *dic = obj;
+        
+        NSArray *wordArray = [dic objectForKey:@"ws"];
+        
+        for (int i = 0; i < [wordArray count]; i++) {
+            NSDictionary *wsDic = [wordArray objectAtIndex: i];
+            NSArray *cwArray = [wsDic objectForKey:@"cw"];
+            
+            for (int j = 0; j < [cwArray count]; j++) {
+                NSDictionary *wDic = [cwArray objectAtIndex:j];
+                NSString *str = [wDic objectForKey:@"w"];
+                [tempStr appendString: str];
+            }
+        }
+        
+    };
+    
+    id eh = ^(NSError *err) {
+        NSLog(@"json parser error");
+        //        self.output.string = err.description;
+    };
+    id parser = [SBJson4Parser parserWithBlock:block allowMultiRoot:NO unwrapRootArray:NO errorHandler:eh];
+    [parser parse:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    return tempStr;
+}
+
+//-------------------结束科大讯飞-----------------------------------------------------------
 
 
 //做了修改 设置tab bar
@@ -231,7 +367,7 @@
     myButton.frame = CGRectMake(0, 150, 40, 40);
     //TabBar上按键图标设置
     [myButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"game_mianBtnNormal.png"]] forState:UIControlStateNormal];
-     [myButton setImage:[UIImage imageNamed:@"game_mianBtnWaiting.png"] forState:UIControlStateSelected];
+    [myButton setImage:[UIImage imageNamed:@"game_mianBtnWaiting.png"] forState:UIControlStateSelected];
     [myButton setImage:[UIImage imageNamed:@"game_mianBtnSelected.png"] forState:UIControlStateHighlighted];
     [myButton setTag:10];
     flag = NO;//控制tabbar的显示与隐藏标志 NO为隐藏
@@ -244,7 +380,8 @@
     if(needAddMenuBar){
         
         [self addLeftAndRightMenu];
-        needAddMenuBar=false;
+        needAddMenuBar=false;        
+        [self.view bringSubviewToFront: myButton];
     }
     UITextField *textFiled=(UITextField *)[ButtomBarView viewWithTag:1];
     [textFiled resignFirstResponder];
@@ -256,7 +393,7 @@
             ButtomBarView.hidden=NO;
             flag = YES;
         }else{
-           TopBarView.hidden = YES;
+            TopBarView.hidden = YES;
             ButtomBarView.hidden=YES;
             flag = NO;
         }
@@ -513,103 +650,6 @@
 }
 //uitextfile 事件结束---------------------------------------
 
-
-//------------------启动科大讯飞及相关接口------------------------------------------------------------
-- (IBAction)StartVioceMsg:(id)sender
-{
-    [self returnButtomHeightconstraint];
-    //启动科大讯飞合成会话
-    //设置为录音模式
-    [self.iFlySpeechRecognizer setParameter:IFLY_AUDIO_SOURCE_MIC forKey:@"audio_source"];
-    
-    bool ret = [self.iFlySpeechRecognizer startListening];
-    
-    if (ret) {
-        
-
-    }
-
-    NSLog(@"start listenning...");
-
-}
-- (void) onResults:(NSArray *) results isLast:(BOOL)isLast
-{
-    NSMutableString *resultString = [[NSMutableString alloc] init];
-    
-    NSDictionary *dic = results[0];
-    
-    for (NSString *key in dic) {
-        [resultString appendFormat:@"%@",key];
-    }
-    
-    //NSLog(@"听写结果：%@",resultString);
-    NSString * resultFromJson =  [self getResultFromJson:resultString];
-
-    self.textMsgField.text =[NSString stringWithFormat:@"%@%@", self.textMsgField.text,resultFromJson];
-    
-    NSLog(@"isLast=%d",isLast);
-}
-- (void) onError:(IFlySpeechError *) error
-{
-    NSString *text ;
-if (error.errorCode ==0 ) {
-        
-        if (self.textMsgField.text.length==0) {
-            
-            text = @"无识别结果";
-        }
-        else
-        {
-            text = @"识别成功";
-        }
-    }
-    else
-    {
-        text = [NSString stringWithFormat:@"发生错误：%d %@",error.errorCode,error.errorDesc];
-        
-        NSLog(@"%@",text);
-    }
-}
--(NSString *) getResultFromJson:(NSString*)params
-{
-    if (params == NULL) {
-        return nil;
-    }
-    NSMutableString *tempStr = [[NSMutableString alloc] init];
-    
-    //返回的格式必须为utf8的,否则发生未知错误
-    NSString *jsonString = params;
-    
-    id block = ^(id obj, BOOL *ignored) {
-        NSDictionary *dic = obj;
-        
-        NSArray *wordArray = [dic objectForKey:@"ws"];
-        
-        for (int i = 0; i < [wordArray count]; i++) {
-            NSDictionary *wsDic = [wordArray objectAtIndex: i];
-            NSArray *cwArray = [wsDic objectForKey:@"cw"];
-            
-            for (int j = 0; j < [cwArray count]; j++) {
-                NSDictionary *wDic = [cwArray objectAtIndex:j];
-                NSString *str = [wDic objectForKey:@"w"];
-                [tempStr appendString: str];
-            }
-        }
-        
-    };
-    
-    id eh = ^(NSError *err) {
-        NSLog(@"json parser error");
-        //        self.output.string = err.description;
-    };
-    id parser = [SBJson4Parser parserWithBlock:block allowMultiRoot:NO unwrapRootArray:NO errorHandler:eh];
-    [parser parse:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    
-    return tempStr;
-}
-
-//-------------------结束科大讯飞-----------------------------------------------------------
 
 //发送弹幕
 - (IBAction)sendJsFunction:(id)sender

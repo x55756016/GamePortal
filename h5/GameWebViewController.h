@@ -25,7 +25,7 @@
 @end
 
 
-@interface GameWebViewController : UIViewController <UIWebViewDelegate, UIAlertViewDelegate,UITextFieldDelegate,IFlySpeechRecognizerDelegate,WXApiDelegate,UIActionSheetDelegate>
+@interface GameWebViewController : UIViewController <UIWebViewDelegate, UIAlertViewDelegate,UITextFieldDelegate,IFlySpeechRecognizerDelegate,WXApiDelegate,UIActionSheetDelegate,UIGestureRecognizerDelegate>
 //科大讯飞识别对象
 @property (nonatomic, strong) IFlySpeechRecognizer * iFlySpeechRecognizer;
 @property (nonatomic,weak)   UITextField         * textMsgField;

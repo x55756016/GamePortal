@@ -20,6 +20,10 @@
 		C32D86371B0ED034008D7553 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32D05A81B007EF7006B1773 /* Main.storyboard */; };
 		C32D863A1B0ED299008D7553 /* SquareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32D863C1B0ED299008D7553 /* SquareTableViewCell.xib */; };
 		C32D86401B0EDDB1008D7553 /* matchWebInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D863F1B0EDDB1008D7553 /* matchWebInfoViewController.m */; };
+		C32D86491B0F2004008D7553 /* Microphone.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D86431B0F2004008D7553 /* Microphone.m */; };
+		C32D864A1B0F2004008D7553 /* MicrophoneHud.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D86451B0F2004008D7553 /* MicrophoneHud.m */; };
+		C32D864B1B0F2004008D7553 /* mic_talk_358x358@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D86471B0F2004008D7553 /* mic_talk_358x358@2x.png */; };
+		C32D864C1B0F2004008D7553 /* wave70x117@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D86481B0F2004008D7553 /* wave70x117@2x.png */; };
 		C3318EB01B02FEC900E7BCE4 /* GameWebNavgationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3318EAF1B02FEC900E7BCE4 /* GameWebNavgationViewController.m */; };
 		C331E81B1B0B191B004439A3 /* ClickImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C331E81A1B0B191B004439A3 /* ClickImage.m */; };
 		C331E81F1B0B702D004439A3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C331E81D1B0B702D004439A3 /* ViewController.m */; };
@@ -212,6 +216,12 @@
 		C32D863D1B0ED29B008D7553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SquareTableViewCell.xib; sourceTree = "<group>"; };
 		C32D863E1B0EDDB1008D7553 /* matchWebInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matchWebInfoViewController.h; sourceTree = "<group>"; };
 		C32D863F1B0EDDB1008D7553 /* matchWebInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = matchWebInfoViewController.m; sourceTree = "<group>"; };
+		C32D86421B0F2004008D7553 /* Microphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Microphone.h; sourceTree = "<group>"; };
+		C32D86431B0F2004008D7553 /* Microphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Microphone.m; sourceTree = "<group>"; };
+		C32D86441B0F2004008D7553 /* MicrophoneHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MicrophoneHud.h; sourceTree = "<group>"; };
+		C32D86451B0F2004008D7553 /* MicrophoneHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MicrophoneHud.m; sourceTree = "<group>"; };
+		C32D86471B0F2004008D7553 /* mic_talk_358x358@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mic_talk_358x358@2x.png"; sourceTree = "<group>"; };
+		C32D86481B0F2004008D7553 /* wave70x117@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wave70x117@2x.png"; sourceTree = "<group>"; };
 		C3318EAE1B02FEC900E7BCE4 /* GameWebNavgationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameWebNavgationViewController.h; sourceTree = "<group>"; };
 		C3318EAF1B02FEC900E7BCE4 /* GameWebNavgationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameWebNavgationViewController.m; sourceTree = "<group>"; };
 		C331E8191B0B191B004439A3 /* ClickImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClickImage.h; sourceTree = "<group>"; };
@@ -615,6 +625,27 @@
 			name = WebGameMenu;
 			sourceTree = "<group>";
 		};
+		C32D86411B0F2004008D7553 /* Microphone */ = {
+			isa = PBXGroup;
+			children = (
+				C32D86421B0F2004008D7553 /* Microphone.h */,
+				C32D86431B0F2004008D7553 /* Microphone.m */,
+				C32D86441B0F2004008D7553 /* MicrophoneHud.h */,
+				C32D86451B0F2004008D7553 /* MicrophoneHud.m */,
+				C32D86461B0F2004008D7553 /* Resource */,
+			);
+			path = Microphone;
+			sourceTree = "<group>";
+		};
+		C32D86461B0F2004008D7553 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				C32D86471B0F2004008D7553 /* mic_talk_358x358@2x.png */,
+				C32D86481B0F2004008D7553 /* wave70x117@2x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		C3318EAD1B02FE8900E7BCE4 /* GameWebPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -649,6 +680,7 @@
 		C38E411E1B048E4700F42B7D /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				C32D86411B0F2004008D7553 /* Microphone */,
 				C32A250A1B0CBA6F00861BD5 /* SBJson */,
 				CB323DA51ACA3B3000C7FE83 /* Reachability */,
 				CB6166951AD8DD5B00D9132F /* RCHttpRequest */,
@@ -1422,8 +1454,10 @@
 				C32D863A1B0ED299008D7553 /* SquareTableViewCell.xib in Resources */,
 				C3A994B41AF8794F00B2D317 /* MyGame.xib in Resources */,
 				CBE0A0511AEA108F00791FAB /* MatchTableViewCell.xib in Resources */,
+				C32D864C1B0F2004008D7553 /* wave70x117@2x.png in Resources */,
 				CB323DAD1ACA3B7B00C7FE83 /* SVProgressHUD.bundle in Resources */,
 				C3A994AD1AF8781C00B2D317 /* FrontRankTableViewCell.xib in Resources */,
+				C32D864B1B0F2004008D7553 /* mic_talk_358x358@2x.png in Resources */,
 				CB0A69C21AC92B74003F7775 /* Images.xcassets in Resources */,
 				C3EF76021B0211FF002EA0D7 /* ButtomMenuView.xib in Resources */,
 				CB3929451ACC29570004FFB4 /* smssdk.bundle in Resources */,
@@ -1446,6 +1480,8 @@
 				CB6166981AD8DD5C00D9132F /* RCHttpRequest.m in Sources */,
 				CBB3FE561ADD5AF7008D008B /* SnapChatViewController.m in Sources */,
 				CB0A69BA1AC92B74003F7775 /* AppDelegate.m in Sources */,
+				C32D86491B0F2004008D7553 /* Microphone.m in Sources */,
+				C32D864A1B0F2004008D7553 /* MicrophoneHud.m in Sources */,
 				CB6ED2061AD37A4100A33BB8 /* UIImage+WebP.m in Sources */,
 				CB6EFEA21AD61B6C00F597B6 /* MJRefreshGifHeader.m in Sources */,
 				CB6ED2031AD37A4100A33BB8 /* UIButton+WebCache.m in Sources */,
