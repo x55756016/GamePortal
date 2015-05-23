@@ -17,7 +17,7 @@
 #define GET_GAME_TYPE           [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/cms/AjaxGetType"]
 #define ADD_GAME                [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/AddGame"]
 #define LOGIN                   [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKAccount/LogOn"]
-#define REGISTER                [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKAccount/Register"]
+#define REGISTER                [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKAccount/RegisterUser"]
 #define FRIEND_SEARCH           [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/FriendSearch"]
 #define GAME_SEARCH             [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/cms/AjaxSearch"]
 #define GET_FLASH_LIST          [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/cms/AjaxGetFlashList"]

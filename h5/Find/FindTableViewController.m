@@ -34,7 +34,7 @@
 //------------------------------------------ Table view data source --------------------------------------------//
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -46,13 +46,13 @@
     
     else if(section == 1)
     {
-        return 1;
+        return 2;
     }
-    
-    else if(section == 2)
-    {
-        return 1;
-    }
+//
+//    else if(section == 2)
+//    {
+//        return 1;
+//    }
     return 0;
 }
 
@@ -66,6 +66,7 @@
         {
             cell = self.kkTableViewCell;
         }
+       
     }
     
     if(indexPath.section == 1)
@@ -74,23 +75,32 @@
         {
             cell = self.aroundTableViewCell;
         }
+        if(indexPath.row == 1)
+        {
+            cell = self.matchTableViewCell;
+        }
+//        
+//        if(indexPath.row == 0)
+//        {
+//            cell = self.aroundTableViewCell;
+//        }
 //        if(indexPath.row == 1)
 //        {
 //            cell = self.squareTableViewCell;
 //        }
     }
     
-    if(indexPath.section == 2)
-    {
-        if(indexPath.row == 0)
-        {
-            cell = self.matchTableViewCell;
-        }
-//        if(indexPath.row == 1)
+//    if(indexPath.section == 2)
+//    {
+//        if(indexPath.row == 0)
 //        {
-//            cell = self.kkBarTableViewCell;
+//            cell = self.matchTableViewCell;
 //        }
-    }
+////        if(indexPath.row == 1)
+////        {
+////            cell = self.kkBarTableViewCell;
+////        }
+//    }
     
     return cell;
 }

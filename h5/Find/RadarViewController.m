@@ -57,7 +57,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     self.items = [[NSMutableArray alloc]init];
     AllAroundUserTmp=[[NSMutableArray alloc]init];
     self.AllUsers=[[NSMutableArray alloc]init];
-//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addOrReplaceItem) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addOrReplaceItem) userInfo:nil repeats:YES];
 }
 
 

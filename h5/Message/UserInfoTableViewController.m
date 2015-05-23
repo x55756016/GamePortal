@@ -193,6 +193,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     if ([HeadIMGstring rangeOfString:existStr].location == NSNotFound)
     {
         HeadIMGstring = [HeadIMGstring stringByReplacingOccurrencesOfString:@".jpg" withString:@"_b.jpg"];
+        HeadIMGstring = [HeadIMGstring stringByReplacingOccurrencesOfString:@".jpeg" withString:@"_b.jpeg"];
     }
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
     

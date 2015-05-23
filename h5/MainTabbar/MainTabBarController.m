@@ -68,18 +68,16 @@
     return (interfaceOrientation == UIInterfaceOrientationMaskPortraitUpsideDown );
 }
 
-
-//－－ios6以后－－－－－－－－－－－－－－－－－－－－－
 -(BOOL)shouldAutorotate
 {
-    return NO;
+    return [self.selectedViewController shouldAutorotate];
+    //传递入口1.选择首页时self.selectedViewController＝SquareNavigationController（home/index）
 }
-
 -(NSUInteger)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskAll;
+    return [self.selectedViewController supportedInterfaceOrientations];
 }
-//－－结束 ios6以后－－－－－－－－－－－－－－－－－－－－－
+
 @end
 
 

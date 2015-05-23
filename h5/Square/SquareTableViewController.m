@@ -52,8 +52,6 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self UpAndDownPull];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    
-
 }
 
 
@@ -168,21 +166,66 @@ UIKIT_EXTERN NSString *userFolderPath;
 //刷广告
 -(void)paintAd
 {
-//    NSLog(@"[%f][%f][%f][%f]", self.adScrollView.frame.origin.x, self.adScrollView.frame.origin.y, self.adScrollView.frame.size.width, self.adScrollView.frame.size.height);
-    
     self.pageControl.numberOfPages = adArray.count;
-    self.adScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width*adArray.count, 0);
     for (int i = 0; i < adArray.count; i++)
     {
         NSDictionary *adDic = [adArray objectAtIndex:i];
-//        NSLog(@"adDic[%@]", adDic);
-        
         UIImageView *descImageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.adScrollView.frame.size.width*i, 0, self.adScrollView.frame.size.width, self.adScrollView.frame.size.height)];
         [self.adScrollView addSubview:descImageView];
         [descImageView sd_setImageWithURL:[NSURL URLWithString:[adDic objectForKey:@"ImgUrl"]] placeholderImage:[UIImage imageNamed:@"mainBoard_adLogoDefault"]];
     }
+    float widthall=self.adScrollView.frame.size.width*adArray.count;
+    self.adScrollView.contentSize = CGSizeMake(widthall, self.adScrollView.frame.size.height);
+     self.timeCount = 0;
+    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(scrollTimer) userInfo:nil repeats:YES];
 }
 
+//定时滚动
+-(void)scrollTimer{
+    self.timeCount ++;
+    self.pageControl.currentPage =  self.timeCount;
+    if (self.timeCount == self.pageControl.numberOfPages) {
+        self.timeCount = 0;
+    }
+    self.pageControl.currentPage = self.timeCount;
+    self.scrollIndex=self.timeCount;
+    float width=self.timeCount * self.adScrollView.frame.size.width;
+    
+    [self.adScrollView scrollRectToVisible:CGRectMake(width, 0, self.adScrollView.frame.size.width, self.adScrollView.frame.size.height) animated:YES];
+
+  NSLog(@"antoScroll to:@%f",self.adScrollView.contentOffset.x);
+}
+//------------------------------UIScrollViewDelegate---------------------------------------------//
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if(scrollView.tag == 110)
+    {
+        NSLog(@"%f",scrollView.contentOffset.x);
+        int pageIndex = scrollView.contentOffset.x / scrollView.frame.size.width;
+        self.scrollIndex=pageIndex;
+        NSLog(@"pageIndex[%d]", pageIndex);
+//        if((self.scrollIndex+1)==self.pageControl.numberOfPages)
+//        {
+//            pageIndex=0;
+//             [self.adScrollView scrollRectToVisible:CGRectMake(0, 0, self.adScrollView.frame.size.width, self.adScrollView.frame.size.height) animated:YES];
+//        }
+        self.pageControl.currentPage = pageIndex;
+//        self.timeCount =pageIndex;
+    }
+}
+
+-(void)scrollToNextPage:(id)sender
+{
+    NSInteger pageNum=self.pageControl.currentPage;
+    CGSize viewSize=self.adScrollView.frame.size;
+    CGRect rect=CGRectMake((pageNum+2)*viewSize.width, 0, viewSize.width, viewSize.height);
+    [self.adScrollView scrollRectToVisible:rect animated:NO];
+    pageNum++;
+    if (pageNum==adArray.count) {
+        CGRect newRect=CGRectMake(viewSize.width, 0, viewSize.width, viewSize.height);
+        [self.adScrollView scrollRectToVisible:newRect animated:NO];
+    }
+}
 //----------------------------------------加载玩家动态----------------------------------------//
 -(void)loadPlayer
 {
@@ -296,7 +339,10 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSString *HeadIMGstring = [playerDict objectForKey:@"UserPic"];
     NSString *sHeadimg=[HeadIMGstring stringByReplacingOccurrencesOfString:@".jpg" withString:@"_s.jpg"];
     [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:sHeadimg] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
-    
+    CALayer * l = [cell.headImageView layer];
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:10.0];
+
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -309,7 +355,6 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (IBAction)imagePressed:(id)sender
 {
-    //    NSLog(@"[%ld]",(long)self.pageControl.currentPage);
     NSDictionary *adDic = [adArray objectAtIndex:self.pageControl.currentPage];
     NSLog(@"查看网页详情[%@]", adDic);
     [self performSegueWithIdentifier:@"PushGameInfo" sender:adDic];
@@ -370,21 +415,22 @@ UIKIT_EXTERN NSString *userFolderPath;
     
 }
 
-//------------------------------UIScrollViewDelegate---------------------------------------------//
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    if(scrollView.tag == 110)
-    {
-        int pageIndex = scrollView.contentOffset.x / scrollView.frame.size.width;
-//        NSLog(@"pageIndex[%d]", pageIndex);
-        self.pageControl.currentPage = pageIndex;
-    }
-}
+
 
 - (void)dealloc
 {
     [request setDelegate:nil];
     [request cancel];
+}
+
+-(BOOL)shouldAutorotate
+{
+    //传递入口3. 
+    return [self.presentedViewController shouldAutorotate];
+}
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return [self.presentedViewController supportedInterfaceOrientations];
 }
 @end
 

@@ -11,6 +11,9 @@
 
 @interface SquareTableViewController : UITableViewController
 
+@property NSInteger timeCount;
+@property NSInteger scrollIndex;
+
 @property (strong, nonatomic) IBOutlet UIScrollView *adScrollView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 - (IBAction)imagePressed:(id)sender;

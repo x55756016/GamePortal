@@ -47,6 +47,9 @@
     bool needAddMenuBar;//控制是否要初始化游戏菜单
     
     Microphone *kkMicrophone;
+    
+    
+    bool isSettingStatusBar;
 
 }
 @end
@@ -59,6 +62,7 @@
 - (void)viewDidLoad
 {    //恢复状态栏方向
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
+    isSettingStatusBar=false;
     self.view.transform =CGAffineTransformIdentity;
     
     [super viewDidLoad];
@@ -101,19 +105,23 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     //科大讯飞取消识别
     [self.iFlySpeechRecognizer cancel];
     [self.iFlySpeechRecognizer setDelegate: nil];
     [kkMicrophone stopMicrophone];
-    [self unregkeyNotification];
-    
+    [self unregkeyNotification];    
     [super viewWillDisappear:animated];
-
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+}
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     //恢复状态栏方向
+    isSettingStatusBar=NO;
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];
-
+    self.view.transform =CGAffineTransformIdentity;
+    
+     [super viewDidDisappear:animated];
 }
 //屏幕旋转完成事件
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
@@ -218,7 +226,7 @@
                                                       action:@selector(handleTableviewCellLongPressed:)];
         //代理
         longPress.delegate = self;
-        longPress.minimumPressDuration = 0.1;
+        longPress.minimumPressDuration = 0.2;
         //将长按手势添加到需要实现长按操作的视图里
         [startVoiceBtn addGestureRecognizer:longPress];
         
@@ -241,29 +249,34 @@
 //------------------启动科大讯飞及相关接口------------------------------------------------------------
 //长按事件的实现方法
 - (void) handleTableviewCellLongPressed:(UILongPressGestureRecognizer *)gestureRecognizer {
-    if (gestureRecognizer.state ==
-        UIGestureRecognizerStateBegan) {
-       // NSLog(@"UIGestureRecognizerStateBegan");
-        [self returnButtomHeightconstraint];
-        //启动科大讯飞合成会话
-        bool ret = [self.iFlySpeechRecognizer startListening];
-        if (ret) {
-            [kkMicrophone showMicrophone];
-            if([landorprot isEqualToString:@"1"])
-            {
-                [kkMicrophone Transform:M_PI/2];
+    @try {
+        if (gestureRecognizer.state ==
+            UIGestureRecognizerStateBegan) {
+            // NSLog(@"UIGestureRecognizerStateBegan");
+            [self returnButtomHeightconstraint];
+            //启动科大讯飞合成会话
+            bool ret = [self.iFlySpeechRecognizer startListening];
+            if (ret) {
+                [kkMicrophone showMicrophone];
+                if([landorprot isEqualToString:@"1"])
+                {
+                    [kkMicrophone Transform:M_PI/2];
+                }
             }
         }
+        if (gestureRecognizer.state ==
+            UIGestureRecognizerStateChanged) {
+            //NSLog(@"UIGestureRecognizerStateChanged");
+        }
+        
+        if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+            //NSLog(@"UIGestureRecognizerStateEnded");
+            [self.iFlySpeechRecognizer stopListening];
+            [kkMicrophone stopMicrophone];
+        }
     }
-    if (gestureRecognizer.state ==
-        UIGestureRecognizerStateChanged) {
-        //NSLog(@"UIGestureRecognizerStateChanged");
-    }
+    @catch (NSException *exception) {
     
-    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        //NSLog(@"UIGestureRecognizerStateEnded");
-        [self.iFlySpeechRecognizer stopListening];
-        [kkMicrophone stopMicrophone];
     }
     
 }
@@ -445,9 +458,14 @@
         [UIView beginAnimations:@"changeToLandscapeMode" context:nil];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDuration:0.5f];
-        self.view.transform = CGAffineTransformMakeRotation(M_PI/2);
-        [UIView commitAnimations];
         
+        self.view.transform = CGAffineTransformMakeRotation(M_PI/2);
+        float width=self.view.frame.size.width;
+        float height=self.view.frame.size.height;
+        
+        self.view.bounds = CGRectMake(0, 0, width, height);
+        [UIView commitAnimations];
+        isSettingStatusBar=YES;
         [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];  //设置状态栏
         myButton.frame = CGRectMake(0, 150, 40, 40);
     }
@@ -535,6 +553,7 @@
     if(buttonIndex == 1)
     {
         [self.navigationController popViewControllerAnimated:YES];
+//         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
@@ -895,6 +914,22 @@
 {
     [request setDelegate:nil];
     [request cancel];
+}
+
+-(BOOL)shouldAutorotate
+{
+    if(isSettingStatusBar)
+    {
+        return NO;
+    }
+    else
+    {
+        return YES;
+    }
+}
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 @end
 

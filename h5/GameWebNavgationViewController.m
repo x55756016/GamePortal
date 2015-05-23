@@ -33,4 +33,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+-(BOOL)shouldAutorotate
+{
+    return [self.topViewController shouldAutorotate];
+}
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return [self.topViewController supportedInterfaceOrientations];
+}
 @end

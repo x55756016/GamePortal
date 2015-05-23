@@ -27,7 +27,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jh-mS-OQc">
                                 <rect key="frame" x="68" y="45" width="230" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PP-9M-ObE">
@@ -39,18 +39,29 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                    <mask key="constraints">
+                                        <exclude reference="Sur-Ot-MDN"/>
+                                    </mask>
                                 </variation>
                             </label>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="8PP-9M-ObE" secondAttribute="bottom" constant="39" id="Ac1-Jk-bTZ"/>
-                            <constraint firstItem="8PP-9M-ObE" firstAttribute="leading" secondItem="QLg-L1-VHr" secondAttribute="trailing" constant="8" id="Azg-xM-i5p"/>
-                            <constraint firstAttribute="trailing" secondItem="8PP-9M-ObE" secondAttribute="trailing" constant="22" id="JMe-C5-XJn"/>
+                            <constraint firstItem="8PP-9M-ObE" firstAttribute="leading" secondItem="QLg-L1-VHr" secondAttribute="trailing" constant="8" id="Azg-xM-i5p">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="8PP-9M-ObE" secondAttribute="trailing" constant="22" id="JMe-C5-XJn">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
                             <constraint firstItem="QLg-L1-VHr" firstAttribute="top" secondItem="PnS-jX-cxo" secondAttribute="top" constant="10" id="Vo7-6C-3ct"/>
-                            <constraint firstItem="7Jh-mS-OQc" firstAttribute="leading" secondItem="QLg-L1-VHr" secondAttribute="trailing" constant="8" id="WrS-si-gXs"/>
+                            <constraint firstItem="7Jh-mS-OQc" firstAttribute="leading" secondItem="QLg-L1-VHr" secondAttribute="trailing" constant="8" id="WrS-si-gXs">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
                             <constraint firstItem="8PP-9M-ObE" firstAttribute="top" secondItem="PnS-jX-cxo" secondAttribute="topMargin" constant="8" id="hpr-OR-xYQ"/>
                             <constraint firstItem="QLg-L1-VHr" firstAttribute="bottom" secondItem="7Jh-mS-OQc" secondAttribute="bottom" constant="9" id="o2p-En-BaR"/>
-                            <constraint firstItem="QLg-L1-VHr" firstAttribute="leading" secondItem="PnS-jX-cxo" secondAttribute="leading" id="odr-Iu-EEX"/>
+                            <constraint firstItem="QLg-L1-VHr" firstAttribute="leading" secondItem="PnS-jX-cxo" secondAttribute="leading" id="odr-Iu-EEX">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
                             <constraint firstItem="8PP-9M-ObE" firstAttribute="trailing" secondItem="7Jh-mS-OQc" secondAttribute="trailing" id="ySg-4L-ULZ"/>
                             <constraint firstAttribute="bottom" secondItem="QLg-L1-VHr" secondAttribute="bottom" constant="10" id="yhs-aN-Ck6"/>
                         </constraints>

@@ -32,9 +32,11 @@
                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zW7-AF-Po0">
                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="M2E-b7-YUI"/>
+                        <constraint firstAttribute="height" constant="30" id="M2E-b7-YUI">
+                            <variation key="heightClass=regular-widthClass=compact" constant="40"/>
+                        </constraint>
                         <constraint firstAttribute="width" constant="40" id="Whl-n3-7Sz">
-                            <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                            <variation key="heightClass=regular-widthClass=compact" constant="72"/>
                         </constraint>
                     </constraints>
                     <state key="normal" title="发送" backgroundImage="game_send">
@@ -86,7 +88,9 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="zW7-AF-Po0" secondAttribute="trailing" constant="5" id="1Lg-oc-YBl"/>
+                <constraint firstAttribute="trailing" secondItem="zW7-AF-Po0" secondAttribute="trailing" constant="5" id="1Lg-oc-YBl">
+                    <variation key="heightClass=regular-widthClass=compact" constant="-7"/>
+                </constraint>
                 <constraint firstItem="zW7-AF-Po0" firstAttribute="leading" secondItem="W8k-jQ-gC4" secondAttribute="trailing" constant="112" id="LCh-Lf-Bf5">
                     <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                 </constraint>
@@ -94,7 +98,9 @@
                     <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                 </constraint>
                 <constraint firstItem="zW7-AF-Po0" firstAttribute="top" secondItem="gbx-MA-WWm" secondAttribute="top" constant="5" id="aPF-BL-TFx"/>
-                <constraint firstItem="W8k-jQ-gC4" firstAttribute="top" secondItem="gbx-MA-WWm" secondAttribute="top" constant="5" id="agU-t5-NAW"/>
+                <constraint firstItem="W8k-jQ-gC4" firstAttribute="top" secondItem="gbx-MA-WWm" secondAttribute="top" constant="5" id="agU-t5-NAW">
+                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                </constraint>
                 <constraint firstItem="Fwt-ZU-xYQ" firstAttribute="leading" secondItem="gbx-MA-WWm" secondAttribute="leading" constant="2" id="voo-K5-aYX"/>
                 <constraint firstItem="Fwt-ZU-xYQ" firstAttribute="top" secondItem="gbx-MA-WWm" secondAttribute="top" constant="5" id="wPS-Ca-Gcg">
                     <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
@@ -136,11 +142,11 @@
                     <include reference="aPF-BL-TFx"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="559" y="-1572"/>
+            <point key="canvasLocation" x="562.5" y="-1572"/>
         </view>
     </objects>
     <resources>
-        <image name="game_send" width="220" height="116"/>
-        <image name="game_speak" width="50" height="50"/>
+        <image name="game_send" width="72" height="40"/>
+        <image name="game_speak" width="40" height="40"/>
     </resources>
 </document>

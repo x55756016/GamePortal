@@ -31,6 +31,7 @@
 		C33A83E91B072F5200331199 /* InfiniteScrollPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */; };
 		C33A83EA1B072F5200331199 /* UIView+viewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E81B072F5200331199 /* UIView+viewController.m */; };
 		C38E41231B048E4700F42B7D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41201B048E4700F42B7D /* libWeChatSDK.a */; };
+		C39D014C1B1063670080AC97 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C39D014E1B1063670080AC97 /* Localizable.strings */; };
 		C3A9947F1AF86C4C00B2D317 /* GameNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9947E1AF86C4C00B2D317 /* GameNavigationController.m */; };
 		C3A994821AF86DA300B2D317 /* GameListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A994811AF86DA300B2D317 /* GameListViewController.m */; };
 		C3A994871AF86F2900B2D317 /* GameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A994861AF86F2900B2D317 /* GameTableViewCell.m */; };
@@ -66,7 +67,6 @@
 		CB323DA81ACA3B3000C7FE83 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CB323DA71ACA3B3000C7FE83 /* Reachability.m */; };
 		CB323DAD1ACA3B7B00C7FE83 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CB323DAA1ACA3B7B00C7FE83 /* SVProgressHUD.bundle */; };
 		CB323DAE1ACA3B7B00C7FE83 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CB323DAC1ACA3B7B00C7FE83 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		CB323DB41ACA3CC500C7FE83 /* SMS_SDKLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB323DB01ACA3CC500C7FE83 /* SMS_SDKLocalizable.strings */; };
 		CB323DB51ACA3CC500C7FE83 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB323DB21ACA3CC500C7FE83 /* SMS_SDK.framework */; };
 		CB323DB71ACA3CE900C7FE83 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB323DB61ACA3CE900C7FE83 /* libicucore.dylib */; };
 		CB323DB91ACA3CF500C7FE83 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB323DB81ACA3CF500C7FE83 /* libz.dylib */; };
@@ -237,6 +237,8 @@
 		C38E41211B048E4700F42B7D /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		C38E41221B048E4700F42B7D /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		C38E41251B048EC100F42B7D /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
+		C39D014D1B1063670080AC97 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C39D014F1B10636B0080AC97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C3A9947D1AF86C4200B2D317 /* GameNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameNavigationController.h; sourceTree = "<group>"; };
 		C3A9947E1AF86C4C00B2D317 /* GameNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameNavigationController.m; sourceTree = "<group>"; };
 		C3A994801AF86D9B00B2D317 /* GameListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameListViewController.h; sourceTree = "<group>"; };
@@ -293,7 +295,6 @@
 		CB323DAA1ACA3B7B00C7FE83 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		CB323DAB1ACA3B7B00C7FE83 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		CB323DAC1ACA3B7B00C7FE83 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
-		CB323DB11ACA3CC500C7FE83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SMS_SDKLocalizable.strings; sourceTree = "<group>"; };
 		CB323DB21ACA3CC500C7FE83 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
 		CB323DB61ACA3CE900C7FE83 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		CB323DB81ACA3CF500C7FE83 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -948,8 +949,8 @@
 		CB323DAF1ACA3CC500C7FE83 /* SMS_SDK */ = {
 			isa = PBXGroup;
 			children = (
-				CB323DB01ACA3CC500C7FE83 /* SMS_SDKLocalizable.strings */,
 				CB323DB21ACA3CC500C7FE83 /* SMS_SDK.framework */,
+				C39D014E1B1063670080AC97 /* Localizable.strings */,
 			);
 			path = SMS_SDK;
 			sourceTree = "<group>";
@@ -1443,7 +1444,6 @@
 				CB39293D1ACC29570004FFB4 /* country.plist in Resources */,
 				CB39293E1ACC29570004FFB4 /* Localizable.strings in Resources */,
 				C3FCFCA61AF7696F00E74036 /* entitlements.plist in Resources */,
-				CB323DB41ACA3CC500C7FE83 /* SMS_SDKLocalizable.strings in Resources */,
 				C3EF76001B020D47002EA0D7 /* TopMenuView.xib in Resources */,
 				C3A994931AF86F7A00B2D317 /* ClassifyTableViewCell.xib in Resources */,
 				C3A9948B1AF86F3C00B2D317 /* GameTableViewCell.xib in Resources */,
@@ -1458,6 +1458,7 @@
 				CB323DAD1ACA3B7B00C7FE83 /* SVProgressHUD.bundle in Resources */,
 				C3A994AD1AF8781C00B2D317 /* FrontRankTableViewCell.xib in Resources */,
 				C32D864B1B0F2004008D7553 /* mic_talk_358x358@2x.png in Resources */,
+				C39D014C1B1063670080AC97 /* Localizable.strings in Resources */,
 				CB0A69C21AC92B74003F7775 /* Images.xcassets in Resources */,
 				C3EF76021B0211FF002EA0D7 /* ButtomMenuView.xib in Resources */,
 				CB3929451ACC29570004FFB4 /* smssdk.bundle in Resources */,
@@ -1620,12 +1621,13 @@
 			name = SquareTableViewCell.xib;
 			sourceTree = "<group>";
 		};
-		CB323DB01ACA3CC500C7FE83 /* SMS_SDKLocalizable.strings */ = {
+		C39D014E1B1063670080AC97 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CB323DB11ACA3CC500C7FE83 /* en */,
+				C39D014D1B1063670080AC97 /* en */,
+				C39D014F1B10636B0080AC97 /* Base */,
 			);
-			name = SMS_SDKLocalizable.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		CB3929221ACC29570004FFB4 /* country.plist */ = {
@@ -1747,7 +1749,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = h5/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_NO_PIE = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1786,7 +1788,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = h5/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_NO_PIE = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
