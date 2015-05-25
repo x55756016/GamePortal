@@ -213,6 +213,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
     else
     {
+        [commonTableViewCell.headImageView setImage:[UIImage imageNamed:@"kefu"]];
         commonTableViewCell.nickNameLabel.text = (NSString *)arr;
         return commonTableViewCell;
     }

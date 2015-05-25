@@ -23,6 +23,8 @@
 #import "UIButton+ImageAndLabel.h"
 #import "GameDetailViewController.h"
 #import "ClickImage.h"
+#import "UIButton+WebCache.h"
+#import "UIImageView+WebCache.h"
 
 
 UIKIT_EXTERN NSString *userFolderPath;
@@ -364,16 +366,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         for (int i = 0; i < [userGameArray count]; i++) {
             NSDictionary *gameInfo=[userGameArray objectAtIndex:i];
             NSString *path = [gameInfo objectForKey:@"Logo"];
-            
-            UIImage *image=[KKUtility getImageFromLocal:path];
-            if(image==nil)
-            {
-                NSURL *url = [NSURL URLWithString:path];
-                NSData *imageData = [NSData dataWithContentsOfURL:url];
-                image = [UIImage imageWithData: imageData];
-                [KKUtility saveImageToLocal:image :path];
-            }
-            [FrindGameImageArray addObject:image];
+            [FrindGameImageArray addObject:path];
         }
 
     }
@@ -425,34 +418,16 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     @try {
         userAchievementArray = [dic objectForKey:@"ObjData"];
-//        NSObject *obj=[userAchievementArray objectAtIndex:0];
-//        if((NSNull*)obj ==[NSNull null]) return;
         if((NSNull*)userAchievementArray ==[NSNull null]
            || [userAchievementArray count]<1)return;
-        NSLog(@"userAchievementArray[%lu]%@", (unsigned long)userAchievementArray.count, userAchievementArray);
+        NSLog(@"userAchievementArray[%lu]", (unsigned long)userAchievementArray.count);
+
         for (int i = 0; i < [userAchievementArray count]; i++) {
             NSDictionary *historyInfo=[userAchievementArray objectAtIndex:i];
             NSString *path = [historyInfo objectForKey:@"PicPath"];
             path=[KKUtility getImagePath:path :@"b"];
-            UIImage *image=[KKUtility getImageFromLocal:path];
-            if(image==nil)
-            {
-                NSURL *url = [NSURL URLWithString:path];
-                NSData *imageData = [NSData dataWithContentsOfURL:url];
-                image = [UIImage imageWithData: imageData];
-                if(image==nil)
-                {
-                    continue;
-                }else{
-                    
-                    [KKUtility saveImageToLocal:image :path];
-                    
-                    [FrindHistoryImageArray addObject:image];
-                }
-            }else{
-                [FrindHistoryImageArray addObject:image];
-            }
-            
+            [FrindHistoryImageArray addObject:path];
+
         }
 
     }
@@ -540,12 +515,17 @@ UIKIT_EXTERN NSString *userFolderPath;
                     long width=[FrindGameImageArray count]*(80+10);
                     imageScrollView.contentSize =CGSizeMake(width,100);
                     for (int i = 0; i < [FrindGameImageArray count]; i++){
-                        UIImage *image=[FrindGameImageArray objectAtIndex:i];
+                        NSString *imageUrl=[FrindGameImageArray objectAtIndex:i];
+                        
                         UIButton *imagebutton = [[UIButton alloc] initWithFrame:CGRectMake(i*80+10, 0, 70, 80)];
                         imagebutton.tag=i;
                         imagebutton.layer.masksToBounds = YES;
                         imagebutton.layer.cornerRadius = 5.0f;
-                        [imagebutton setImage:image forState:UIControlStateNormal];
+//                        [imagebutton setImage:image forState:UIControlStateNormal];
+                        NSURL *url = [NSURL URLWithString:imageUrl];
+                        [imagebutton sd_setImageWithURL:url forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"mainBoard_adLogoDefault"]];
+        
+                        
                         [imagebutton addTarget:self action:@selector(goGameDetail:) forControlEvents:UIControlEventTouchUpInside];
                         [imageScrollView addSubview:imagebutton];
                         
@@ -575,15 +555,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         {
             @try {
                 if(FrindHistoryImageArray!=nil && [FrindHistoryImageArray count]>0){
-                    InfiniteScrollPicker *isp = [[InfiniteScrollPicker alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-                    [isp setItemSize:CGSizeMake(90, 100)];
-                    [isp setImageAry:FrindHistoryImageArray];
-                    [isp setHeightOffset:0];
-                    [isp setPositionRatio:2];
-                    [isp setAlphaOfobjs:1];
-                    isp.touchesdelegate=self;
-                    
-                    [_FriendHistoryListView addSubview:isp];
+                    [self getUserActiveHistoryAndShow];
                 }
             }
             @catch (NSException *exception) {
@@ -650,6 +622,43 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     [request setDelegate:nil];
     [request cancel];
+}
+
+-(void)getUserActiveHistoryAndShow
+{
+    @try {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // 原代码块二
+            NSMutableArray *imgArry=[[NSMutableArray alloc] init];
+            for (int i = 0; i < [FrindHistoryImageArray count]; i++){
+                NSString *imageUrl=[FrindHistoryImageArray objectAtIndex:i];
+                NSURL *url = [NSURL URLWithString:imageUrl];
+                UIImage *img=[[UIImage alloc] init];
+                NSData *imageData = [NSData dataWithContentsOfURL:url];
+                img = [UIImage imageWithData: imageData];
+                [imgArry addObject:img];
+            }
+            if (imgArry != nil) {
+                // 原代码块三
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    InfiniteScrollPicker *isp = [[InfiniteScrollPicker alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+                    [isp setItemSize:CGSizeMake(90, 100)];
+                    [isp setImageAry:imgArry];
+                    [isp setHeightOffset:0];
+                    [isp setPositionRatio:2];
+                    [isp setAlphaOfobjs:1];
+                    isp.touchesdelegate=self;
+                    [_FriendHistoryListView addSubview:isp];
+                });
+            } else {
+                
+            } 
+        });
+    }
+    @catch (NSException *exception) {
+        [KKUtility showSystemErrorMsg:exception.reason :nil];
+    }
+   
 }
 @end
 

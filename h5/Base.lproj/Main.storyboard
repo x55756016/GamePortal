@@ -1531,7 +1531,7 @@
                         <viewControllerLayoutGuide type="bottom" id="WZR-jj-Jsd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fzP-Ve-QpD">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dz7-N4-wm7">
@@ -1582,7 +1582,8 @@
                                         <exclude reference="kZ9-oL-YYX"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="320" height="50"/>
                                     <mask key="subviews">
                                         <include reference="h0a-Hd-qCo"/>
                                     </mask>
@@ -1598,6 +1599,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0oZ-pi-F5b">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="114" width="320" height="454"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="JZa-bm-8lv" id="O4d-0D-EEu"/>
                                     <outlet property="delegate" destination="JZa-bm-8lv" id="82r-02-RoX"/>
@@ -3306,22 +3310,22 @@
                                 <exclude reference="cJv-8I-bla"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="J5v-MN-1Ki"/>
-                                <exclude reference="fzR-ov-OHD"/>
-                                <exclude reference="rf4-O3-MrY"/>
-                                <exclude reference="v6j-aR-0zW"/>
                                 <exclude reference="Fum-c7-qla"/>
                                 <exclude reference="HnV-NJ-ZiE"/>
                                 <exclude reference="aGQ-Hk-Zp4"/>
                                 <exclude reference="ewH-OH-GoA"/>
-                                <exclude reference="JPm-kp-y69"/>
+                                <exclude reference="Ano-iZ-fHJ"/>
                                 <exclude reference="Ire-aH-OAY"/>
                                 <exclude reference="JVa-KU-tVg"/>
                                 <exclude reference="TGa-ZE-ySM"/>
                                 <exclude reference="wOX-WL-8NW"/>
-                                <exclude reference="Ano-iZ-fHJ"/>
                                 <exclude reference="gLI-yy-7Y2"/>
                                 <exclude reference="ma1-d2-Y2d"/>
+                                <exclude reference="J5v-MN-1Ki"/>
+                                <exclude reference="fzR-ov-OHD"/>
+                                <exclude reference="rf4-O3-MrY"/>
+                                <exclude reference="v6j-aR-0zW"/>
+                                <exclude reference="JPm-kp-y69"/>
                                 <exclude reference="Eav-LS-45e"/>
                                 <exclude reference="hdy-Qj-dME"/>
                             </mask>
@@ -3339,22 +3343,22 @@
                                 <include reference="cJv-8I-bla"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="J5v-MN-1Ki"/>
-                                <include reference="fzR-ov-OHD"/>
-                                <include reference="rf4-O3-MrY"/>
-                                <include reference="v6j-aR-0zW"/>
                                 <include reference="Fum-c7-qla"/>
                                 <include reference="HnV-NJ-ZiE"/>
                                 <include reference="aGQ-Hk-Zp4"/>
                                 <include reference="ewH-OH-GoA"/>
-                                <include reference="JPm-kp-y69"/>
+                                <include reference="Ano-iZ-fHJ"/>
                                 <include reference="Ire-aH-OAY"/>
                                 <include reference="JVa-KU-tVg"/>
                                 <include reference="TGa-ZE-ySM"/>
                                 <include reference="wOX-WL-8NW"/>
-                                <include reference="Ano-iZ-fHJ"/>
                                 <include reference="gLI-yy-7Y2"/>
                                 <include reference="ma1-d2-Y2d"/>
+                                <include reference="J5v-MN-1Ki"/>
+                                <include reference="fzR-ov-OHD"/>
+                                <include reference="rf4-O3-MrY"/>
+                                <include reference="v6j-aR-0zW"/>
+                                <include reference="JPm-kp-y69"/>
                                 <include reference="Eav-LS-45e"/>
                                 <include reference="hdy-Qj-dME"/>
                             </mask>
@@ -4214,7 +4218,7 @@
                         <viewControllerLayoutGuide type="bottom" id="kca-xK-9QE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Mh-nj-pnn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView tag="123" contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZr-Jy-9HG">
@@ -4303,7 +4307,7 @@
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="eub-4p-O1c" userLabel="游戏详情" customClass="GameDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="TTo-bA-f1i">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="680"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -4617,10 +4621,10 @@
         <image name="userDefaultHead" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WQ5-kw-hY5"/>
+        <segue reference="zVw-oc-Kg7"/>
+        <segue reference="Wkf-TW-zIW"/>
         <segue reference="iID-OB-lrr"/>
         <segue reference="bXQ-RE-HK5"/>
         <segue reference="93B-ev-HIq"/>
-        <segue reference="foh-gx-4Hm"/>
     </inferredMetricsTieBreakers>
 </document>

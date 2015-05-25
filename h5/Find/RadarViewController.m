@@ -15,6 +15,7 @@
 #import "UIButton+ImageAndLabel.h"
 #import "RadarAllTableViewController.h"
 #import "UserInfoTableViewController.h"
+#import "UIButton+WebCache.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -57,7 +58,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     self.items = [[NSMutableArray alloc]init];
     AllAroundUserTmp=[[NSMutableArray alloc]init];
     self.AllUsers=[[NSMutableArray alloc]init];
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addOrReplaceItem) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(addOrReplaceItem) userInfo:nil repeats:YES];
 }
 
 
@@ -150,17 +151,21 @@ UIKIT_EXTERN NSString *userFolderPath;
         //[radarButton sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
         NSURL *url = [NSURL URLWithString:HeadimgUrl];
         
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-        if(image==nil)
-        {
-            image=[UIImage imageNamed:@"userDefaultHead"];
-        }
+//        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+//        if(image==nil)
+//        {
+//            image=[UIImage imageNamed:@"userDefaultHead"];
+//            
+//        }
         //[radarButton setImage:image forState:UIControlStateNormal];
         //[radarButton setTitle:UserNickName forState:UIControlStateNormal];
         CALayer * downButtonLayer = [radarButton layer];
         [downButtonLayer setMasksToBounds:YES];
         [downButtonLayer setCornerRadius:10.0];
-        [radarButton setImage:image withTitle:UserNickName forState:UIControlStateNormal];
+//        [radarButton setImage:image withTitle:UserNickName forState:UIControlStateNormal];
+        
+        [radarButton sd_setImageWithURL:url forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
+        [radarButton setTitle:UserNickName forState:UIControlStateNormal];
 //      [downButtonLayer setBorderWidth:1.0];
 //      [downButtonLayer setBorderColor:[[UIColor colorWithRed:0.243 green:0.306 blue:0.435 alpha:1.0] CGColor]];
 
