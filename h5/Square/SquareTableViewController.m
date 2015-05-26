@@ -52,6 +52,8 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self UpAndDownPull];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    //定时刷广告
+     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(scrollTimer) userInfo:nil repeats:YES];
 }
 
 
@@ -177,11 +179,11 @@ UIKIT_EXTERN NSString *userFolderPath;
     float widthall=self.adScrollView.frame.size.width*adArray.count;
     self.adScrollView.contentSize = CGSizeMake(widthall, self.adScrollView.frame.size.height);
      self.timeCount = 0;
-    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(scrollTimer) userInfo:nil repeats:YES];
 }
 
 //定时滚动
 -(void)scrollTimer{
+    if(adArray.count<1) return;
     self.timeCount ++;
     self.pageControl.currentPage =  self.timeCount;
     if (self.timeCount == self.pageControl.numberOfPages) {

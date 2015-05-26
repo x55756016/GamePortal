@@ -673,6 +673,10 @@
 //发送弹幕
 - (IBAction)sendJsFunction:(id)sender
 {
+    if([self.textMsgField.text isEqualToString:@""])
+    {
+        return;
+    }
     NSString *type=@"1";
     NSString *area=@"房间";
     NSString *nickname=[userInfo objectForKey:@"NickName"];

@@ -32,7 +32,8 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    //设置焦点
+    [self.searchTextField becomeFirstResponder];
     //获取用户信息
     userInfo=[KKUtility getUserInfoFromLocalFile];
     

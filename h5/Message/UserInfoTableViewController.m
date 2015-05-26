@@ -631,12 +631,19 @@ UIKIT_EXTERN NSString *userFolderPath;
             // 原代码块二
             NSMutableArray *imgArry=[[NSMutableArray alloc] init];
             for (int i = 0; i < [FrindHistoryImageArray count]; i++){
-                NSString *imageUrl=[FrindHistoryImageArray objectAtIndex:i];
-                NSURL *url = [NSURL URLWithString:imageUrl];
-                UIImage *img=[[UIImage alloc] init];
-                NSData *imageData = [NSData dataWithContentsOfURL:url];
-                img = [UIImage imageWithData: imageData];
-                [imgArry addObject:img];
+                @try {
+                    NSString *imageUrl=[FrindHistoryImageArray objectAtIndex:i];
+                    NSURL *url = [NSURL URLWithString:imageUrl];
+                    UIImage *img=[[UIImage alloc] init];
+                    NSData *imageData = [NSData dataWithContentsOfURL:url];
+                    img = [UIImage imageWithData: imageData];
+                    if(img==nil)continue;
+                    [imgArry addObject:img];
+                    
+                }
+                @catch (NSException *exception) {
+                    continue;
+                }
             }
             if (imgArry != nil) {
                 // 原代码块三

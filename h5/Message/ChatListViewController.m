@@ -38,7 +38,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self configureNavigationBar];
     
     //自定义导航左右按钮
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]initWithTitle:@"选择"
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]initWithTitle:@"群聊"
                                                                    style:UIBarButtonItemStylePlain
                                                                   target:self
                                                                   action:@selector(rightBarButtonItemPressed:)];

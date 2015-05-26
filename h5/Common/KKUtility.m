@@ -89,22 +89,94 @@ UIKIT_EXTERN NSString *userFolderPath;
 //计算2个经纬度之间的距离
 +(NSString*)calcutDistinct:(CLLocation*)kkStartPotint:(CLLocation*)kkEndPotint
 {
-//    CLLocation *orig=self.UserLocation;
-//    CLLocation *dist=endPotint;
-    //dist.horizontalAccuracy=5;
     CLLocationDistance kilometers=[kkStartPotint distanceFromLocation:kkEndPotint];
     
     NSString *distinctMsg=@"";
-    if(kilometers/1000>1)
+    if(kilometers/1000<10000)
     {
-        distinctMsg=@" 相距：大于1KM";
+        distinctMsg=@"10公里以内";
     }
-    else
+    if(kilometers/1000<=9000)
     {
-        
-        distinctMsg=[NSString stringWithFormat:@"%@%.0f%@",@" 相距：", kilometers,@" m"];
+        distinctMsg=@"9公里以内";
     }
-//    NSLog(@"%@",distinctMsg);
+    if(kilometers/1000<=8000)
+    {
+        distinctMsg=@"8公里以内";
+    }
+    if(kilometers/1000<=7000)
+    {
+        distinctMsg=@"7公里以内";
+    }
+    if(kilometers/1000<=6000)
+    {
+        distinctMsg=@"6公里以内";
+    }
+    if(kilometers/1000<=5000)
+    {
+        distinctMsg=@"5公里以内";
+    }
+    if(kilometers/1000<=4000)
+    {
+        distinctMsg=@"4公里以内";
+    }
+    if(kilometers/1000<=3000)
+    {
+        distinctMsg=@"3公里以内";
+    }
+    if(kilometers/1000<=2000)
+    {
+        distinctMsg=@"2公里以内";
+    }
+    if(kilometers/1000<=1000)
+    {
+        distinctMsg=@"1公里以内";
+    }
+    if(kilometers/1000<=900)
+    {
+        distinctMsg=@"900米以内";
+    }
+    if(kilometers/1000<=800)
+    {
+        distinctMsg=@"800米以内";
+    }
+    if(kilometers/1000<=700)
+    {
+        distinctMsg=@"700米以内";
+    }
+    if(kilometers/1000<=600)
+    {
+        distinctMsg=@"600米以内";
+    }
+    if(kilometers/1000<=500)
+    {
+        distinctMsg=@"500米以内";
+    }
+    if(kilometers/1000<=400)
+    {
+        distinctMsg=@"400米以内";
+    }
+    if(kilometers/1000<=300)
+    {
+        distinctMsg=@"300米以内";
+    }
+    if(kilometers/1000<=200)
+    {
+        distinctMsg=@"200米以内";
+    }
+    if(kilometers/1000<=100)
+    {
+        distinctMsg=@"100米以内";
+    }
+    
+//    if(kilometers/1000>1)
+//    {
+//        distinctMsg=@" 距离:大于1公里";
+//    }
+//    else
+//    {
+//        distinctMsg=[NSString stringWithFormat:@"%@%.0f%@",@" 距离:", kilometers,@" m"];
+//    }
     return distinctMsg;
 }
 
@@ -188,6 +260,38 @@ UIKIT_EXTERN NSString *userFolderPath;
 //    }
 //    return contactsArray;
 //}
++(void)logSystemErrorMsg:(NSString*)CustomerErrorMsg:(NSError*)error
+{
+    NSString *strMsg=@"系统异常。";
+    if(CustomerErrorMsg!=nil)
+    {
+        strMsg=[strMsg stringByAppendingString:CustomerErrorMsg];
+    }
+    if (error!=nil) {
+        strMsg=[strMsg stringByAppendingFormat:@"%@,%@",@" \n信息：", [error localizedDescription]];
+        NSArray* detailedErrors = [[error userInfo] objectForKey:NSLocalizedRecoveryOptionsErrorKey];
+        if(detailedErrors != nil && [detailedErrors count] > 0) {
+            for(NSError* detailedError in detailedErrors) {
+                strMsg=[strMsg stringByAppendingFormat:@"%@,%@",@" \n错误：",[detailedError userInfo]];
+            }
+            
+        }
+        
+    }
+    
+    //保存至本地
+    NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *kklogsFolder = [userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"kklogs"]];
+    NSDate *  senddate=[NSDate date];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat:@"YYYYMMdd"];
+    NSString *  currentDate=[dateformatter stringFromDate:senddate];
+    NSString *logsPath = [kklogsFolder stringByAppendingPathComponent:currentDate];
+    NSData *logData = [strMsg dataUsingEncoding:NSUTF8StringEncoding];
+    [logData writeToFile:logsPath atomically:YES];
+    
+}
+
 
 +(void)showSystemErrorMsg:(NSString*)CustomerErrorMsg:(NSError*)error
 {

@@ -30,6 +30,7 @@
 		C331E8201B0B702D004439A3 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C331E81E1B0B702D004439A3 /* ViewController.xib */; };
 		C33A83E91B072F5200331199 /* InfiniteScrollPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */; };
 		C33A83EA1B072F5200331199 /* UIView+viewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E81B072F5200331199 /* UIView+viewController.m */; };
+		C35C77491B1319840032D1D5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C35C77481B1319840032D1D5 /* StoreKit.framework */; };
 		C38E41231B048E4700F42B7D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41201B048E4700F42B7D /* libWeChatSDK.a */; };
 		C39D014C1B1063670080AC97 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C39D014E1B1063670080AC97 /* Localizable.strings */; };
 		C3A9947F1AF86C4C00B2D317 /* GameNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9947E1AF86C4C00B2D317 /* GameNavigationController.m */; };
@@ -233,6 +234,7 @@
 		C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfiniteScrollPicker.m; sourceTree = "<group>"; };
 		C33A83E71B072F5200331199 /* UIView+viewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+viewController.h"; sourceTree = "<group>"; };
 		C33A83E81B072F5200331199 /* UIView+viewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+viewController.m"; sourceTree = "<group>"; };
+		C35C77481B1319840032D1D5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C38E41201B048E4700F42B7D /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		C38E41211B048E4700F42B7D /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		C38E41221B048E4700F42B7D /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C35C77491B1319840032D1D5 /* StoreKit.framework in Frameworks */,
 				C32A25051B0C3EA200861BD5 /* iflyMSC.framework in Frameworks */,
 				CB4AC97F1AD6758200A85599 /* UIKit.framework in Frameworks */,
 				CB4AC97D1AD6757900A85599 /* SystemConfiguration.framework in Frameworks */,
@@ -958,6 +961,7 @@
 		CB323DC01ACA3D4600C7FE83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C35C77481B1319840032D1D5 /* StoreKit.framework */,
 				CB4AC97E1AD6758200A85599 /* UIKit.framework */,
 				CB4AC97C1AD6757900A85599 /* SystemConfiguration.framework */,
 				CB4AC97A1AD6756900A85599 /* QuartzCore.framework */,

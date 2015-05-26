@@ -33,6 +33,8 @@
 
 +(NSString *)getImagePath:(NSString*)path:(NSString*)strType;
 
+//记录错误日志
++(void)logSystemErrorMsg:(NSString*)CustomerErrorMsg:(NSError*)error;
 //显示系统错误
 +(void)showSystemErrorMsg:(NSString*)CustomerErrorMsg:(NSError*)error;
 //显示网络错误

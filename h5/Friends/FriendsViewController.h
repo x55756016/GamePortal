@@ -15,4 +15,5 @@
 @property (nonatomic, retain) NSMutableArray *sortedArrForArrays;
 @property (nonatomic, retain) NSMutableArray *sectionHeadsKeys;
 
+@property (strong, nonatomic) IBOutlet UILabel *labFriendcount;
 @end

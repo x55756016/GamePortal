@@ -111,11 +111,18 @@ UIKIT_EXTERN NSString *userFolderPath;
 //好友数据刷表
 -(void)loadFriendsData:(NSDictionary *)dict
 {
-    friendsArray = [dict objectForKey:@"ObjData"];
-//    NSLog(@"friendsArray[%lu]%@", (unsigned long)friendsArray.count, friendsArray);
+    @try {
+        friendsArray = [dict objectForKey:@"ObjData"];
+        //    NSLog(@"friendsArray[%lu]%@", (unsigned long)friendsArray.count, friendsArray);
+        NSString *countFriend=[NSString stringWithFormat:@"%lu,%@" , (unsigned long)[friendsArray count], @"位联系人" ];
+        [self.labFriendcount setText:countFriend];
+        //加载的人的数据保存至本地
+        [self savePeopleDate:0];
+    }
+    @catch (NSException *exception) {
+        [KKUtility logSystemErrorMsg:exception.reason :nil];
+    }
     
-    //加载的人的数据保存至本地
-    [self savePeopleDate:0];
 }
 
 //加载人的数据保存至本地
@@ -245,7 +252,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return 55;
 }
 
 //------------------------------------------------segue----------------------------------------------------------//
