@@ -117,8 +117,6 @@
     [request setPostValue:self.nickNameTextField.text forKey:@"NickName"];
     
     AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-    
-    
     NSString *strlon=kkAppDelegate.currentlogingUser.Longitude;//经度
     NSString *strlat=kkAppDelegate.currentlogingUser.Latitude;//纬度
     

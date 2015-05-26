@@ -25,6 +25,7 @@
 #import "ClickImage.h"
 #import "UIButton+WebCache.h"
 #import "UIImageView+WebCache.h"
+#import "FindTableViewController.h"
 
 
 UIKIT_EXTERN NSString *userFolderPath;
@@ -234,7 +235,12 @@ UIKIT_EXTERN NSString *userFolderPath;
             [self.navigationController popToViewController:vc animated:YES];
         }
         
-        if(([vc isKindOfClass:[SnapChatViewController class]]) || ([vc isKindOfClass:[FriendsViewController class]]) || ([vc isKindOfClass:[FindAroundTableViewController class]]))
+        if(([vc isKindOfClass:[SnapChatViewController class]])
+           || ([vc isKindOfClass:[FriendsViewController class]])
+           
+           || ([vc isKindOfClass:[FindTableViewController class]])
+           
+           || ([vc isKindOfClass:[FindAroundTableViewController class]]))
         {
             [self performSegueWithIdentifier:@"PushChat" sender:nil];
             break;

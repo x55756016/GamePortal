@@ -36,7 +36,7 @@
                         <sections>
                             <tableViewSection id="jXo-ry-SWL">
                                 <cells>
-                                    <tableViewCell contentMode="scaleAspectFit" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="VrL-jd-GI0">
+                                    <tableViewCell contentMode="scaleAspectFit" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="65" id="VrL-jd-GI0">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VrL-jd-GI0" id="6eM-ZS-YQD">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -66,25 +66,37 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KK雷达" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83z-K1-GtV">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="和身边的人一起玩游戏" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8g-F4-LxA">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="60" y="32" width="206" height="21"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="83z-K1-GtV" firstAttribute="leading" secondItem="6eM-ZS-YQD" secondAttribute="leadingMargin" constant="76" id="pLf-BD-Qnp">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="51"/>
                                                 </constraint>
                                                 <constraint firstAttribute="centerX" secondItem="Zzt-DY-9Pg" secondAttribute="centerX" constant="130" id="pOs-iR-Fms">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="116.5"/>
                                                 </constraint>
                                                 <constraint firstAttribute="centerY" secondItem="Zzt-DY-9Pg" secondAttribute="centerY" id="slp-my-WCn"/>
-                                                <constraint firstAttribute="centerY" secondItem="83z-K1-GtV" secondAttribute="centerY" id="xOM-S3-xZM"/>
+                                                <constraint firstAttribute="centerY" secondItem="83z-K1-GtV" secondAttribute="centerY" id="xOM-S3-xZM">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="12.5"/>
+                                                </constraint>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="Zzt-DY-9Pg"/>
                                                     <exclude reference="83z-K1-GtV"/>
+                                                    <exclude reference="j8g-F4-LxA"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="pLf-BD-Qnp"/>
@@ -97,6 +109,7 @@
                                                 <mask key="subviews">
                                                     <include reference="Zzt-DY-9Pg"/>
                                                     <include reference="83z-K1-GtV"/>
+                                                    <include reference="j8g-F4-LxA"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <include reference="pLf-BD-Qnp"/>
@@ -114,14 +127,14 @@
                             </tableViewSection>
                             <tableViewSection id="2oZ-tV-voB">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="JeG-1h-n2Z">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="65" id="JeG-1h-n2Z">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JeG-1h-n2Z" id="1GQ-kS-M5q">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="附近" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syK-o5-Nm1">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -148,13 +161,22 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加身边的朋友" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDr-1h-jne">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="60" y="35" width="183" height="21"/>
+                                                    </variation>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="syK-o5-Nm1" firstAttribute="leading" secondItem="1GQ-kS-M5q" secondAttribute="leadingMargin" constant="78" id="D3G-TB-rsA">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="52"/>
                                                 </constraint>
                                                 <constraint firstAttribute="centerY" secondItem="syK-o5-Nm1" secondAttribute="centerY" constant="11" id="Gb4-aB-j2c">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="7.5"/>
                                                 </constraint>
                                                 <constraint firstAttribute="centerX" secondItem="Bx3-89-WaH" secondAttribute="centerX" constant="130" id="oQ0-sS-mmr">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="116.5"/>
@@ -165,6 +187,7 @@
                                                 <mask key="subviews">
                                                     <exclude reference="syK-o5-Nm1"/>
                                                     <exclude reference="Bx3-89-WaH"/>
+                                                    <exclude reference="XDr-1h-jne"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="D3G-TB-rsA"/>
@@ -177,6 +200,7 @@
                                                 <mask key="subviews">
                                                     <include reference="syK-o5-Nm1"/>
                                                     <include reference="Bx3-89-WaH"/>
+                                                    <include reference="XDr-1h-jne"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <include reference="D3G-TB-rsA"/>
@@ -191,7 +215,7 @@
                                             <segue destination="OaO-x0-TzA" kind="show" id="aad-oS-ulm"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="eY7-mm-IbQ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="65" id="eY7-mm-IbQ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eY7-mm-IbQ" id="68y-bK-kAp">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -221,18 +245,27 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联赛/排名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXB-NW-D3i">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="不定期举行KK游戏大赛" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hR9-6f-zc9">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="58" y="35" width="202" height="21"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="HKl-NQ-PUw" secondAttribute="centerY" id="FrH-Z8-qIu"/>
                                                 <constraint firstAttribute="centerY" secondItem="iXB-NW-D3i" secondAttribute="centerY" constant="3" id="K16-8F-Ion">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="8.5"/>
                                                 </constraint>
                                                 <constraint firstItem="iXB-NW-D3i" firstAttribute="leading" secondItem="68y-bK-kAp" secondAttribute="leadingMargin" constant="55" id="RCX-xU-FFm">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="50"/>
                                                 </constraint>
                                                 <constraint firstAttribute="centerX" secondItem="HKl-NQ-PUw" secondAttribute="centerX" constant="120" id="ueq-dS-ba4">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="116.5"/>
@@ -242,6 +275,7 @@
                                                 <mask key="subviews">
                                                     <exclude reference="HKl-NQ-PUw"/>
                                                     <exclude reference="iXB-NW-D3i"/>
+                                                    <exclude reference="hR9-6f-zc9"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="K16-8F-Ion"/>
@@ -254,6 +288,7 @@
                                                 <mask key="subviews">
                                                     <include reference="HKl-NQ-PUw"/>
                                                     <include reference="iXB-NW-D3i"/>
+                                                    <include reference="hR9-6f-zc9"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <include reference="K16-8F-Ion"/>
@@ -4770,9 +4805,9 @@
         <image name="userDefaultHead" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bXQ-RE-HK5"/>
-        <segue reference="ibz-Ui-e2Z"/>
+        <segue reference="7ml-Ma-xWx"/>
         <segue reference="iID-OB-lrr"/>
+        <segue reference="bXQ-RE-HK5"/>
         <segue reference="foh-gx-4Hm"/>
         <segue reference="93B-ev-HIq"/>
     </inferredMetricsTieBreakers>

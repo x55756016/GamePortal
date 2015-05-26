@@ -13,6 +13,7 @@
 #import "h5kkContants.h"
 #import "UserInfoTableViewController.h"
 #import "KKUtility.h"
+#import "AppDelegate.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -61,9 +62,14 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserId"]] forKey:@"UserId"];
     [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserKey"]] forKey:@"UserKey"];
     [request setPostValue:@"1" forKey:@"pageindex"];
-    [request setPostValue:@"0" forKey:@"lon"];
-    [request setPostValue:@"0" forKey:@"lat"];
-    [request setPostValue:@"0" forKey:@"dis"];
+    
+    AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    NSString *strlon=kkAppDelegate.currentlogingUser.Longitude;//经度
+    NSString *strlat=kkAppDelegate.currentlogingUser.Latitude;//纬度
+    
+    [request setPostValue:strlon forKey:@"lon"];
+    [request setPostValue:strlat forKey:@"lat"];
+
     [request setDidFailSelector:@selector(loadAroundFail:)];
     [request setDidFinishSelector:@selector(loadAroundFinish:)];
     [request startAsynchronous];
@@ -116,6 +122,12 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSString *HeadIMGstring = [friendsDict objectForKey:@"PicPath"];
     HeadIMGstring = [HeadIMGstring stringByReplacingOccurrencesOfString:@".jpeg" withString:@"_b.jpeg"];
     [aroundTableViewCell.headImageView sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
+    
+    CALayer * l = [aroundTableViewCell.headImageView layer];
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:10.0];
+
+    
     return aroundTableViewCell;
 }
 

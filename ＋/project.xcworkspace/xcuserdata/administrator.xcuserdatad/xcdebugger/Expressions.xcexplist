@@ -49,6 +49,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[UserInfoTableViewController singleChat:]:UserInfoTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "vc">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[UserInfoTableViewController requestUserGameFinish:]:UserInfoTableViewController.m">
          <PersistentStrings>
             <PersistentString

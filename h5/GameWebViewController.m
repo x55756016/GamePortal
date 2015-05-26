@@ -300,7 +300,7 @@
     
 }
 - (void) onVolumeChanged: (int)volume{
-    float volumeNum=(float)volume/100;
+    float volumeNum=(float)volume/30;
     NSLog(@"volume=%d",volume);
     
     [kkMicrophone updateVoiceVolume:volumeNum];
