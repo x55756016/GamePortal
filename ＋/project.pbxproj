@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C31B07641B159ADA00BAD9FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C31B07631B159ADA00BAD9FF /* Images.xcassets */; };
+		C31B07661B159EB800BAD9FF /* KKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C31B07651B159EB800BAD9FF /* KKUtility.m */; };
 		C32A25051B0C3EA200861BD5 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41251B048EC100F42B7D /* iflyMSC.framework */; };
 		C32A251A1B0CBA6F00861BD5 /* SBJson4Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A250D1B0CBA6F00861BD5 /* SBJson4Parser.m */; };
 		C32A251B1B0CBA6F00861BD5 /* SBJson4StreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A250F1B0CBA6F00861BD5 /* SBJson4StreamParser.m */; };
@@ -54,7 +56,6 @@
 		C3A994B41AF8794F00B2D317 /* MyGame.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3A994B31AF8794F00B2D317 /* MyGame.xib */; };
 		C3A994B71AF8798C00B2D317 /* CityRankView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3A994B61AF8798C00B2D317 /* CityRankView.xib */; };
 		C3A994B91AF8799600B2D317 /* ChinaRankView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3A994B81AF8799600B2D317 /* ChinaRankView.xib */; };
-		C3C003FC1AFC51410049002A /* KKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C003FB1AFC51410049002A /* KKUtility.m */; };
 		C3C004001AFC93020049002A /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C003FF1AFC93020049002A /* CurrentUser.m */; };
 		C3C3B2B41AFDC2B4003388E8 /* UIButton+ImageAndLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3B2B31AFDC2B4003388E8 /* UIButton+ImageAndLabel.m */; };
 		C3CEEA6F1AFA3C4B0062970F /* HomeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CEEA6E1AFA3C4B0062970F /* HomeInfoViewController.m */; };
@@ -64,7 +65,6 @@
 		C3FCFCA61AF7696F00E74036 /* entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3FCFCA51AF7696F00E74036 /* entitlements.plist */; };
 		CB0A69B71AC92B74003F7775 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0A69B61AC92B74003F7775 /* main.m */; };
 		CB0A69BA1AC92B74003F7775 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0A69B91AC92B74003F7775 /* AppDelegate.m */; };
-		CB0A69C21AC92B74003F7775 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0A69C11AC92B74003F7775 /* Images.xcassets */; };
 		CB323DA81ACA3B3000C7FE83 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CB323DA71ACA3B3000C7FE83 /* Reachability.m */; };
 		CB323DAD1ACA3B7B00C7FE83 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CB323DAA1ACA3B7B00C7FE83 /* SVProgressHUD.bundle */; };
 		CB323DAE1ACA3B7B00C7FE83 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CB323DAC1ACA3B7B00C7FE83 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -193,7 +193,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C32A25001B0C317000861BD5 /* KKUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KKUtility.m; path = h5/Common/KKUtility.m; sourceTree = "<group>"; };
+		C31B07631B159ADA00BAD9FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
+		C31B07651B159EB800BAD9FF /* KKUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKUtility.m; sourceTree = "<group>"; };
 		C32A250B1B0CBA6F00861BD5 /* SBJson4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4.h; sourceTree = "<group>"; };
 		C32A250C1B0CBA6F00861BD5 /* SBJson4Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4Parser.h; sourceTree = "<group>"; };
 		C32A250D1B0CBA6F00861BD5 /* SBJson4Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4Parser.m; sourceTree = "<group>"; };
@@ -274,7 +275,6 @@
 		C3A994B61AF8798C00B2D317 /* CityRankView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityRankView.xib; sourceTree = "<group>"; };
 		C3A994B81AF8799600B2D317 /* ChinaRankView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChinaRankView.xib; sourceTree = "<group>"; };
 		C3C003FA1AFC51210049002A /* KKUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKUtility.h; sourceTree = "<group>"; };
-		C3C003FB1AFC51410049002A /* KKUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKUtility.m; sourceTree = "<group>"; };
 		C3C003FE1AFC92EB0049002A /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
 		C3C003FF1AFC93020049002A /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
 		C3C3B2B21AFDC2B4003388E8 /* UIButton+ImageAndLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageAndLabel.h"; sourceTree = "<group>"; };
@@ -291,7 +291,6 @@
 		CB0A69B61AC92B74003F7775 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CB0A69B81AC92B74003F7775 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CB0A69B91AC92B74003F7775 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CB0A69C11AC92B74003F7775 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CB323DA61ACA3B3000C7FE83 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		CB323DA71ACA3B3000C7FE83 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		CB323DAA1ACA3B7B00C7FE83 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
@@ -838,7 +837,6 @@
 		CB0A69A81AC92B74003F7775 = {
 			isa = PBXGroup;
 			children = (
-				C32A25001B0C317000861BD5 /* KKUtility.m */,
 				CB0A69B31AC92B74003F7775 /* h5 */,
 				CB323DC01ACA3D4600C7FE83 /* Frameworks */,
 				CB0A69B21AC92B74003F7775 /* Products */,
@@ -876,6 +874,7 @@
 				CB323DA91ACA3B7B00C7FE83 /* SVProgressHUD */,
 				CB0A69B41AC92B74003F7775 /* Supporting Files */,
 				C3FCFCA51AF7696F00E74036 /* entitlements.plist */,
+				C31B07631B159ADA00BAD9FF /* Images.xcassets */,
 			);
 			path = h5;
 			sourceTree = "<group>";
@@ -883,7 +882,6 @@
 		CB0A69B41AC92B74003F7775 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CB0A69C11AC92B74003F7775 /* Images.xcassets */,
 				CB0A69B51AC92B74003F7775 /* Info.plist */,
 				CB0A69B61AC92B74003F7775 /* main.m */,
 			);
@@ -1257,9 +1255,9 @@
 		CB886FE01AE0A8690093F914 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C31B07651B159EB800BAD9FF /* KKUtility.m */,
 				CB886FE11AE0A8C00093F914 /* h5kkContants.h */,
 				C3C003FA1AFC51210049002A /* KKUtility.h */,
-				C3C003FB1AFC51410049002A /* KKUtility.m */,
 				C3C003FE1AFC92EB0049002A /* CurrentUser.h */,
 				C3C003FF1AFC93020049002A /* CurrentUser.m */,
 			);
@@ -1461,9 +1459,9 @@
 				C32D864C1B0F2004008D7553 /* wave70x117@2x.png in Resources */,
 				CB323DAD1ACA3B7B00C7FE83 /* SVProgressHUD.bundle in Resources */,
 				C3A994AD1AF8781C00B2D317 /* FrontRankTableViewCell.xib in Resources */,
+				C31B07641B159ADA00BAD9FF /* Images.xcassets in Resources */,
 				C32D864B1B0F2004008D7553 /* mic_talk_358x358@2x.png in Resources */,
 				C39D014C1B1063670080AC97 /* Localizable.strings in Resources */,
-				CB0A69C21AC92B74003F7775 /* Images.xcassets in Resources */,
 				C3EF76021B0211FF002EA0D7 /* ButtomMenuView.xib in Resources */,
 				CB3929451ACC29570004FFB4 /* smssdk.bundle in Resources */,
 				C3A994B91AF8799600B2D317 /* ChinaRankView.xib in Resources */,
@@ -1481,7 +1479,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C32A251E1B0CBA6F00861BD5 /* SBJson4StreamWriter.m in Sources */,
-				C3C003FC1AFC51410049002A /* KKUtility.m in Sources */,
 				CB6166981AD8DD5C00D9132F /* RCHttpRequest.m in Sources */,
 				CBB3FE561ADD5AF7008D008B /* SnapChatViewController.m in Sources */,
 				CB0A69BA1AC92B74003F7775 /* AppDelegate.m in Sources */,
@@ -1520,6 +1517,7 @@
 				CB6ED2081AD37A4100A33BB8 /* UIImageView+WebCache.m in Sources */,
 				CB0A69B71AC92B74003F7775 /* main.m in Sources */,
 				C3A994AE1AF8781C00B2D317 /* BehindTableViewCell.m in Sources */,
+				C31B07661B159EB800BAD9FF /* KKUtility.m in Sources */,
 				C3C004001AFC93020049002A /* CurrentUser.m in Sources */,
 				CB83C95A1AE9E8070075F045 /* FindAroundTableViewController.m in Sources */,
 				CB3929411ACC29570004FFB4 /* NSDictionary-DeepMutableCopy.m in Sources */,

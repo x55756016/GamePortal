@@ -11,8 +11,7 @@
 
 @interface SquareTableViewController : UITableViewController
 
-@property NSInteger timeCount;
-@property NSInteger scrollIndex;
+@property NSInteger timepageIndex;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *adScrollView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;

@@ -102,7 +102,7 @@
          contextName = "-[SquareTableViewController scrollViewDidEndDecelerating:]:SquareTableViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.timeCount">
+               value = "scrollView.contentOffset.x">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

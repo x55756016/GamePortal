@@ -53,7 +53,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     //定时刷广告
-     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(scrollTimer) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(scrollTimer) userInfo:nil repeats:YES];
 }
 
 
@@ -169,51 +169,85 @@ UIKIT_EXTERN NSString *userFolderPath;
 -(void)paintAd
 {
     self.pageControl.numberOfPages = adArray.count;
+    float widthall=self.adScrollView.frame.size.width*(adArray.count+2);
+    self.adScrollView.contentSize = CGSizeMake(widthall, self.adScrollView.frame.size.height);
+    
     for (int i = 0; i < adArray.count; i++)
     {
         NSDictionary *adDic = [adArray objectAtIndex:i];
-        UIImageView *descImageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.adScrollView.frame.size.width*i, 0, self.adScrollView.frame.size.width, self.adScrollView.frame.size.height)];
+        UIImageView *descImageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.adScrollView.frame.size.width*(i+1), 0, self.adScrollView.frame.size.width, self.adScrollView.frame.size.height)];
         [self.adScrollView addSubview:descImageView];
         [descImageView sd_setImageWithURL:[NSURL URLWithString:[adDic objectForKey:@"ImgUrl"]] placeholderImage:[UIImage imageNamed:@"mainBoard_adLogoDefault"]];
+        
     }
-    float widthall=self.adScrollView.frame.size.width*adArray.count;
-    self.adScrollView.contentSize = CGSizeMake(widthall, self.adScrollView.frame.size.height);
-     self.timeCount = 0;
+    // 将最后一张图片弄到第一张的位置
+    NSDictionary *adDic=[adArray objectAtIndex:[adArray count]-1];
+    UIImageView *descImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.adScrollView.frame.size.width, self.adScrollView.frame.size.height)];
+    [self.adScrollView addSubview:descImageView];
+    [descImageView sd_setImageWithURL:[NSURL URLWithString:[adDic objectForKey:@"ImgUrl"]] placeholderImage:[UIImage imageNamed:@"mainBoard_adLogoDefault"]];
+
+    
+    // 将第一张图片放到最后位置，造成视觉上的循环
+    NSDictionary *adDicFirst=[adArray objectAtIndex:0];
+    UIImageView *FirstImageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.adScrollView.frame.size.width * ([adArray count]+1), 0, self.adScrollView.frame.size.width, self.adScrollView.frame.size.height)];
+    [self.adScrollView addSubview:FirstImageView];
+    [FirstImageView sd_setImageWithURL:[NSURL URLWithString:[adDicFirst objectForKey:@"ImgUrl"]] placeholderImage:[UIImage imageNamed:@"mainBoard_adLogoDefault"]];
+    
+
+    NSLog(@"%@"@"%lu",@"ad滚动总个数：",(unsigned long)[[self.adScrollView subviews] count]);\
+    //默认显示第2张图片
+    [self.adScrollView setContentOffset:CGPointMake(self.adScrollView.frame.size.width, 0)];
+    self.timepageIndex = 0;
 }
 
 //定时滚动
 -(void)scrollTimer{
     if(adArray.count<1) return;
-    self.timeCount ++;
-    self.pageControl.currentPage =  self.timeCount;
-    if (self.timeCount == self.pageControl.numberOfPages) {
-        self.timeCount = 0;
-    }
-    self.pageControl.currentPage = self.timeCount;
-    self.scrollIndex=self.timeCount;
-    float width=self.timeCount * self.adScrollView.frame.size.width;
+    self.timepageIndex ++;
+      NSLog(@"page is:@%ld",(long)self.timepageIndex);
     
-    [self.adScrollView scrollRectToVisible:CGRectMake(width, 0, self.adScrollView.frame.size.width, self.adScrollView.frame.size.height) animated:YES];
+    NSInteger pageControlIndex=0;
+    // 如果当前页是第0页就跳转到数组中最后一个地方进行跳转
+    if (self.timepageIndex == 1) {
+        //因为当最后一页的时候已经跳到第一页了，顾这里无需再跳转
+    }
+    else if(self.timepageIndex == [self.adScrollView.subviews count]-1){
+        // 如果是没显示出来的最后一页就跳转到数组第一个元素的地点
+        [self.adScrollView setContentOffset:CGPointMake(self.adScrollView.frame.size.width, 0)];
+        pageControlIndex=0;
+        self.timepageIndex=1;
+        NSLog(@"page change to:@%d",0);
+    }else
+    {
+        float width=(self.timepageIndex) * self.adScrollView.frame.size.width;
+        [self.adScrollView scrollRectToVisible:CGRectMake(width, 0, self.adScrollView.frame.size.width, self.adScrollView.frame.size.height) animated:YES];
 
-  NSLog(@"antoScroll to:@%f",self.adScrollView.contentOffset.x);
+        pageControlIndex= self.timepageIndex-1;
+    }
+    self.pageControl.currentPage = pageControlIndex;
+
+  NSLog(@"pageControl is:@%ld",(long)pageControlIndex);
 }
 //------------------------------UIScrollViewDelegate---------------------------------------------//
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if(scrollView.tag == 110)
-    {
-        NSLog(@"%f",scrollView.contentOffset.x);
-        int pageIndex = scrollView.contentOffset.x / scrollView.frame.size.width;
-        self.scrollIndex=pageIndex;
-        NSLog(@"pageIndex[%d]", pageIndex);
-//        if((self.scrollIndex+1)==self.pageControl.numberOfPages)
-//        {
-//            pageIndex=0;
-//             [self.adScrollView scrollRectToVisible:CGRectMake(0, 0, self.adScrollView.frame.size.width, self.adScrollView.frame.size.height) animated:YES];
-//        }
-        self.pageControl.currentPage = pageIndex;
-//        self.timeCount =pageIndex;
+    NSInteger RealPageIndex = scrollView.contentOffset.x / scrollView.frame.size.width;
+    NSInteger pageControlIndex=0;
+    // 如果当前页是第0页就跳转到数组中最后一个地方进行跳转
+    if (RealPageIndex == 0) {
+        [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width * [adArray count], 0)];
+        pageControlIndex=self.pageControl.numberOfPages-1;
     }
+    else if (RealPageIndex == [adArray count]+1){
+        // 如果是没显示出来的最后一页就跳转到数组第一个元素的地点
+        [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, 0)];
+         pageControlIndex=0;
+    }else
+    {
+        pageControlIndex= RealPageIndex-1;
+    }
+    self.pageControl.currentPage =pageControlIndex;
+    self.timepageIndex=pageControlIndex;
 }
 
 -(void)scrollToNextPage:(id)sender
@@ -330,7 +364,8 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSArray *dicArray = [strDistinct componentsSeparatedByString:@","];
     NSString *discLongitude=[[dicArray objectAtIndex:0] substringFromIndex:1];
     NSString *discLatitude=[[dicArray objectAtIndex:1] substringToIndex:[[dicArray objectAtIndex:1] length]-1];
-    CLLocation *endpoint=[[CLLocation alloc] initWithLatitude:[discLongitude doubleValue]   longitude:[discLatitude doubleValue] ];//Latitude 纬度， longitude 经度
+    CLLocation *endpoint=[[CLLocation alloc] initWithLatitude:[discLongitude doubleValue]   longitude:[discLatitude doubleValue] ];
+    //Latitude 纬度， longitude 经度
     
     NSString *TimeDistinctMsg=[timeMsg stringByAppendingString:[KKUtility calcutDistinct:kkAppDelegate.currentlogingUser.Location:endpoint]];
     
@@ -352,7 +387,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 65;
 }
 
 - (IBAction)imagePressed:(id)sender
