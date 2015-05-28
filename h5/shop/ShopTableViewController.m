@@ -1,10 +1,3 @@
-//
-//  onlineShopTableViewController.m
-//  ＋
-//
-//  Created by Administrator on 15/5/28.
-//  Copyright (c) 2015年 hf. All rights reserved.
-//
 
 #import "ShopTableViewController.h"
 //#import "IAPHelper.h"
@@ -38,7 +31,7 @@
     Reachability *reach = [Reachability reachabilityForInternetConnection];
     NetworkStatus netStatus = [reach currentReachabilityStatus];
     if (netStatus == NotReachable) {
-        NSLog(@"No internet connection!");
+        [KKUtility justAlert:@"无可用网络，请联系网络后再试。"];
     } else {
 //        if ([InAppRageIAPHelper sharedHelper].products == nil) {
 //            
@@ -95,6 +88,10 @@
     if([[dict objectForKey:@"IsSuccess"] integerValue])
     {
         [self loadFriendsData:dict];
+    }
+    else
+    {
+        [KKUtility justAlert:@"未获取到在线商品，请联系客服或重试。"];
     }
     
 }

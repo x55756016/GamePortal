@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		C31B07641B159ADA00BAD9FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C31B07631B159ADA00BAD9FF /* Images.xcassets */; };
 		C31B07661B159EB800BAD9FF /* KKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C31B07651B159EB800BAD9FF /* KKUtility.m */; };
-		C31B076A1B15E9D900BAD9FF /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C31B07691B15E9D900BAD9FF /* IAPHelper.m */; };
-		C31B076D1B15ED3C00BAD9FF /* InAppRageIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C31B076C1B15ED3C00BAD9FF /* InAppRageIAPHelper.m */; };
 		C32A25051B0C3EA200861BD5 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41251B048EC100F42B7D /* iflyMSC.framework */; };
 		C32A251A1B0CBA6F00861BD5 /* SBJson4Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A250D1B0CBA6F00861BD5 /* SBJson4Parser.m */; };
 		C32A251B1B0CBA6F00861BD5 /* SBJson4StreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A250F1B0CBA6F00861BD5 /* SBJson4StreamParser.m */; };
@@ -37,6 +35,8 @@
 		C342F94A1B16B2D100725AA2 /* ShopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C342F9491B16B2D100725AA2 /* ShopTableViewController.m */; };
 		C342F94E1B17093D00725AA2 /* ProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C342F94C1B17093D00725AA2 /* ProductTableViewCell.m */; };
 		C342F94F1B17093D00725AA2 /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C342F94D1B17093D00725AA2 /* ProductTableViewCell.xib */; };
+		C342F9551B1717E400725AA2 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C342F9521B1717E400725AA2 /* IAPHelper.m */; };
+		C342F9561B1717E400725AA2 /* InAppRageIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C342F9541B1717E400725AA2 /* InAppRageIAPHelper.m */; };
 		C35C77491B1319840032D1D5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C35C77481B1319840032D1D5 /* StoreKit.framework */; };
 		C38E41231B048E4700F42B7D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41201B048E4700F42B7D /* libWeChatSDK.a */; };
 		C39D014C1B1063670080AC97 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C39D014E1B1063670080AC97 /* Localizable.strings */; };
@@ -200,10 +200,6 @@
 /* Begin PBXFileReference section */
 		C31B07631B159ADA00BAD9FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		C31B07651B159EB800BAD9FF /* KKUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKUtility.m; sourceTree = "<group>"; };
-		C31B07681B15E9D900BAD9FF /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
-		C31B07691B15E9D900BAD9FF /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
-		C31B076B1B15ED3C00BAD9FF /* InAppRageIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppRageIAPHelper.h; sourceTree = "<group>"; };
-		C31B076C1B15ED3C00BAD9FF /* InAppRageIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppRageIAPHelper.m; sourceTree = "<group>"; };
 		C32A250B1B0CBA6F00861BD5 /* SBJson4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4.h; sourceTree = "<group>"; };
 		C32A250C1B0CBA6F00861BD5 /* SBJson4Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4Parser.h; sourceTree = "<group>"; };
 		C32A250D1B0CBA6F00861BD5 /* SBJson4Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4Parser.m; sourceTree = "<group>"; };
@@ -249,6 +245,10 @@
 		C342F94B1B17093D00725AA2 /* ProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableViewCell.h; sourceTree = "<group>"; };
 		C342F94C1B17093D00725AA2 /* ProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewCell.m; sourceTree = "<group>"; };
 		C342F94D1B17093D00725AA2 /* ProductTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
+		C342F9511B1717E400725AA2 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		C342F9521B1717E400725AA2 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
+		C342F9531B1717E400725AA2 /* InAppRageIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppRageIAPHelper.h; sourceTree = "<group>"; };
+		C342F9541B1717E400725AA2 /* InAppRageIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppRageIAPHelper.m; sourceTree = "<group>"; };
 		C35C77481B1319840032D1D5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C38E41201B048E4700F42B7D /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		C38E41211B048E4700F42B7D /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -612,10 +612,6 @@
 		C31B07671B15E97B00BAD9FF /* Shop */ = {
 			isa = PBXGroup;
 			children = (
-				C31B07681B15E9D900BAD9FF /* IAPHelper.h */,
-				C31B07691B15E9D900BAD9FF /* IAPHelper.m */,
-				C31B076B1B15ED3C00BAD9FF /* InAppRageIAPHelper.h */,
-				C31B076C1B15ED3C00BAD9FF /* InAppRageIAPHelper.m */,
 				C342F9481B16B2D100725AA2 /* ShopTableViewController.h */,
 				C342F9491B16B2D100725AA2 /* ShopTableViewController.m */,
 				C342F94B1B17093D00725AA2 /* ProductTableViewCell.h */,
@@ -711,9 +707,21 @@
 			path = InfiniteScrollPicker;
 			sourceTree = "<group>";
 		};
+		C342F9501B1717E400725AA2 /* IAPHelper */ = {
+			isa = PBXGroup;
+			children = (
+				C342F9511B1717E400725AA2 /* IAPHelper.h */,
+				C342F9521B1717E400725AA2 /* IAPHelper.m */,
+				C342F9531B1717E400725AA2 /* InAppRageIAPHelper.h */,
+				C342F9541B1717E400725AA2 /* InAppRageIAPHelper.m */,
+			);
+			path = IAPHelper;
+			sourceTree = "<group>";
+		};
 		C38E411E1B048E4700F42B7D /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				C342F9501B1717E400725AA2 /* IAPHelper */,
 				CB323DA91ACA3B7B00C7FE83 /* SVProgressHUD */,
 				CB323DAF1ACA3CC500C7FE83 /* SMS_SDK */,
 				CBB4B0C81AF47FE9004BE59A /* iOS_IMKit */,
@@ -1577,6 +1585,7 @@
 				CB61669F1AD8F6F000D9132F /* ChatSettingViewController.m in Sources */,
 				C32A251A1B0CBA6F00861BD5 /* SBJson4Parser.m in Sources */,
 				C3A9949C1AF86FF100B2D317 /* GameWebViewController.m in Sources */,
+				C342F9561B1717E400725AA2 /* InAppRageIAPHelper.m in Sources */,
 				CB61669C1AD8EF1C00D9132F /* ChatViewController.m in Sources */,
 				CB6ED1FD1AD37A4100A33BB8 /* SDWebImageCompat.m in Sources */,
 				CB6EFEA41AD61B6C00F597B6 /* MJRefreshLegendFooter.m in Sources */,
@@ -1584,7 +1593,6 @@
 				C32A251B1B0CBA6F00861BD5 /* SBJson4StreamParser.m in Sources */,
 				CB61CFAC1AEA3AB1008DEB9D /* PulsingRadarView.m in Sources */,
 				CB6ED2041AD37A4100A33BB8 /* UIImage+GIF.m in Sources */,
-				C31B076A1B15E9D900BAD9FF /* IAPHelper.m in Sources */,
 				CB6ED2071AD37A4100A33BB8 /* UIImageView+HighlightedWebCache.m in Sources */,
 				CB3CB2831ACD8A7A0031E016 /* MeDetailNameTableViewController.m in Sources */,
 				CB42F8111ADE59EF00F5376C /* My1NavigationController.m in Sources */,
@@ -1610,7 +1618,7 @@
 				CB323E101ACA7C9B00C7FE83 /* ASIHTTPRequest.m in Sources */,
 				CBE0A0501AEA108F00791FAB /* MatchTableViewCell.m in Sources */,
 				C331E81F1B0B702D004439A3 /* ViewController.m in Sources */,
-				C31B076D1B15ED3C00BAD9FF /* InAppRageIAPHelper.m in Sources */,
+				C342F9551B1717E400725AA2 /* IAPHelper.m in Sources */,
 				CB323E0E1ACA7C9B00C7FE83 /* ASIDownloadCache.m in Sources */,
 				CB83C9571AE9E5660075F045 /* FindNavigationController.m in Sources */,
 				C33A83EA1B072F5200331199 /* UIView+viewController.m in Sources */,
