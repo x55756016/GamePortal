@@ -48,4 +48,7 @@
 //上传战绩墙
 #define ADD_GameAchievement     [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/AchievementAdd"]
 
+//获取产品价格
+#define GET_ProductItem     [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKData/ProductItem"]
+
 

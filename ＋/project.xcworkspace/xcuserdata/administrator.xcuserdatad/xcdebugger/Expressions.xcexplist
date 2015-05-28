@@ -38,7 +38,12 @@
          contextName = "-[GameWebViewController loadWebView]:GameWebViewController.m">
       </ContextState>
       <ContextState
-         contextName = "-[UserInfoTableViewController tableView:cellForRowAtIndexPath:]:UserInfoTableViewController.m">
+         contextName = "-[UserInfoTableViewController singleChat:]:UserInfoTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "vc">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[SquareTableViewController shouldAutorotate]:SquareTableViewController.m">
@@ -49,12 +54,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[UserInfoTableViewController singleChat:]:UserInfoTableViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "vc">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "-[UserInfoTableViewController tableView:cellForRowAtIndexPath:]:UserInfoTableViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[UserInfoTableViewController requestUserGameFinish:]:UserInfoTableViewController.m">
@@ -79,6 +79,14 @@
          contextName = "-[GameWebViewController addGameFail:]:GameWebViewController.m">
       </ContextState>
       <ContextState
+         contextName = "-[IAPHelper productsRequest:didReceiveResponse:]:IAPHelper.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "response.products">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[FindMatchTableViewController loadMatchFinish:]:FindMatchTableViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -96,15 +104,15 @@
          contextName = "-[RadarAllTableViewController viewDidLoad]:RadarAllTableViewController.m">
       </ContextState>
       <ContextState
-         contextName = "-[InfiniteScrollPicker reloadView:]:InfiniteScrollPicker.m">
-      </ContextState>
-      <ContextState
          contextName = "-[SquareTableViewController scrollViewDidEndDecelerating:]:SquareTableViewController.m">
          <PersistentStrings>
             <PersistentString
                value = "scrollView.contentOffset.x">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[InfiniteScrollPicker reloadView:]:InfiniteScrollPicker.m">
       </ContextState>
       <ContextState
          contextName = "-[RadarViewController PushRadioAll:]:RadarViewController.m">
@@ -127,13 +135,10 @@
          contextName = "-[SquareTableViewController scrollTimer]:SquareTableViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.adScrollView.frame.size.width">
+               value = "self.timepageIndex ">
             </PersistentString>
             <PersistentString
-               value = "self.pageControl.numberOfPages">
-            </PersistentString>
-            <PersistentString
-               value = "self.timeCount">
+               value = "self.adScrollView.subviews">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

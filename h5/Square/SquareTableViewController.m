@@ -9,7 +9,6 @@
 #import "SquareTableViewController.h"
 #import "ASIFormDataRequest.h"
 #import "UIImageView+WebCache.h"
-#import "MJRefresh.h"
 #import "AppDelegate.h"
 #import "SquareTableViewCell.h"
 #import "h5kkContants.h"
@@ -30,7 +29,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSMutableArray *playerArray;
     
     ASIFormDataRequest *request;
-    
+    NSTimer *myTimer;
 }
 @end
 
@@ -53,7 +52,18 @@ UIKIT_EXTERN NSString *userFolderPath;
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     //定时刷广告
-    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(scrollTimer) userInfo:nil repeats:YES];
+    myTimer=[NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(scrollTimer) userInfo:nil repeats:YES];
+}
+//页面将要进入前台，开启定时器
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self startTimer];
+}
+
+//页面消失，进入后台不显示该页面，关闭定时器
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [self stopTimer];
 }
 
 
@@ -61,7 +71,6 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     [super didReceiveMemoryWarning];
 }
-
 
 //上下拉加载
 -(void)UpAndDownPull
@@ -100,6 +109,9 @@ UIKIT_EXTERN NSString *userFolderPath;
 //----------------------------------------加载广告滚动视图------------------------------------------//
 -(void)loadAd
 {
+    //关闭定时器
+    [self stopTimer];
+    
     NSString *UserInfoFolder = [[kkAppDelegate applicationDocumentsDirectory] stringByAppendingPathComponent:@"adView"];
     
     BOOL isUserInfoFolderCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserInfoFolder isDirectory:nil];
@@ -168,9 +180,11 @@ UIKIT_EXTERN NSString *userFolderPath;
 //刷广告
 -(void)paintAd
 {
+    if(adArray.count<1)return;
+    
+    [self.adScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.pageControl.numberOfPages = adArray.count;
-    float widthall=self.adScrollView.frame.size.width*(adArray.count+2);
-    self.adScrollView.contentSize = CGSizeMake(widthall, self.adScrollView.frame.size.height);
+   
     
     for (int i = 0; i < adArray.count; i++)
     {
@@ -198,6 +212,12 @@ UIKIT_EXTERN NSString *userFolderPath;
     //默认显示第2张图片
     [self.adScrollView setContentOffset:CGPointMake(self.adScrollView.frame.size.width, 0)];
     self.timepageIndex = 0;
+    
+    float widthall=self.adScrollView.frame.size.width*(adArray.count+2);
+    self.adScrollView.contentSize = CGSizeMake(widthall, self.adScrollView.frame.size.height);
+    
+    //开启定时器
+    [self startTimer];
 }
 
 //定时滚动
@@ -211,7 +231,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     if (self.timepageIndex == 1) {
         //因为当最后一页的时候已经跳到第一页了，顾这里无需再跳转
     }
-    else if(self.timepageIndex == [self.adScrollView.subviews count]-1){
+    else if(self.timepageIndex >= [self.adScrollView.subviews count]-1){
         // 如果是没显示出来的最后一页就跳转到数组第一个元素的地点
         [self.adScrollView setContentOffset:CGPointMake(self.adScrollView.frame.size.width, 0)];
         pageControlIndex=0;
@@ -231,6 +251,8 @@ UIKIT_EXTERN NSString *userFolderPath;
 //------------------------------UIScrollViewDelegate---------------------------------------------//
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    if(scrollView.tag==110)
+    {
     NSInteger RealPageIndex = scrollView.contentOffset.x / scrollView.frame.size.width;
     NSInteger pageControlIndex=0;
     // 如果当前页是第0页就跳转到数组中最后一个地方进行跳转
@@ -238,7 +260,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width * [adArray count], 0)];
         pageControlIndex=self.pageControl.numberOfPages-1;
     }
-    else if (RealPageIndex == [adArray count]+1){
+    else if (RealPageIndex >= [adArray count]+1){
         // 如果是没显示出来的最后一页就跳转到数组第一个元素的地点
         [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, 0)];
          pageControlIndex=0;
@@ -247,19 +269,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         pageControlIndex= RealPageIndex-1;
     }
     self.pageControl.currentPage =pageControlIndex;
-    self.timepageIndex=pageControlIndex;
-}
-
--(void)scrollToNextPage:(id)sender
-{
-    NSInteger pageNum=self.pageControl.currentPage;
-    CGSize viewSize=self.adScrollView.frame.size;
-    CGRect rect=CGRectMake((pageNum+2)*viewSize.width, 0, viewSize.width, viewSize.height);
-    [self.adScrollView scrollRectToVisible:rect animated:NO];
-    pageNum++;
-    if (pageNum==adArray.count) {
-        CGRect newRect=CGRectMake(viewSize.width, 0, viewSize.width, viewSize.height);
-        [self.adScrollView scrollRectToVisible:newRect animated:NO];
+    self.timepageIndex=RealPageIndex;
     }
 }
 //----------------------------------------加载玩家动态----------------------------------------//
@@ -452,7 +462,17 @@ UIKIT_EXTERN NSString *userFolderPath;
     
 }
 
-
+-(void) startTimer
+{
+    //开启定时器
+    [myTimer setFireDate:[NSDate distantPast]];
+}
+-(void)stopTimer
+{
+    //关闭定时器
+    [myTimer setFireDate:[NSDate distantFuture]];
+    
+}
 
 - (void)dealloc
 {
@@ -469,6 +489,8 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     return [self.presentedViewController supportedInterfaceOrientations];
 }
+
+
 @end
 
 

@@ -18,7 +18,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PnS-jX-cxo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="userDefaultHead" translatesAutoresizingMaskIntoConstraints="NO" id="QLg-L1-VHr">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="userDefaultHead" translatesAutoresizingMaskIntoConstraints="NO" id="QLg-L1-VHr">
                                 <rect key="frame" x="0.0" y="10" width="60" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="KRB-eG-Uul"/>
@@ -37,36 +37,30 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jh-mS-OQc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jh-mS-OQc" userLabel="时间距离">
                                 <rect key="frame" x="68" y="45" width="230" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PP-9M-ObE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PP-9M-ObE" userLabel="消息">
                                 <rect key="frame" x="68" y="16" width="230" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="230" id="Sur-Ot-MDN"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                    <mask key="constraints">
-                                        <exclude reference="Sur-Ot-MDN"/>
-                                    </mask>
                                 </variation>
                             </label>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="QLg-L1-VHr" secondAttribute="centerY" constant="-7" id="8W9-tp-PPi">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="8PP-9M-ObE" firstAttribute="leading" secondItem="QLg-L1-VHr" secondAttribute="trailing" constant="8" id="Azg-xM-i5p">
                                 <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="8PP-9M-ObE" secondAttribute="trailing" constant="22" id="JMe-C5-XJn">
                                 <variation key="heightClass=regular-widthClass=compact" constant="10"/>
-                            </constraint>
-                            <constraint firstItem="8PP-9M-ObE" firstAttribute="top" secondItem="PnS-jX-cxo" secondAttribute="top" constant="8" id="QYD-ge-Zna">
-                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                             </constraint>
                             <constraint firstItem="7Jh-mS-OQc" firstAttribute="leading" secondItem="QLg-L1-VHr" secondAttribute="trailing" constant="8" id="WrS-si-gXs">
                                 <variation key="heightClass=regular-widthClass=compact" constant="10"/>
@@ -77,17 +71,19 @@
                             <constraint firstItem="QLg-L1-VHr" firstAttribute="leading" secondItem="PnS-jX-cxo" secondAttribute="leading" id="odr-Iu-EEX">
                                 <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                             </constraint>
+                            <constraint firstItem="8PP-9M-ObE" firstAttribute="centerY" secondItem="QLg-L1-VHr" secondAttribute="centerY" constant="-11" id="tub-Hr-eQy"/>
                             <constraint firstItem="8PP-9M-ObE" firstAttribute="trailing" secondItem="7Jh-mS-OQc" secondAttribute="trailing" id="ySg-4L-ULZ"/>
-                            <constraint firstAttribute="bottom" secondItem="QLg-L1-VHr" secondAttribute="bottom" constant="10" id="yhs-aN-Ck6"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="QYD-ge-Zna"/>
+                                <exclude reference="8W9-tp-PPi"/>
+                                <exclude reference="tub-Hr-eQy"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="QYD-ge-Zna"/>
+                                <include reference="8W9-tp-PPi"/>
+                                <include reference="tub-Hr-eQy"/>
                             </mask>
                         </variation>
                     </view>

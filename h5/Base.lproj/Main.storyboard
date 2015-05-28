@@ -1545,6 +1545,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Ttn-il-d4T" kind="show" id="xEd-zT-fD4"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="s1H-5O-fom" style="IBUITableViewCellStyleDefault" id="Amk-SF-b2L">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -1603,6 +1606,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6r-E6-VdH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-713" y="2443"/>
+        </scene>
+        <!--在线商店-->
+        <scene sceneID="O4o-6R-pO9">
+            <objects>
+                <tableViewController id="Ttn-il-d4T" userLabel="在线商店" customClass="ShopTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lip-U5-Zww">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Ttn-il-d4T" id="DWf-7F-sE3"/>
+                            <outlet property="delegate" destination="Ttn-il-d4T" id="arf-y6-uCZ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Io-Pm-dco" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="16.5" y="2442.75"/>
         </scene>
         <!--消息列表Navigation-->
         <scene sceneID="fCz-dF-vbm">
@@ -1770,7 +1791,8 @@
                                         <exclude reference="kZ9-oL-YYX"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="320" height="50"/>
                                     <mask key="subviews">
                                         <include reference="h0a-Hd-qCo"/>
                                     </mask>
@@ -1786,6 +1808,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0oZ-pi-F5b">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="114" width="320" height="434"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="JZa-bm-8lv" id="O4d-0D-EEu"/>
                                     <outlet property="delegate" destination="JZa-bm-8lv" id="82r-02-RoX"/>
@@ -4021,7 +4046,9 @@
                                     <rect key="frame" x="140" y="110" width="40" height="37"/>
                                     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="37" id="DGs-xf-458"/>
+                                        <constraint firstAttribute="height" constant="37" id="DGs-xf-458">
+                                            <variation key="heightClass=regular-widthClass=compact" constant="35"/>
+                                        </constraint>
                                         <constraint firstAttribute="width" constant="40" id="PMI-yi-v4M"/>
                                     </constraints>
                                     <color key="pageIndicatorTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -4041,31 +4068,38 @@
                                 </pageControl>
                             </subviews>
                             <constraints>
+                                <constraint firstAttribute="centerX" secondItem="GnM-1w-LXT" secondAttribute="centerX" id="Izf-PE-Wsx"/>
                                 <constraint firstAttribute="trailing" secondItem="oel-VO-297" secondAttribute="trailing" id="L1v-k3-SdM"/>
+                                <constraint firstAttribute="centerX" secondItem="oel-VO-297" secondAttribute="centerX" id="ecp-SW-d5x"/>
                                 <constraint firstItem="oel-VO-297" firstAttribute="top" secondItem="HrI-ZA-z12" secondAttribute="top" id="h02-OQ-1KB"/>
-                                <constraint firstAttribute="bottom" secondItem="oel-VO-297" secondAttribute="bottom" id="tl9-fL-QQP"/>
+                                <constraint firstAttribute="bottom" secondItem="oel-VO-297" secondAttribute="bottom" constant="-140" id="iWa-X0-KkL">
+                                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                </constraint>
                                 <constraint firstItem="oel-VO-297" firstAttribute="leading" secondItem="HrI-ZA-z12" secondAttribute="leading" id="vFT-V7-Wte"/>
-                                <constraint firstAttribute="bottom" secondItem="GnM-1w-LXT" secondAttribute="bottom" constant="-7" id="vNB-fb-sw1"/>
-                                <constraint firstItem="GnM-1w-LXT" firstAttribute="centerX" secondItem="oel-VO-297" secondAttribute="centerX" id="wH3-8I-ebd"/>
+                                <constraint firstAttribute="bottom" secondItem="GnM-1w-LXT" secondAttribute="bottom" constant="-7" id="vNB-fb-sw1">
+                                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                </constraint>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="L1v-k3-SdM"/>
+                                    <exclude reference="ecp-SW-d5x"/>
                                     <exclude reference="h02-OQ-1KB"/>
-                                    <exclude reference="tl9-fL-QQP"/>
+                                    <exclude reference="iWa-X0-KkL"/>
                                     <exclude reference="vFT-V7-Wte"/>
+                                    <exclude reference="Izf-PE-Wsx"/>
                                     <exclude reference="vNB-fb-sw1"/>
-                                    <exclude reference="wH3-8I-ebd"/>
                                 </mask>
                             </variation>
                             <variation key="heightClass=regular-widthClass=compact">
                                 <mask key="constraints">
                                     <include reference="L1v-k3-SdM"/>
+                                    <include reference="ecp-SW-d5x"/>
                                     <include reference="h02-OQ-1KB"/>
-                                    <include reference="tl9-fL-QQP"/>
+                                    <include reference="iWa-X0-KkL"/>
                                     <include reference="vFT-V7-Wte"/>
+                                    <include reference="Izf-PE-Wsx"/>
                                     <include reference="vNB-fb-sw1"/>
-                                    <include reference="wH3-8I-ebd"/>
                                 </mask>
                             </variation>
                         </view>
@@ -4787,8 +4821,8 @@
         <image name="1_liansai" width="42" height="42"/>
         <image name="bg_input" width="306" height="37"/>
         <image name="general_button" width="130" height="62"/>
-        <image name="mainBoard_NavFound" width="39" height="41"/>
-        <image name="mainBoard_NavGame" width="40" height="40"/>
+        <image name="mainBoard_NavFound" width="13" height="13"/>
+        <image name="mainBoard_NavGame" width="13" height="13"/>
         <image name="mainBoard_found" width="63" height="44"/>
         <image name="mainBoard_foundSelected" width="63" height="44"/>
         <image name="mainBoard_friends" width="50" height="50"/>
@@ -4805,10 +4839,10 @@
         <image name="userDefaultHead" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7ml-Ma-xWx"/>
-        <segue reference="iID-OB-lrr"/>
         <segue reference="bXQ-RE-HK5"/>
-        <segue reference="foh-gx-4Hm"/>
         <segue reference="93B-ev-HIq"/>
+        <segue reference="zVw-oc-Kg7"/>
+        <segue reference="Wkf-TW-zIW"/>
+        <segue reference="iID-OB-lrr"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C31B07641B159ADA00BAD9FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C31B07631B159ADA00BAD9FF /* Images.xcassets */; };
 		C31B07661B159EB800BAD9FF /* KKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C31B07651B159EB800BAD9FF /* KKUtility.m */; };
+		C31B076A1B15E9D900BAD9FF /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C31B07691B15E9D900BAD9FF /* IAPHelper.m */; };
+		C31B076D1B15ED3C00BAD9FF /* InAppRageIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C31B076C1B15ED3C00BAD9FF /* InAppRageIAPHelper.m */; };
 		C32A25051B0C3EA200861BD5 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41251B048EC100F42B7D /* iflyMSC.framework */; };
 		C32A251A1B0CBA6F00861BD5 /* SBJson4Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A250D1B0CBA6F00861BD5 /* SBJson4Parser.m */; };
 		C32A251B1B0CBA6F00861BD5 /* SBJson4StreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C32A250F1B0CBA6F00861BD5 /* SBJson4StreamParser.m */; };
@@ -32,6 +34,9 @@
 		C331E8201B0B702D004439A3 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C331E81E1B0B702D004439A3 /* ViewController.xib */; };
 		C33A83E91B072F5200331199 /* InfiniteScrollPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */; };
 		C33A83EA1B072F5200331199 /* UIView+viewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E81B072F5200331199 /* UIView+viewController.m */; };
+		C342F94A1B16B2D100725AA2 /* ShopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C342F9491B16B2D100725AA2 /* ShopTableViewController.m */; };
+		C342F94E1B17093D00725AA2 /* ProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C342F94C1B17093D00725AA2 /* ProductTableViewCell.m */; };
+		C342F94F1B17093D00725AA2 /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C342F94D1B17093D00725AA2 /* ProductTableViewCell.xib */; };
 		C35C77491B1319840032D1D5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C35C77481B1319840032D1D5 /* StoreKit.framework */; };
 		C38E41231B048E4700F42B7D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41201B048E4700F42B7D /* libWeChatSDK.a */; };
 		C39D014C1B1063670080AC97 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C39D014E1B1063670080AC97 /* Localizable.strings */; };
@@ -195,6 +200,10 @@
 /* Begin PBXFileReference section */
 		C31B07631B159ADA00BAD9FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		C31B07651B159EB800BAD9FF /* KKUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKUtility.m; sourceTree = "<group>"; };
+		C31B07681B15E9D900BAD9FF /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		C31B07691B15E9D900BAD9FF /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
+		C31B076B1B15ED3C00BAD9FF /* InAppRageIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppRageIAPHelper.h; sourceTree = "<group>"; };
+		C31B076C1B15ED3C00BAD9FF /* InAppRageIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppRageIAPHelper.m; sourceTree = "<group>"; };
 		C32A250B1B0CBA6F00861BD5 /* SBJson4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4.h; sourceTree = "<group>"; };
 		C32A250C1B0CBA6F00861BD5 /* SBJson4Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4Parser.h; sourceTree = "<group>"; };
 		C32A250D1B0CBA6F00861BD5 /* SBJson4Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4Parser.m; sourceTree = "<group>"; };
@@ -235,6 +244,11 @@
 		C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfiniteScrollPicker.m; sourceTree = "<group>"; };
 		C33A83E71B072F5200331199 /* UIView+viewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+viewController.h"; sourceTree = "<group>"; };
 		C33A83E81B072F5200331199 /* UIView+viewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+viewController.m"; sourceTree = "<group>"; };
+		C342F9481B16B2D100725AA2 /* ShopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewController.h; sourceTree = "<group>"; };
+		C342F9491B16B2D100725AA2 /* ShopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableViewController.m; sourceTree = "<group>"; };
+		C342F94B1B17093D00725AA2 /* ProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableViewCell.h; sourceTree = "<group>"; };
+		C342F94C1B17093D00725AA2 /* ProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewCell.m; sourceTree = "<group>"; };
+		C342F94D1B17093D00725AA2 /* ProductTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		C35C77481B1319840032D1D5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C38E41201B048E4700F42B7D /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		C38E41211B048E4700F42B7D /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -595,6 +609,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C31B07671B15E97B00BAD9FF /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				C31B07681B15E9D900BAD9FF /* IAPHelper.h */,
+				C31B07691B15E9D900BAD9FF /* IAPHelper.m */,
+				C31B076B1B15ED3C00BAD9FF /* InAppRageIAPHelper.h */,
+				C31B076C1B15ED3C00BAD9FF /* InAppRageIAPHelper.m */,
+				C342F9481B16B2D100725AA2 /* ShopTableViewController.h */,
+				C342F9491B16B2D100725AA2 /* ShopTableViewController.m */,
+				C342F94B1B17093D00725AA2 /* ProductTableViewCell.h */,
+				C342F94C1B17093D00725AA2 /* ProductTableViewCell.m */,
+				C342F94D1B17093D00725AA2 /* ProductTableViewCell.xib */,
+			);
+			name = Shop;
+			path = shop;
+			sourceTree = "<group>";
+		};
 		C32A250A1B0CBA6F00861BD5 /* SBJson */ = {
 			isa = PBXGroup;
 			children = (
@@ -683,6 +714,10 @@
 		C38E411E1B048E4700F42B7D /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				CB323DA91ACA3B7B00C7FE83 /* SVProgressHUD */,
+				CB323DAF1ACA3CC500C7FE83 /* SMS_SDK */,
+				CBB4B0C81AF47FE9004BE59A /* iOS_IMKit */,
+				CB6EFE841AD61B6C00F597B6 /* MJRefresh */,
 				C32D86411B0F2004008D7553 /* Microphone */,
 				C32A250A1B0CBA6F00861BD5 /* SBJson */,
 				CB323DA51ACA3B3000C7FE83 /* Reachability */,
@@ -854,6 +889,7 @@
 		CB0A69B31AC92B74003F7775 /* h5 */ = {
 			isa = PBXGroup;
 			children = (
+				C31B07671B15E97B00BAD9FF /* Shop */,
 				C32D05A81B007EF7006B1773 /* Main.storyboard */,
 				CB0A69B81AC92B74003F7775 /* AppDelegate.h */,
 				CB0A69B91AC92B74003F7775 /* AppDelegate.m */,
@@ -866,12 +902,8 @@
 				CB83C9511AE9E4850075F045 /* Find */,
 				CB0A69DA1AC9375F003F7775 /* Friends */,
 				CB3929481ACC29E00004FFB4 /* My */,
-				CBB4B0C81AF47FE9004BE59A /* iOS_IMKit */,
 				CB886FE01AE0A8690093F914 /* Common */,
 				CB9FEFEC1AD776100017FA8A /* Models */,
-				CB6EFE841AD61B6C00F597B6 /* MJRefresh */,
-				CB323DAF1ACA3CC500C7FE83 /* SMS_SDK */,
-				CB323DA91ACA3B7B00C7FE83 /* SVProgressHUD */,
 				CB0A69B41AC92B74003F7775 /* Supporting Files */,
 				C3FCFCA51AF7696F00E74036 /* entitlements.plist */,
 				C31B07631B159ADA00BAD9FF /* Images.xcassets */,
@@ -944,7 +976,8 @@
 				CB323DAB1ACA3B7B00C7FE83 /* SVProgressHUD.h */,
 				CB323DAC1ACA3B7B00C7FE83 /* SVProgressHUD.m */,
 			);
-			path = SVProgressHUD;
+			name = SVProgressHUD;
+			path = ../SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		CB323DAF1ACA3CC500C7FE83 /* SMS_SDK */ = {
@@ -953,7 +986,8 @@
 				CB323DB21ACA3CC500C7FE83 /* SMS_SDK.framework */,
 				C39D014E1B1063670080AC97 /* Localizable.strings */,
 			);
-			path = SMS_SDK;
+			name = SMS_SDK;
+			path = ../SMS_SDK;
 			sourceTree = "<group>";
 		};
 		CB323DC01ACA3D4600C7FE83 /* Frameworks */ = {
@@ -1202,7 +1236,8 @@
 				CB6EFE9B1AD61B6C00F597B6 /* UIView+MJExtension.h */,
 				CB6EFE9C1AD61B6C00F597B6 /* UIView+MJExtension.m */,
 			);
-			path = MJRefresh;
+			name = MJRefresh;
+			path = ../MJRefresh;
 			sourceTree = "<group>";
 		};
 		CB83C94B1AE9D93A0075F045 /* CommonCell */ = {
@@ -1300,7 +1335,8 @@
 				CBB4B0F21AF47FE9004BE59A /* libiOS_IMKit_v1_4_6.a */,
 				CBB4B0F31AF47FE9004BE59A /* RongCloud.bundle */,
 			);
-			path = iOS_IMKit;
+			name = iOS_IMKit;
+			path = ../iOS_IMKit;
 			sourceTree = "<group>";
 		};
 		CBB4B0C91AF47FE9004BE59A /* Headers */ = {
@@ -1452,6 +1488,7 @@
 				CB83C9611AE9E9030075F045 /* AroundTableViewCell.xib in Resources */,
 				CB83C9501AE9D93A0075F045 /* CommonTableViewCell.xib in Resources */,
 				C331E8201B0B702D004439A3 /* ViewController.xib in Resources */,
+				C342F94F1B17093D00725AA2 /* ProductTableViewCell.xib in Resources */,
 				CBB4B0F51AF47FE9004BE59A /* RongCloud.bundle in Resources */,
 				C32D863A1B0ED299008D7553 /* SquareTableViewCell.xib in Resources */,
 				C3A994B41AF8794F00B2D317 /* MyGame.xib in Resources */,
@@ -1516,6 +1553,7 @@
 				C32A25201B0CBA6F00861BD5 /* SBJson4Writer.m in Sources */,
 				CB6ED2081AD37A4100A33BB8 /* UIImageView+WebCache.m in Sources */,
 				CB0A69B71AC92B74003F7775 /* main.m in Sources */,
+				C342F94A1B16B2D100725AA2 /* ShopTableViewController.m in Sources */,
 				C3A994AE1AF8781C00B2D317 /* BehindTableViewCell.m in Sources */,
 				C31B07661B159EB800BAD9FF /* KKUtility.m in Sources */,
 				C3C004001AFC93020049002A /* CurrentUser.m in Sources */,
@@ -1546,6 +1584,7 @@
 				C32A251B1B0CBA6F00861BD5 /* SBJson4StreamParser.m in Sources */,
 				CB61CFAC1AEA3AB1008DEB9D /* PulsingRadarView.m in Sources */,
 				CB6ED2041AD37A4100A33BB8 /* UIImage+GIF.m in Sources */,
+				C31B076A1B15E9D900BAD9FF /* IAPHelper.m in Sources */,
 				CB6ED2071AD37A4100A33BB8 /* UIImageView+HighlightedWebCache.m in Sources */,
 				CB3CB2831ACD8A7A0031E016 /* MeDetailNameTableViewController.m in Sources */,
 				CB42F8111ADE59EF00F5376C /* My1NavigationController.m in Sources */,
@@ -1555,6 +1594,7 @@
 				C3A9947F1AF86C4C00B2D317 /* GameNavigationController.m in Sources */,
 				CBC4A5F91ACE356B0082FA2B /* MeDetailCitiesTableViewController.m in Sources */,
 				CB6EFEA01AD61B6C00F597B6 /* MJRefreshFooter.m in Sources */,
+				C342F94E1B17093D00725AA2 /* ProductTableViewCell.m in Sources */,
 				CB6ED2011AD37A4100A33BB8 /* SDWebImageManager.m in Sources */,
 				CB6ED1FE1AD37A4100A33BB8 /* SDWebImageDecoder.m in Sources */,
 				CB4E60711ADFB40800471173 /* SquareTableViewController.m in Sources */,
@@ -1570,6 +1610,7 @@
 				CB323E101ACA7C9B00C7FE83 /* ASIHTTPRequest.m in Sources */,
 				CBE0A0501AEA108F00791FAB /* MatchTableViewCell.m in Sources */,
 				C331E81F1B0B702D004439A3 /* ViewController.m in Sources */,
+				C31B076D1B15ED3C00BAD9FF /* InAppRageIAPHelper.m in Sources */,
 				CB323E0E1ACA7C9B00C7FE83 /* ASIDownloadCache.m in Sources */,
 				CB83C9571AE9E5660075F045 /* FindNavigationController.m in Sources */,
 				C33A83EA1B072F5200331199 /* UIView+viewController.m in Sources */,
@@ -1764,7 +1805,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "838196f1-f140-4604-a638-bdf0fd9faa98";
+				PROVISIONING_PROFILE = "33fbc672-d87c-40fe-8935-6dbdb6859ea6";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1803,7 +1844,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "838196f1-f140-4604-a638-bdf0fd9faa98";
+				PROVISIONING_PROFILE = "33fbc672-d87c-40fe-8935-6dbdb6859ea6";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

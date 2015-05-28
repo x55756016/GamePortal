@@ -297,7 +297,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     
     else if(section == 1)
     {
-        return 4;
+        return 3;
     }
     
     else if(section == 2)
