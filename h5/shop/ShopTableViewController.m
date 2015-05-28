@@ -8,6 +8,7 @@
 #import "UIImageView+WebCache.h"
 #import "ASIFormDataRequest.h"
 #import "h5kkContants.h"
+#import <StoreKit/StoreKit.h>
 
 @interface ShopTableViewController ()
 {
@@ -23,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    userInfo=[KKUtility getUserInfoFromLocalFile];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:kProductPurchasedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(productPurchaseFailed:) name:kProductPurchaseFailedNotification object: nil];
@@ -50,7 +52,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     //获取用户信息
-    userInfo=[KKUtility getUserInfoFromLocalFile];
+
 }
 
 
@@ -71,7 +73,7 @@
     [request setPostValue:@"1.0" forKey:@"version"];
     [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserId"]] forKey:@"UserId"];
     [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserKey"]] forKey:@"UserKey"];
-     [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"1"]] forKey:@"TypeId"];
+     [request setPostValue:@"1" forKey:@"TypeId"];
     [request setDidFailSelector:@selector(loadProductItemFail:)];
     [request setDidFinishSelector:@selector(loadProductItemFinish:)];
     [request startAsynchronous];
@@ -156,39 +158,51 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-return [[InAppRageIAPHelper sharedHelper].products count];
+//return [[InAppRageIAPHelper sharedHelper].products count];
+     return [self.kkproducts count];
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 65;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   
     static NSString *reuseIdentifier = @"ProductTableViewCell";
     [tableView registerNib:[UINib nibWithNibName:@"ProductTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
     ProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    NSDictionary *playerDict = self.kkproducts[indexPath.row];
+
+    @try {
+              NSDictionary *playerDict = self.kkproducts[indexPath.row];
         
+        
+        cell.ProductName.text = [playerDict objectForKey:@"Name"];
+        cell.ProductDescription.text = [playerDict objectForKey:@"Desc"];
+        
+        NSString *IMGstring = [playerDict objectForKey:@"Pic"];
+        [cell.ProductImage sd_setImageWithURL:[NSURL URLWithString:IMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
+        CALayer * l = [cell.ProductImage layer];
+        [l setMasksToBounds:YES];
+        [l setCornerRadius:10.0];
+        
+        NSString *kkPrice= [NSString stringWithFormat:@"%@",[playerDict objectForKey:@"Price"]];
 
-    cell.ProductName.text = [playerDict objectForKey:@"Name"];
-    cell.ProductDescription.text = [playerDict objectForKey:@"Desc"];
-    
-    NSString *IMGstring = [playerDict objectForKey:@"Pic"];
-    [cell.ProductImage sd_setImageWithURL:[NSURL URLWithString:IMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
-    CALayer * l = [cell.ProductImage layer];
-    [l setMasksToBounds:YES];
-    [l setCornerRadius:10.0];
-    
-    
-    NSString *strBtnPrice=[@"¥" stringByAppendingString:[playerDict objectForKey:@"Price"]];
-    [cell.ProductBuyButton setTitle:strBtnPrice forState:UIControlStateNormal];
-    [cell.ProductBuyButton addTarget:self action:@selector(buyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+        NSString *strBtnPrice=[@"¥" stringByAppendingString:kkPrice];
+        [cell.ProductBuyButton setTitle:strBtnPrice forState:UIControlStateNormal];
+        cell.ProductBuyButton.tag=indexPath.row;
+        [cell.ProductBuyButton addTarget:self action:@selector(buyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    @catch (NSException *exception) {
+        [KKUtility logSystemErrorMsg:exception.reason :nil];
+    }
+   
 
     
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -196,23 +210,32 @@ return [[InAppRageIAPHelper sharedHelper].products count];
 - (IBAction)buyButtonTapped:(id)sender {
     
     UIButton *buyButton = (UIButton *)sender;
-    SKProduct *product = [[InAppRageIAPHelper sharedHelper].products objectAtIndex:buyButton.tag];
+    NSDictionary *playerDict = self.kkproducts[buyButton.tag];
+
+//    SKProduct *product = [[InAppRageIAPHelper sharedHelper].products objectAtIndex:buyButton.tag];
+//    SKProduct *product = [[SKProduct alloc] init];
+    NSString *kkproductIdentifier=[playerDict objectForKey:@"Code"];
     
-    NSLog(@"Buying %@...", product.productIdentifier);
-    [[InAppRageIAPHelper sharedHelper] buyProductIdentifier:product];
+    NSLog(@"Buying %@...", kkproductIdentifier);
+    [[InAppRageIAPHelper sharedHelper] buyProductIdentifier:kkproductIdentifier];
     
-      [SVProgressHUD showWithStatus:@"正在购买中。。。"];
+    [SVProgressHUD showWithStatus:@"正在购买中......"];
     [self performSelector:@selector(timeout:) withObject:nil afterDelay:60*5];
     
 }
 
 - (void)productPurchased:(NSNotification *)notification {
     
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [SVProgressHUD dismiss];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
     
-    NSString *productIdentifier = (NSString *) notification.object;
-    NSLog(@"Purchased: %@", productIdentifier);
+    NSData *receiptData = (NSData *) notification.object;
+    NSString * strRceipt = [KKUtility base64EncodingWithData:receiptData];
+    if ([strRceipt length] > 0) {
+        // 向自己的服务器验证购买凭证
+        [self SavePurchasedCredentialsToServer:strRceipt];
+        
+    }
     
     [self.tableView reloadData];
     
@@ -236,4 +259,39 @@ return [[InAppRageIAPHelper sharedHelper].products count];
     }
     
 }
+
+
+//--------------------------------------加载好友数据-----------------------------------------------//
+-(void)SavePurchasedCredentialsToServer:(NSString*)strCredentials
+{
+    
+    
+    NSString *urlStr = SavePurchased_Credentials;
+    NSURL *url = [NSURL URLWithString:urlStr];
+    
+    request = [ASIFormDataRequest requestWithURL:url];
+    [request setTimeOutSeconds:10.0];
+    [request setDelegate:self];
+    [request setRequestMethod:@"POST"];
+    [request setPostValue:@"1.0" forKey:@"version"];
+    [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserId"]] forKey:@"UserId"];
+    [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserKey"]] forKey:@"UserKey"];
+    [request setPostValue:strCredentials forKey:@"AppleData"];
+    [request setDidFailSelector:@selector(SavePurchasedCredentialsFail:)];
+    [request setDidFinishSelector:@selector(SavePurchasedCredentialsFinish:)];
+    [request startAsynchronous];
+}
+
+- (void)SavePurchasedCredentialsFinish:(ASIHTTPRequest *)req
+{
+    NSLog(@"SavePurchasedCredentialsToServer Finish");
+}
+
+- (void)SavePurchasedCredentialsFail:(ASIHTTPRequest *)req
+{
+    NSLog(@"SavePurchasedCredentialsToServer Fail");
+
+}
+//-----------------------------------------
+
 @end

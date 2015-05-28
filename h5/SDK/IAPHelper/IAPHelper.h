@@ -23,6 +23,8 @@
 - (void)requestProducts;
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers;
 
-- (void)buyProductIdentifier:(SKProduct *)product;
+//- (void)buyProductIdentifier:(SKProduct *)product;
+
+- (void)buyProductIdentifier:(NSString *)productIdentifier;
 
 @end

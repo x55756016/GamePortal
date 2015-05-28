@@ -50,5 +50,8 @@
 
 //获取产品价格
 #define GET_ProductItem     [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKData/ProductItem"]
+//上传购买成功凭据
+#define SavePurchased_Credentials     [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKPay/ApplePay"]
+
 
 

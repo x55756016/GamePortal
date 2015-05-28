@@ -35,20 +35,20 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfX-uD-f2Y">
-                        <rect key="frame" x="71" y="39" width="31" height="15"/>
+                        <rect key="frame" x="71" y="36" width="31" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="77O-K3-VpN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="6Xn-5q-Xa5"/>
                     <constraint firstItem="77O-K3-VpN" firstAttribute="leading" secondItem="9cV-3G-r2w" secondAttribute="trailing" constant="16" id="Ex4-uk-adS"/>
                     <constraint firstItem="9cV-3G-r2w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="L6t-vi-Cgv"/>
                     <constraint firstItem="UfX-uD-f2Y" firstAttribute="leading" secondItem="9cV-3G-r2w" secondAttribute="trailing" constant="16" id="PTf-jI-cBI"/>
                     <constraint firstAttribute="trailingMargin" secondItem="pqe-Yl-WhA" secondAttribute="trailing" constant="25" id="TdW-SM-xOA"/>
-                    <constraint firstItem="UfX-uD-f2Y" firstAttribute="centerY" secondItem="9cV-3G-r2w" secondAttribute="centerY" constant="15" id="g6K-aC-3fC"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="UfX-uD-f2Y" secondAttribute="bottom" constant="5" id="Utq-xu-aPN"/>
                     <constraint firstItem="pqe-Yl-WhA" firstAttribute="centerY" secondItem="9cV-3G-r2w" secondAttribute="centerY" constant="4.5" id="hPs-n2-Ahg"/>
-                    <constraint firstItem="77O-K3-VpN" firstAttribute="centerY" secondItem="9cV-3G-r2w" secondAttribute="centerY" constant="-10" id="u7k-dq-271"/>
                     <constraint firstAttribute="centerY" secondItem="9cV-3G-r2w" secondAttribute="centerY" id="ynN-7J-l5N"/>
                 </constraints>
             </tableViewCellContentView>
