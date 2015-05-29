@@ -32,6 +32,7 @@
 		C331E8201B0B702D004439A3 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C331E81E1B0B702D004439A3 /* ViewController.xib */; };
 		C33932E71B182FEB0055E2FB /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = C33932E51B182FEB0055E2FB /* SVIndefiniteAnimatedView.m */; };
 		C33932EA1B183A020055E2FB /* InAppRageIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C33932E91B183A020055E2FB /* InAppRageIAPHelper.m */; };
+		C33932EC1B183F0C0055E2FB /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C33932EB1B183F0C0055E2FB /* SVProgressHUD.bundle */; };
 		C33A83E91B072F5200331199 /* InfiniteScrollPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */; };
 		C33A83EA1B072F5200331199 /* UIView+viewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E81B072F5200331199 /* UIView+viewController.m */; };
 		C342F94A1B16B2D100725AA2 /* ShopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C342F9491B16B2D100725AA2 /* ShopTableViewController.m */; };
@@ -72,7 +73,6 @@
 		CB0A69B71AC92B74003F7775 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0A69B61AC92B74003F7775 /* main.m */; };
 		CB0A69BA1AC92B74003F7775 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0A69B91AC92B74003F7775 /* AppDelegate.m */; };
 		CB323DA81ACA3B3000C7FE83 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CB323DA71ACA3B3000C7FE83 /* Reachability.m */; };
-		CB323DAD1ACA3B7B00C7FE83 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CB323DAA1ACA3B7B00C7FE83 /* SVProgressHUD.bundle */; };
 		CB323DAE1ACA3B7B00C7FE83 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CB323DAC1ACA3B7B00C7FE83 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CB323DB51ACA3CC500C7FE83 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB323DB21ACA3CC500C7FE83 /* SMS_SDK.framework */; };
 		CB323DB71ACA3CE900C7FE83 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB323DB61ACA3CE900C7FE83 /* libicucore.dylib */; };
@@ -242,6 +242,7 @@
 		C33932E61B182FEB0055E2FB /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		C33932E81B183A020055E2FB /* InAppRageIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppRageIAPHelper.h; sourceTree = "<group>"; };
 		C33932E91B183A020055E2FB /* InAppRageIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppRageIAPHelper.m; sourceTree = "<group>"; };
+		C33932EB1B183F0C0055E2FB /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		C33A83E51B072F5200331199 /* InfiniteScrollPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteScrollPicker.h; sourceTree = "<group>"; };
 		C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfiniteScrollPicker.m; sourceTree = "<group>"; };
 		C33A83E71B072F5200331199 /* UIView+viewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+viewController.h"; sourceTree = "<group>"; };
@@ -311,7 +312,6 @@
 		CB0A69B91AC92B74003F7775 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CB323DA61ACA3B3000C7FE83 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		CB323DA71ACA3B3000C7FE83 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		CB323DAA1ACA3B7B00C7FE83 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		CB323DAB1ACA3B7B00C7FE83 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		CB323DAC1ACA3B7B00C7FE83 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		CB323DB21ACA3CC500C7FE83 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
@@ -984,10 +984,10 @@
 		CB323DA91ACA3B7B00C7FE83 /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
+				C33932EB1B183F0C0055E2FB /* SVProgressHUD.bundle */,
 				C33932E41B182FEB0055E2FB /* SVIndefiniteAnimatedView.h */,
 				C33932E51B182FEB0055E2FB /* SVIndefiniteAnimatedView.m */,
 				C33932E61B182FEB0055E2FB /* SVProgressHUD-Prefix.pch */,
-				CB323DAA1ACA3B7B00C7FE83 /* SVProgressHUD.bundle */,
 				CB323DAB1ACA3B7B00C7FE83 /* SVProgressHUD.h */,
 				CB323DAC1ACA3B7B00C7FE83 /* SVProgressHUD.m */,
 			);
@@ -1507,9 +1507,9 @@
 				CBB4B0F51AF47FE9004BE59A /* RongCloud.bundle in Resources */,
 				C32D863A1B0ED299008D7553 /* SquareTableViewCell.xib in Resources */,
 				C3A994B41AF8794F00B2D317 /* MyGame.xib in Resources */,
+				C33932EC1B183F0C0055E2FB /* SVProgressHUD.bundle in Resources */,
 				CBE0A0511AEA108F00791FAB /* MatchTableViewCell.xib in Resources */,
 				C32D864C1B0F2004008D7553 /* wave70x117@2x.png in Resources */,
-				CB323DAD1ACA3B7B00C7FE83 /* SVProgressHUD.bundle in Resources */,
 				C3A994AD1AF8781C00B2D317 /* FrontRankTableViewCell.xib in Resources */,
 				C31B07641B159ADA00BAD9FF /* Images.xcassets in Resources */,
 				C32D864B1B0F2004008D7553 /* mic_talk_358x358@2x.png in Resources */,
