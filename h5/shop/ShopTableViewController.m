@@ -215,11 +215,9 @@
 //    SKProduct *product = [[InAppRageIAPHelper sharedHelper].products objectAtIndex:buyButton.tag];
 //    SKProduct *product = [[SKProduct alloc] init];
     NSString *kkproductIdentifier=[playerDict objectForKey:@"Code"];
-    
     NSLog(@"Buying %@...", kkproductIdentifier);
     [[InAppRageIAPHelper sharedHelper] buyProductIdentifier:kkproductIdentifier];
     
-    [SVProgressHUD showWithStatus:@"正在购买中......"];
     [self performSelector:@selector(timeout:) withObject:nil afterDelay:60*5];
     
 }
@@ -229,11 +227,10 @@
     [SVProgressHUD dismiss];
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     
-    NSData *receiptData = (NSData *) notification.object;
-    NSString * strRceipt = [KKUtility base64EncodingWithData:receiptData];
-    if ([strRceipt length] > 0) {
+    NSString *receiptData = (NSString *) notification.object;
+    if ([receiptData length] > 0) {
         // 向自己的服务器验证购买凭证
-        [self SavePurchasedCredentialsToServer:strRceipt];
+        [self SavePurchasedCredentialsToServer:receiptData];
         
     }
     
@@ -284,6 +281,17 @@
 
 - (void)SavePurchasedCredentialsFinish:(ASIHTTPRequest *)req
 {
+    NSError *error;
+    NSData *responseData = [req responseData];
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+ 
+    
+    if([[dic objectForKey:@"IsSuccess"] integerValue])
+    {
+     //
+    }
+
+    
     NSLog(@"SavePurchasedCredentialsToServer Finish");
 }
 

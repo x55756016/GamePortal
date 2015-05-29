@@ -1,8 +1,7 @@
 //
 //  SVProgressHUD.h
 //
-//  Created by Sam Vermette on 27.03.11.
-//  Copyright 2011 Sam Vermette. All rights reserved.
+//  Copyright 2011-2014 Sam Vermette. All rights reserved.
 //
 //  https://github.com/samvermette/SVProgressHUD
 //
@@ -10,42 +9,72 @@
 #import <UIKit/UIKit.h>
 #import <AvailabilityMacros.h>
 
-// To disable SVProgressHUD's control of the network activity indicator by default,
-// add -DSVPROGRESSHUD_DISABLE_NETWORK_INDICATOR to CFLAGS in build settings.
+extern NSString * const SVProgressHUDDidReceiveTouchEventNotification;
+extern NSString * const SVProgressHUDDidTouchDownInsideNotification;
+extern NSString * const SVProgressHUDWillDisappearNotification;
+extern NSString * const SVProgressHUDDidDisappearNotification;
+extern NSString * const SVProgressHUDWillAppearNotification;
+extern NSString * const SVProgressHUDDidAppearNotification;
 
-enum {
-    SVProgressHUDMaskTypeNone = 1, // allow user interactions while HUD is displayed
-    SVProgressHUDMaskTypeClear, // don't allow
-    SVProgressHUDMaskTypeBlack, // don't allow and dim the UI in the back of the HUD
-    SVProgressHUDMaskTypeGradient // don't allow and dim the UI with a a-la-alert-view bg gradient
+extern NSString * const SVProgressHUDStatusUserInfoKey;
+
+typedef NS_ENUM(NSUInteger, SVProgressHUDMaskType) {
+    SVProgressHUDMaskTypeNone = 1,  // allow user interactions while HUD is displayed
+    SVProgressHUDMaskTypeClear,     // don't allow user interactions
+    SVProgressHUDMaskTypeBlack,     // don't allow user interactions and dim the UI in the back of the HUD
+    SVProgressHUDMaskTypeGradient   // don't allow user interactions and dim the UI with a a-la-alert-view background gradient
 };
 
-typedef NSUInteger SVProgressHUDMaskType;
+@interface SVProgressHUD : UIView
 
-@interface SVProgressHUD : UIWindow
+#pragma mark - Customization
+
++ (void)setBackgroundColor:(UIColor*)color;                 // default is [UIColor whiteColor]
++ (void)setForegroundColor:(UIColor*)color;                 // default is [UIColor blackColor]
++ (void)setCornerRadius:(CGFloat)cornerRadius;              // default is 14 pt
++ (void)setRingThickness:(CGFloat)width;                    // default is 4 pt
++ (void)setFont:(UIFont*)font;                              // default is [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
++ (void)setInfoImage:(UIImage*)image;                       // default is the bundled info image provided by Freepik
++ (void)setSuccessImage:(UIImage*)image;                    // default is the bundled success image provided by Freepik
++ (void)setErrorImage:(UIImage*)image;                      // default is the bundled error image provided by Freepik
++ (void)setDefaultMaskType:(SVProgressHUDMaskType)maskType; // default is SVProgressHUDMaskTypeNone
++ (void)setViewForExtension:(UIView*)view;                  // default is nil, only used if #define SV_APP_EXTENSIONS is set
+
+#pragma mark - Show Methods
 
 + (void)show;
-+ (void)showWithStatus:(NSString*)status;
-+ (void)showWithStatus:(NSString*)status networkIndicator:(BOOL)show;
-+ (void)showWithStatus:(NSString*)status maskType:(SVProgressHUDMaskType)maskType;
-+ (void)showWithStatus:(NSString*)status maskType:(SVProgressHUDMaskType)maskType networkIndicator:(BOOL)show;
 + (void)showWithMaskType:(SVProgressHUDMaskType)maskType;
-+ (void)showWithMaskType:(SVProgressHUDMaskType)maskType networkIndicator:(BOOL)show;
++ (void)showWithStatus:(NSString*)status;
++ (void)showWithStatus:(NSString*)status maskType:(SVProgressHUDMaskType)maskType;
 
-+ (void)showSuccessWithStatus:(NSString*)string;
++ (void)showProgress:(float)progress;
++ (void)showProgress:(float)progress maskType:(SVProgressHUDMaskType)maskType;
++ (void)showProgress:(float)progress status:(NSString*)status;
++ (void)showProgress:(float)progress status:(NSString*)status maskType:(SVProgressHUDMaskType)maskType;
+
 + (void)setStatus:(NSString*)string; // change the HUD loading status while it's showing
 
-+ (void)dismiss; // simply dismiss the HUD with a fade+scale out animation
-+ (void)dismissWithSuccess:(NSString*)successString; // also displays the success icon image
-+ (void)dismissWithSuccess:(NSString*)successString afterDelay:(NSTimeInterval)seconds;
-+ (void)dismissWithError:(NSString*)errorString; // also displays the error icon image
-+ (void)dismissWithError:(NSString*)errorString afterDelay:(NSTimeInterval)seconds;
+// stops the activity indicator, shows a glyph + status, and dismisses HUD a little bit later
++ (void)showInfoWithStatus:(NSString *)string;
++ (void)showInfoWithStatus:(NSString *)string maskType:(SVProgressHUDMaskType)maskType;
 
-// deprecated Show methods: view and posY params will be ignored
-+ (void)showInView:(UIView*)view DEPRECATED_ATTRIBUTE;
-+ (void)showInView:(UIView*)view status:(NSString*)string DEPRECATED_ATTRIBUTE;
-+ (void)showInView:(UIView*)view status:(NSString*)string networkIndicator:(BOOL)show DEPRECATED_ATTRIBUTE;
-+ (void)showInView:(UIView*)view status:(NSString*)string networkIndicator:(BOOL)show posY:(CGFloat)posY DEPRECATED_ATTRIBUTE;
-+ (void)showInView:(UIView*)view status:(NSString*)string networkIndicator:(BOOL)show posY:(CGFloat)posY maskType:(SVProgressHUDMaskType)maskType DEPRECATED_ATTRIBUTE;
++ (void)showSuccessWithStatus:(NSString*)string;
++ (void)showSuccessWithStatus:(NSString*)string maskType:(SVProgressHUDMaskType)maskType;
+
++ (void)showErrorWithStatus:(NSString *)string;
++ (void)showErrorWithStatus:(NSString *)string maskType:(SVProgressHUDMaskType)maskType;
+
+// use 28x28 white pngs
++ (void)showImage:(UIImage*)image status:(NSString*)status;
++ (void)showImage:(UIImage*)image status:(NSString*)status maskType:(SVProgressHUDMaskType)maskType;
+
++ (void)setOffsetFromCenter:(UIOffset)offset;
++ (void)resetOffsetFromCenter;
+
++ (void)popActivity; // decrease activity count, if activity count == 0 the HUD is dismissed
++ (void)dismiss;
+
++ (BOOL)isVisible;
 
 @end
+

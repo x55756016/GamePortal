@@ -2,12 +2,13 @@
 //  IAPHelper.m
 //  ＋
 //
-//  Created by Administrator on 15/5/27.
+//  Created by ken on 15/5/27.
 //  Copyright (c) 2015年 hf. All rights reserved.
 //
 
 #import "IAPHelper.h"
 #import "KKUtility.h"
+#import "SVProgressHUD.h"
 //@interface IAPHelper(){
 //    NSSet * _productIdentifiers;
 //    NSArray * _products;
@@ -69,99 +70,83 @@
 //开始购买商品
 - (void)buyProductIdentifier:(NSString *)productIdentifier {
     
-    NSLog(@"Buying %@...", productIdentifier);
     
-    SKPayment *payment = [SKPayment paymentWithProductIdentifier:productIdentifier];
     
-    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-
-    [[SKPaymentQueue defaultQueue] addPayment:payment];
+        if (productIdentifier != nil) {
     
-//    
-//    if (productIdentifier != nil) {
-//        
-//        NSLog(@"EBPurchase purchaseProduct: %@", productIdentifier);
-//        
-//        if ([SKPaymentQueue canMakePayments]) {
-//            // Yes, In-App Purchase is enabled on this device.
-//            // Proceed to purchase In-App Purchase item.
-//            
-//            // Assign a Product ID to a new payment request.
-//            SKPayment *paymentRequest = [SKPayment paymentWithProduct:requestedProduct];
-//            
-//            // Assign an observer to monitor the transaction status.
-//            [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-//            
-//            // Request a purchase of the product.
-//            [[SKPaymentQueue defaultQueue] addPayment:paymentRequest];
-//            
-//            return YES;
-//            
-//        } else {
-//            // Notify user that In-App Purchase is Disabled.
-//            
-//            NSLog(@"EBPurchase purchaseProduct: IAP Disabled");
-//            
-//            return NO;
-//        }
-//        
-//    } else {
-//        
-//        NSLog(@"EBPurchase purchaseProduct: SKProduct = NIL");
-//        
-//        return NO;
-//    }
-
-}
-//- (void)buyProductIdentifier:(SKProduct *)product {
-//    
-//
-//    NSLog(@"Buying %@...", product.productIdentifier);
-//    
-//    SKMutablePayment *myPayment = [SKMutablePayment paymentWithProduct: product];
-//    myPayment.quantity = 1;
-//    [[SKPaymentQueue defaultQueue] addPayment:myPayment];
-//    
-//}
-
-//购买结果
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
-{
-    for (SKPaymentTransaction *transaction in transactions)
-    {
-        switch (transaction.transactionState)
-        {
-            case SKPaymentTransactionStatePurchased://交易完成
-                [self completeTransaction:transaction];
-                break;
-            case SKPaymentTransactionStateFailed://交易失败
-                [self failedTransaction:transaction];
-                break;
-            case SKPaymentTransactionStateRestored://已经购买过该商品
-                [self restoreTransaction:transaction];
-            case SKPaymentTransactionStatePurchasing://购买中更新状态
-                [self PurchasingTransaction:transaction];
-            default:
-                break;
+            NSLog(@"EBPurchase purchaseProduct: %@", productIdentifier);
+    
+            if ([SKPaymentQueue canMakePayments]) {
+                [SVProgressHUD showWithStatus:@"购买正在进行中\n完成前请先不要离开......" maskType:SVProgressHUDMaskTypeGradient];
+                NSLog(@"start Buying product，id＝%@...", productIdentifier);
+                
+                SKPayment *payment = [SKPayment paymentWithProductIdentifier:productIdentifier];
+                [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+                [[SKPaymentQueue defaultQueue] addPayment:payment];
+    
+            } else {
+                [KKUtility justAlert:@"此设备未开启支付功能，请确认！"];
+            }
+    
+        } else {
+            [KKUtility justAlert:@"购买的商品Id为空，请联系客服或重试。"];
         }
-    }
 }
 
 //交易中
 - (void)PurchasingTransaction:(SKPaymentTransaction *)transaction {
     
     NSLog(@"PurchasingTransaction...");
-//    [self recordTransaction: transaction];
-//    [self provideContent: transaction.payment.productIdentifier];
-//    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
     
 }
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
+{
+    // 调试
+    for (SKPaymentTransaction *transaction in transactions) {
+        NSLog(@"队列状态变化 %@", transaction);
+        
+        
+        switch (transaction.transactionState)
+                {
+                    case SKPaymentTransactionStatePurchased://交易完成
+                        [self completeTransaction:transaction];
+                        break;
+                    case SKPaymentTransactionStateFailed://交易失败
+                        [self failedTransaction:transaction];
+                        break;
+                    case SKPaymentTransactionStateRestored: // 恢复已购
+                        [self restoreTransaction:transaction];
+                        break;
+                    case SKPaymentTransactionStatePurchasing://购买中更新状态
+                        [self PurchasingTransaction:transaction];
+                        break;
+                    default:
+                        break;
+                }
+
+        // 如果小票状态是购买完成
+        if (SKPaymentTransactionStatePurchased == transaction.transactionState) {
+           
+        } else if (SKPaymentTransactionStateRestored == transaction.transactionState) {
+          
+        }
+    }
+}
+
 //交易成功
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
     
-    NSLog(@"completeTransaction...");
+    // 更新界面或者数据，把用户购买得商品交给用户
+    // ...
+    // 验证购买凭据
+    // [self verifyPruchase];
+    // 将交易从交易队列中删除
+    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+    NSLog(@"购买完成 %@", transaction.payment.productIdentifier);
     [self provideContent: transaction];
-    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+    [SVProgressHUD showSuccessWithStatus:@"购买成功！"];
+
     
 }
 //交易失败
@@ -173,24 +158,26 @@
     }
     if(transaction.error.code != SKErrorPaymentCancelled) {
         NSLog(@"购买失败");
+        [SVProgressHUD showErrorWithStatus:@"购买失败"];
+        [SVProgressHUD dismiss];
     } else {
         NSLog(@"用户取消交易");
+        [SVProgressHUD dismiss];
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kProductPurchaseFailedNotification object:transaction];
     
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
-    
+
 }
-//交易重复
+//恢复已购
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction {
-    
-    NSLog(@"restoreTransaction...");
-    
-//    [self recordToServerTransaction: transaction];
-    [self provideContent: transaction];
-    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
-    
+    NSLog(@"恢复购买成功 %@", transaction.payment.productIdentifier);
+    // 更新界面或者数据，把用户购买得商品交给用户
+    // ...
+    // 将交易从交易队列中删除
+    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+    [SVProgressHUD dismiss];
 }
 
 //本地记录交易结果
@@ -216,15 +203,29 @@
         receiptData = transaction.transactionReceipt;
     }
     
-    NSString *encodeStr = [receiptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+    NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding (kCFStringEncodingGB_18030_2000);
     
+    
+    NSString *rawString=[[NSString alloc]initWithData:receiptData encoding:enc];
+     NSLog(@"receiptData: %@",rawString);
+    
+    
+    NSString *aString = [[NSString alloc] initWithData:receiptData encoding:NSUTF8StringEncoding];
+    NSLog(@"receiptData: %@",aString);
+
+    
+    NSString *encodeStr = [receiptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+    if(encodeStr==nil || [encodeStr length]==0)
+    {
+        return;
+    }
     NSString *payload = [NSString stringWithFormat:@"{\"receipt-data\" : \"%@\"}", encodeStr];
     
-//    NSString *aString = [[NSString alloc] initWithData:receiptData encoding:NSUTF8StringEncoding];
+
     
     NSLog(@"Purchased: %@",payload);
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kProductPurchasedNotification object:receiptData];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kProductPurchasedNotification object:payload];
    
     NSLog(@"Purchased: %@", transaction.payment.productIdentifier);
     
@@ -241,8 +242,7 @@
 
 - (void)verifyPruchase
  {
-     return;
-    // 验证凭据，获取到苹果返回的交易凭据
+     // 验证凭据，获取到苹果返回的交易凭据
     // appStoreReceiptURL iOS7.0增加的，购买交易完成后，会将凭据存放在该地址
         NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
         // 从沙盒中获取到购买凭据
@@ -278,12 +278,13 @@
     
          NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:nil];
     
-         NSLog(@"%@", dict);
-    
+
          if (dict != nil) {
                  // 比对字典中以下信息基本上可以保证数据安全
                  // bundle_id&application_version&product_id&transaction_id
                  NSLog(@"验证成功");
+                NSLog(@"%@", dict);
+             
              }
 }
 

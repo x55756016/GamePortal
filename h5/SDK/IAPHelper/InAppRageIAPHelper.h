@@ -2,7 +2,7 @@
 //  InAppRageIAPHelper.h
 //  ＋
 //
-//  Created by Administrator on 15/5/27.
+//  Created by ken on 15/5/27.
 //  Copyright (c) 2015年 hf. All rights reserved.
 //
 

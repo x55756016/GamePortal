@@ -104,15 +104,15 @@
          contextName = "-[RadarAllTableViewController viewDidLoad]:RadarAllTableViewController.m">
       </ContextState>
       <ContextState
+         contextName = "-[InfiniteScrollPicker reloadView:]:InfiniteScrollPicker.m">
+      </ContextState>
+      <ContextState
          contextName = "-[SquareTableViewController scrollViewDidEndDecelerating:]:SquareTableViewController.m">
          <PersistentStrings>
             <PersistentString
                value = "scrollView.contentOffset.x">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[InfiniteScrollPicker reloadView:]:InfiniteScrollPicker.m">
       </ContextState>
       <ContextState
          contextName = "-[RadarViewController PushRadioAll:]:RadarViewController.m">
@@ -158,6 +158,14 @@
          <PersistentStrings>
             <PersistentString
                value = "self.navigationController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[IAPHelper verifyPruchase]:IAPHelper.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "request.HTTPBody">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

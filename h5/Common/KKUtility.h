@@ -46,6 +46,5 @@
 +(NSArray*)GetFriendsFromLocal:(NSString*)UserId;
 //弹出提示框
 +(void)justAlert:(NSString*)Message;
-//nsdata to base64
-+ (NSString *)base64EncodingWithData:(NSData *)aData;
+
 @end
