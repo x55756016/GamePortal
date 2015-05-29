@@ -54,24 +54,37 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return searchArry.count;
+    @try {
+        return searchArry.count;
+    }
+    @catch (NSException *exception) {
+        return  0;
+    }
+    return  0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
     static NSString *reuseIdentifier = @"gameCells";
     [tableView registerNib:[UINib nibWithNibName:@"GameTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
     GameTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    NSDictionary *searchDict = searchArry[indexPath.row];
-//    NSLog(@"searchDict[%@]", searchDict);
-    cell.gameNameLabel.text = [searchDict objectForKey:@"Title"];
-    cell.gameDesLabel.text = [searchDict objectForKey:@"Summary"];
-    [cell.playGameBtn addTarget:self action:@selector(playGame:) forControlEvents:UIControlEventTouchUpInside];
-    
-    NSString *HeadIMGstring = [searchDict objectForKey:@"Logo"];
-    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
-    return cell;
+    @try {
+        if(searchArry.count>0){
+            NSDictionary *searchDict = searchArry[indexPath.row];
+            //    NSLog(@"searchDict[%@]", searchDict);
+            cell.gameNameLabel.text = [searchDict objectForKey:@"Title"];
+            cell.gameDesLabel.text = [searchDict objectForKey:@"Summary"];
+            [cell.playGameBtn addTarget:self action:@selector(playGame:) forControlEvents:UIControlEventTouchUpInside];
+            
+            NSString *HeadIMGstring = [searchDict objectForKey:@"Logo"];
+            [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
+        }
+    }
+    @catch (NSException *exception) {
+        [KKUtility logSystemErrorMsg:exception.reason :nil];
+    }
+       return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -142,60 +155,6 @@ UIKIT_EXTERN NSString *userFolderPath;
 //    NSLog(@"[%lu]%@", (unsigned long)searchArry.count, searchArry);
     [self.searchTableView reloadData];
 }
-
-//---------------------------------------开始游戏----------------------------------------------//
-//- (void)playGame:(id)sender
-//{
-//    UIButton *button = (UIButton *)sender;
-//    GameTableViewCell *cell = (GameTableViewCell *)button.superview.superview;
-//    NSIndexPath *indexPath = [self.searchTableView indexPathForCell:cell];
-////    NSLog(@"开始[%ld]", (long)indexPath.row);
-//    
-//    NSDictionary *addGameDict = searchArry[indexPath.row];
-////    NSLog(@"[%@]", addGameDict);
-//    
-//    //用户点击开始后，把这个游戏加入到他玩过的游戏中
-//    NSString *urlStr = ADD_GAME;
-//    NSURL *url = [NSURL URLWithString:urlStr];
-//    
-//    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-//    [request setTimeOutSeconds:5.0];
-//    [request setDelegate:self];
-//    [request setRequestMethod:@"POST"];
-//    [request setPostValue:@"1.0" forKey:@"version"];
-//    [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserId"]] forKey:@"UserId"];
-//    [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserKey"]] forKey:@"UserKey"];
-//    [request setPostValue:[NSString stringWithFormat:@"%@", [addGameDict objectForKey:@"ContentPageID"]] forKey:@"GameId"];
-//    [request setDidFailSelector:@selector(addGameFail:)];
-//    [request setDidFinishSelector:@selector(addGameFinish:)];
-//    [request startAsynchronous];
-//}
-
-//- (void)addGameFinish:(ASIHTTPRequest *)request
-//{
-//    NSLog(@"addGameFinish");
-////    NSError *error;
-////    NSData *responseData = [request responseData];
-////    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
-////    NSLog(@"addGamedir[%@]",dic);
-//}
-//
-//- (void)addGameFail:(ASIHTTPRequest *)request
-//{
-//    NSLog(@"addGameFail");
-//}
-
-
-
-
-
-
-
-
-
-
-
-
 
 - (void)playGame:(id)sender
 {

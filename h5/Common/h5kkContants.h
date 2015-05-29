@@ -53,5 +53,7 @@
 //上传购买成功凭据
 #define SavePurchased_Credentials     [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKPay/ApplePay"]
 
+//修改密码
+#define KKUser_ChangePassword                [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/ChangePassword"]
 
 

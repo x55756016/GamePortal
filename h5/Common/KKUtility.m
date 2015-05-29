@@ -403,4 +403,84 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 }
 
+
+//--------------------------------登录成功保存用户信息至本地---------------------------------------//
++(void)saveUserInfo:(NSDictionary *)userInfoDir
+{
+    //    NSLog(@"%@", userInfoDir);
+    
+    NSString *userIdFolder = [self createFolder:[NSString stringWithFormat:@"%@", [userInfoDir objectForKey:@"UserId"]]];
+    NSFileManager *appFileManager = [NSFileManager defaultManager];
+    NSString *UserInfoFilePath = [userIdFolder stringByAppendingPathComponent:@"UserInfo.plist"];
+    
+    BOOL isFileCreate = [appFileManager fileExistsAtPath:UserInfoFilePath isDirectory:nil];
+    //如果文件不存在，创建
+    if (!isFileCreate)
+    {
+        NSMutableDictionary *userInfoDicy = [[NSMutableDictionary alloc] init];
+        if ([userInfoDicy writeToFile:UserInfoFilePath atomically:YES])
+        {
+            NSLog(@"创建用户个人信息文件成功。");
+        }else
+        {
+            NSLog(@"创建用户个人信息文件失败！");
+
+        }
+    }else
+    {
+        if ([userInfoDir writeToFile:UserInfoFilePath atomically:YES])
+        {
+            NSLog(@"覆盖用户信息本地文件成功。");
+        }else
+        {
+              NSLog(@"覆盖用户信息本地文件失败！");
+        }
+    }
+
+    
+    //标记已登录
+    NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
+    [saveDefaults setObject:@"YES" forKey:@"isLogin"];
+    
+    //标记当前登记的账号
+    [saveDefaults setObject:[NSString stringWithFormat:@"%@", [userInfoDir objectForKey:@"UserId"]] forKey:@"currentId"];
+    
+    //UI上的登记账号
+    [saveDefaults setObject:[userInfoDir objectForKey:@"Mobile"] forKey:@"account"];
+    
+//    //保存头像
+//    NSString *UserImgFilePath = [userIdFolder stringByAppendingPathComponent:@"icon.jpg"];
+//    BOOL isImgFileCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserImgFilePath isDirectory:nil];
+//    if (!isImgFileCreate)
+//    {
+//        NSString *HeadIMGstring = [NSString stringWithFormat:@"%@", [userInfoDir objectForKey:@"PicPath"]];
+//        HeadIMGstring = [HeadIMGstring stringByReplacingOccurrencesOfString:@".jpg" withString:@"_b.jpg"];
+//        NSURL *url = [NSURL URLWithString:HeadIMGstring];
+//        NSData *imageData = [NSData dataWithContentsOfURL:url];
+//        [imageData writeToFile:UserImgFilePath atomically:YES];
+//        [saveDefaults setObject:imageData forKey:@"headImg"];
+//    }
+
+}
+//用UserId给每个用户创建本地文件夹
++ (NSString *)createFolder:(NSString *)folderNameStr
+{
+    NSFileManager *appFileManager = [NSFileManager defaultManager];
+    NSString *userFolderPathTemp = [userFolderPath stringByAppendingPathComponent:folderNameStr];
+    
+    BOOL isUserFolderCreate = [appFileManager fileExistsAtPath:userFolderPathTemp isDirectory:nil];
+    if (!isUserFolderCreate)
+    {
+        if (![appFileManager createDirectoryAtPath:userFolderPathTemp withIntermediateDirectories:YES attributes:nil error:nil])
+        {
+            NSLog(@"用户的文件创建失败");
+        }
+        else
+        {
+            return userFolderPathTemp;
+        }
+    }
+    return userFolderPathTemp;
+}
+
 @end

@@ -46,5 +46,6 @@
 +(NSArray*)GetFriendsFromLocal:(NSString*)UserId;
 //弹出提示框
 +(void)justAlert:(NSString*)Message;
-
+//保存当前用户信息至本地
++(void)saveUserInfo:(NSDictionary *)userInfoDir;
 @end

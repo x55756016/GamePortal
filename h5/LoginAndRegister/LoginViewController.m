@@ -114,7 +114,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSString *urlStr = LOGIN;
     NSURL *url = [NSURL URLWithString:urlStr];
     
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
     request = [ASIFormDataRequest requestWithURL:url];
     [request setTimeOutSeconds:5.0];
     [request setDelegate:self];

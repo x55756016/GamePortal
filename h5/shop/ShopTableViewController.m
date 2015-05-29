@@ -39,7 +39,7 @@
 //            
 //            [[InAppRageIAPHelper sharedHelper] requestProducts];
 //          
-//            [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+//            [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
 //            
 //            [self performSelector:@selector(timeout:) withObject:nil afterDelay:30.0];
 //            
@@ -61,7 +61,8 @@
 //--------------------------------------加载好友数据-----------------------------------------------//
 -(void)getProductFromKkServer
 {
-
+    
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
     
     NSString *urlStr = GET_ProductItem;
     NSURL *url = [NSURL URLWithString:urlStr];
@@ -81,6 +82,7 @@
 
 - (void)loadProductItemFinish:(ASIHTTPRequest *)req
 {
+    [SVProgressHUD dismiss];
     NSLog(@"loadFriendsFinish");
     NSError *error;
     NSData *responseData = [req responseData];
@@ -89,7 +91,14 @@
     
     if([[dict objectForKey:@"IsSuccess"] integerValue])
     {
-        [self loadFriendsData:dict];
+        @try {
+            self.kkproducts = [dict objectForKey:@"ObjData"];
+            //结束刷新状态
+            [self.tableView reloadData];
+        }
+        @catch (NSException *exception) {
+            [KKUtility logSystemErrorMsg:exception.reason :nil];
+        }
     }
     else
     {
@@ -100,24 +109,8 @@
 
 - (void)loadProductItemFail:(ASIHTTPRequest *)req
 {
+    [SVProgressHUD dismiss];
     [KKUtility showHttpErrorMsg:@"获取商品列表信息失败 " :req.error];
-}
-
-//好友数据刷表
--(void)loadFriendsData:(NSDictionary *)dict
-{
-    @try {
-        self.kkproducts = [dict objectForKey:@"ObjData"];
-        //    NSLog(@"friendsArray[%lu]%@", (unsigned long)friendsArray.count, friendsArray);
-        //加载的人的数据保存至本地
-        //[self savePeopleDate:0];
-        //结束刷新状态
-        [self.tableView reloadData];
-    }
-    @catch (NSException *exception) {
-        [KKUtility logSystemErrorMsg:exception.reason :nil];
-    }
-    
 }
 //-----------------------------------------
 
@@ -261,8 +254,6 @@
 //--------------------------------------加载好友数据-----------------------------------------------//
 -(void)SavePurchasedCredentialsToServer:(NSString*)strCredentials
 {
-    
-    
     NSString *urlStr = SavePurchased_Credentials;
     NSURL *url = [NSURL URLWithString:urlStr];
     
@@ -288,7 +279,15 @@
     
     if([[dic objectForKey:@"IsSuccess"] integerValue])
     {
-     //
+        @try {
+            NSArray *result   = [dic objectForKey:@"ObjData"];
+            userInfo=[result objectAtIndex:0];
+            [KKUtility  saveUserInfo:userInfo];
+        }
+        @catch (NSException *exception) {
+            [KKUtility logSystemErrorMsg:exception.reason :nil];
+        }
+
     }
 
     

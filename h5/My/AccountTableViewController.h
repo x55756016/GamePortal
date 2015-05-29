@@ -10,9 +10,7 @@
 
 @interface AccountTableViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UITableViewCell *accountCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *KCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *rankCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *becomeVipCell;
-
+@property (strong, nonatomic) IBOutlet UILabel *UserIdLabel;
+@property (strong, nonatomic) IBOutlet UILabel *KCoinNumberLabel;
+@property (strong, nonatomic) IBOutlet UILabel *kCoinLabel;
 @end

@@ -469,10 +469,10 @@
             </objects>
             <point key="canvasLocation" x="-4464" y="1018.5"/>
         </scene>
-        <!--我的-->
+        <!--我的首页-->
         <scene sceneID="hri-O8-Onu">
             <objects>
-                <tableViewController id="cNx-tx-Zjc" customClass="MyTableViewController" sceneMemberID="viewController">
+                <tableViewController id="cNx-tx-Zjc" userLabel="我的首页" customClass="MyTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="YSl-fe-LHb">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1374,10 +1374,10 @@
             </objects>
             <point key="canvasLocation" x="-922.5" y="5304.75"/>
         </scene>
-        <!--账号信息-->
+        <!--我的账号-->
         <scene sceneID="Wxi-4r-Ckk">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="1kZ-NI-8zy" userLabel="账号信息" customClass="AccountTableViewController" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="1kZ-NI-8zy" userLabel="我的账号" customClass="AccountTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Uo8-7W-YSL">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1385,33 +1385,72 @@
                         <sections>
                             <tableViewSection id="G8S-5f-jEL">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="vFv-Se-VQg" style="IBUITableViewCellStyleDefault" id="bes-Gk-DTy">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="bes-Gk-DTy">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bes-Gk-DTy" id="8Va-88-zVL">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="帐号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vFv-Se-VQg">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="当前帐号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dy-aI-yuU">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <rect key="frame" x="17" y="0.0" width="81" height="43"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71Z-HP-e00">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="0Cc-Q2-FRA"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="0Cc-Q2-FRA"/>
+                                                        </mask>
+                                                    </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <mask key="constraints">
+                                                            <include reference="0Cc-Q2-FRA"/>
+                                                        </mask>
                                                     </variation>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="71Z-HP-e00" secondAttribute="centerY" id="0H8-Kp-eXu"/>
+                                                <constraint firstItem="71Z-HP-e00" firstAttribute="leading" secondItem="8Va-88-zVL" secondAttribute="leading" constant="130" id="9Fn-E7-pWT"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="3dy-aI-yuU"/>
+                                                    <exclude reference="71Z-HP-e00"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="0H8-Kp-eXu"/>
+                                                    <exclude reference="9Fn-E7-pWT"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="3dy-aI-yuU"/>
+                                                    <include reference="71Z-HP-e00"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="0H8-Kp-eXu"/>
+                                                    <include reference="9Fn-E7-pWT"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="e5V-on-sdJ">
-                                <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="YJx-WZ-yfc" style="IBUITableViewCellStyleDefault" id="2fO-Le-tMq">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2fO-Le-tMq" id="STO-GZ-fYq">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="K币" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YJx-WZ-yfc">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="修改密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YJx-WZ-yfc">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1422,34 +1461,83 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="x0m-kj-usB" kind="show" id="5oz-gX-f47"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="H0A-uU-xpv" style="IBUITableViewCellStyleDefault" id="Uk0-bZ-nNB">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Uk0-bZ-nNB">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uk0-bZ-nNB" id="KQs-2P-qpm">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="帐号等级" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H0A-uU-xpv">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="K币余额" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUV-0t-d4j">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <rect key="frame" x="16" y="0.0" width="69" height="43"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdE-rE-jUK">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="bj6-V5-arB"/>
+                                                        <constraint firstAttribute="width" constant="150" id="ySt-qf-L0R"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="bj6-V5-arB"/>
+                                                            <exclude reference="ySt-qf-L0R"/>
+                                                        </mask>
+                                                    </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <mask key="constraints">
+                                                            <include reference="bj6-V5-arB"/>
+                                                            <include reference="ySt-qf-L0R"/>
+                                                        </mask>
                                                     </variation>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zdE-rE-jUK" firstAttribute="leading" secondItem="KQs-2P-qpm" secondAttribute="leading" constant="130" id="15z-wN-W5V"/>
+                                                <constraint firstAttribute="centerY" secondItem="zdE-rE-jUK" secondAttribute="centerY" id="xGu-np-MKV"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="wUV-0t-d4j"/>
+                                                    <exclude reference="zdE-rE-jUK"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="15z-wN-W5V"/>
+                                                    <exclude reference="xGu-np-MKV"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="wUV-0t-d4j"/>
+                                                    <include reference="zdE-rE-jUK"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="15z-wN-W5V"/>
+                                                    <include reference="xGu-np-MKV"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="G48-uE-PYK">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="t0H-64-b25" style="IBUITableViewCellStyleDefault" id="jJK-Uo-4Z3">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="t0H-64-b25" style="IBUITableViewCellStyleDefault" id="jJK-Uo-4Z3">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jJK-Uo-4Z3" id="haS-Oz-NSS">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="成为会员" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t0H-64-b25">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="充值K币" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t0H-64-b25">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1460,6 +1548,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Ttn-il-d4T" kind="show" id="Jwx-wI-rdu"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1470,10 +1561,9 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="KCell" destination="2fO-Le-tMq" id="Yno-X4-Mf1"/>
-                        <outlet property="accountCell" destination="bes-Gk-DTy" id="Vsb-Rl-hf8"/>
-                        <outlet property="becomeVipCell" destination="jJK-Uo-4Z3" id="8Fp-pN-Wad"/>
-                        <outlet property="rankCell" destination="Uk0-bZ-nNB" id="kge-02-qyb"/>
+                        <outlet property="KCoinNumberLabel" destination="zdE-rE-jUK" id="E9J-iW-swF"/>
+                        <outlet property="UserIdLabel" destination="71Z-HP-e00" id="XjU-f1-EhG"/>
+                        <outlet property="kCoinLabel" destination="zdE-rE-jUK" id="24y-cL-1hh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ku-8e-Duk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1611,7 +1701,7 @@
         <scene sceneID="O4o-6R-pO9">
             <objects>
                 <tableViewController id="Ttn-il-d4T" userLabel="在线商店" customClass="ShopTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lip-U5-Zww">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" id="lip-U5-Zww">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1623,7 +1713,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Io-Pm-dco" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="16.5" y="2442.75"/>
+            <point key="canvasLocation" x="-7.5" y="2182.5"/>
         </scene>
         <!--消息列表Navigation-->
         <scene sceneID="fCz-dF-vbm">
@@ -1740,7 +1830,7 @@
                         <viewControllerLayoutGuide type="bottom" id="WZR-jj-Jsd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fzP-Ve-QpD">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dz7-N4-wm7">
@@ -1791,8 +1881,7 @@
                                         <exclude reference="kZ9-oL-YYX"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="50"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="h0a-Hd-qCo"/>
                                     </mask>
@@ -1808,9 +1897,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0oZ-pi-F5b">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="114" width="320" height="434"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="JZa-bm-8lv" id="O4d-0D-EEu"/>
                                     <outlet property="delegate" destination="JZa-bm-8lv" id="82r-02-RoX"/>
@@ -3430,25 +3516,25 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCa-qG-DBe">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wH-lg-yi6">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确认" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwF-aO-Z2F">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJv-8I-bla">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -4814,6 +4900,370 @@
             </objects>
             <point key="canvasLocation" x="4375.5" y="-1776"/>
         </scene>
+        <!--修改密码-->
+        <scene sceneID="M0h-aJ-Bmx">
+            <objects>
+                <tableViewController hidesBottomBarWhenPushed="YES" id="x0m-kj-usB" userLabel="修改密码" customClass="PasswordEditViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Hm4-2p-Lzs">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <sections>
+                            <tableViewSection id="kJl-fk-eVZ">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="ZGP-Ko-AyB">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZGP-Ko-AyB" id="mI7-PI-ftR">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="当前帐号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flj-J5-LQG">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" id="bIW-LR-qk8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="bIW-LR-qk8"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <mask key="constraints">
+                                                            <include reference="bIW-LR-qk8"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrq-Nt-aAR">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" id="G9z-5a-pAv">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                                                        </constraint>
+                                                        <constraint firstAttribute="width" constant="150" id="Ku7-d4-emF"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="G9z-5a-pAv"/>
+                                                            <exclude reference="Ku7-d4-emF"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <mask key="constraints">
+                                                            <include reference="G9z-5a-pAv"/>
+                                                            <include reference="Ku7-d4-emF"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="flj-J5-LQG" secondAttribute="centerY" id="1sY-G5-cHF"/>
+                                                <constraint firstAttribute="centerY" secondItem="hrq-Nt-aAR" secondAttribute="centerY" id="Bxc-Yk-Erw"/>
+                                                <constraint firstItem="hrq-Nt-aAR" firstAttribute="leading" secondItem="mI7-PI-ftR" secondAttribute="leading" constant="130" id="FU5-nv-zln"/>
+                                                <constraint firstItem="flj-J5-LQG" firstAttribute="leading" secondItem="mI7-PI-ftR" secondAttribute="leading" constant="10" id="X5o-Zg-Evp"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="flj-J5-LQG"/>
+                                                    <exclude reference="hrq-Nt-aAR"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="1sY-G5-cHF"/>
+                                                    <exclude reference="X5o-Zg-Evp"/>
+                                                    <exclude reference="Bxc-Yk-Erw"/>
+                                                    <exclude reference="FU5-nv-zln"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="flj-J5-LQG"/>
+                                                    <include reference="hrq-Nt-aAR"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="1sY-G5-cHF"/>
+                                                    <include reference="X5o-Zg-Evp"/>
+                                                    <include reference="Bxc-Yk-Erw"/>
+                                                    <include reference="FU5-nv-zln"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wt7-YG-Hln">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wt7-YG-Hln" id="xKh-Bx-Eys">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="旧密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGJ-fu-d98">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" id="A1N-yH-IQJ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="A1N-yH-IQJ"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <mask key="constraints">
+                                                            <include reference="A1N-yH-IQJ"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mFI-1h-SPp">
+                                                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="LIH-Sp-OJB"/>
+                                                        <constraint firstAttribute="width" constant="130" id="cWB-aj-Df0">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="150"/>
+                                                        </constraint>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="LIH-Sp-OJB"/>
+                                                            <exclude reference="cWB-aj-Df0"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="LIH-Sp-OJB"/>
+                                                            <include reference="cWB-aj-Df0"/>
+                                                        </mask>
+                                                    </variation>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="IGJ-fu-d98" firstAttribute="leading" secondItem="xKh-Bx-Eys" secondAttribute="leading" constant="16" id="Hue-3d-xQL">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                                                </constraint>
+                                                <constraint firstItem="mFI-1h-SPp" firstAttribute="leading" secondItem="xKh-Bx-Eys" secondAttribute="leading" constant="130" id="Lxx-Hb-J68"/>
+                                                <constraint firstAttribute="centerY" secondItem="mFI-1h-SPp" secondAttribute="centerY" id="V1t-9a-f5N"/>
+                                                <constraint firstAttribute="centerY" secondItem="IGJ-fu-d98" secondAttribute="centerY" id="uMf-Bq-eo3"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="IGJ-fu-d98"/>
+                                                    <exclude reference="mFI-1h-SPp"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="Hue-3d-xQL"/>
+                                                    <exclude reference="uMf-Bq-eo3"/>
+                                                    <exclude reference="Lxx-Hb-J68"/>
+                                                    <exclude reference="V1t-9a-f5N"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="IGJ-fu-d98"/>
+                                                    <include reference="mFI-1h-SPp"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="Hue-3d-xQL"/>
+                                                    <include reference="uMf-Bq-eo3"/>
+                                                    <include reference="Lxx-Hb-J68"/>
+                                                    <include reference="V1t-9a-f5N"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="oYh-Ue-GPM">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oYh-Ue-GPM" id="d69-et-CAS">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="新密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlH-sM-7SF">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" id="gr9-Fs-rIc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="gr9-Fs-rIc"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <mask key="constraints">
+                                                            <include reference="gr9-Fs-rIc"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B5j-H2-IQO">
+                                                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="C9X-Zj-lTJ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="C9X-Zj-lTJ"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="C9X-Zj-lTJ"/>
+                                                        </mask>
+                                                    </variation>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="B5j-H2-IQO" firstAttribute="leading" secondItem="d69-et-CAS" secondAttribute="leading" constant="130" id="WtZ-ZP-fah"/>
+                                                <constraint firstItem="GlH-sM-7SF" firstAttribute="leading" secondItem="d69-et-CAS" secondAttribute="leading" constant="10" id="lDh-PF-xCB"/>
+                                                <constraint firstAttribute="centerY" secondItem="GlH-sM-7SF" secondAttribute="centerY" id="mRg-bu-DkQ"/>
+                                                <constraint firstAttribute="centerY" secondItem="B5j-H2-IQO" secondAttribute="centerY" id="uZf-5K-fPf"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="GlH-sM-7SF"/>
+                                                    <exclude reference="B5j-H2-IQO"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="lDh-PF-xCB"/>
+                                                    <exclude reference="mRg-bu-DkQ"/>
+                                                    <exclude reference="WtZ-ZP-fah"/>
+                                                    <exclude reference="uZf-5K-fPf"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="GlH-sM-7SF"/>
+                                                    <include reference="B5j-H2-IQO"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="lDh-PF-xCB"/>
+                                                    <include reference="mRg-bu-DkQ"/>
+                                                    <include reference="WtZ-ZP-fah"/>
+                                                    <include reference="uZf-5K-fPf"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="aNN-Or-3rA">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aNN-Or-3rA" id="uWI-af-zlU">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="确认新密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Hj-F0-reY">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" id="Eyq-Md-fyG"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Eyq-Md-fyG"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <mask key="constraints">
+                                                            <include reference="Eyq-Md-fyG"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YXH-8e-TPZ">
+                                                    <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="XC4-b7-N4D"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="XC4-b7-N4D"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="XC4-b7-N4D"/>
+                                                        </mask>
+                                                    </variation>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3Hj-F0-reY" firstAttribute="leading" secondItem="uWI-af-zlU" secondAttribute="leading" constant="10" id="U8o-Lp-zBq"/>
+                                                <constraint firstAttribute="centerY" secondItem="3Hj-F0-reY" secondAttribute="centerY" id="f1G-Ke-z9X"/>
+                                                <constraint firstAttribute="centerY" secondItem="YXH-8e-TPZ" secondAttribute="centerY" id="jou-3o-HHz"/>
+                                                <constraint firstItem="YXH-8e-TPZ" firstAttribute="leading" secondItem="uWI-af-zlU" secondAttribute="leading" constant="130" id="x49-E4-6Ib"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="3Hj-F0-reY"/>
+                                                    <exclude reference="YXH-8e-TPZ"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="U8o-Lp-zBq"/>
+                                                    <exclude reference="f1G-Ke-z9X"/>
+                                                    <exclude reference="jou-3o-HHz"/>
+                                                    <exclude reference="x49-E4-6Ib"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="3Hj-F0-reY"/>
+                                                    <include reference="YXH-8e-TPZ"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="U8o-Lp-zBq"/>
+                                                    <include reference="f1G-Ke-z9X"/>
+                                                    <include reference="jou-3o-HHz"/>
+                                                    <include reference="x49-E4-6Ib"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="HnD-CW-M4Z">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="lnM-Nt-nuM" style="IBUITableViewCellStyleDefault" id="DPS-fq-ire">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DPS-fq-ire" id="21W-ps-IMv">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="确认修改" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lnM-Nt-nuM">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="x0m-kj-usB" id="A3E-Kc-0vu"/>
+                            <outlet property="delegate" destination="x0m-kj-usB" id="zs3-DC-fgC"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="UserNameLabel" destination="hrq-Nt-aAR" id="gMi-CQ-7oB"/>
+                        <outlet property="oldPasswordTextField" destination="mFI-1h-SPp" id="ir8-DR-I02"/>
+                        <outlet property="pwdAgainTextField" destination="YXH-8e-TPZ" id="QVI-0b-V2T"/>
+                        <outlet property="pwdTextField" destination="B5j-H2-IQO" id="SNM-Vw-ZMc"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1dp-eE-3VH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-570" y="1707"/>
+        </scene>
     </scenes>
     <resources>
         <image name="1_fujin" width="42" height="42"/>
@@ -4839,10 +5289,11 @@
         <image name="userDefaultHead" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bXQ-RE-HK5"/>
         <segue reference="93B-ev-HIq"/>
+        <segue reference="WOa-MP-Lh5"/>
         <segue reference="zVw-oc-Kg7"/>
         <segue reference="Wkf-TW-zIW"/>
         <segue reference="iID-OB-lrr"/>
+        <segue reference="Jwx-wI-rdu"/>
     </inferredMetricsTieBreakers>
 </document>

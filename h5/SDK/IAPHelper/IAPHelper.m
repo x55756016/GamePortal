@@ -20,8 +20,7 @@
 @implementation IAPHelper
 
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers {
-    if ((self = [super init])) {
-        
+    if ((self = [super init])) {        
         // Store product identifiers
         // Check for previously purchased products
         NSMutableSet * purchasedProducts = [NSMutableSet set];
@@ -36,54 +35,17 @@
             NSLog(@"Add product: %@", productIdentifier);
         }
         self.purchasedProducts = purchasedProducts;
-        
     }
     return self;
 }
-//请求商品列表
-- (void)requestProducts {
-    if([SKPaymentQueue canMakePayments])
-    {
-        //Display a store to the user
-    }
-    else
-    {
-        //Warn the user that purchases are disabled.
-        [KKUtility justAlert:@"the user that purchases are disabled"];
-        return;
-    }
-    self.request = [[SKProductsRequest alloc] initWithProductIdentifiers:_productIdentifiers];
-    self.request.delegate = self;
-    [self.request start];
-    
-}
-//请求商品列表完成事件
-- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
-    
-    NSLog(@"Received products results...");
-    self.products = response.products;
-    self.request = nil;
-    
-     [[NSNotificationCenter defaultCenter]postNotificationName:kProductsLoadedNotification object:_products];
-}
+
 
 //开始购买商品
-- (void)buyProductIdentifier:(NSString *)productIdentifier {
-    
-    
-    
-        if (productIdentifier != nil) {
-    
-            NSLog(@"EBPurchase purchaseProduct: %@", productIdentifier);
-    
+- (void)buyProductIdentifier:(NSString *)kkproductIdentifier {
+    if (kkproductIdentifier != nil) {
+            NSLog(@"Purchase purchaseProduct: %@", kkproductIdentifier);
             if ([SKPaymentQueue canMakePayments]) {
-                [SVProgressHUD showWithStatus:@"购买正在进行中\n完成前请先不要离开......" maskType:SVProgressHUDMaskTypeGradient];
-                NSLog(@"start Buying product，id＝%@...", productIdentifier);
-                
-                SKPayment *payment = [SKPayment paymentWithProductIdentifier:productIdentifier];
-                [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-                [[SKPaymentQueue defaultQueue] addPayment:payment];
-    
+                [self requestProducts:kkproductIdentifier];
             } else {
                 [KKUtility justAlert:@"此设备未开启支付功能，请确认！"];
             }
@@ -92,6 +54,37 @@
             [KKUtility justAlert:@"购买的商品Id为空，请联系客服或重试。"];
         }
 }
+//请求商品列表
+- (void)requestProducts:(NSString *) kkproductIdentifier {
+    NSMutableSet * purchasedProducts = [NSMutableSet set];
+    [purchasedProducts addObject:kkproductIdentifier];
+    self.request = [[SKProductsRequest alloc] initWithProductIdentifiers:purchasedProducts];
+    self.request.delegate = self;
+    [self.request start];
+    
+    [SVProgressHUD showWithStatus:@"购买正在进行中\n完成前请先不要离开......" maskType:SVProgressHUDMaskTypeGradient];
+}
+//请求商品列表完成事件
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    
+    NSLog(@"Received products results...");
+    self.products = response.products;
+    self.request = nil;
+    SKProduct *kkProduct=[self.products objectAtIndex:0];
+    if([self.products count]==0)
+    {
+        [SVProgressHUD showErrorWithStatus:@"根据商品id未获取到商品，\n请联系客服或重试"];
+        
+    }
+    //开始购买
+     SKPayment *payment = [SKPayment paymentWithProduct:kkProduct];
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+
+}
+
+
+
 
 //交易中
 - (void)PurchasingTransaction:(SKPaymentTransaction *)transaction {
@@ -145,30 +138,25 @@
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
     NSLog(@"购买完成 %@", transaction.payment.productIdentifier);
     [self provideContent: transaction];
-    [SVProgressHUD showSuccessWithStatus:@"购买成功！"];
-
-    
+    [SVProgressHUD dismiss];
 }
 //交易失败
 - (void)failedTransaction:(SKPaymentTransaction *)transaction {
     
+    NSLog(@"购买失败 %@", transaction.payment.productIdentifier);
     if (transaction.error.code != SKErrorPaymentCancelled)
     {
         NSLog(@"Transaction error: %@", transaction.error.localizedDescription);
     }
     if(transaction.error.code != SKErrorPaymentCancelled) {
         NSLog(@"购买失败");
-        [SVProgressHUD showErrorWithStatus:@"购买失败"];
-        [SVProgressHUD dismiss];
     } else {
         NSLog(@"用户取消交易");
-        [SVProgressHUD dismiss];
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kProductPurchaseFailedNotification object:transaction];
-    
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
-
+    [SVProgressHUD dismiss];
 }
 //恢复已购
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction {

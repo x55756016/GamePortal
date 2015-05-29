@@ -20,7 +20,7 @@
 @property (retain) NSMutableSet *purchasedProducts;
 @property (retain) SKProductsRequest *request;
 
-- (void)requestProducts;
+//- (void)requestProducts;
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers;
 
 //- (void)buyProductIdentifier:(SKProduct *)product;

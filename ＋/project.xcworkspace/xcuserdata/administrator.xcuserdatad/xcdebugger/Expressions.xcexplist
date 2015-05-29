@@ -98,6 +98,14 @@
          contextName = "-[SquareTableViewController loadPlayerDataFinish:]:SquareTableViewController.m">
       </ContextState>
       <ContextState
+         contextName = "-[SearchGamesViewController tableView:numberOfRowsInSection:]:SearchGamesViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[searchArry count]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[GameWebViewController addGameConfigComplete:]:GameWebViewController.m">
       </ContextState>
       <ContextState

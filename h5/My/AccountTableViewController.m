@@ -7,9 +7,11 @@
 //
 
 #import "AccountTableViewController.h"
+#import "KKUtility.h"
 
-@interface AccountTableViewController ()
-
+@interface AccountTableViewController (){
+ NSDictionary *MyInfo;
+}
 @end
 
 @implementation AccountTableViewController
@@ -17,9 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    MyInfo=[KKUtility getUserInfoFromLocalFile];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
+//     NSString *useridStr = [NSString stringWithFormat:@"%@", [MyInfo objectForKey:@"UserId"]];
+     NSString *userMobile = [NSString stringWithFormat:@"%@", [MyInfo objectForKey:@"Mobile"]];
+    [self.UserIdLabel setText:userMobile];
     
+     NSString *kCoin = [NSString stringWithFormat:@"%@", [MyInfo objectForKey:@"Money"]];
+    [self.kCoinLabel setText:kCoin];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -28,71 +36,34 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    MyInfo=[KKUtility getUserInfoFromLocalFile];
+    NSString *kCoin = [NSString stringWithFormat:@"%@", [MyInfo objectForKey:@"Money"]];
+    [self.kCoinLabel setText:kCoin];
+
+}
 
 //-----------------------UITableViewDataSource-----------------------------------------------------------//
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(section == 0)
     {
-        return 1;
+        return 3;
     }
     
     else if(section == 1)
-    {
-        return 2;
-    }
-    
-    else if(section == 2)
     {
         return 1;
     }
     return 0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = nil;
-    
-    if(indexPath.section == 0)
-    {
-        if(indexPath.row == 0)
-        {
-            cell = self.accountCell;
-        }
-    }
-    
-    if(indexPath.section == 1)
-    {
-        if(indexPath.row == 0)
-        {
-            cell = self.KCell;
-        }
-        if(indexPath.row == 1)
-        {
-            cell = self.rankCell;
-        }
-    }
-    
-    if(indexPath.section == 2)
-    {
-        if(indexPath.row == 0)
-        {
-            cell = self.becomeVipCell;
-        }
-    }
-    
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
 
 @end
 

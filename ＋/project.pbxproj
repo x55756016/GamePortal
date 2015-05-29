@@ -30,9 +30,11 @@
 		C331E81B1B0B191B004439A3 /* ClickImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C331E81A1B0B191B004439A3 /* ClickImage.m */; };
 		C331E81F1B0B702D004439A3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C331E81D1B0B702D004439A3 /* ViewController.m */; };
 		C331E8201B0B702D004439A3 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C331E81E1B0B702D004439A3 /* ViewController.xib */; };
-		C33932E71B182FEB0055E2FB /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = C33932E51B182FEB0055E2FB /* SVIndefiniteAnimatedView.m */; };
 		C33932EA1B183A020055E2FB /* InAppRageIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C33932E91B183A020055E2FB /* InAppRageIAPHelper.m */; };
-		C33932EC1B183F0C0055E2FB /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C33932EB1B183F0C0055E2FB /* SVProgressHUD.bundle */; };
+		C33932F41B1842830055E2FB /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = C33932EF1B1842830055E2FB /* SVIndefiniteAnimatedView.m */; };
+		C33932F51B1842830055E2FB /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C33932F11B1842830055E2FB /* SVProgressHUD.bundle */; };
+		C33932F61B1842830055E2FB /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C33932F31B1842830055E2FB /* SVProgressHUD.m */; };
+		C33932FA1B1853A50055E2FB /* PasswordEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33932F91B1853A50055E2FB /* PasswordEditViewController.m */; };
 		C33A83E91B072F5200331199 /* InfiniteScrollPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */; };
 		C33A83EA1B072F5200331199 /* UIView+viewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A83E81B072F5200331199 /* UIView+viewController.m */; };
 		C342F94A1B16B2D100725AA2 /* ShopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C342F9491B16B2D100725AA2 /* ShopTableViewController.m */; };
@@ -73,7 +75,6 @@
 		CB0A69B71AC92B74003F7775 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0A69B61AC92B74003F7775 /* main.m */; };
 		CB0A69BA1AC92B74003F7775 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0A69B91AC92B74003F7775 /* AppDelegate.m */; };
 		CB323DA81ACA3B3000C7FE83 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CB323DA71ACA3B3000C7FE83 /* Reachability.m */; };
-		CB323DAE1ACA3B7B00C7FE83 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CB323DAC1ACA3B7B00C7FE83 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CB323DB51ACA3CC500C7FE83 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB323DB21ACA3CC500C7FE83 /* SMS_SDK.framework */; };
 		CB323DB71ACA3CE900C7FE83 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB323DB61ACA3CE900C7FE83 /* libicucore.dylib */; };
 		CB323DB91ACA3CF500C7FE83 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB323DB81ACA3CF500C7FE83 /* libz.dylib */; };
@@ -237,12 +238,16 @@
 		C331E81C1B0B702D004439A3 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C331E81D1B0B702D004439A3 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C331E81E1B0B702D004439A3 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
-		C33932E41B182FEB0055E2FB /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
-		C33932E51B182FEB0055E2FB /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
-		C33932E61B182FEB0055E2FB /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		C33932E81B183A020055E2FB /* InAppRageIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppRageIAPHelper.h; sourceTree = "<group>"; };
 		C33932E91B183A020055E2FB /* InAppRageIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppRageIAPHelper.m; sourceTree = "<group>"; };
-		C33932EB1B183F0C0055E2FB /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		C33932EE1B1842830055E2FB /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		C33932EF1B1842830055E2FB /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		C33932F01B1842830055E2FB /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		C33932F11B1842830055E2FB /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		C33932F21B1842830055E2FB /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		C33932F31B1842830055E2FB /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		C33932F81B1853A50055E2FB /* PasswordEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordEditViewController.h; sourceTree = "<group>"; };
+		C33932F91B1853A50055E2FB /* PasswordEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordEditViewController.m; sourceTree = "<group>"; };
 		C33A83E51B072F5200331199 /* InfiniteScrollPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteScrollPicker.h; sourceTree = "<group>"; };
 		C33A83E61B072F5200331199 /* InfiniteScrollPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfiniteScrollPicker.m; sourceTree = "<group>"; };
 		C33A83E71B072F5200331199 /* UIView+viewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+viewController.h"; sourceTree = "<group>"; };
@@ -312,8 +317,6 @@
 		CB0A69B91AC92B74003F7775 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CB323DA61ACA3B3000C7FE83 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		CB323DA71ACA3B3000C7FE83 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		CB323DAB1ACA3B7B00C7FE83 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		CB323DAC1ACA3B7B00C7FE83 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		CB323DB21ACA3CC500C7FE83 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
 		CB323DB61ACA3CE900C7FE83 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		CB323DB81ACA3CF500C7FE83 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -700,6 +703,28 @@
 			path = ClickImage;
 			sourceTree = "<group>";
 		};
+		C33932ED1B1842830055E2FB /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C33932EE1B1842830055E2FB /* SVIndefiniteAnimatedView.h */,
+				C33932EF1B1842830055E2FB /* SVIndefiniteAnimatedView.m */,
+				C33932F01B1842830055E2FB /* SVProgressHUD-Prefix.pch */,
+				C33932F11B1842830055E2FB /* SVProgressHUD.bundle */,
+				C33932F21B1842830055E2FB /* SVProgressHUD.h */,
+				C33932F31B1842830055E2FB /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		C33932F71B1853A50055E2FB /* PasswordEdit */ = {
+			isa = PBXGroup;
+			children = (
+				C33932F81B1853A50055E2FB /* PasswordEditViewController.h */,
+				C33932F91B1853A50055E2FB /* PasswordEditViewController.m */,
+			);
+			path = PasswordEdit;
+			sourceTree = "<group>";
+		};
 		C33A83E41B072F5200331199 /* InfiniteScrollPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -725,8 +750,8 @@
 		C38E411E1B048E4700F42B7D /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				C33932ED1B1842830055E2FB /* SVProgressHUD */,
 				C342F9501B1717E400725AA2 /* IAPHelper */,
-				CB323DA91ACA3B7B00C7FE83 /* SVProgressHUD */,
 				CB323DAF1ACA3CC500C7FE83 /* SMS_SDK */,
 				CBB4B0C81AF47FE9004BE59A /* iOS_IMKit */,
 				CB6EFE841AD61B6C00F597B6 /* MJRefresh */,
@@ -981,20 +1006,6 @@
 			path = ../Reachability;
 			sourceTree = "<group>";
 		};
-		CB323DA91ACA3B7B00C7FE83 /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				C33932EB1B183F0C0055E2FB /* SVProgressHUD.bundle */,
-				C33932E41B182FEB0055E2FB /* SVIndefiniteAnimatedView.h */,
-				C33932E51B182FEB0055E2FB /* SVIndefiniteAnimatedView.m */,
-				C33932E61B182FEB0055E2FB /* SVProgressHUD-Prefix.pch */,
-				CB323DAB1ACA3B7B00C7FE83 /* SVProgressHUD.h */,
-				CB323DAC1ACA3B7B00C7FE83 /* SVProgressHUD.m */,
-			);
-			name = SVProgressHUD;
-			path = ../SVProgressHUD;
-			sourceTree = "<group>";
-		};
 		CB323DAF1ACA3CC500C7FE83 /* SMS_SDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1125,6 +1136,7 @@
 		CB3929481ACC29E00004FFB4 /* My */ = {
 			isa = PBXGroup;
 			children = (
+				C33932F71B1853A50055E2FB /* PasswordEdit */,
 				CB42F80F1ADE59EF00F5376C /* My1NavigationController.h */,
 				CB42F8101ADE59EF00F5376C /* My1NavigationController.m */,
 				CB7CDB791ACCD74200872B7E /* MyTableViewController.h */,
@@ -1507,7 +1519,7 @@
 				CBB4B0F51AF47FE9004BE59A /* RongCloud.bundle in Resources */,
 				C32D863A1B0ED299008D7553 /* SquareTableViewCell.xib in Resources */,
 				C3A994B41AF8794F00B2D317 /* MyGame.xib in Resources */,
-				C33932EC1B183F0C0055E2FB /* SVProgressHUD.bundle in Resources */,
+				C33932F51B1842830055E2FB /* SVProgressHUD.bundle in Resources */,
 				CBE0A0511AEA108F00791FAB /* MatchTableViewCell.xib in Resources */,
 				C32D864C1B0F2004008D7553 /* wave70x117@2x.png in Resources */,
 				C3A994AD1AF8781C00B2D317 /* FrontRankTableViewCell.xib in Resources */,
@@ -1539,6 +1551,7 @@
 				CB6ED2061AD37A4100A33BB8 /* UIImage+WebP.m in Sources */,
 				CB6EFEA21AD61B6C00F597B6 /* MJRefreshGifHeader.m in Sources */,
 				CB6ED2031AD37A4100A33BB8 /* UIButton+WebCache.m in Sources */,
+				C33932F61B1842830055E2FB /* SVProgressHUD.m in Sources */,
 				CB3929441ACC29570004FFB4 /* SMS_MBProgressHUD.m in Sources */,
 				CB3929431ACC29570004FFB4 /* SMS_MBProgressHUD+Add.m in Sources */,
 				C331E81B1B0B191B004439A3 /* ClickImage.m in Sources */,
@@ -1557,13 +1570,11 @@
 				C3CEEA6F1AFA3C4B0062970F /* HomeInfoViewController.m in Sources */,
 				CB6EFEA51AD61B6C00F597B6 /* MJRefreshLegendHeader.m in Sources */,
 				C3A994821AF86DA300B2D317 /* GameListViewController.m in Sources */,
-				C33932E71B182FEB0055E2FB /* SVIndefiniteAnimatedView.m in Sources */,
 				CBC4A5FD1ACE3EBA0082FA2B /* SignatureTableViewController.m in Sources */,
 				CB6EFEA71AD61B6C00F597B6 /* UIScrollView+MJRefresh.m in Sources */,
 				C3A994961AF86FCE00B2D317 /* GameDetailViewController.m in Sources */,
 				CB323E0D1ACA7C9B00C7FE83 /* ASIDataDecompressor.m in Sources */,
 				CB6ED1FA1AD37A4100A33BB8 /* MKAnnotationView+WebCache.m in Sources */,
-				CB323DAE1ACA3B7B00C7FE83 /* SVProgressHUD.m in Sources */,
 				C3A994AC1AF8781C00B2D317 /* FrontRankTableViewCell.m in Sources */,
 				CB39293A1ACC29570004FFB4 /* ForgetPwdViewController.m in Sources */,
 				C32A25201B0CBA6F00861BD5 /* SBJson4Writer.m in Sources */,
@@ -1575,6 +1586,7 @@
 				C3C004001AFC93020049002A /* CurrentUser.m in Sources */,
 				CB83C95A1AE9E8070075F045 /* FindAroundTableViewController.m in Sources */,
 				CB3929411ACC29570004FFB4 /* NSDictionary-DeepMutableCopy.m in Sources */,
+				C33932F41B1842830055E2FB /* SVIndefiniteAnimatedView.m in Sources */,
 				CB6ED2001AD37A4100A33BB8 /* SDWebImageDownloaderOperation.m in Sources */,
 				CB83C9541AE9E4BC0075F045 /* FindTableViewController.m in Sources */,
 				C3A9949F1AF8779B00B2D317 /* GameRankViewController.m in Sources */,
@@ -1638,6 +1650,7 @@
 				CB83C9601AE9E9030075F045 /* AroundTableViewCell.m in Sources */,
 				CB323E0C1ACA7C9B00C7FE83 /* ASIDataCompressor.m in Sources */,
 				CB3CB26F1ACD7E1D0031E016 /* AccountTableViewController.m in Sources */,
+				C33932FA1B1853A50055E2FB /* PasswordEditViewController.m in Sources */,
 				CB42F80B1ADE590C00F5376C /* FriendsNavigationController.m in Sources */,
 				CB83C94F1AE9D93A0075F045 /* CommonTableViewCell.m in Sources */,
 				C33A83E91B072F5200331199 /* InfiniteScrollPicker.m in Sources */,
