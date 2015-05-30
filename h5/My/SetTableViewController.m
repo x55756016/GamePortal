@@ -8,6 +8,8 @@
 
 #import "SetTableViewController.h"
 #import "AppDelegate.h"
+#import "HomeInfoViewController.h"
+#import "KKUtility.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -117,10 +119,38 @@ UIKIT_EXTERN NSString *userFolderPath;
     return cell;
 }
 
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+   
+    NSInteger indexSection = indexPath.section;
+    NSInteger indexRow=indexPath.row;
+    NSString *webUrl=@"";
+    if(indexSection==0)
+    {
+        [KKUtility justAlert:@"暂未开放"];
+        return;
+    }
+    if(indexSection==1)
+    {
+        if(indexRow==0)
+        {  //意见反馈
+            webUrl=KKWeb_Feedback;
+        }
+        if(indexRow==1)
+        {
+            //去评分
+            NSString *str = [NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", KKAppleID];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+            return;
+        }
+        if(indexRow==2)
+        {
+            //关于
+            webUrl=KKWeb_About;
+        }
+    }
     if(indexPath.section == 2)
     {
         if(indexPath.row == 0)
@@ -128,6 +158,22 @@ UIKIT_EXTERN NSString *userFolderPath;
             [self exitActionSheet];
         }
     }
+    NSDictionary *adDic=[NSDictionary dictionaryWithObjectsAndKeys:
+                         webUrl,@"Url",nil ];
+    NSLog(@"打开网页[%@]", adDic);
+    [self performSegueWithIdentifier:@"StartWebInfoSegue" sender:adDic];
+    
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"StartWebInfoSegue"])
+    {
+        HomeInfoViewController *gwvc = (HomeInfoViewController *)[segue destinationViewController];
+        gwvc.WebInfoDict = (NSDictionary *)sender;
+    }
+    
 }
 
 //----------------------------------UIActionSheetDelegate----------------------------------------//

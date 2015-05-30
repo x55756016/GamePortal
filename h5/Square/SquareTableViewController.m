@@ -451,7 +451,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     if([segue.identifier isEqualToString:@"PushGameInfo"])
     {
         HomeInfoViewController *gwvc = (HomeInfoViewController *)[segue destinationViewController];
-        gwvc.gameInfoDict = (NSDictionary *)sender;
+        gwvc.WebInfoDict = (NSDictionary *)sender;
     }
     
     if([segue.identifier isEqualToString:@"showFriendInfo"])

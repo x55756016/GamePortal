@@ -7,7 +7,9 @@
 //
 
 #import "VipTableViewController.h"
-
+#import "HomeInfoViewController.h"
+#import "h5kkContants.h"
+#import "KKUtility.h"
 @interface VipTableViewController ()
 
 @end
@@ -95,7 +97,53 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger indexSection = indexPath.section;
+    NSInteger indexRow=indexPath.row;
+    NSString *webUrl=@"";
+    if(indexSection==0)
+    {
+        //设置－帮助
+        webUrl=KKWeb_Helper;
+    }
+    if(indexSection==1)
+    {
+        if(indexRow==0)
+        {  //会员－会员等级
+             webUrl=KKWeb_VipLevel  ;
+        }
+        if(indexRow==1)
+        {
+            //在线商店
+            return;
+        }
+        if(indexRow==2)
+        {
+            //会员－会员活动
+             webUrl=KKWeb_VipActive;
+        }
+    }
+    if(indexSection==2)
+    {
+        //成为会员
+        [KKUtility justAlert:@"暂未开放"];
+        return;
+    }
+    NSDictionary *adDic=[NSDictionary dictionaryWithObjectsAndKeys:
+                             webUrl,@"Url",nil ];
+    NSLog(@"打开网页[%@]", adDic);
+    [self performSegueWithIdentifier:@"StartWebInfoSegue" sender:adDic];
+    
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"StartWebInfoSegue"])
+    {
+        HomeInfoViewController *gwvc = (HomeInfoViewController *)[segue destinationViewController];
+        gwvc.WebInfoDict = (NSDictionary *)sender;
+    }
+    
 }
 
 @end

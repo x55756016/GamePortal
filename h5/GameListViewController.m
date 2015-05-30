@@ -555,7 +555,8 @@ UIKIT_EXTERN NSString *userFolderPath;
 //        NSLog(@"hotGameDict[%@]", hotGameDict);
         cell.gameNameLabel.text = [hotGameDict objectForKey:@"Title"];
         cell.gameDesLabel.text = [hotGameDict objectForKey:@"Summary"];
-        [cell.playGameBtn addTarget:self action:@selector(playGame:) forControlEvents:UIControlEventTouchUpInside];
+        cell.playGameBtn.tag=indexPath.row;
+        [cell.playGameBtn addTarget:self action:@selector(StartplayGame:) forControlEvents:UIControlEventTouchUpInside];
         
         NSString *HeadIMGstring = [hotGameDict objectForKey:@"Logo"];
         [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
@@ -572,7 +573,8 @@ UIKIT_EXTERN NSString *userFolderPath;
 //        NSLog(@"myGameDict[%@]", myGameDict);
         cell.gameNameLabel.text = [myGameDict objectForKey:@"Title"];
         cell.gameDesLabel.text = [myGameDict objectForKey:@"Summary"];
-        [cell.playGameBtn addTarget:self action:@selector(playGame:) forControlEvents:UIControlEventTouchUpInside];
+        cell.playGameBtn.tag=indexPath.row;
+        [cell.playGameBtn addTarget:self action:@selector(StartplayGame:) forControlEvents:UIControlEventTouchUpInside];
         
         NSString *HeadIMGstring = [myGameDict objectForKey:@"Logo"];
         [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
@@ -630,9 +632,12 @@ UIKIT_EXTERN NSString *userFolderPath;
 }
 
 //---------------------------------------开始游戏----------------------------------------------//
-- (void)playGame:(id)sender
+- (IBAction)StartplayGame:(id)sender
 {
     UIButton *button = (UIButton *)sender;
+     NSInteger indexRow=button.tag;
+    
+    
     GameTableViewCell *cell = (GameTableViewCell *)button.superview.superview.superview;
     UITableView *tableView = (UITableView *)cell.superview.superview;
 //    NSLog(@"tag[%ld]", (long)tableView.tag);
@@ -640,13 +645,13 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSDictionary *addGameDict;
     if(tableView.tag == 0)
     {
-        NSIndexPath *indexPath = [self.hotGameTableView indexPathForCell:cell];
-        addGameDict = hotGameArray[indexPath.row];
+//        NSIndexPath *indexPath = [self.hotGameTableView indexPathForCell:cell];
+        addGameDict = hotGameArray[indexRow];
     }
     if(tableView.tag == 1)
     {
-        NSIndexPath *indexPath = [self.myGameTableView indexPathForCell:cell];
-        addGameDict = myGameArray[indexPath.row];
+//        NSIndexPath *indexPath = [self.myGameTableView indexPathForCell:cell];
+        addGameDict = myGameArray[indexRow];
     }
     
     [self addGameConfig:addGameDict];
@@ -678,10 +683,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)addGameFinish:(ASIHTTPRequest *)req
 {
     NSLog(@"addGameFinish");
-//    NSError *error;
-//    NSData *responseData = [request responseData];
-//    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
-//    NSLog(@"addGamedir[%@]",dic);
+//    [KKUtility justAlert:@"添加我玩过的游戏失败，请联系客服或重试。"];
 }
 
 - (void)addGameFail:(ASIHTTPRequest *)req

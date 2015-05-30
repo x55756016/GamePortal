@@ -23,7 +23,7 @@
      self.hidesBottomBarWhenPushed = YES;
     
     
-    NSString *urlStr = [self.gameInfoDict objectForKey:@"Url"];
+    NSString *urlStr = [self.WebInfoDict objectForKey:@"Url"];
     NSLog(@"开始查看info[%@]", urlStr);
     // Do any additional setup after loading the view.
     NSURL *url = [NSURL URLWithString:urlStr];

@@ -289,7 +289,8 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 -(NSString*)getKeFuId
 {
-    NSString *pAppKeyPath = [[NSBundle mainBundle] pathForResource:RC_APPKEY_CONFIGFILE ofType:@""];//[documentsDir stringByAppendingPathComponent:RC_APPKEY_CONFIGFILE];
+    NSString *pAppKeyPath = [[NSBundle mainBundle] pathForResource:RC_APPKEY_CONFIGFILE ofType:@""];//
+//    [documentsDir stringByAppendingPathComponent:RC_APPKEY_CONFIGFILE];
     NSError *error;
     NSString *valueOfKey = [NSString stringWithContentsOfFile:pAppKeyPath encoding:NSUTF8StringEncoding error:&error];
     NSString* keFuId;

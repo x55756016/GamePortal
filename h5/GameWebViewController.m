@@ -71,7 +71,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 
     
-    [WXApi registerApp:@"wx6f12d1a412f2bf36"];
+    [WXApi registerApp:KKWebChartAppid];
     
     //科大讯飞创建语音听写的对象
     // 创建识别对象

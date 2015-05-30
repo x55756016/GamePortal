@@ -10,6 +10,6 @@
 
 @interface HomeInfoViewController : UIViewController
 
-@property (strong, nonatomic)NSDictionary *gameInfoDict;
+@property (strong, nonatomic)NSDictionary *WebInfoDict;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end

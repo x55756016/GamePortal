@@ -5,6 +5,10 @@
 //  Created by hf on 15/4/17.
 //  Copyright (c) 2015年 hf. All rights reserved.
 //
+#define KKAppleID @"com.shenyang.h5"//AppID
+
+#define	KKDebug	 @"1"//1 开发调试阶段，0 发布上线
+
 
 #define	HOST_HEADER	 @"http://www.h5kk.com"
 
@@ -27,6 +31,8 @@
 #define GET_KK_AROUND           [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/KKAround"]
 #define GET_AROUND              [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/UserAround"]
 
+//微信AppId
+#define KKWebChartAppid @"wx6f12d1a412f2bf36"
 //科大讯飞sdk
 #define KKAPPID_VALUE @"5552ef54"
 #define TIMEOUT_VALUE         @"20000"            // timeout      连接超时的时间，以ms为单位
@@ -55,5 +61,26 @@
 
 //修改密码
 #define KKUser_ChangePassword                [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/ChangePassword"]
+
+
+//会员－会员说明
+#define KKWeb_VipInfo                [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKMsg/VipInfo"]
+//会员－会员等级
+#define KKWeb_VipLevel                [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKMsg/VipLevel"]
+//会员－会员活动
+#define KKWeb_VipActive                [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKMsg/VipActive"]
+//设置－关于
+#define KKWeb_About                [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKMsg/About"]
+//设置－帮助
+#define KKWeb_Helper                [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKMsg/Helper"]
+//设置－意见反馈
+#define KKWeb_Feedback                [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/Feedback"]
+
+
+
+
+
+
+
 
 

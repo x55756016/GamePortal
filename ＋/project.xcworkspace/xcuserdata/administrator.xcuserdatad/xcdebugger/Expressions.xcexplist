@@ -87,6 +87,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[GameListViewController StartplayGame:]:GameListViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[FindMatchTableViewController loadMatchFinish:]:FindMatchTableViewController.m">
          <PersistentStrings>
             <PersistentString

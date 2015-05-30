@@ -10,6 +10,7 @@
 #import "KKUtility.h"
 #import "CurrentUser.h"
 #import "AddressBook/ABAddressBook.h"
+#import "h5kkContants.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -481,6 +482,15 @@ UIKIT_EXTERN NSString *userFolderPath;
         }
     }
     return userFolderPathTemp;
+}
+
+//KKNSLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2)
++(void) NSLogKK:(NSString *)logMsg
+{
+    if([KKDebug isEqualToString:@"1"])
+    {
+        NSLog(@"%@",logMsg);
+    }
 }
 
 @end
