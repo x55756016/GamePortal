@@ -721,9 +721,10 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
     
     if([segue.identifier isEqualToString:@"PushWebGame"])
-    {
+    {        
         GameWebViewController *gwvc = (GameWebViewController *)[segue destinationViewController];
         gwvc.gameDetailDict = (NSDictionary *)sender;
+        
     }
 }
 

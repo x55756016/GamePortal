@@ -117,6 +117,14 @@
          contextName = "-[GameWebViewController addGameConfigComplete:]:GameWebViewController.m">
       </ContextState>
       <ContextState
+         contextName = "-[GameWebViewController viewDidLoad]:GameWebViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.tabBarController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[RadarAllTableViewController viewDidLoad]:RadarAllTableViewController.m">
       </ContextState>
       <ContextState

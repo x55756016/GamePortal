@@ -60,47 +60,54 @@
 @synthesize gameWebView;
 
 - (void)viewDidLoad
-{    //恢复状态栏方向
-    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
-    isSettingStatusBar=false;
-    self.view.transform =CGAffineTransformIdentity;
-    
-    [super viewDidLoad];
-    [self regkeyNotification];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+{
+    @try {
+        //恢复状态栏方向
+        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
+        isSettingStatusBar=false;
+        self.view.transform =CGAffineTransformIdentity;
+        
+        [super viewDidLoad];
+        [self regkeyNotification];
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
+        self.tabBarController.tabBar.hidden=YES;
+        
+        [WXApi registerApp:KKWebChartAppid];
+        userInfo=[KKUtility getUserInfoFromLocalFile];
+        
+        
+        needAddMenuBar=true;
+       
+        
+        //科大讯飞创建语音听写的对象
+        // 创建识别对象
+        self.iFlySpeechRecognizer = [IFlySpeechRecognizer sharedInstance];
+        //请不要删除这句,createRecognizer是单例方法，需要重新设置代理
+        self.iFlySpeechRecognizer.delegate = self;
+        [self.iFlySpeechRecognizer setParameter:@"iat" forKey:[IFlySpeechConstant IFLY_DOMAIN]];
+        //设置采样率
+        //    [iflySpeechRecognizer setParameter:@"16000" forKey:[IFlySpeechConstant SAMPLE_RATE]];
+        //设置录音保存文件
+        //    [iflySpeechRecognizer setParameter:@"asr.pcm" forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
+        //设置为非语义模式
+        [self.iFlySpeechRecognizer setParameter:@"0" forKey:[IFlySpeechConstant ASR_SCH]];
+        //设置返回结果的数据格式，可设置为json，xml，plain，默认为json。
+        //前端点检测；静音超时时间，即用户多长时间不说话则当做超时处理
+        [self.iFlySpeechRecognizer setParameter:@"10000" forKey:@"vad_bos"];
+        [self.iFlySpeechRecognizer setParameter:@"10000" forKey:@"vad_eos"];
+        [self.iFlySpeechRecognizer setParameter:@"0" forKey:@"asr_ptt"];
+        //设置为麦克风输入模式
+        [self.iFlySpeechRecognizer setParameter:IFLY_AUDIO_SOURCE_MIC forKey:@"audio_source"];
+        kkMicrophone=[[Microphone alloc] init];
+        
+        [self GetGameInfoFromServer];
+        [self SendPlayGameInfoToServer];
 
-    
-    [WXApi registerApp:KKWebChartAppid];
-    
-    //科大讯飞创建语音听写的对象
-    // 创建识别对象
-    self.iFlySpeechRecognizer = [IFlySpeechRecognizer sharedInstance];
-    //请不要删除这句,createRecognizer是单例方法，需要重新设置代理
-    self.iFlySpeechRecognizer.delegate = self;
-    [self.iFlySpeechRecognizer setParameter:@"iat" forKey:[IFlySpeechConstant IFLY_DOMAIN]];
-    //设置采样率
-    //    [iflySpeechRecognizer setParameter:@"16000" forKey:[IFlySpeechConstant SAMPLE_RATE]];
-    //设置录音保存文件
-    //    [iflySpeechRecognizer setParameter:@"asr.pcm" forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
-    //设置为非语义模式
-    [self.iFlySpeechRecognizer setParameter:@"0" forKey:[IFlySpeechConstant ASR_SCH]];
-    //设置返回结果的数据格式，可设置为json，xml，plain，默认为json。
-    //前端点检测；静音超时时间，即用户多长时间不说话则当做超时处理
-    [self.iFlySpeechRecognizer setParameter:@"10000" forKey:@"vad_bos"];
-    [self.iFlySpeechRecognizer setParameter:@"10000" forKey:@"vad_eos"];
-    [self.iFlySpeechRecognizer setParameter:@"0" forKey:@"asr_ptt"];
-    //设置为麦克风输入模式
-    [self.iFlySpeechRecognizer setParameter:IFLY_AUDIO_SOURCE_MIC forKey:@"audio_source"];
-    kkMicrophone=[[Microphone alloc] init];
-    
-    userInfo=[KKUtility getUserInfoFromLocalFile];
-    [self SendPlayGameInfoToServer];
-    [self GetGameInfoFromServer];
-    needAddMenuBar=true;
-    [self addMenuButton];
-    
-
+    }
+    @catch (NSException *exception) {
+        [KKUtility logSystemErrorMsg:exception.reason :nil];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -375,17 +382,27 @@
 //做了修改 设置tab bar
 - (void)addMenuButton
 {
-    myButton = [HEXCMyUIButton buttonWithType:UIButtonTypeCustom];
-    myButton.MoveEnable = YES;
-    myButton.frame = CGRectMake(0, 150, 40, 40);
-    //TabBar上按键图标设置
-    [myButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"game_mianBtnNormal.png"]] forState:UIControlStateNormal];
-    [myButton setImage:[UIImage imageNamed:@"game_mianBtnWaiting.png"] forState:UIControlStateSelected];
-    [myButton setImage:[UIImage imageNamed:@"game_mianBtnSelected.png"] forState:UIControlStateHighlighted];
-    [myButton setTag:10];
-    flag = NO;//控制tabbar的显示与隐藏标志 NO为隐藏
-    [myButton addTarget:self action:@selector(tabbarbtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:myButton];
+    @try {
+        myButton = [HEXCMyUIButton buttonWithType:UIButtonTypeCustom];
+        myButton.MoveEnable = YES;
+        myButton.frame = CGRectMake(0, 150, 40, 40);
+        //TabBar上按键图标设置
+        [myButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"game_mianBtnNormal.png"]] forState:UIControlStateNormal];
+        [myButton setImage:[UIImage imageNamed:@"game_mianBtnWaiting.png"] forState:UIControlStateSelected];
+        [myButton setImage:[UIImage imageNamed:@"game_mianBtnSelected.png"] forState:UIControlStateHighlighted];
+        [myButton setTag:10];
+        flag = NO;//控制tabbar的显示与隐藏标志 NO为隐藏
+        [myButton addTarget:self action:@selector(tabbarbtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:myButton];
+        [self.view bringSubviewToFront: myButton];
+        
+        CGRect  frame=myButton.frame;
+        NSLog(@"%f,%f,%f,%f",frame.origin.x, frame.origin.y ,frame.size.width,frame.size.height);
+    }
+    @catch (NSException *exception) {
+        [KKUtility logSystemErrorMsg:exception.reason :nil];
+    }
+
 }
 //显示 隐藏tabbar
 - (void)tabbarbtn:(HEXCMyUIButton*)btn
@@ -467,7 +484,9 @@
         [UIView commitAnimations];
         isSettingStatusBar=YES;
         [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];  //设置状态栏
-        myButton.frame = CGRectMake(0, 150, 40, 40);
+        
+        
+         [self addMenuButton];
     }
     else
     {
@@ -490,6 +509,13 @@
     [self addMyGameToServer:gamedic];
     
 }
+- (void)GetGameInfoFromServerFail:(ASIHTTPRequest *)req
+{
+    [self addMenuButton];
+    [KKUtility showHttpErrorMsg:@"获取游戏详情失败 " :req.error];
+}
+//---------------------------结束获取游戏详情---------
+
 //----------------------------添加我的游戏完成事件－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 
 
@@ -529,11 +555,7 @@
 
 //----------------------------结束添加我的游戏完成事件－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 
-- (void)GetGameInfoFromServerFail:(ASIHTTPRequest *)req
-{
-    [KKUtility showHttpErrorMsg:@"获取游戏详情失败 " :req.error];
-}
-//---------------------------结束获取游戏详情---------
+
 
 - (IBAction)exitAction:(id)sender
 {
@@ -935,6 +957,37 @@
 {
     return UIInterfaceOrientationMaskAllButUpsideDown;
 }
+
+
+//- (void)hidesTabBar:(BOOL)hidden{
+//    
+//    
+//         [UIView beginAnimations:nil context:NULL];
+//         [UIView setAnimationDuration:0];
+//    
+//         for (UIView *view in self.tabBarController.view.subviews) {
+//                if ([view isKindOfClass:[UITabBar class]]) {
+//                      if (hidden) {
+//                                [view setFrame:CGRectMake(view.frame.origin.x, [UIScreen mainScreen].bounds.size.height, view.frame.size.width , view.frame.size.height)];
+//                
+//                            }else{
+//                                   [view setFrame:CGRectMake(view.frame.origin.x, [UIScreen mainScreen].bounds.size.height - 49, view.frame.size.width, view.frame.size.height)];
+//                    
+//                                }
+//                }else{
+//                      if([view isKindOfClass:NSClassFromString(@"UITransitionView")]){
+//                                if (hidden) {
+//                                         [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, [UIScreen mainScreen].bounds.size.height)];
+//                                 }else{
+//                                           [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, [UIScreen mainScreen].bounds.size.height - 49 )];
+//                                     
+//                                       }
+//                                }
+//                        }
+//             }
+//         [UIView commitAnimations];
+//    
+//    }
 @end
 
 

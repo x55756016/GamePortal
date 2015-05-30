@@ -1406,14 +1406,14 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <rect key="frame" x="17" y="0.0" width="81" height="43"/>
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71Z-HP-e00">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="0Cc-Q2-FRA"/>
+                                                        <constraint firstAttribute="height" constant="30" id="LSY-eD-EgB"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1421,19 +1421,25 @@
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="0Cc-Q2-FRA"/>
+                                                            <exclude reference="LSY-eD-EgB"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <mask key="constraints">
                                                             <include reference="0Cc-Q2-FRA"/>
+                                                            <include reference="LSY-eD-EgB"/>
                                                         </mask>
                                                     </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="71Z-HP-e00" secondAttribute="centerY" id="0H8-Kp-eXu"/>
+                                                <constraint firstItem="3dy-aI-yuU" firstAttribute="leading" secondItem="8Va-88-zVL" secondAttribute="leadingMargin" constant="9" id="3iw-VM-SAM">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                                                </constraint>
                                                 <constraint firstItem="71Z-HP-e00" firstAttribute="leading" secondItem="8Va-88-zVL" secondAttribute="leading" constant="130" id="9Fn-E7-pWT"/>
+                                                <constraint firstAttribute="centerY" secondItem="3dy-aI-yuU" secondAttribute="centerY" id="Dea-yb-5Ww"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
@@ -1441,6 +1447,8 @@
                                                     <exclude reference="71Z-HP-e00"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <exclude reference="3iw-VM-SAM"/>
+                                                    <exclude reference="Dea-yb-5Ww"/>
                                                     <exclude reference="0H8-Kp-eXu"/>
                                                     <exclude reference="9Fn-E7-pWT"/>
                                                 </mask>
@@ -1451,19 +1459,20 @@
                                                     <include reference="71Z-HP-e00"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <include reference="3iw-VM-SAM"/>
+                                                    <include reference="Dea-yb-5Ww"/>
                                                     <include reference="0H8-Kp-eXu"/>
                                                     <include reference="9Fn-E7-pWT"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="YJx-WZ-yfc" style="IBUITableViewCellStyleDefault" id="2fO-Le-tMq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="2fO-Le-tMq">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2fO-Le-tMq" id="STO-GZ-fYq">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="修改密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YJx-WZ-yfc">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="修改密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0VX-ba-ZY3">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1472,6 +1481,30 @@
                                                     </variation>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="0VX-ba-ZY3" secondAttribute="centerY" id="Hca-Pr-heh"/>
+                                                <constraint firstItem="0VX-ba-ZY3" firstAttribute="leading" secondItem="STO-GZ-fYq" secondAttribute="leadingMargin" id="szD-HX-KVq">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                                                </constraint>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="0VX-ba-ZY3"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="Hca-Pr-heh"/>
+                                                    <exclude reference="szD-HX-KVq"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="0VX-ba-ZY3"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="Hca-Pr-heh"/>
+                                                    <include reference="szD-HX-KVq"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="x0m-kj-usB" kind="show" id="5oz-gX-f47"/>
@@ -1486,9 +1519,8 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <rect key="frame" x="16" y="0.0" width="69" height="43"/>
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdE-rE-jUK">
@@ -1516,6 +1548,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="zdE-rE-jUK" firstAttribute="leading" secondItem="KQs-2P-qpm" secondAttribute="leading" constant="130" id="15z-wN-W5V"/>
+                                                <constraint firstItem="wUV-0t-d4j" firstAttribute="leading" secondItem="KQs-2P-qpm" secondAttribute="leadingMargin" constant="8" id="48M-nq-OxB">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                                                </constraint>
+                                                <constraint firstAttribute="centerY" secondItem="wUV-0t-d4j" secondAttribute="centerY" id="pvv-9B-utW"/>
                                                 <constraint firstAttribute="centerY" secondItem="zdE-rE-jUK" secondAttribute="centerY" id="xGu-np-MKV"/>
                                             </constraints>
                                             <variation key="default">
@@ -1524,6 +1560,8 @@
                                                     <exclude reference="zdE-rE-jUK"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <exclude reference="48M-nq-OxB"/>
+                                                    <exclude reference="pvv-9B-utW"/>
                                                     <exclude reference="15z-wN-W5V"/>
                                                     <exclude reference="xGu-np-MKV"/>
                                                 </mask>
@@ -1534,6 +1572,8 @@
                                                     <include reference="zdE-rE-jUK"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <include reference="48M-nq-OxB"/>
+                                                    <include reference="pvv-9B-utW"/>
                                                     <include reference="15z-wN-W5V"/>
                                                     <include reference="xGu-np-MKV"/>
                                                 </mask>
@@ -5368,7 +5408,7 @@
         <segue reference="WTG-Qz-ySa"/>
         <segue reference="d0U-lo-Ceb"/>
         <segue reference="foh-gx-4Hm"/>
+        <segue reference="Jwx-wI-rdu"/>
         <segue reference="lBS-zH-4CR"/>
-        <segue reference="xEd-zT-fD4"/>
     </inferredMetricsTieBreakers>
 </document>
