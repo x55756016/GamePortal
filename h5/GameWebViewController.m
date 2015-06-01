@@ -742,7 +742,7 @@
             
         }
         else if (buttonIndex == 1) {
-            //分享到我的战绩墙
+            //分享到我的荣誉墙
             [self upLoadGameImageToServer];
         }
     }
@@ -825,7 +825,7 @@
 
 //结束微信分享－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 
-//战绩墙分享－－－－－－－－－－－－－－－－－－－－－－－----------------------------------------------------------------------
+//荣誉墙分享－－－－－－－－－－－－－－－－－－－－－－－----------------------------------------------------------------------
 //上传截图至服务器
 -(void)upLoadGameImageToServer
 {
@@ -860,7 +860,7 @@
 
 - (void)upLoadGameImageToServerFinish:(ASIHTTPRequest *)req
 {
-    NSLog(@"上传战绩图片成功");
+    NSLog(@"上传荣誉墙图片成功");
     @try
     {
         NSError *error;
@@ -884,7 +884,7 @@
 }
 - (void)upLoadGameImageToServerFail:(ASIHTTPRequest *)req
 {
-    [KKUtility showHttpErrorMsg:@"上传战绩图片失败 " :req.error];
+    [KKUtility showHttpErrorMsg:@"上传荣誉墙图片失败 " :req.error];
 }
 
 
@@ -913,21 +913,21 @@
 
 - (void)upDataGamePicImageFinish:(ASIHTTPRequest *)request
 {
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"分享战绩成功！"
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"分享荣誉墙成功！"
                                                    message:nil
                                                   delegate:self
                                          cancelButtonTitle:nil
                                          otherButtonTitles:@"确定", nil];
     [alert show];
 
-    NSLog(@"更新战绩成功");
+    NSLog(@"更新荣誉墙成功");
 }
 
 - (void)upDataGamePicImageFail:(ASIHTTPRequest *)req
 {
-     [KKUtility showHttpErrorMsg:@"更新战绩失败 " :req.error];
+     [KKUtility showHttpErrorMsg:@"更新荣誉墙失败 " :req.error];
 }
-//-------------结束战绩墙分享----------------------------------------------------------------------------------------------------
+//-------------结束荣誉墙分享----------------------------------------------------------------------------------------------------
 
 - (void)dealloc
 {

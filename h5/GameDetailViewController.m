@@ -10,10 +10,15 @@
 #import "UIImageView+WebCache.h"
 #import "GameRankViewController.h"
 #import "GameWebViewController.h"
+#import "ASIFormDataRequest.h"
+#import "h5kkContants.h"
+#import "KKUtility.h"
 
 @interface GameDetailViewController ()
 {
     NSArray *descImgArr;
+    ASIFormDataRequest *request;
+
 }
 @end
 
@@ -22,8 +27,53 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self initContentScrollView];
+    [self GetGameInfoFromServer];
 }
+
+//------------------------------开始获取游戏详情-----------------
+-(void)GetGameInfoFromServer
+{
+    NSString *gameId = [NSString stringWithFormat:@"%@", [self.gameDetailDict objectForKey:@"ContentPageID"]];
+    
+    
+    NSString *urlStr = Get_GameDetailInfo;
+    NSURL *url = [NSURL URLWithString:urlStr];
+    request = [ASIFormDataRequest requestWithURL:url];
+    [request setTimeOutSeconds:15.0];
+    [request setDelegate:self];
+    [request setRequestMethod:@"POST"];
+    [request setPostValue:gameId forKey:@"pageId"];
+    [request setDidFailSelector:@selector(GetGameInfoFromServerFail:)];
+    [request setDidFinishSelector:@selector(GetGameInfoFromServerFinish:)];
+    [request startAsynchronous];
+    
+}
+- (void)GetGameInfoFromServerFinish:(ASIHTTPRequest *)req
+{
+    @try {
+        
+        NSError *error;
+        NSData *responseData = [req responseData];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+        //    NSLog(@"requestUserGame[%@]",dic);
+        
+        if([[dic objectForKey:@"IsSuccess"] integerValue])
+        {
+            NSArray *data= [dic objectForKey:@"ObjData"];
+            self.gameDetailDict =[data objectAtIndex:0];
+            [[self tableView] reloadData];
+            [self initContentScrollView];
+        }
+    }
+    @catch (NSException *exception) {
+        [KKUtility logSystemErrorMsg: exception.reason :nil];
+    }
+}
+- (void)GetGameInfoFromServerFail:(ASIHTTPRequest *)req
+{
+   [KKUtility showHttpErrorMsg:@"获取游戏详情失败 " :req.error];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -155,6 +205,11 @@
         GameWebViewController *gwvc = (GameWebViewController *)[segue destinationViewController];
         gwvc.gameDetailDict = (NSDictionary *)sender;
     }
+}
+- (void)dealloc
+{
+    [request setDelegate:nil];
+    [request cancel];
 }
 
 @end

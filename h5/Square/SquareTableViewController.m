@@ -18,6 +18,7 @@
 #import "CurrentUser.h"
 #import "GameWebViewController.h"
 #import "HomeNavigationController.h"
+#import "GameDetailViewController.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -420,11 +421,15 @@ UIKIT_EXTERN NSString *userFolderPath;
     if([strLinkType integerValue]==1)
     {
         //开始游戏
+      
+//        NSLog(@"开始游戏[%@]", adDic);
+//        [self performSegueWithIdentifier:@"StartGameSegue" sender:adDic];
         NSDictionary *adDic=[NSDictionary dictionaryWithObjectsAndKeys:
                              strLinkUrl,@"Url",
                              strLinkPara,@"ContentPageID",nil ];
-        NSLog(@"开始游戏[%@]", adDic);
-        [self performSegueWithIdentifier:@"StartGameSegue" sender:adDic];
+        
+        [self performSegueWithIdentifier:@"PushGameDetailInfo" sender:adDic];
+
     }
     else if([strLinkType integerValue]==2)
     {
@@ -446,6 +451,12 @@ UIKIT_EXTERN NSString *userFolderPath;
     if([segue.identifier isEqualToString:@"StartGameSegue"])
     {
         GameWebViewController *gwvc = (GameWebViewController *)[segue destinationViewController];
+        gwvc.gameDetailDict = (NSDictionary *)sender;
+    }
+    
+    if([segue.identifier isEqualToString:@"PushGameDetailInfo"])
+    {
+        GameDetailViewController  *gwvc = (GameDetailViewController *)[segue destinationViewController];
         gwvc.gameDetailDict = (NSDictionary *)sender;
     }
 

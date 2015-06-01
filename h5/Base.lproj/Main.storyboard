@@ -2394,7 +2394,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="    Ta的游戏" id="vop-gX-5ib">
+                            <tableViewSection headerTitle="    Ta最近在玩" id="vop-gX-5ib">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="Hbx-8I-wZh">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -2422,7 +2422,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="    Ta最近在玩" id="jF9-LX-8Vb">
+                            <tableViewSection headerTitle="    Ta的荣誉墙" id="jF9-LX-8Vb">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="WLk-oi-Tum">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -4145,7 +4145,7 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="WaH-Y8-OwZ">
                                                     <rect key="frame" x="10" y="10" width="300" height="60"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="L9k-bm-oFh" id="uQb-qR-cqV"/>
                                                     </connections>
@@ -4155,6 +4155,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="290" y="50" width="40" height="20"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -4521,6 +4524,7 @@
                         <segue destination="eNr-0Y-WJG" kind="show" identifier="PushGameInfo" id="gO3-eT-hSS"/>
                         <segue destination="iOZ-tB-4tL" kind="show" identifier="showFriendInfo" id="ibz-Ui-e2Z"/>
                         <segue destination="NGF-ku-C98" kind="show" identifier="StartGameSegue" id="bXQ-RE-HK5"/>
+                        <segue destination="eub-4p-O1c" kind="show" identifier="PushGameDetailInfo" id="Q76-no-oEf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Rw-KH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5571,11 +5575,11 @@
         <image name="userDefaultHead" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ibz-Ui-e2Z"/>
+        <segue reference="Q76-no-oEf"/>
         <segue reference="tkg-nM-PNF"/>
+        <segue reference="FuQ-bi-L0s"/>
         <segue reference="foh-gx-4Hm"/>
-        <segue reference="WOa-MP-Lh5"/>
-        <segue reference="UeN-hl-WC2"/>
-        <segue reference="iID-OB-lrr"/>
         <segue reference="Jwx-wI-rdu"/>
     </inferredMetricsTieBreakers>
 </document>

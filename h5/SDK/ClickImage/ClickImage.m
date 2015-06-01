@@ -98,8 +98,37 @@ UIViewController* goBackViewController;
         [goBackgroundView addGestureRecognizer:tap];
         defaultImageView.alpha = 0;
         [UIView animateWithDuration:_duration animations:^{
+           double imgViewHeight=imageView.frame.size.height;
+            double imgViewWidth=imageView.frame.size.width;
+            double originx=imageView.frame.origin.x;
+            double originy=imageView.frame.origin.y;
+            
+            
+            double imgHeight=imageView.image.size.height;
+            double imgWidth=imageView.image.size.width;
+
+            
+            NSLog(@"x=%f,y=%f,height=%f,width=%f",originx,originy,imgViewHeight,imgViewWidth);
+            NSLog(@"image,height=%f,width=%f",imgHeight,imgWidth);
+            
+            if(imgHeight==320)
+            {
+                    NSLog(@"需要强制横屏");
+                    
+                    imageView.transform = CGAffineTransformMakeRotation(M_PI/2);
+                    float width=[UIScreen mainScreen].bounds.size.width;
+                    float height=[UIScreen mainScreen].bounds.size.height;
+                    
+                    imageView.frame = CGRectMake(0, 0, width, height);
+                    [UIView commitAnimations];
+                
+
+            }else
+            {
             imageView.frame=CGRectMake(0,([UIScreen mainScreen].bounds.size.height-image.size.height*[UIScreen mainScreen].bounds.size.width/image.size.width)/2, [UIScreen mainScreen].bounds.size.width, image.size.height*[UIScreen mainScreen].bounds.size.width/image.size.width);
+            }
             goBackgroundView.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+            
             
         } completion:^(BOOL finished) {
         }];

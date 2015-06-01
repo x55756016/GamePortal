@@ -77,7 +77,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         else
         {
             NSUInteger maxLength = 30;
-            self.signatureMaxLabel.text = [NSString stringWithFormat:@"%u", (UInt16)(maxLength-self.signatureTextView.text.length)];
+            self.signatureMaxLabel.text = [[NSString stringWithFormat:@"%u", (UInt16)(maxLength-self.signatureTextView.text.length)] stringByAppendingString:@"/30"];
         }
     }
 }

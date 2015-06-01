@@ -210,12 +210,23 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
     if(indexPath.section > 0)
     {
+//        if(indexPath.row==arr.count-1)
+//        {
+//            [commonTableViewCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//            
+//            UILabel *lable=[[UILabel alloc] initWithFrame:commonTableViewCell.frame];
+//            [lable setText:@"z总数多少页"];
+//           [commonTableViewCell addSubview:lable];
+            
+//        }else
+//        {
         ChineseString *str = (ChineseString *) [arr objectAtIndex:indexPath.row];
         
         commonTableViewCell.nickNameLabel.text = [NSString stringWithFormat:@"%@",[str.userInfoDict objectForKey:@"NickName"]];
         NSString *HeadIMGstring = [str.userInfoDict objectForKey:@"PicPath"];
         HeadIMGstring = [HeadIMGstring stringByReplacingOccurrencesOfString:@".jpg" withString:@"_b.jpg"];
         [commonTableViewCell.headImageView sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
+//        }
         return commonTableViewCell;
     }
     else
