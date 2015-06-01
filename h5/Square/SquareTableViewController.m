@@ -17,6 +17,7 @@
 #import "UserInfoTableViewController.h"
 #import "CurrentUser.h"
 #import "GameWebViewController.h"
+#import "HomeNavigationController.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -57,6 +58,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 //页面将要进入前台，开启定时器
 -(void)viewWillAppear:(BOOL)animated
 {
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
     [self startTimer];
 }
 
@@ -450,7 +452,8 @@ UIKIT_EXTERN NSString *userFolderPath;
     
     if([segue.identifier isEqualToString:@"PushGameInfo"])
     {
-        HomeInfoViewController *gwvc = (HomeInfoViewController *)[segue destinationViewController];
+        HomeNavigationController *nav=(HomeNavigationController *)[segue destinationViewController];
+        HomeInfoViewController *gwvc = (HomeInfoViewController *)nav.childViewControllers[0];
         gwvc.WebInfoDict = (NSDictionary *)sender;
     }
     

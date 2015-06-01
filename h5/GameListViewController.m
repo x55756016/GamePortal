@@ -83,8 +83,12 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 -(void)initContentScrollView
 {
+    CGRect StateBarRect;
+    StateBarRect = [[UIApplication sharedApplication] statusBarFrame];
+    CGRect rectNav = self.navigationController.navigationBar.frame;
+    
     menuNameArray = @[@"HotGameView", @"MyGame",@"Classify"];
-    self.conScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];//[UIScreen mainScreen].bounds.size.height-49-64)];
+    self.conScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, StateBarRect.size.height+rectNav.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-StateBarRect.size.height-rectNav.size.height)];//[UIScreen mainScreen].bounds.size.height-49-64)];
     self.conScrollView.pagingEnabled = YES;
     self.conScrollView.delegate = self;
     self.conScrollView.bounces = NO;

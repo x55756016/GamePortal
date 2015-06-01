@@ -51,6 +51,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>为了您能看到附近的人，请同意本应用开启定位服务</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>为了您能看到附近的人，请同意本应用开启定位服务</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

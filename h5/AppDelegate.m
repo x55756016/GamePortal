@@ -42,6 +42,9 @@ NSString *userFolderPath;
     locationManager = [[CLLocationManager alloc] init];
     //设置代理为自己
     locationManager.delegate = self;
+    if(IS_iOS8){
+        [locationManager requestAlwaysAuthorization];
+    }
     [locationManager startUpdatingLocation];
     
     //初始化短信，appKey和appSecret从后台申请得到

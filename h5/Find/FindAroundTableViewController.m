@@ -37,7 +37,21 @@ UIKIT_EXTERN NSString *userFolderPath;
     self.tableView.tableFooterView = footLabel;
     
     //获取用户信息
-    userInfo = [KKUtility getUserInfoFromLocalFile];    
+    userInfo = [KKUtility getUserInfoFromLocalFile];
+    
+
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    if (kCLAuthorizationStatusNotDetermined== status
+        || kCLAuthorizationStatusDenied == status
+        || kCLAuthorizationStatusRestricted == status) {
+        //判断是否开启定位
+//        CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+//        if(IS_iOS8){
+//            [locationManager requestWhenInUseAuthorization];
+//        }
+        [KKUtility justAlert:@"请手工开启定位:设置 > 隐私 > 位置 > 定位服务 找到 KK玩 设置为始终,否则无法查找附近的好友。"];
+        return;
+    }
     //加载附近数据
     [self loadAround];
 }

@@ -5,6 +5,8 @@
 //  Created by hf on 15/4/17.
 //  Copyright (c) 2015年 hf. All rights reserved.
 //
+#define IS_iOS8 ([[[UIDevice currentDevice] systemVersion]floatValue] >= 8.0? YES : NO)
+
 #define KKAppleID @"com.shenyang.h5"//AppID
 
 #define	KKDebug	 @"1"//1 开发调试阶段，0 发布上线

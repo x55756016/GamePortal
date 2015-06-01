@@ -62,23 +62,11 @@
 - (void)viewDidLoad
 {
     @try {
-        //恢复状态栏方向
-        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
-        isSettingStatusBar=false;
-        self.view.transform =CGAffineTransformIdentity;
         
         [super viewDidLoad];
         [self regkeyNotification];
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
-        self.tabBarController.tabBar.hidden=YES;
-        
         [WXApi registerApp:KKWebChartAppid];
         userInfo=[KKUtility getUserInfoFromLocalFile];
-        
-        
-        needAddMenuBar=true;
-       
         
         //科大讯飞创建语音听写的对象
         // 创建识别对象
@@ -100,39 +88,44 @@
         //设置为麦克风输入模式
         [self.iFlySpeechRecognizer setParameter:IFLY_AUDIO_SOURCE_MIC forKey:@"audio_source"];
         kkMicrophone=[[Microphone alloc] init];
-        
-        [self GetGameInfoFromServer];
-        [self SendPlayGameInfoToServer];
-
     }
     @catch (NSException *exception) {
         [KKUtility logSystemErrorMsg:exception.reason :nil];
     }
 }
+-(void)viewWillAppear:(BOOL)animated
+{        //恢复状态栏方向
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
+    isSettingStatusBar=false;
+    self.view.transform =CGAffineTransformIdentity;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    self.tabBarController.tabBar.hidden=YES;
+    
+    needAddMenuBar=true;
+    [self GetGameInfoFromServer];
+    [self SendPlayGameInfoToServer];
+}
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
+    self.view.transform =CGAffineTransformIdentity;
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     //科大讯飞取消识别
     [self.iFlySpeechRecognizer cancel];
     [self.iFlySpeechRecognizer setDelegate: nil];
     [kkMicrophone stopMicrophone];
-    [self unregkeyNotification];    
-    [super viewWillDisappear:animated];
-}
--(void)viewDidDisappear:(BOOL)animated
-{
+    [self unregkeyNotification];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     //恢复状态栏方向
     isSettingStatusBar=NO;
-    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];
-    self.view.transform =CGAffineTransformIdentity;
-    
-     [super viewDidDisappear:animated];
+//    [super viewWillDisappear:NO];
+    self.tabBarController.tabBar.hidden=NO;
 }
 //屏幕旋转完成事件
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
-    myButton.frame = CGRectMake(0, 150, 40, 40);
+    myButton.frame = CGRectMake(0, 180, 40, 40);
 }
 
 //－－－－－－－－－－－－－－－－－－－－－微信接口－－－－－－－－－－－－－－－－－－－－－
@@ -383,9 +376,10 @@
 - (void)addMenuButton
 {
     @try {
+        if(myButton==nil){
         myButton = [HEXCMyUIButton buttonWithType:UIButtonTypeCustom];
         myButton.MoveEnable = YES;
-        myButton.frame = CGRectMake(0, 150, 40, 40);
+        myButton.frame = CGRectMake(0, 180, 40, 40);
         //TabBar上按键图标设置
         [myButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"game_mianBtnNormal.png"]] forState:UIControlStateNormal];
         [myButton setImage:[UIImage imageNamed:@"game_mianBtnWaiting.png"] forState:UIControlStateSelected];
@@ -393,6 +387,7 @@
         [myButton setTag:10];
         flag = NO;//控制tabbar的显示与隐藏标志 NO为隐藏
         [myButton addTarget:self action:@selector(tabbarbtn:) forControlEvents:UIControlEventTouchUpInside];
+        }
         [self.view addSubview:myButton];
         [self.view bringSubviewToFront: myButton];
         
@@ -483,13 +478,11 @@
         self.view.bounds = CGRectMake(0, 0, width, height);
         [UIView commitAnimations];
         isSettingStatusBar=YES;
-        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];  //设置状态栏
-        
-        
-         [self addMenuButton];
+        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];  //设置状态栏横屏
     }
     else
     {
+       [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait]; //设置竖屏
         NSLog(@"不需要强制横屏");
     }
     
@@ -508,6 +501,7 @@
     NSDictionary *gamedic= self.gameDetailDict;
     [self addMyGameToServer:gamedic];
     
+    [self addMenuButton];
 }
 - (void)GetGameInfoFromServerFail:(ASIHTTPRequest *)req
 {
@@ -574,8 +568,7 @@
 {
     if(buttonIndex == 1)
     {
-        [self.navigationController popViewControllerAnimated:YES];
-//         [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popViewControllerAnimated:NO];
     }
 }
 

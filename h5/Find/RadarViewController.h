@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "PulsingRadarView.h"
+#import <CoreLocation/CoreLocation.h>
 
-@class RadarViewController;
+@class RadarViewController ;
 @protocol RadarViewControllerDelegate <NSObject>
 -(void) radarViewControllerDidClickedDismissButton:(RadarViewController *)viewController;
 @end
 
-@interface RadarViewController : UIViewController
+@interface RadarViewController : UIViewController<CLLocationManagerDelegate> 
 @property (nonatomic, weak) id<RadarViewControllerDelegate> RVCdelegate;
 //雷达脉冲
 @property (nonatomic, strong) PulsingRadarView *pulsingRadarView;

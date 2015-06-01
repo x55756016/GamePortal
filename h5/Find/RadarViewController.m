@@ -37,10 +37,29 @@ UIKIT_EXTERN NSString *userFolderPath;
     [bgImgView setImage:[UIImage imageNamed:@"kkRadar_bg.png"]];
     [self.backView addSubview:bgImgView];
     [self.backView sendSubviewToBack:bgImgView];
-    //判断是否开启定位
+//    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+//    if (kCLAuthorizationStatusNotDetermined==state
+//        ||kCLAuthorizationStatusDenied == status
+//        || kCLAuthorizationStatusRestricted == status) {
+//        [KKUtility justAlert:@"请打开定位服务，否则无法使用雷达功能"];
+//        return;
+//    }
+//    if(![CLLocationManager locationServicesEnabled]){
+//        [KKUtility justAlert:@"请手工开启定位:设置 > 隐私 > 位置 > 定位服务 找到 KK玩 设置为始终,否则无法使用雷达功能。"];
+//        return;
+//    }
+
+    
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-    if (kCLAuthorizationStatusDenied == status || kCLAuthorizationStatusRestricted == status) {
-        [KKUtility justAlert:@"请打开定位服务，否则无法使用雷达功能"];
+    if (kCLAuthorizationStatusNotDetermined== status
+        || kCLAuthorizationStatusDenied == status
+        || kCLAuthorizationStatusRestricted == status) {
+        //判断是否开启定位
+//        CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+//        if(IS_iOS8){
+//            [locationManager requestWhenInUseAuthorization];
+//        }
+        [KKUtility justAlert:@"请手工开启定位:设置 > 隐私 > 位置 > 定位服务 找到 KK玩 设置为始终,否则无法使用雷达功能。"];
         return;
     }
     

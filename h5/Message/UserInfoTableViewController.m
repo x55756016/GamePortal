@@ -164,22 +164,50 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)requestGetUserDetailFinish:(ASIHTTPRequest *)req
 {
-    NSLog(@"requestGetUserDetailFinish");
-    NSError *error;
-    NSData *responseData = [req responseData];
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
-    //    NSLog(@"requestUserGame[%@]",dic);
-    
-    if([[dic objectForKey:@"IsSuccess"] integerValue])
-    {
-        NSArray *data= [dic objectForKey:@"ObjData"];
-        self.FriendInfoDict =[data objectAtIndex:0];        
-        //显示用户的游戏
-        [self GetUserGames];
+    @try {
+        NSLog(@"requestGetUserDetailFinish");
+        NSError *error;
+        NSData *responseData = [req responseData];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+        //    NSLog(@"requestUserGame[%@]",dic);
+        
+        if([[dic objectForKey:@"IsSuccess"] integerValue])
+        {
+            NSArray *data= [dic objectForKey:@"ObjData"];
+            self.FriendInfoDict =[data objectAtIndex:0];
+            
+            NSNumber *userid=[self.FriendInfoDict objectForKey:@"UserId"];
+            NSString *useridstr=[NSString stringWithFormat:@"%@",userid];
+            
+            [self.FriendIdLabel setText:useridstr];
+            
+            NSString *strDistinct=[self.FriendInfoDict objectForKey:@"Loc"];
+            NSArray *dicArray = [strDistinct componentsSeparatedByString:@","];
+            NSString *discLongitude=[[dicArray objectAtIndex:0] substringFromIndex:1];
+            NSString *discLatitude=[[dicArray objectAtIndex:1] substringToIndex:[[dicArray objectAtIndex:1] length]-1];
+            CLLocation *endpoint=[[CLLocation alloc] initWithLatitude:[discLongitude doubleValue]   longitude:[discLatitude doubleValue] ];
+            
+            
+            //Latitude 纬度， longitude 经度
+            AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+            NSString *DistinctMsg=[KKUtility calcutDistinct:kkAppDelegate.currentlogingUser.Location:endpoint];
+            [self.FriedDistincLabel setText:DistinctMsg];
+            
+            
+            
+            
+            [self.FriedSignLabel setText:[self.FriendInfoDict objectForKey:@"Sign"]];
+            //显示用户的游戏
+            [self GetUserGames];
+        }
+        
+        //显示用户信息
+        [self showUserInfo];
     }
-    
-    //显示用户信息
-    [self showUserInfo];
+    @catch (NSException *exception) {
+        [KKUtility logSystemErrorMsg:exception.reason :nil];
+    }
+   
 }
 
 - (void)requestGetUserDetailFail:(ASIHTTPRequest *)req
@@ -225,28 +253,37 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 //---------------------------------结束获取用户详细信息-----------------------------------------------------------------------
 
-//发起聊天
+//发起聊天 发送消息
 - (IBAction)singleChat:(id)sender
 {
-    NSLog(@"all[%@]", self.navigationController.viewControllers);
-    for(UIViewController *vc in self.navigationController.viewControllers)
-    {
-        if([vc isKindOfClass:[ChatViewController class]])
+    @try {
+        for(UIViewController *vc in self.navigationController.viewControllers)
         {
-            [self.navigationController popToViewController:vc animated:YES];
+            if([vc isKindOfClass:[ChatViewController class]])
+            {
+                [self.navigationController popToViewController:vc animated:YES];
+                return;
+            }
+            //        if(([vc isKindOfClass:[SnapChatViewController class]])
+            //           || ([vc isKindOfClass:[FriendsViewController class]])
+            //
+            //           || ([vc isKindOfClass:[FindTableViewController class]])
+            //
+            //           || ([vc isKindOfClass:[FindAroundTableViewController class]]))
+            //        {
+            //            [self performSegueWithIdentifier:@"PushChat" sender:nil];
+            //            break;
+            //        }
         }
         
-        if(([vc isKindOfClass:[SnapChatViewController class]])
-           || ([vc isKindOfClass:[FriendsViewController class]])
-           
-           || ([vc isKindOfClass:[FindTableViewController class]])
-           
-           || ([vc isKindOfClass:[FindAroundTableViewController class]]))
-        {
-            [self performSegueWithIdentifier:@"PushChat" sender:nil];
-            break;
-        }
+        [self performSegueWithIdentifier:@"PushChat" sender:nil];
+        
+        
     }
+    @catch (NSException *exception) {
+        [KKUtility logSystemErrorMsg:exception.reason :nil];
+    }
+
 }
 
 

@@ -31,5 +31,8 @@
 - (IBAction)singleChat:(id)sender;
 
 - (IBAction)AddFriend:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *FriendIdLabel;
+@property (strong, nonatomic) IBOutlet UILabel *FriedDistincLabel;
+@property (strong, nonatomic) IBOutlet UILabel *FriedSignLabel;
 
 @end
