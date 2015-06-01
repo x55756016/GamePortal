@@ -723,7 +723,7 @@
 //分享微信－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 - (IBAction)ShareInfo:(id)sender
 {
-    UIActionSheet *acSheet = [[UIActionSheet alloc]initWithTitle:@"你要分享到哪里？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"微信",@"我的战绩墙", nil];
+    UIActionSheet *acSheet = [[UIActionSheet alloc]initWithTitle:@"你要分享到哪里？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"微信",@"我的荣誉墙", nil];
     acSheet.tag =1;
     acSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
 //    [acSheet showInView:[[UIApplication sharedApplication]keyWindow]];

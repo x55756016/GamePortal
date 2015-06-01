@@ -29,7 +29,7 @@
 #define GET_FLASH_LIST          [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/cms/AjaxGetFlashList"]
 #define GET_NEW_USER            [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/GetNewUserKK"]
 #define GET_GAME_ACHIEVEMENT    [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/Achievement"]
-#define GET_ACTIVE_LIST         [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/GetActiveList"]
+#define GET_ACTIVE_LIST         [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKMsg/GetActiveList"]
 #define GET_KK_AROUND           [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/KKAround"]
 #define GET_AROUND              [NSString stringWithFormat:@"%@%@", HOST_HEADER, @"/KKUser/UserAround"]
 

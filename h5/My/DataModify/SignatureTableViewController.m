@@ -31,6 +31,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [self saveUserInfo];
     [super viewWillDisappear:animated];
 }
 

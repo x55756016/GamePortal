@@ -642,7 +642,7 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="账号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ao4-Vd-r0C">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="帐号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ao4-Vd-r0C">
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1030,10 +1030,10 @@
             </objects>
             <point key="canvasLocation" x="-770" y="3505"/>
         </scene>
-        <!--我的资料-->
+        <!--我的信息-->
         <scene sceneID="m7e-Px-HdV">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="xk4-32-jcf" userLabel="我的资料" customClass="DataModifyTableViewController" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="xk4-32-jcf" customClass="DataModifyTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="BO6-n4-c2Q">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1290,7 +1290,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="请填写" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Osi-Fe-JfT">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="你此刻的心情如何？" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Osi-Fe-JfT">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -1939,8 +1939,7 @@
                                         <exclude reference="kZ9-oL-YYX"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="50"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="h0a-Hd-qCo"/>
                                     </mask>
@@ -1957,9 +1956,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0oZ-pi-F5b">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="114" width="320" height="434"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="JZa-bm-8lv" id="O4d-0D-EEu"/>
                                     <outlet property="delegate" destination="JZa-bm-8lv" id="82r-02-RoX"/>
@@ -2177,9 +2173,8 @@
                                                             <exclude reference="t4C-jr-TUv"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <rect key="frame" x="88" y="12" width="200" height="20"/>
                                                         <mask key="constraints">
                                                             <include reference="t4C-jr-TUv"/>
                                                         </mask>
@@ -2265,9 +2260,8 @@
                                                             <exclude reference="lDl-pp-lFC"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <rect key="frame" x="88" y="12" width="200" height="20"/>
                                                         <mask key="constraints">
                                                             <include reference="lDl-pp-lFC"/>
                                                         </mask>
@@ -2352,9 +2346,8 @@
                                                             <exclude reference="Fse-9E-PRI"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <rect key="frame" x="88" y="12" width="200" height="20"/>
                                                         <mask key="constraints">
                                                             <include reference="Fse-9E-PRI"/>
                                                         </mask>
@@ -2401,7 +2394,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="    他的游戏" id="vop-gX-5ib">
+                            <tableViewSection headerTitle="    Ta的游戏" id="vop-gX-5ib">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="Hbx-8I-wZh">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -2429,7 +2422,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="    他的荣誉墙" id="jF9-LX-8Vb">
+                            <tableViewSection headerTitle="    Ta最近在玩" id="jF9-LX-8Vb">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="WLk-oi-Tum">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -4675,7 +4668,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="游戏列表" id="Rcf-iO-Vf8"/>
+                    <navigationItem key="navigationItem" title="KK游戏" id="Rcf-iO-Vf8"/>
                     <connections>
                         <segue destination="NGF-ku-C98" kind="show" identifier="PushWebGame" id="d0U-lo-Ceb"/>
                         <segue destination="eub-4p-O1c" kind="show" identifier="showGameDetail" id="WTG-Qz-ySa"/>
@@ -4707,8 +4700,8 @@
                                             <constraint firstAttribute="height" constant="50" id="C7e-8V-ihc"/>
                                             <constraint firstAttribute="width" constant="320" id="ZC3-BM-UQA"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="C7e-8V-ihc"/>
@@ -5578,11 +5571,11 @@
         <image name="userDefaultHead" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7ml-Ma-xWx"/>
-        <segue reference="iID-OB-lrr"/>
-        <segue reference="bXQ-RE-HK5"/>
         <segue reference="tkg-nM-PNF"/>
         <segue reference="foh-gx-4Hm"/>
+        <segue reference="WOa-MP-Lh5"/>
+        <segue reference="UeN-hl-WC2"/>
+        <segue reference="iID-OB-lrr"/>
         <segue reference="Jwx-wI-rdu"/>
     </inferredMetricsTieBreakers>
 </document>

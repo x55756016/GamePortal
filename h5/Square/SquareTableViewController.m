@@ -379,7 +379,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     CLLocation *endpoint=[[CLLocation alloc] initWithLatitude:[discLongitude doubleValue]   longitude:[discLatitude doubleValue] ];
     //Latitude 纬度， longitude 经度
     
-    NSString *TimeDistinctMsg=[timeMsg stringByAppendingString:[KKUtility calcutDistinct:kkAppDelegate.currentlogingUser.Location:endpoint]];
+    NSString *TimeDistinctMsg=[timeMsg stringByAppendingFormat:@ " | %@" ,[KKUtility calcutDistinct:kkAppDelegate.currentlogingUser.Location:endpoint]];
     
     
     cell.nameLable.text = [NSString stringWithFormat:@"%@", TimeDistinctMsg];

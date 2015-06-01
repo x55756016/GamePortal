@@ -34,7 +34,8 @@ UIKIT_EXTERN NSString *userFolderPath;
     
     //获取用户信息
      userInfo = [KKUtility getUserInfoFromLocalFile];
-    
+    //设置焦点
+    [self.searchTextField becomeFirstResponder];
     //过滤分割线
     UILabel *footLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 0)];
     footLabel.backgroundColor = [UIColor clearColor];
