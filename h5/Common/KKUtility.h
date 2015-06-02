@@ -48,4 +48,6 @@
 +(void)justAlert:(NSString*)Message;
 //保存当前用户信息至本地
 +(void)saveUserInfo:(NSDictionary *)userInfoDir;
+//显示view 位置及大小
++(void)showViewGrenct:(UIView*) tmpview:(NSString*)viewName;
 @end

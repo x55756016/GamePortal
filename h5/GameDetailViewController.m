@@ -29,6 +29,14 @@
     [super viewDidLoad];
     [self GetGameInfoFromServer];
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态没有效果
+}
+-(void)viewWillLayoutSubviews
+{
+          [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态没有效果
+}
 
 //------------------------------开始获取游戏详情-----------------
 -(void)GetGameInfoFromServer

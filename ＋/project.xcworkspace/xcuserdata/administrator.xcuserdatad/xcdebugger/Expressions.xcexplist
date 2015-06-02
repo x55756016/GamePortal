@@ -57,6 +57,14 @@
          contextName = "-[UserInfoTableViewController tableView:cellForRowAtIndexPath:]:UserInfoTableViewController.m">
       </ContextState>
       <ContextState
+         contextName = "-[GameWebViewController keyboardWillShow:]:GameWebViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "rect">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[UserInfoTableViewController requestUserGameFinish:]:UserInfoTableViewController.m">
          <PersistentStrings>
             <PersistentString

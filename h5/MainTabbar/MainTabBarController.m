@@ -70,12 +70,23 @@
 
 -(BOOL)shouldAutorotate
 {
-    return [self.selectedViewController shouldAutorotate];
+
+    return NO;
+    //    return [self.selectedViewController shouldAutorotate];
     //传递入口1.选择首页时self.selectedViewController＝SquareNavigationController（home/index）
 }
 -(NSUInteger)supportedInterfaceOrientations
 {
-    return [self.selectedViewController supportedInterfaceOrientations];
+    AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    NSNumber *strlon=kkAppDelegate.currentlogingUser.currentGamedirection;
+    if([strlon integerValue]==1)
+    {
+        return UIInterfaceOrientationMaskLandscape; //否者返回横屏
+    }
+  
+    //如果是非1， 返回竖屏
+    return UIInterfaceOrientationMaskPortrait;
+
 }
 
 @end

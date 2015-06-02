@@ -88,7 +88,13 @@ UIKIT_EXTERN NSString *userFolderPath;
     CGRect rectNav = self.navigationController.navigationBar.frame;
     
     menuNameArray = @[@"HotGameView", @"MyGame",@"Classify"];
-    self.conScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, StateBarRect.size.height+rectNav.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-StateBarRect.size.height-rectNav.size.height)];//[UIScreen mainScreen].bounds.size.height-49-64)];
+    if(IS_iOS8){
+            self.conScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, StateBarRect.size.height+rectNav.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-StateBarRect.size.height-rectNav.size.height)];//[UIScreen mainScreen].bounds.size.height-49-64)];
+    }else
+    {
+            self.conScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-StateBarRect.size.height-rectNav.size.height)];//[UIScreen mainScreen].bounds.size.height-49-64)];
+    }
+
     self.conScrollView.pagingEnabled = YES;
     self.conScrollView.delegate = self;
     self.conScrollView.bounces = NO;
@@ -632,7 +638,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 65;
 }
 
 //---------------------------------------开始游戏----------------------------------------------//

@@ -109,6 +109,8 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    kkAppDelegate.currentlogingUser.currentGamedirection=[NSNumber numberWithInteger:0];
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
     self.view.transform =CGAffineTransformIdentity;
     [self.navigationController setNavigationBarHidden:NO animated:NO];
@@ -478,10 +480,21 @@
         self.view.bounds = CGRectMake(0, 0, width, height);
         [UIView commitAnimations];
         isSettingStatusBar=YES;
+        if(IS_iOS8){
+            CGSize screenSize = [UIScreen mainScreen].bounds.size;
+            CGRect rect=CGRectMake(0, 0, MIN(screenSize.width, screenSize.height), MAX(screenSize.width, screenSize.height));
+            
+        }
+        
+        AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+        kkAppDelegate.currentlogingUser.currentGamedirection=[NSNumber numberWithInteger:1];
         [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];  //设置状态栏横屏
+        
     }
     else
     {
+        AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+        kkAppDelegate.currentlogingUser.currentGamedirection=[NSNumber numberWithInteger:0];
        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait]; //设置竖屏
         NSLog(@"不需要强制横屏");
     }

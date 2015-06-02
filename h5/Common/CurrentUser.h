@@ -28,6 +28,7 @@
 
 
 @property (strong, nonatomic) NSDictionary *userSaveInfo;
+@property (strong,nonatomic) NSNumber *currentGamedirection;
 
 
 @end

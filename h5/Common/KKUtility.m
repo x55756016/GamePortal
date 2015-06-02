@@ -327,21 +327,22 @@ UIKIT_EXTERN NSString *userFolderPath;
 +(void)showHttpErrorMsg:(NSString*)CustomerErrorMsg:(NSError*)error
 {
     NSString *strMsg=@"连接服务器失败，请重试或联系客服 ";
-    if(CustomerErrorMsg!=nil)
-    {
-        strMsg=[strMsg stringByAppendingString:CustomerErrorMsg];
-    }
-    if (error!=nil) {
-        strMsg=[strMsg stringByAppendingFormat:@"%@,%@",@" \n信息：", [error localizedDescription]];
-        NSArray* detailedErrors = [[error userInfo] objectForKey:NSLocalizedRecoveryOptionsErrorKey];
-        if(detailedErrors != nil && [detailedErrors count] > 0) {
-            for(NSError* detailedError in detailedErrors) {
-                strMsg=[strMsg stringByAppendingFormat:@"%@,%@",@" \n错误：",[detailedError userInfo]];
-            }
-            
-        }
-        
-    }
+    strMsg=@"连接服务器失败,请检查网络情况";
+//    if(CustomerErrorMsg!=nil)
+//    {
+//        strMsg=[strMsg stringByAppendingString:CustomerErrorMsg];
+//    }
+//    if (error!=nil) {
+//        strMsg=[strMsg stringByAppendingFormat:@"%@,%@",@" \n信息：", [error localizedDescription]];
+//        NSArray* detailedErrors = [[error userInfo] objectForKey:NSLocalizedRecoveryOptionsErrorKey];
+//        if(detailedErrors != nil && [detailedErrors count] > 0) {
+//            for(NSError* detailedError in detailedErrors) {
+//                strMsg=[strMsg stringByAppendingFormat:@"%@,%@",@" \n错误：",[detailedError userInfo]];
+//            }
+//            
+//        }
+//        
+//    }
     
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示"
                                                    message:strMsg
@@ -493,4 +494,13 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
 }
 
++(void) showViewGrenct:(UIView*) tmpview:(NSString*)viewName
+{
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    
+    CGRect  frame=tmpview.frame;
+    CGRect boand=tmpview.bounds;
+    NSLog(@"当前UIScreen：width=%f height=%f－－－－－－－\n%@ frame大小为 ：x=%f,y=%f,width=%f,height=%f---\n bounds大小:x=%f;y=%f;width=%f;height=%f",screenBounds.size.width,screenBounds.size.height,viewName,frame.origin.x, frame.origin.y ,frame.size.width,frame.size.height
+          ,boand.origin.x,boand.origin.y,boand.size.width,boand.size.height);
+}
 @end
