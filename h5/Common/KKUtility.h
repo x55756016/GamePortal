@@ -2,7 +2,7 @@
 //  Utility.h
 //  ＋
 //
-//  Created by Administrator on 15/5/8.
+//  Created by ken on 15/5/8.
 //  Copyright (c) 2015年 hf. All rights reserved.
 //
 
@@ -50,4 +50,5 @@
 +(void)saveUserInfo:(NSDictionary *)userInfoDir;
 //显示view 位置及大小
 +(void)showViewGrenct:(UIView*) tmpview:(NSString*)viewName;
++(CGRect) CGRectMakeForAllIphone:(CGFloat) x:(CGFloat) y:(CGFloat) width:(CGFloat) height;
 @end

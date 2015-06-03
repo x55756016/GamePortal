@@ -25,7 +25,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSMutableArray *AllAroundUserTmp;
     ASIFormDataRequest *request;
 }
-@end
+@end 
 
 @implementation RadarViewController
 
@@ -33,7 +33,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     [super viewDidLoad];
     //加载背景图片
-    UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,480)];
+    UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,[UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     [bgImgView setImage:[UIImage imageNamed:@"kkRadar_bg.png"]];
     [self.backView addSubview:bgImgView];
     [self.backView sendSubviewToBack:bgImgView];

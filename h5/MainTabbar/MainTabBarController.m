@@ -70,6 +70,14 @@
 
 -(BOOL)shouldAutorotate
 {
+    AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    NSNumber *strlon=kkAppDelegate.currentlogingUser.currentGamedirection;
+    if([strlon integerValue]==1)
+    {
+    }else
+    {
+        
+    }
 
     return NO;
     //    return [self.selectedViewController shouldAutorotate];
@@ -77,6 +85,8 @@
 }
 -(NSUInteger)supportedInterfaceOrientations
 {
+      return UIInterfaceOrientationMaskAllButUpsideDown; //否者返回横屏
+    
     AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     NSNumber *strlon=kkAppDelegate.currentlogingUser.currentGamedirection;
     if([strlon integerValue]==1)

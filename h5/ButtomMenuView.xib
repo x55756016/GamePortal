@@ -89,7 +89,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="zW7-AF-Po0" secondAttribute="trailing" constant="5" id="1Lg-oc-YBl">
-                    <variation key="heightClass=regular-widthClass=compact" constant="-7"/>
+                    <variation key="heightClass=regular-widthClass=compact" constant="2"/>
                 </constraint>
                 <constraint firstItem="zW7-AF-Po0" firstAttribute="leading" secondItem="W8k-jQ-gC4" secondAttribute="trailing" constant="112" id="LCh-Lf-Bf5">
                     <variation key="heightClass=regular-widthClass=compact" constant="10"/>
@@ -97,18 +97,15 @@
                 <constraint firstItem="W8k-jQ-gC4" firstAttribute="leading" secondItem="Fwt-ZU-xYQ" secondAttribute="trailing" constant="-21" id="Xk7-bP-UZT">
                     <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                 </constraint>
-                <constraint firstItem="zW7-AF-Po0" firstAttribute="top" secondItem="gbx-MA-WWm" secondAttribute="top" constant="5" id="aPF-BL-TFx"/>
-                <constraint firstItem="W8k-jQ-gC4" firstAttribute="top" secondItem="gbx-MA-WWm" secondAttribute="top" constant="5" id="agU-t5-NAW">
-                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
-                </constraint>
+                <constraint firstItem="zW7-AF-Po0" firstAttribute="top" secondItem="gbx-MA-WWm" secondAttribute="top" id="aB2-70-S2m"/>
+                <constraint firstItem="W8k-jQ-gC4" firstAttribute="top" secondItem="gbx-MA-WWm" secondAttribute="top" id="eTt-HI-j8p"/>
+                <constraint firstItem="Fwt-ZU-xYQ" firstAttribute="top" secondItem="gbx-MA-WWm" secondAttribute="top" id="kcI-dn-lT5"/>
                 <constraint firstItem="Fwt-ZU-xYQ" firstAttribute="leading" secondItem="gbx-MA-WWm" secondAttribute="leading" constant="2" id="voo-K5-aYX"/>
-                <constraint firstItem="Fwt-ZU-xYQ" firstAttribute="top" secondItem="gbx-MA-WWm" secondAttribute="top" constant="5" id="wPS-Ca-Gcg">
-                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
-                </constraint>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="subviews">
@@ -117,13 +114,10 @@
                     <exclude reference="Fwt-ZU-xYQ"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="Xk7-bP-UZT"/>
-                    <exclude reference="agU-t5-NAW"/>
                     <exclude reference="voo-K5-aYX"/>
-                    <exclude reference="wPS-Ca-Gcg"/>
+                    <exclude reference="Xk7-bP-UZT"/>
                     <exclude reference="1Lg-oc-YBl"/>
                     <exclude reference="LCh-Lf-Bf5"/>
-                    <exclude reference="aPF-BL-TFx"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -133,16 +127,16 @@
                     <include reference="Fwt-ZU-xYQ"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="Xk7-bP-UZT"/>
-                    <include reference="agU-t5-NAW"/>
+                    <include reference="kcI-dn-lT5"/>
                     <include reference="voo-K5-aYX"/>
-                    <include reference="wPS-Ca-Gcg"/>
+                    <include reference="Xk7-bP-UZT"/>
+                    <include reference="eTt-HI-j8p"/>
                     <include reference="1Lg-oc-YBl"/>
                     <include reference="LCh-Lf-Bf5"/>
-                    <include reference="aPF-BL-TFx"/>
+                    <include reference="aB2-70-S2m"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="562.5" y="-1572"/>
+            <point key="canvasLocation" x="562" y="-1572"/>
         </view>
     </objects>
     <resources>

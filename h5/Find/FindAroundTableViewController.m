@@ -131,7 +131,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSDictionary *friendsDict = aroundArray[indexPath.row];
     aroundTableViewCell.nickNameLabel.text = [friendsDict objectForKey:@"NickName"];
     aroundTableViewCell.signLabel.text = [friendsDict objectForKey:@"Sign"];
-    aroundTableViewCell.disLabel.text = [NSString stringWithFormat:@"%@m", [friendsDict objectForKey:@"dis"]];
+    aroundTableViewCell.disLabel.text = [NSString stringWithFormat:@"%@km", [friendsDict objectForKey:@"dis"]];
     
     NSString *HeadIMGstring = [friendsDict objectForKey:@"PicPath"];
     HeadIMGstring = [HeadIMGstring stringByReplacingOccurrencesOfString:@".jpeg" withString:@"_b.jpeg"];
@@ -147,7 +147,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 65;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

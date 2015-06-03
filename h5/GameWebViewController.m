@@ -68,6 +68,8 @@
         [WXApi registerApp:KKWebChartAppid];
         userInfo=[KKUtility getUserInfoFromLocalFile];
         
+        self.gameWebView.scrollView.scrollEnabled=false;//禁止滚动
+        
         //科大讯飞创建语音听写的对象
         // 创建识别对象
         self.iFlySpeechRecognizer = [IFlySpeechRecognizer sharedInstance];
@@ -149,7 +151,7 @@
         TopBarView= (UIView *)[[[NSBundle mainBundle]loadNibNamed:@"TopMenuView" owner:self options:nil]objectAtIndex:0];
         //[[TopBarView alloc] initWithNibName:@"TopMenuView" bundle:nil];
         //view 设置半透明 圆角样式
-        TopBarView.layer.cornerRadius = 10;//设置圆角的大小
+//        TopBarView.layer.cornerRadius = 10;//设置圆角的大小
         TopBarView.layer.backgroundColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5 ] CGColor];
         TopBarView.layer.masksToBounds = YES;
         TopBarView.translatesAutoresizingMaskIntoConstraints=NO;
@@ -187,7 +189,7 @@
         //buttom 工具栏
         ButtomBarView= (UIView *)[[[NSBundle mainBundle]loadNibNamed:@"ButtomMenuView" owner:self options:nil]objectAtIndex:0];
         //view 设置半透明 圆角样式
-        ButtomBarView.layer.cornerRadius = 10;//设置圆角的大小
+//        ButtomBarView.layer.cornerRadius = 10;//设置圆角的大小
         ButtomBarView.layer.backgroundColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5 ] CGColor];
         
         ButtomBarView.layer.masksToBounds = YES;
@@ -407,7 +409,13 @@
     if(needAddMenuBar){
         
         [self addLeftAndRightMenu];
-        needAddMenuBar=false;        
+//        if(IS_iOS8){
+//            if([landorprot isEqualToString:@"1"])
+//            {
+//                [KKUtility justAlert:@"点击左小角声音图标可直接通过语音输入文字，快试试吧！"];
+//            }
+//        }
+        needAddMenuBar=false;
         [self.view bringSubviewToFront: myButton];
     }
     UITextField *textFiled=(UITextField *)[ButtomBarView viewWithTag:1];
@@ -566,6 +574,10 @@
 
 - (IBAction)exitAction:(id)sender
 {
+    CGRect rect=  [[UIScreen mainScreen]bounds];
+    [KKUtility showViewGrenct:nil :nil];
+    
+    
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确定要退出?"
                                                    message:nil
                                                   delegate:self
@@ -681,12 +693,19 @@
 
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
     
     [self returnButtomHeightconstraint];
+    [textField resignFirstResponder];
+    
 
     return YES;
 }
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self returnButtomHeightconstraint];
+}
+
 -(void)returnButtomHeightconstraint
 {
     //还原
@@ -963,7 +982,6 @@
 {
     return UIInterfaceOrientationMaskAllButUpsideDown;
 }
-
 
 //- (void)hidesTabBar:(BOOL)hidden{
 //    

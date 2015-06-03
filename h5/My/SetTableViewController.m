@@ -123,7 +123,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     NSInteger indexSection = indexPath.section;
     NSInteger indexRow=indexPath.row;
     NSString *webUrl=@"";
@@ -157,6 +157,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         {
             [self exitActionSheet];
         }
+        return;
     }
     NSDictionary *adDic=[NSDictionary dictionaryWithObjectsAndKeys:
                          webUrl,@"Url",nil ];

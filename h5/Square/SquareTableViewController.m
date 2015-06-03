@@ -17,7 +17,6 @@
 #import "UserInfoTableViewController.h"
 #import "CurrentUser.h"
 #import "GameWebViewController.h"
-#import "HomeNavigationController.h"
 #import "GameDetailViewController.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
@@ -59,6 +58,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 //页面将要进入前台，开启定时器
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
     [self startTimer];
 }
@@ -407,7 +407,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     NSDictionary *adDic = [adArray objectAtIndex:self.pageControl.currentPage];
     NSLog(@"查看网页详情[%@]", adDic);
-    [self performSegueWithIdentifier:@"PushGameInfo" sender:adDic];
+    [self performSegueWithIdentifier:@"ShowWebInfo" sender:adDic];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -441,7 +441,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     {
         NSDictionary *adDic=[NSDictionary dictionaryWithObject:strLinkUrl forKey:@"Url"];
         NSLog(@"查看网页详情[%@]", adDic);
-        [self performSegueWithIdentifier:@"PushGameInfo" sender:adDic];
+        [self performSegueWithIdentifier:@"ShowWebInfo" sender:adDic];
     }
     
 }
@@ -461,10 +461,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     }
 
     
-    if([segue.identifier isEqualToString:@"PushGameInfo"])
+    if([segue.identifier isEqualToString:@"ShowWebInfo"])
     {
-        HomeNavigationController *nav=(HomeNavigationController *)[segue destinationViewController];
-        HomeInfoViewController *gwvc = (HomeInfoViewController *)nav.childViewControllers[0];
+        HomeInfoViewController *gwvc=(HomeInfoViewController *)[segue destinationViewController];
         gwvc.WebInfoDict = (NSDictionary *)sender;
     }
     

@@ -94,8 +94,10 @@
     [self loadGameDescImg];
     
     CGFloat scrollViewX = ([UIScreen mainScreen].bounds.size.width-180)/2;
-    UIView *picView = [[UIView alloc]initWithFrame:CGRectMake(scrollViewX, 41, 180, 240)];
+//    UIView *picView = [[UIView alloc]initWithFrame:CGRectMake(scrollViewX, 41, 180, 240)];
+     UIView *picView = [[UIView alloc]initWithFrame:CGRectMake(0, 41, [UIScreen mainScreen].bounds.size.width, 240)];
     [self.contentTableViewCell.contentView addSubview:picView];
+    
     
     self.conScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, picView.frame.size.width, picView.frame.size.height)];
     self.conScrollView.pagingEnabled = YES;
@@ -105,16 +107,16 @@
     self.conScrollView.contentSize = CGSizeMake(picView.frame.size.width*descImgArr.count, 0);
     [picView addSubview:self.conScrollView];
     
-    self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, 200, 180, 40)];
-    self.pageControl.numberOfPages = descImgArr.count;
-    self.pageControl.currentPage = 0;
-    self.pageControl.currentPageIndicatorTintColor = [UIColor blueColor];
-    [picView addSubview:self.pageControl];
+//    self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, 200, 180, 40)];
+//    self.pageControl.numberOfPages = descImgArr.count;
+//    self.pageControl.currentPage = 0;
+//    self.pageControl.currentPageIndicatorTintColor = [UIColor blueColor];
+//    [picView addSubview:self.pageControl];
     
     for (int i = 0; i < descImgArr.count; i++)
     {
         NSString *descImageStr = [descImgArr objectAtIndex:i];
-        UIImageView *descImageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.conScrollView.frame.size.width*i, 0, self.conScrollView.frame.size.width, self.conScrollView.frame.size.height)];
+        UIImageView *descImageView = [[UIImageView alloc]initWithFrame:CGRectMake(190*i, 0, 180, self.conScrollView.frame.size.height)];
         [self.conScrollView addSubview:descImageView];
         [descImageView sd_setImageWithURL:[NSURL URLWithString:descImageStr] placeholderImage:[UIImage imageNamed:@""]];
     }

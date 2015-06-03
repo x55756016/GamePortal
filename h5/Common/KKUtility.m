@@ -2,7 +2,7 @@
 //  Utility.m
 //  ＋
 //
-//  Created by Administrator on 15/5/8.
+//  Created by ken on 15/5/8.
 //  Copyright (c) 2015年 hf. All rights reserved.
 //
 
@@ -11,6 +11,7 @@
 #import "CurrentUser.h"
 #import "AddressBook/ABAddressBook.h"
 #import "h5kkContants.h"
+#import "AppDelegate.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -503,4 +504,24 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSLog(@"当前UIScreen：width=%f height=%f－－－－－－－\n%@ frame大小为 ：x=%f,y=%f,width=%f,height=%f---\n bounds大小:x=%f;y=%f;width=%f;height=%f",screenBounds.size.width,screenBounds.size.height,viewName,frame.origin.x, frame.origin.y ,frame.size.width,frame.size.height
           ,boand.origin.x,boand.origin.y,boand.size.width,boand.size.height);
 }
+
++(CGRect) CGRectMakeForAllIphone:(CGFloat) x:(CGFloat) y:(CGFloat) width:(CGFloat) height
+{
+    float autoSizeScaleX;
+    float autoSizeScaleY;
+    if(ScreenHeight > 480){
+        autoSizeScaleX = ScreenWidth/320;
+        autoSizeScaleY = ScreenHeight/568;
+    }else{
+        autoSizeScaleX = 1.0;
+        autoSizeScaleY = 1.0;
+    }
+    CGRect rect;
+    rect.origin.x = x * autoSizeScaleX;
+    rect.origin.y = y * autoSizeScaleY;
+    rect.size.width = width * autoSizeScaleX;
+    rect.size.height = height * autoSizeScaleY;
+    return rect;
+}
+
 @end

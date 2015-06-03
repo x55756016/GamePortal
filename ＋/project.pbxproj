@@ -68,7 +68,6 @@
 		C3C004001AFC93020049002A /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C003FF1AFC93020049002A /* CurrentUser.m */; };
 		C3C3B2B41AFDC2B4003388E8 /* UIButton+ImageAndLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3B2B31AFDC2B4003388E8 /* UIButton+ImageAndLabel.m */; };
 		C3CEEA6F1AFA3C4B0062970F /* HomeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CEEA6E1AFA3C4B0062970F /* HomeInfoViewController.m */; };
-		C3CEEA721AFA3C9E0062970F /* HomeNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CEEA711AFA3C9E0062970F /* HomeNavigationController.m */; };
 		C3EF76001B020D47002EA0D7 /* TopMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3EF75FF1B020D47002EA0D7 /* TopMenuView.xib */; };
 		C3EF76021B0211FF002EA0D7 /* ButtomMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3EF76011B0211FF002EA0D7 /* ButtomMenuView.xib */; };
 		C3FCFCA61AF7696F00E74036 /* entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3FCFCA51AF7696F00E74036 /* entitlements.plist */; };
@@ -305,8 +304,6 @@
 		C3C3B2B31AFDC2B4003388E8 /* UIButton+ImageAndLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImageAndLabel.m"; sourceTree = "<group>"; };
 		C3CEEA6D1AFA3C4B0062970F /* HomeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeInfoViewController.h; sourceTree = "<group>"; };
 		C3CEEA6E1AFA3C4B0062970F /* HomeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeInfoViewController.m; sourceTree = "<group>"; };
-		C3CEEA701AFA3C9E0062970F /* HomeNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavigationController.h; sourceTree = "<group>"; };
-		C3CEEA711AFA3C9E0062970F /* HomeNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavigationController.m; sourceTree = "<group>"; };
 		C3EF75FF1B020D47002EA0D7 /* TopMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopMenuView.xib; sourceTree = "<group>"; };
 		C3EF76011B0211FF002EA0D7 /* ButtomMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtomMenuView.xib; sourceTree = "<group>"; };
 		C3FCFCA51AF7696F00E74036 /* entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = entitlements.plist; sourceTree = "<group>"; };
@@ -892,8 +889,6 @@
 			children = (
 				C3CEEA6D1AFA3C4B0062970F /* HomeInfoViewController.h */,
 				C3CEEA6E1AFA3C4B0062970F /* HomeInfoViewController.m */,
-				C3CEEA701AFA3C9E0062970F /* HomeNavigationController.h */,
-				C3CEEA711AFA3C9E0062970F /* HomeNavigationController.m */,
 			);
 			name = Webbrowser;
 			sourceTree = "<group>";
@@ -1627,7 +1622,6 @@
 				CB6ED1FE1AD37A4100A33BB8 /* SDWebImageDecoder.m in Sources */,
 				CB4E60711ADFB40800471173 /* SquareTableViewController.m in Sources */,
 				CB42F8081ADE58E800F5376C /* ChatNavigationController.m in Sources */,
-				C3CEEA721AFA3C9E0062970F /* HomeNavigationController.m in Sources */,
 				CB6EFEA31AD61B6C00F597B6 /* MJRefreshHeader.m in Sources */,
 				CB323E121ACA7C9B00C7FE83 /* ASINetworkQueue.m in Sources */,
 				C32A251F1B0CBA6F00861BD5 /* SBJson4StreamWriterState.m in Sources */,
@@ -1821,7 +1815,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = h5/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LD_NO_PIE = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1860,7 +1854,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = h5/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LD_NO_PIE = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="aroundCells" rowHeight="164" id="KGk-i7-Jjw" customClass="AroundTableViewCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="aroundCells" rowHeight="65" id="KGk-i7-Jjw" customClass="AroundTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -16,18 +16,32 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="userDefaultHead" translatesAutoresizingMaskIntoConstraints="NO" id="jCa-nB-zWn">
                         <rect key="frame" x="8" y="10" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="ODV-u3-UUL"/>
+                            <constraint firstAttribute="width" constant="24" id="iUF-wI-OUA">
+                                <variation key="heightClass=regular-widthClass=compact" constant="45"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="ODV-u3-UUL"/>
+                                <include reference="iUF-wI-OUA"/>
+                            </mask>
+                        </variation>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exp-9W-lR0">
                         <rect key="frame" x="76" y="45" width="220" height="25"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcf-AS-oaA">
-                        <rect key="frame" x="272" y="10" width="40" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcf-AS-oaA">
+                        <rect key="frame" x="235" y="10" width="77" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="fg9-v3-n0w"/>
-                            <constraint firstAttribute="height" constant="20" id="obR-5N-9OG"/>
+                            <constraint firstAttribute="width" constant="40" placeholder="YES" id="fg9-v3-n0w">
+                                <variation key="heightClass=regular-widthClass=compact" constant="80"/>
+                            </constraint>
+                            <constraint firstAttribute="height" constant="20" placeholder="YES" id="obR-5N-9OG"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -41,8 +55,34 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Dcf-AS-oaA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Fwv-QP-xJE"/>
+                    <constraint firstAttribute="centerY" secondItem="jCa-nB-zWn" secondAttribute="centerY" id="G80-Kc-iRT"/>
+                    <constraint firstItem="jCa-nB-zWn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="GHc-oe-zXb"/>
                     <constraint firstAttribute="trailing" secondItem="Dcf-AS-oaA" secondAttribute="trailing" constant="8" id="LxU-Ih-jmJ"/>
+                    <constraint firstItem="LIF-LF-c9x" firstAttribute="leading" secondItem="jCa-nB-zWn" secondAttribute="trailing" constant="21" id="NOu-bs-YzN">
+                        <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                    </constraint>
+                    <constraint firstItem="LIF-LF-c9x" firstAttribute="centerY" secondItem="jCa-nB-zWn" secondAttribute="centerY" constant="-17" id="T47-OE-1E4">
+                        <variation key="heightClass=regular-widthClass=compact" constant="-13"/>
+                    </constraint>
+                    <constraint firstAttribute="trailing" secondItem="exp-9W-lR0" secondAttribute="trailing" constant="20" id="br7-Ap-yfK"/>
+                    <constraint firstItem="exp-9W-lR0" firstAttribute="leading" secondItem="jCa-nB-zWn" secondAttribute="trailing" constant="22" id="d9I-cA-1LS">
+                        <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                    </constraint>
+                    <constraint firstItem="exp-9W-lR0" firstAttribute="centerY" secondItem="jCa-nB-zWn" secondAttribute="centerY" constant="23" id="o5P-qI-BO7">
+                        <variation key="heightClass=regular-widthClass=compact" constant="11"/>
+                    </constraint>
                 </constraints>
+                <variation key="heightClass=regular-widthClass=compact">
+                    <mask key="constraints">
+                        <include reference="G80-Kc-iRT"/>
+                        <include reference="GHc-oe-zXb"/>
+                        <include reference="NOu-bs-YzN"/>
+                        <include reference="T47-OE-1E4"/>
+                        <include reference="br7-Ap-yfK"/>
+                        <include reference="d9I-cA-1LS"/>
+                        <include reference="o5P-qI-BO7"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="disLabel" destination="Dcf-AS-oaA" id="Chr-5m-hcd"/>

@@ -2,10 +2,13 @@
 //  h5kkContants.h
 //  h5
 //
-//  Created by hf on 15/4/17.
+//  Created by hf on 15/4/17. edit by ken  2015 6 3
 //  Copyright (c) 2015年 hf. All rights reserved.
 //
 #define IS_iOS8 ([[[UIDevice currentDevice] systemVersion]floatValue] >= 8.0? YES : NO)
+#define ScreenHeight [[UIScreen mainScreen] bounds].size.height
+#define ScreenWidth [[UIScreen mainScreen] bounds].size.width
+
 
 #define KKAppleID @"com.shenyang.h5"//AppID
 

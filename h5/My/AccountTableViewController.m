@@ -16,6 +16,7 @@
 
 @implementation AccountTableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -41,7 +42,7 @@
     MyInfo=[KKUtility getUserInfoFromLocalFile];
     NSString *kCoin = [NSString stringWithFormat:@"%@", [MyInfo objectForKey:@"Money"]];
     [self.kCoinLabel setText:kCoin];
-
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 //-----------------------UITableViewDataSource-----------------------------------------------------------//
@@ -63,7 +64,19 @@
     }
     return 0;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger Sectionindex=indexPath.section;
+    NSInteger rowNumber=indexPath.row;
+    if(Sectionindex==0)
+    {
+        if(rowNumber!=1)
+        {
+            [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+        }
+    }
+}
+//
 
 @end
 

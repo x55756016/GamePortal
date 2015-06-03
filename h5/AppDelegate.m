@@ -36,7 +36,7 @@ NSString *userFolderPath;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{    
     self.currentlogingUser=[[CurrentUser alloc] init];
     //获取当前设备经纬度
     locationManager = [[CLLocationManager alloc] init];
