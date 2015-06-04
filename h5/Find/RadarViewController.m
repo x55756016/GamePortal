@@ -24,6 +24,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSDictionary *userInfo;
     NSMutableArray *AllAroundUserTmp;
     ASIFormDataRequest *request;
+    NSTimer *myTimer;
 }
 @end 
 
@@ -32,33 +33,23 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(replayRadar:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
+
     //加载背景图片
     UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,[UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     [bgImgView setImage:[UIImage imageNamed:@"kkRadar_bg.png"]];
     [self.backView addSubview:bgImgView];
     [self.backView sendSubviewToBack:bgImgView];
-//    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-//    if (kCLAuthorizationStatusNotDetermined==state
-//        ||kCLAuthorizationStatusDenied == status
-//        || kCLAuthorizationStatusRestricted == status) {
-//        [KKUtility justAlert:@"请打开定位服务，否则无法使用雷达功能"];
-//        return;
-//    }
-//    if(![CLLocationManager locationServicesEnabled]){
-//        [KKUtility justAlert:@"请手工开启定位:设置 > 隐私 > 位置 > 定位服务 找到 KK玩 设置为始终,否则无法使用雷达功能。"];
-//        return;
-//    }
 
-    
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     if (kCLAuthorizationStatusNotDetermined== status
         || kCLAuthorizationStatusDenied == status
         || kCLAuthorizationStatusRestricted == status) {
         //判断是否开启定位
-//        CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-//        if(IS_iOS8){
-//            [locationManager requestWhenInUseAuthorization];
-//        }
         [KKUtility justAlert:@"请手工开启定位:设置 > 隐私 > 位置 > 定位服务 找到 KK玩 设置为始终,否则无法使用雷达功能。"];
         return;
     }
@@ -77,11 +68,30 @@ UIKIT_EXTERN NSString *userFolderPath;
     self.items = [[NSMutableArray alloc]init];
     AllAroundUserTmp=[[NSMutableArray alloc]init];
     self.AllUsers=[[NSMutableArray alloc]init];
-    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(addOrReplaceItem) userInfo:nil repeats:YES];
+    myTimer=[NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(addOrReplaceItem) userInfo:nil repeats:YES];
 }
 
-
-
+//页面消失，进入后台不显示该页面，关闭定时器
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [self stopTimer];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+//    [self startTimer];
+}
+-(void) startTimer
+{
+    //开启定时器
+    [myTimer setFireDate:[NSDate distantPast]];
+}
+-(void)stopTimer
+{
+    //关闭定时器
+    [myTimer setFireDate:[NSDate distantFuture]];
+    
+}
 //--------------------------------------加载KK数据-----------------------------------------------//
 -(void)loadKKAROUND
 {
@@ -131,17 +141,6 @@ UIKIT_EXTERN NSString *userFolderPath;
 }
 //--------------------------------------结束加载KK数据-----------------------------------------------//
 
-
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(replayRadar:)
-                                                 name:UIApplicationDidBecomeActiveNotification
-                                               object:nil];
-}
-
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -152,74 +151,74 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 -(void)addOrReplaceItem
 {
-    if([AllAroundUserTmp count]>0)
-    {
-        int maxCount = 10;
-        NSDictionary *tmpuer=[AllAroundUserTmp objectAtIndex:0];
-        UIButton *radarButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-        NSString *HeadimgUrl = [tmpuer objectForKey:@"PicPath"];
-        NSString *UserNickName=[tmpuer objectForKey:@"NickName"];
-        NSString *UserId=[tmpuer objectForKey:@"UserId"];
-        radarButton.tag=[UserId integerValue];
-        
-        NSString *existStr = @"_b.jpg";
-        if ([HeadimgUrl rangeOfString:existStr].location == NSNotFound)
+    @try {
+        if([AllAroundUserTmp count]>0)
         {
-            HeadimgUrl = [HeadimgUrl stringByReplacingOccurrencesOfString:@".jpg" withString:@"_b.jpg"];
+            int maxCount = 10;
+            NSDictionary *tmpuer=[AllAroundUserTmp objectAtIndex:0];
+            
+            UIButton *radarButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
+            CGPoint center = self.generateCenterPointInRadar;
+            radarButton.center = CGPointMake(center.x, center.y);
+            
+            if ([self itemFrameIntersectsInOtherItem:radarButton.frame])
+            {
+                //       NSLog(@"重叠了");
+                return;
+            }else
+            {
+                [AllAroundUserTmp removeObjectAtIndex:0];//移除此item
+            }
+            
+            NSString *HeadimgUrl = [tmpuer objectForKey:@"PicPath"];
+            NSString *UserNickName=[tmpuer objectForKey:@"NickName"];
+            NSString *UserId=[tmpuer objectForKey:@"UserId"];
+            radarButton.tag=[UserId integerValue];
+            
+            NSString *existStr = @"_s.jpg";
+            if ([HeadimgUrl rangeOfString:existStr].location == NSNotFound)
+            {
+                HeadimgUrl = [HeadimgUrl stringByReplacingOccurrencesOfString:@".jpg" withString:@"_s.jpg"];
+            }
+            //[radarButton sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
+            NSLog(@"%@",HeadimgUrl);
+            NSURL *url = [NSURL URLWithString:HeadimgUrl];
+            
+//            [radarButton sd_setImageWithURL:url forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
+            [self stopTimer];
+            [radarButton sd_setImageWithURL:url forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"userDefaultHead"]
+                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                      
+                                    [self startTimer];
+                                  }];
+            
+            
+            [radarButton setTitle:UserNickName forState:UIControlStateNormal];
+            CALayer * downButtonLayer = [radarButton layer];
+            [downButtonLayer setMasksToBounds:YES];
+            [downButtonLayer setCornerRadius:10.0];
+            [radarButton addTarget:self action:@selector(ShowUserInfo:) forControlEvents:UIControlEventTouchUpInside];
+            
+            [self.view addSubview:radarButton];
+            [self.items addObject:radarButton];
+            
+            if(self.items.count > maxCount)
+            {
+                UIButton *btn = [self.items objectAtIndex:0];
+                //渐变消失
+                [UIView animateWithDuration:1.0 animations:^{
+                    btn.alpha = 0;
+                } completion:^(BOOL finished) {
+                    [btn removeFromSuperview];
+                    [self.items removeObject:btn];
+                }];
+            }
         }
-        //[radarButton sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
-        NSURL *url = [NSURL URLWithString:HeadimgUrl];
-        
-//        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-//        if(image==nil)
-//        {
-//            image=[UIImage imageNamed:@"userDefaultHead"];
-//            
-//        }
-        //[radarButton setImage:image forState:UIControlStateNormal];
-        //[radarButton setTitle:UserNickName forState:UIControlStateNormal];
-        CALayer * downButtonLayer = [radarButton layer];
-        [downButtonLayer setMasksToBounds:YES];
-        [downButtonLayer setCornerRadius:10.0];
-//        [radarButton setImage:image withTitle:UserNickName forState:UIControlStateNormal];
-        
-        [radarButton sd_setImageWithURL:url forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
-        [radarButton setTitle:UserNickName forState:UIControlStateNormal];
-//      [downButtonLayer setBorderWidth:1.0];
-//      [downButtonLayer setBorderColor:[[UIColor colorWithRed:0.243 green:0.306 blue:0.435 alpha:1.0] CGColor]];
-
-        [radarButton addTarget:self action:@selector(ShowUserInfo:) forControlEvents:UIControlEventTouchUpInside];
-        
-        CGPoint center = self.generateCenterPointInRadar;
-        radarButton.center = CGPointMake(center.x, center.y);
-    
-        if ([self itemFrameIntersectsInOtherItem:radarButton.frame])
-        {
-//       NSLog(@"重叠了");
-            return;
-        }
-        else
-        {
-            [AllAroundUserTmp removeObjectAtIndex:0];
-
-        }
-    
-        [self.pulsingRadarView addSubview:radarButton];
-        [self.items addObject:radarButton];
-    
-        if(self.items.count > maxCount)
-        {
-            UIButton *btn = [self.items objectAtIndex:0];
-        
-            //渐变消失
-            [UIView animateWithDuration:1.0 animations:^{
-                btn.alpha = 0;
-            } completion:^(BOOL finished) {
-            [btn removeFromSuperview];
-            [self.items removeObject:btn];
-        }];
     }
+    @catch (NSException *exception) {
+        [KKUtility logSystemErrorMsg:exception.reason :nil];
     }
+    
 }
 
 //返回一个圆内的中心坐标，这个坐标只会在圆的直径以内生成
