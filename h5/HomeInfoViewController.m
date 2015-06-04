@@ -30,6 +30,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
+    [super viewWillAppear:YES];
 }
 
 - (void)didReceiveMemoryWarning {

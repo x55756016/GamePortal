@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqe-Yl-WhA">
-                        <rect key="frame" x="232" y="21" width="55" height="30"/>
+                        <rect key="frame" x="255" y="17" width="55" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="55" id="5la-Q9-nqV"/>
                             <constraint firstAttribute="height" constant="30" id="J33-xK-YBK"/>
@@ -50,9 +50,9 @@
                     <constraint firstItem="77O-K3-VpN" firstAttribute="leading" secondItem="9cV-3G-r2w" secondAttribute="trailing" constant="16" id="Ex4-uk-adS"/>
                     <constraint firstItem="9cV-3G-r2w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="L6t-vi-Cgv"/>
                     <constraint firstItem="UfX-uD-f2Y" firstAttribute="leading" secondItem="9cV-3G-r2w" secondAttribute="trailing" constant="16" id="PTf-jI-cBI"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="pqe-Yl-WhA" secondAttribute="trailing" constant="25" id="TdW-SM-xOA"/>
                     <constraint firstAttribute="bottomMargin" secondItem="UfX-uD-f2Y" secondAttribute="bottom" constant="5" id="Utq-xu-aPN"/>
-                    <constraint firstItem="pqe-Yl-WhA" firstAttribute="centerY" secondItem="9cV-3G-r2w" secondAttribute="centerY" constant="4.5" id="hPs-n2-Ahg"/>
+                    <constraint firstAttribute="trailing" secondItem="pqe-Yl-WhA" secondAttribute="trailing" constant="10" id="VKw-qu-fFN"/>
+                    <constraint firstItem="pqe-Yl-WhA" firstAttribute="centerY" secondItem="9cV-3G-r2w" secondAttribute="centerY" id="hPs-n2-Ahg"/>
                     <constraint firstAttribute="centerY" secondItem="9cV-3G-r2w" secondAttribute="centerY" id="ynN-7J-l5N"/>
                 </constraints>
             </tableViewCellContentView>

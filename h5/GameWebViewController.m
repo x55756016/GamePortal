@@ -107,6 +107,7 @@
     needAddMenuBar=true;
     [self GetGameInfoFromServer];
     [self SendPlayGameInfoToServer];
+    [super viewWillAppear:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -126,6 +127,7 @@
     isSettingStatusBar=NO;
 //    [super viewWillDisappear:NO];
     self.tabBarController.tabBar.hidden=NO;
+    [super viewWillDisappear:YES];
 }
 //屏幕旋转完成事件
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
@@ -319,14 +321,6 @@
     NSString *text ;
     if (error.errorCode ==0 ) {
         
-        if (self.textMsgField.text.length==0) {
-            
-            text = @"无识别结果";
-        }
-        else
-        {
-            text = @"识别成功";
-        }
     }
     else
     {
@@ -461,68 +455,71 @@
 }
 - (void)GetGameInfoFromServerFinish:(ASIHTTPRequest *)req
 {
-    NSError *error;
-    NSData *responseData = [req responseData];
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
-    //    NSLog(@"requestUserGame[%@]",dic);
-    
-    if([[dic objectForKey:@"IsSuccess"] integerValue])
-    {
-        NSArray *data= [dic objectForKey:@"ObjData"];
-        self.gameDetailDict =[data objectAtIndex:0];
-        NSLog(@"GameInfoDetail%@", self.gameDetailDict);
-    }
-    
-    landorprot = [NSString stringWithFormat:@"%@", [self.gameDetailDict objectForKey:@"ScreenType"]];
-    if([landorprot isEqualToString:@"1"])
-    {
-        NSLog(@"需要强制横屏");
-        [UIView beginAnimations:@"changeToLandscapeMode" context:nil];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDuration:0.5f];
+    @try {
+        NSError *error;
+        NSData *responseData = [req responseData];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+        //    NSLog(@"requestUserGame[%@]",dic);
         
-        self.view.transform = CGAffineTransformMakeRotation(M_PI/2);
-        float width=self.view.frame.size.width;
-        float height=self.view.frame.size.height;
-        
-        self.view.bounds = CGRectMake(0, 0, width, height);
-        [UIView commitAnimations];
-        isSettingStatusBar=YES;
-        if(IS_iOS8){
-            CGSize screenSize = [UIScreen mainScreen].bounds.size;
-            CGRect rect=CGRectMake(0, 0, MIN(screenSize.width, screenSize.height), MAX(screenSize.width, screenSize.height));
-            
+        if([[dic objectForKey:@"IsSuccess"] integerValue])
+        {
+            NSArray *data= [dic objectForKey:@"ObjData"];
+            self.gameDetailDict =[data objectAtIndex:0];
+            NSLog(@"GameInfoDetail%@", self.gameDetailDict);
         }
         
-        AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-        kkAppDelegate.currentlogingUser.currentGamedirection=[NSNumber numberWithInteger:1];
-        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];  //设置状态栏横屏
+        landorprot = [NSString stringWithFormat:@"%@", [self.gameDetailDict objectForKey:@"ScreenType"]];
+        if([landorprot isEqualToString:@"1"])
+        {
+            NSLog(@"需要强制横屏");
+            [UIView beginAnimations:@"changeToLandscapeMode" context:nil];
+            [UIView setAnimationDelegate:self];
+            [UIView setAnimationDuration:0.5f];
+            
+            self.view.transform = CGAffineTransformMakeRotation(M_PI/2);
+            float width=self.view.frame.size.width;
+            float height=self.view.frame.size.height;
+            
+            self.view.bounds = CGRectMake(0, 0, width, height);
+            [UIView commitAnimations];
+            isSettingStatusBar=YES;
+            
+            AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+            kkAppDelegate.currentlogingUser.currentGamedirection=[NSNumber numberWithInteger:1];
+            [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];  //设置状态栏横屏
+            
+        }
+        else
+        {
+            AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+            kkAppDelegate.currentlogingUser.currentGamedirection=[NSNumber numberWithInteger:0];
+            [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait]; //设置竖屏
+            NSLog(@"不需要强制横屏");
+        }
+        
+        NSString *urlStr = [self.gameDetailDict objectForKey:@"Url"];
+        NSString *reqStr = [NSString stringWithFormat:@"%@?UserId=%@&userkey=%@", urlStr,
+                            [userInfo objectForKey:@"UserId"],
+                            [userInfo objectForKey:@"UserKey"]];
+        reqStr = [reqStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSLog(@"游戏url[%@]", reqStr);
+        
+        NSURL *url = [NSURL URLWithString:reqStr];
+        NSURLRequest *requestUrl=[NSURLRequest requestWithURL:url];
+        [self.gameWebView loadRequest:requestUrl];
+        NSLog(@"GetGameInfoFromServerFinish");
+        
+        NSDictionary *gamedic= self.gameDetailDict;
+        [self addMyGameToServer:gamedic];
         
     }
-    else
-    {
-        AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-        kkAppDelegate.currentlogingUser.currentGamedirection=[NSNumber numberWithInteger:0];
-       [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait]; //设置竖屏
-        NSLog(@"不需要强制横屏");
+    @catch (NSException *exception) {
+        [KKUtility logSystemErrorMsg:exception.reason :nil];
     }
-    
-    NSString *urlStr = [self.gameDetailDict objectForKey:@"Url"];
-    NSString *reqStr = [NSString stringWithFormat:@"%@?UserId=%@&userkey=%@", urlStr,
-                        [userInfo objectForKey:@"UserId"],
-                        [userInfo objectForKey:@"UserKey"]];
-    reqStr = [reqStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"游戏url[%@]", reqStr);
-    
-    NSURL *url = [NSURL URLWithString:reqStr];
-    NSURLRequest *requestUrl=[NSURLRequest requestWithURL:url];
-    [self.gameWebView loadRequest:requestUrl];
-    NSLog(@"GetGameInfoFromServerFinish");
-    
-    NSDictionary *gamedic= self.gameDetailDict;
-    [self addMyGameToServer:gamedic];
-    
-    [self addMenuButton];
+    @finally {
+                [self addMenuButton];
+    }
+   
 }
 - (void)GetGameInfoFromServerFail:(ASIHTTPRequest *)req
 {
@@ -574,7 +571,7 @@
 
 - (IBAction)exitAction:(id)sender
 {
-    CGRect rect=  [[UIScreen mainScreen]bounds];
+//    CGRect rect=  [[UIScreen mainScreen]bounds];
     [KKUtility showViewGrenct:nil :nil];
     
     

@@ -42,7 +42,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     if(section == 0)
     {
-        return 3;
+        return 2;
     }
     
     else if(section == 1)
@@ -80,10 +80,10 @@ UIKIT_EXTERN NSString *userFolderPath;
         {
             cell = self.cleanCacheCell;
         }
-        if(indexPath.row == 2)
-        {
-            cell = self.upgradeCell;
-        }
+//        if(indexPath.row == 2)
+//        {
+//            cell = self.upgradeCell;
+//        }
 
     }
     
@@ -123,7 +123,6 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     NSInteger indexSection = indexPath.section;
     NSInteger indexRow=indexPath.row;
     NSString *webUrl=@"";
@@ -165,6 +164,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self performSegueWithIdentifier:@"StartWebInfoSegue" sender:adDic];
     
     
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -876,6 +876,7 @@
 			children = (
 				C3C003F91AFC4F890049002A /* Webbrowser */,
 				CB4E606C1ADFB18C00471173 /* SquareNavigationController.h */,
+				CB0A69B81AC92B74003F7775 /* AppDelegate.h */,
 				CB4E606D1ADFB18C00471173 /* SquareNavigationController.m */,
 				CB4E606F1ADFB40800471173 /* SquareTableViewController.h */,
 				CB4E60701ADFB40800471173 /* SquareTableViewController.m */,
@@ -923,7 +924,6 @@
 			children = (
 				C31B07671B15E97B00BAD9FF /* Shop */,
 				C32D05A81B007EF7006B1773 /* Main.storyboard */,
-				CB0A69B81AC92B74003F7775 /* AppDelegate.h */,
 				CB0A69B91AC92B74003F7775 /* AppDelegate.m */,
 				C3CEEA6C1AFA3BF80062970F /* Home */,
 				C38E411E1B048E4700F42B7D /* SDK */,

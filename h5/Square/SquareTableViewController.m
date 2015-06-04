@@ -61,12 +61,14 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
     [self startTimer];
+    [super viewWillAppear:YES];
 }
 
 //页面消失，进入后台不显示该页面，关闭定时器
 -(void)viewDidDisappear:(BOOL)animated
 {
     [self stopTimer];
+    [super viewDidDisappear:YES];
 }
 
 

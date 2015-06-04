@@ -43,6 +43,7 @@
     NSString *kCoin = [NSString stringWithFormat:@"%@", [MyInfo objectForKey:@"Money"]];
     [self.kCoinLabel setText:kCoin];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    [super viewWillAppear:YES];
 }
 
 //-----------------------UITableViewDataSource-----------------------------------------------------------//

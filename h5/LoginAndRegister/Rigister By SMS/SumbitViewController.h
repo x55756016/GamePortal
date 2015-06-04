@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SumbitViewController : UIViewController <UIScrollViewDelegate, UITextFieldDelegate>
+@interface SumbitViewController : UITableViewController <UIScrollViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic)NSString *phoneStr;
 @property (strong, nonatomic)NSString *codeStr;

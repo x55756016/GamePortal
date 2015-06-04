@@ -32,6 +32,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
         [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态没有效果
+    [super viewWillAppear:YES];
 }
 -(void)viewWillLayoutSubviews
 {
@@ -93,7 +94,7 @@
     //加载游戏描述图片
     [self loadGameDescImg];
     
-    CGFloat scrollViewX = ([UIScreen mainScreen].bounds.size.width-180)/2;
+//    CGFloat scrollViewX = ([UIScreen mainScreen].bounds.size.width-180)/2;
 //    UIView *picView = [[UIView alloc]initWithFrame:CGRectMake(scrollViewX, 41, 180, 240)];
      UIView *picView = [[UIView alloc]initWithFrame:CGRectMake(0, 41, [UIScreen mainScreen].bounds.size.width, 240)];
     [self.contentTableViewCell.contentView addSubview:picView];
@@ -176,10 +177,13 @@
         if(indexPath.row == 0)
         {
             cell = self.HeadTableViewCell;
-            self.gameNameLabel.text = [self.gameDetailDict objectForKey:@"Title"];
-            self.gameDesLabel.text = [self.gameDetailDict objectForKey:@"Summary"];
-            self.gameDetailDesLabel.text = [self.gameDetailDict objectForKey:@"Body"];
-            self.gameDetailDesLabel.numberOfLines = 0;
+            [self.gameNameLabel setText:[self.gameDetailDict objectForKey:@"Title"]];
+            
+            NSString *strSummary=[self.gameDetailDict objectForKey:@"Summary"];
+            [self.gameDesLabel setText:strSummary];
+            NSString *strDes=[self.gameDetailDict objectForKey:@"Body"];
+            [self.gameDetailDesLabel setText:strDes];
+//          self.gameDetailDesLabel.numberOfLines = 0;
             NSString *HeadIMGstring = [self.gameDetailDict objectForKey:@"Logo"];
             [self.headImageView sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
         }

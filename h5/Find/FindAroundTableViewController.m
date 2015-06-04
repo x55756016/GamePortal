@@ -131,10 +131,14 @@ UIKIT_EXTERN NSString *userFolderPath;
     NSDictionary *friendsDict = aroundArray[indexPath.row];
     aroundTableViewCell.nickNameLabel.text = [friendsDict objectForKey:@"NickName"];
     aroundTableViewCell.signLabel.text = [friendsDict objectForKey:@"Sign"];
-    aroundTableViewCell.disLabel.text = [NSString stringWithFormat:@"%@km", [friendsDict objectForKey:@"dis"]];
+    
+    NSNumber * myNumber=[friendsDict objectForKey:@"dis"];
+    NSString *strDis=[NSString stringWithFormat:@"%.2f",[myNumber floatValue]];
+    
+    aroundTableViewCell.disLabel.text = [NSString stringWithFormat:@"%@km", strDis];
     
     NSString *HeadIMGstring = [friendsDict objectForKey:@"PicPath"];
-    HeadIMGstring = [HeadIMGstring stringByReplacingOccurrencesOfString:@".jpeg" withString:@"_b.jpeg"];
+    HeadIMGstring =[KKUtility getKKImagePath:HeadIMGstring :@"s"];
     [aroundTableViewCell.headImageView sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
     
     CALayer * l = [aroundTableViewCell.headImageView layer];

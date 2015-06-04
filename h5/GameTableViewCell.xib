@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -50,14 +49,24 @@
                 <constraints>
                     <constraint firstItem="AwN-ZT-kL0" firstAttribute="centerY" secondItem="ebc-tc-7Ao" secondAttribute="centerY" constant="11" id="5TI-x0-lAc"/>
                     <constraint firstAttribute="centerY" secondItem="AwN-ZT-kL0" secondAttribute="centerY" id="D0W-Zm-DdK"/>
-                    <constraint firstItem="yGl-pS-ilw" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="JEO-pE-dsH"/>
+                    <constraint firstAttribute="trailing" secondItem="yGl-pS-ilw" secondAttribute="trailing" constant="10" id="IJU-XW-1T4"/>
                     <constraint firstItem="lkS-hY-weh" firstAttribute="leading" secondItem="AwN-ZT-kL0" secondAttribute="trailing" constant="10" id="abF-HJ-x0w"/>
+                    <constraint firstItem="AwN-ZT-kL0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="dmr-N7-EM0"/>
                     <constraint firstAttribute="centerY" secondItem="yGl-pS-ilw" secondAttribute="centerY" id="eDf-fB-uUi"/>
                     <constraint firstItem="AwN-ZT-kL0" firstAttribute="bottom" secondItem="lkS-hY-weh" secondAttribute="bottom" constant="1" id="eQp-Y7-opy"/>
-                    <constraint firstItem="AwN-ZT-kL0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="hvP-Ql-ghq"/>
-                    <constraint firstAttribute="trailing" secondItem="yGl-pS-ilw" secondAttribute="trailing" constant="8" id="oWd-eO-Iiq"/>
                     <constraint firstItem="ebc-tc-7Ao" firstAttribute="leading" secondItem="AwN-ZT-kL0" secondAttribute="trailing" constant="10" id="qT3-FA-mWm"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="IJU-XW-1T4"/>
+                    </mask>
+                </variation>
+                <variation key="heightClass=regular-widthClass=compact">
+                    <mask key="constraints">
+                        <include reference="dmr-N7-EM0"/>
+                        <include reference="IJU-XW-1T4"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="gameDesLabel" destination="lkS-hY-weh" id="7bx-4x-J86"/>

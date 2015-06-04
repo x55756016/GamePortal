@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -32,21 +31,16 @@
                 <constraints>
                     <constraint firstItem="8zh-u2-P9f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="9TV-GY-qDK"/>
                     <constraint firstAttribute="centerY" secondItem="8zh-u2-P9f" secondAttribute="centerY" id="Z3x-1z-nn8"/>
-                    <constraint firstItem="Hai-VG-SK9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="98" id="ZRF-Ri-UV0">
-                        <variation key="heightClass=regular-widthClass=compact" constant="57"/>
+                    <constraint firstItem="Hai-VG-SK9" firstAttribute="leading" secondItem="8zh-u2-P9f" secondAttribute="trailing" constant="19" id="cjd-lc-aKB">
+                        <variation key="heightClass=regular-widthClass=compact" constant="11"/>
                     </constraint>
                     <constraint firstItem="Hai-VG-SK9" firstAttribute="centerY" secondItem="8zh-u2-P9f" secondAttribute="centerY" constant="-0.5" id="sKc-TU-L6s">
                         <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                     </constraint>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="ZRF-Ri-UV0"/>
-                    </mask>
-                </variation>
                 <variation key="heightClass=regular-widthClass=compact">
                     <mask key="constraints">
-                        <include reference="ZRF-Ri-UV0"/>
+                        <include reference="cjd-lc-aKB"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>

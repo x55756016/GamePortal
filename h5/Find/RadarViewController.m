@@ -75,6 +75,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 -(void)viewDidDisappear:(BOOL)animated
 {
     [self stopTimer];
+    [super viewDidDisappear:YES];
 }
 -(void)viewWillAppear:(BOOL)animated
 {

@@ -37,10 +37,6 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _dataArr = [[NSMutableArray alloc] init];
-    _sortedArrForArrays = [[NSMutableArray alloc]init];
-    _sectionHeadsKeys = [[NSMutableArray alloc]init];
-    
     //过滤分割线
     UILabel *footLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 0)];
     footLabel.backgroundColor = [UIColor clearColor];
@@ -49,18 +45,38 @@ UIKIT_EXTERN NSString *userFolderPath;
     //获取用户信息
      userInfo = [KKUtility getUserInfoFromLocalFile];
     
+    [self UpAndDownPull];
     //加载好友数据
-    [self loadFriends];
+    //[self loadFriends];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
+//上下拉加载
+-(void)UpAndDownPull
+{
+    //首次进来下拉刷新
+    __weak typeof(self) weakSelf = self;
+    [self.friendTableView addLegendHeaderWithRefreshingBlock:^{
+        //加载玩家动态
+        [weakSelf loadFriends];
+    }];
+    [self.friendTableView.legendHeader beginRefreshing];
+    
+    //    [self.tableView addLegendFooterWithRefreshingBlock:^{
+    //        [weakSelf loadMoreData];
+    //    }];
+}
 
 //--------------------------------------加载好友数据-----------------------------------------------//
 -(void)loadFriends
 {
+    self.dataArr = [[NSMutableArray alloc] init];
+    self.sortedArrForArrays = [[NSMutableArray alloc]init];
+    self.sectionHeadsKeys = [[NSMutableArray alloc]init];
+    
     NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
     NSString *dataListName = @"friendList";
     NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:dataListName];
@@ -88,22 +104,34 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)loadFriendsFinish:(ASIHTTPRequest *)req
 {
-    NSLog(@"loadFriendsFinish");
-    NSError *error;
-    NSData *responseData = [req responseData];
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
-//    NSLog(@"friendsdict[%@]",dict);
-    
-    if([[dict objectForKey:@"IsSuccess"] integerValue])
-    {
-        [self loadFriendsData:dict];
+    @try {
+        
+        NSLog(@"loadFriendsFinish");
+        NSError *error;
+        NSData *responseData = [req responseData];
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+        //    NSLog(@"friendsdict[%@]",dict);
+        
+        if([[dict objectForKey:@"IsSuccess"] integerValue])
+        {
+            [self loadFriendsData:dict];
+        }
+        
+        [self sequence];
     }
-    
-    [self sequence];
+    @catch (NSException *exception) {
+        [KKUtility logSystemErrorMsg:exception.reason :nil];
+    }
+    @finally {
+        [self.friendTableView.header endRefreshing];
+        [self.friendTableView.footer endRefreshing];
+    }
 }
 
 - (void)loadFriendsFail:(ASIHTTPRequest *)req
 {
+    [self.friendTableView.header endRefreshing];
+    [self.friendTableView.footer endRefreshing];
     [KKUtility showHttpErrorMsg:@"获取好友信息失败 " :req.error];
     [self sequence];
 }
@@ -144,7 +172,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 //排序
 -(void)sequence
 {
-    [_dataArr addObjectsFromArray:friendsArray];
+    [self.dataArr addObjectsFromArray:friendsArray];
     self.sortedArrForArrays = [ChineseString getChineseStringArr:_dataArr sectionHeadsKeys:self.sectionHeadsKeys];
     
     //添加置顶内容
@@ -224,7 +252,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         
         commonTableViewCell.nickNameLabel.text = [NSString stringWithFormat:@"%@",[str.userInfoDict objectForKey:@"NickName"]];
         NSString *HeadIMGstring = [str.userInfoDict objectForKey:@"PicPath"];
-        HeadIMGstring = [HeadIMGstring stringByReplacingOccurrencesOfString:@".jpg" withString:@"_b.jpg"];
+        HeadIMGstring = [KKUtility getKKImagePath:HeadIMGstring:@"s"];
         [commonTableViewCell.headImageView sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
 //        }
         return commonTableViewCell;

@@ -63,7 +63,7 @@
     //获取sectionHeadsKeys
     NSMutableArray *arrayForArrays = [NSMutableArray array];
     BOOL checkValueAtIndex= NO;
-    NSMutableArray *TempArrForGrouping = nil;
+    NSMutableArray *TempArrForGrouping = [[NSMutableArray alloc] initWithObjects:nil];
     
     for(int index = 0; index < [chineseStringsArray count]; index++)
     {

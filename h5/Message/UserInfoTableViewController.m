@@ -178,25 +178,29 @@ UIKIT_EXTERN NSString *userFolderPath;
             
             NSNumber *userid=[self.FriendInfoDict objectForKey:@"UserId"];
             NSString *useridstr=[NSString stringWithFormat:@"%@",userid];
+            NSString *strSign=[self.FriendInfoDict objectForKey:@"Sign"];
             
-            [self.FriendIdLabel setText:useridstr];
-            
+            if([KKUtility StringIsEmptyOrNull:useridstr]==NO)
+            {
+                [self.FriendIdLabel setText:useridstr];
+            }
+        
             NSString *strDistinct=[self.FriendInfoDict objectForKey:@"Loc"];
-            NSArray *dicArray = [strDistinct componentsSeparatedByString:@","];
-            NSString *discLongitude=[[dicArray objectAtIndex:0] substringFromIndex:1];
-            NSString *discLatitude=[[dicArray objectAtIndex:1] substringToIndex:[[dicArray objectAtIndex:1] length]-1];
-            CLLocation *endpoint=[[CLLocation alloc] initWithLatitude:[discLongitude doubleValue]   longitude:[discLatitude doubleValue] ];
-            
-            
-            //Latitude 纬度， longitude 经度
-            AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-            NSString *DistinctMsg=[KKUtility calcutDistinct:kkAppDelegate.currentlogingUser.Location:endpoint];
-            [self.FriedDistincLabel setText:DistinctMsg];
-            
-            
-            
-            
-            [self.FriedSignLabel setText:[self.FriendInfoDict objectForKey:@"Sign"]];
+            if([KKUtility StringIsEmptyOrNull:strDistinct]==NO)
+            {
+                NSArray *dicArray = [strDistinct componentsSeparatedByString:@","];
+                NSString *discLongitude=[[dicArray objectAtIndex:0] substringFromIndex:1];
+                NSString *discLatitude=[[dicArray objectAtIndex:1] substringToIndex:[[dicArray objectAtIndex:1] length]-1];
+                CLLocation *endpoint=[[CLLocation alloc] initWithLatitude:[discLongitude doubleValue]   longitude:[discLatitude doubleValue] ];
+                //Latitude 纬度， longitude 经度
+                AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+                NSString *DistinctMsg=[KKUtility calcutDistinct:kkAppDelegate.currentlogingUser.Location:endpoint];
+                [self.FriedDistincLabel setText:DistinctMsg];
+            }
+            if([KKUtility StringIsEmptyOrNull:strSign]==NO)
+            {
+                [self.FriedSignLabel setText:strSign];
+            }
             //显示用户的游戏
             [self GetUserGames];
         }
@@ -219,14 +223,9 @@ UIKIT_EXTERN NSString *userFolderPath;
 -(void)showUserInfo
 {
     NSString *HeadIMGstring = [self.FriendInfoDict objectForKey:@"PicPath"];
-    NSString *existStr = @"_b.jpg";
     NSNumber *FriendId=[self.FriendInfoDict objectForKey:@"UserId"];
+    HeadIMGstring =[KKUtility getKKImagePath:HeadIMGstring:@"s"];
     
-    if ([HeadIMGstring rangeOfString:existStr].location == NSNotFound)
-    {
-        HeadIMGstring = [HeadIMGstring stringByReplacingOccurrencesOfString:@".jpg" withString:@"_b.jpg"];
-        HeadIMGstring = [HeadIMGstring stringByReplacingOccurrencesOfString:@".jpeg" withString:@"_b.jpeg"];
-    }
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
     
     self.nickNameLabel.text = [self.FriendInfoDict objectForKey:@"NickName"];
@@ -469,7 +468,7 @@ UIKIT_EXTERN NSString *userFolderPath;
         for (int i = 0; i < [userAchievementArray count]; i++) {
             NSDictionary *historyInfo=[userAchievementArray objectAtIndex:i];
             NSString *path = [historyInfo objectForKey:@"PicPath"];
-            path=[KKUtility getImagePath:path :@"b"];
+            path=[KKUtility getKKImagePath:path :@"b"];
             [FrindHistoryImageArray addObject:path];
 
         }
@@ -555,13 +554,13 @@ UIKIT_EXTERN NSString *userFolderPath;
             @try {
                 if(FrindGameImageArray!=nil && [FrindGameImageArray count]>0)
                 {
-                    UIScrollView *imageScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
+                    UIScrollView *imageScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 10, ScreenWidth, 100)];
                     long width=[FrindGameImageArray count]*(80+10);
                     imageScrollView.contentSize =CGSizeMake(width,100);
                     for (int i = 0; i < [FrindGameImageArray count]; i++){
                         NSString *imageUrl=[FrindGameImageArray objectAtIndex:i];
                         
-                        UIButton *imagebutton = [[UIButton alloc] initWithFrame:CGRectMake(i*80+10, 0, 70, 80)];
+                        UIButton *imagebutton = [[UIButton alloc] initWithFrame:CGRectMake(i*80+10, 0, 70, 70)];
                         imagebutton.tag=i;
                         imagebutton.layer.masksToBounds = YES;
                         imagebutton.layer.cornerRadius = 5.0f;
@@ -575,10 +574,11 @@ UIKIT_EXTERN NSString *userFolderPath;
                         
                         
                         NSString *title=[[userGameArray objectAtIndex:i] objectForKey:@"Title"];
-                        UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(i*80+10, 80, 70, 20)];
+                        UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(i*80+10, 70, 70, 20)];
                         titleLabel.text=title;
                         titleLabel.textAlignment = NSTextAlignmentCenter;
-                        titleLabel.adjustsFontSizeToFitWidth = YES;
+                        titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+//                       titleLabel.adjustsFontSizeToFitWidth = YES;
                         [imageScrollView addSubview:titleLabel];
 
                     }
@@ -672,7 +672,6 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     @try {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            // 原代码块二
             NSMutableArray *imgArry=[[NSMutableArray alloc] init];
             for (int i = 0; i < [FrindHistoryImageArray count]; i++){
                 @try {
@@ -690,14 +689,20 @@ UIKIT_EXTERN NSString *userFolderPath;
                 }
             }
             if (imgArry != nil) {
-                // 原代码块三
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    InfiniteScrollPicker *isp = [[InfiniteScrollPicker alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+                  
+//                   InfiniteScrollPicker *isp3 = [[InfiniteScrollPicker alloc] initWithFrame:CGRectMake(0, 240, 320, 210)];
+//                    [isp3 setImageAry:set3];
+//                    [isp3 setHeightOffset:20];
+//                    [isp3 setPositionRatio:2];
+//                    [isp3 setAlphaOfobjs:0.8];
+                    
+                    InfiniteScrollPicker *isp = [[InfiniteScrollPicker alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 120)];
                     [isp setItemSize:CGSizeMake(90, 100)];
                     [isp setImageAry:imgArry];
-                    [isp setHeightOffset:0];
+                    [isp setHeightOffset:20];
                     [isp setPositionRatio:2];
-                    [isp setAlphaOfobjs:1];
+                    [isp setAlphaOfobjs:0.6];
                     isp.touchesdelegate=self;
                     [_FriendHistoryListView addSubview:isp];
                 });

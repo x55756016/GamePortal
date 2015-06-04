@@ -208,7 +208,7 @@
         }
     }
 
-    @throw @"FUT FUT FUT";
+//    @throw @"FUT FUT FUT";
 }
 
 - (sbjson4_token_t)getNumberToken:(char **)token length:(NSUInteger *)length {

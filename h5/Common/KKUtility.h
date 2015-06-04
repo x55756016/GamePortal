@@ -14,6 +14,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "CurrentUser.h"
+#import "MJRefresh.h"
 
 @interface KKUtility:NSObject
 
@@ -31,7 +32,7 @@
 
 +(void)saveImageToLocal:(UIImage *)image:(NSString*)imageName;
 
-+(NSString *)getImagePath:(NSString*)path:(NSString*)strType;
++(NSString *)getKKImagePath:(NSString*)path:(NSString*)strType;
 
 //记录错误日志
 +(void)logSystemErrorMsg:(NSString*)CustomerErrorMsg:(NSError*)error;
@@ -51,4 +52,6 @@
 //显示view 位置及大小
 +(void)showViewGrenct:(UIView*) tmpview:(NSString*)viewName;
 +(CGRect) CGRectMakeForAllIphone:(CGFloat) x:(CGFloat) y:(CGFloat) width:(CGFloat) height;
+//判断字符串是否为空
++(BOOL)StringIsEmptyOrNull:(NSString*)kenString;
 @end

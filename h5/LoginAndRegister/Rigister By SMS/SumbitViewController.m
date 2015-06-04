@@ -31,6 +31,11 @@
     
     [self setHideKeyboardGesture];
     self.inputScrollView.contentSize = CGSizeMake(320, 417);
+    
+    self.pwdTextField.delegate=self;
+    self.pwdAgainTextField.delegate=self;
+    self.nickNameTextField.delegate=self;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -165,7 +170,19 @@
     [alert show];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
 //点击空白处隐藏键盘
+//-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+//    [self.pwdTextField resignFirstResponder];
+//     [self.pwdAgainTextField resignFirstResponder];
+//     [self.nickNameTextField resignFirstResponder];
+//     [self.view endEditing:YES];
+//}
+
 -(void)setHideKeyboardGesture
 {
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(HideKeyboard:)];
@@ -217,6 +234,34 @@
 {
     [request setDelegate:nil];
     [request cancel];
+}
+
+//------------------------------Table view data source----------------------------//
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(section == 0)
+    {
+        return 4;
+    }
+    
+    else if(section == 1)
+    {
+        return 1;
+    }
+    
+    return 0;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 @end
 

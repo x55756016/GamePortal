@@ -78,24 +78,29 @@
     {
         
     }
-
-    return NO;
+    if(IS_iOS8)
+    {
+        return  NO;
+    }else
+    {
+        return YES;
+    }
     //    return [self.selectedViewController shouldAutorotate];
     //传递入口1.选择首页时self.selectedViewController＝SquareNavigationController（home/index）
 }
 -(NSUInteger)supportedInterfaceOrientations
 {
-      return UIInterfaceOrientationMaskAllButUpsideDown; //否者返回横屏
+    return UIInterfaceOrientationMaskAllButUpsideDown; //否者返回横屏
     
-    AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-    NSNumber *strlon=kkAppDelegate.currentlogingUser.currentGamedirection;
-    if([strlon integerValue]==1)
-    {
-        return UIInterfaceOrientationMaskLandscape; //否者返回横屏
-    }
-  
-    //如果是非1， 返回竖屏
-    return UIInterfaceOrientationMaskPortrait;
+//    AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+//    NSNumber *strlon=kkAppDelegate.currentlogingUser.currentGamedirection;
+//    if([strlon integerValue]==1)
+//    {
+//        return UIInterfaceOrientationMaskLandscape; //否者返回横屏
+//    }
+//  
+//    //如果是非1， 返回竖屏
+//    return UIInterfaceOrientationMaskPortrait;
 
 }
 

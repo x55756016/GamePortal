@@ -71,6 +71,23 @@ UIKIT_EXTERN NSString *userFolderPath;
     return timeString;
 }
 
++(BOOL)StringIsEmptyOrNull:(NSString*)kenString
+{
+    if (kenString == nil || kenString == NULL) {
+        return YES;
+    }
+    if ([kenString isKindOfClass:[NSNull class]]) {
+        return YES;
+    }
+    if ([[kenString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
+        return YES;
+    }
+    if([kenString isEqual:[NSNull null]])
+    {
+        return YES;
+    }
+    return NO;
+}
 +(NSString*)getUserDistinctFromMyPoint:(NSDictionary*)dStartUser:(CurrentUser *)LoginUser
 {
     NSString *strDistinct=[dStartUser objectForKey:@"LocJson"];
@@ -210,19 +227,33 @@ UIKIT_EXTERN NSString *userFolderPath;
     [imageData writeToFile:imagePath atomically:YES];
 }
 
-+(NSString *)getImagePath:(NSString*)path:(NSString*)strType
++(NSString *)getKKImagePath:(NSString*)path:(NSString*)strType
 {
-    NSString *imagepath;
     if([strType isEqualToString:@"s"]){//小
-    imagepath = [path stringByReplacingOccurrencesOfString:@".jpg" withString:@"_s.jpg"];
+        NSString *existStr = @"_s.jpg";
+        if ([path rangeOfString:existStr].location == NSNotFound){
+            path = [path stringByReplacingOccurrencesOfString:@".jpg" withString:@"_s.jpg"];
+            path = [path stringByReplacingOccurrencesOfString:@".jpeg" withString:@"_s.jpeg"];
+            path = [path stringByReplacingOccurrencesOfString:@".png" withString:@"_s.png"];
+        }
     }
     if([strType isEqualToString:@"b"]){//大
-        imagepath = [path stringByReplacingOccurrencesOfString:@".jpg" withString:@"_b.jpg"];
+        NSString *existStr = @"_b.jpg";
+        if ([path rangeOfString:existStr].location == NSNotFound){
+            path = [path stringByReplacingOccurrencesOfString:@".jpg" withString:@"_b.jpg"];
+            path = [path stringByReplacingOccurrencesOfString:@".jpeg" withString:@"_b.jpeg"];
+            path = [path stringByReplacingOccurrencesOfString:@".png" withString:@"_b.png"];
+        }
     }
     if([strType isEqualToString:@"n"]){//普通
-        imagepath = [path stringByReplacingOccurrencesOfString:@".jpg" withString:@"_n.jpg"];
+        NSString *existStr = @"_n.jpg";
+        if ([path rangeOfString:existStr].location == NSNotFound){
+            path = [path stringByReplacingOccurrencesOfString:@".jpg" withString:@"_n.jpg"];
+            path = [path stringByReplacingOccurrencesOfString:@".jpeg" withString:@"_n.jpeg"];
+            path = [path stringByReplacingOccurrencesOfString:@".png" withString:@"_n.png"];
+        }
     }
-    return imagepath;
+    return path;
 }
 
 //+ (NSMutableArray *) getAllContacts
