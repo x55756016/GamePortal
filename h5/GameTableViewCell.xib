@@ -20,7 +20,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGl-pS-ilw">
+                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGl-pS-ilw">
                         <rect key="frame" x="262" y="17" width="50" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="WTE-WA-LDF"/>
@@ -56,11 +56,6 @@
                     <constraint firstItem="AwN-ZT-kL0" firstAttribute="bottom" secondItem="lkS-hY-weh" secondAttribute="bottom" constant="1" id="eQp-Y7-opy"/>
                     <constraint firstItem="ebc-tc-7Ao" firstAttribute="leading" secondItem="AwN-ZT-kL0" secondAttribute="trailing" constant="10" id="qT3-FA-mWm"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="IJU-XW-1T4"/>
-                    </mask>
-                </variation>
                 <variation key="heightClass=regular-widthClass=compact">
                     <mask key="constraints">
                         <include reference="dmr-N7-EM0"/>

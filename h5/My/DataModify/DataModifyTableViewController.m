@@ -114,7 +114,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     else
     {
         NSString *HeadIMGstring = [userInfo objectForKey:@"PicPath"];
-        HeadIMGstring = [HeadIMGstring stringByReplacingOccurrencesOfString:@".jpg" withString:@"_b.jpg"];
+        HeadIMGstring = [HeadIMGstring stringByReplacingOccurrencesOfString:@".jpg" withString:@"_s.jpg"];
         [self.headImageView sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
     }
 }
@@ -128,6 +128,8 @@ UIKIT_EXTERN NSString *userFolderPath;
     if([mediaType isEqualToString:kUTType])
     {
         UIImage *headImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+        headImage=[KKUtility imageByScalingAndCroppingForSourceImage:headImage targetSize:CGSizeMake(100, 100)];
+        
         uploadImageData = UIImageJPEGRepresentation(headImage, 0.1);
         self.headImageView.image = [UIImage imageWithData:uploadImageData];
         

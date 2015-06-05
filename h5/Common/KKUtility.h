@@ -54,4 +54,6 @@
 +(CGRect) CGRectMakeForAllIphone:(CGFloat) x:(CGFloat) y:(CGFloat) width:(CGFloat) height;
 //判断字符串是否为空
 +(BOOL)StringIsEmptyOrNull:(NSString*)kenString;
+//拉伸Uiimage到新尺寸
++ (UIImage *)imageByScalingAndCroppingForSourceImage:(UIImage *)sourceImage targetSize:(CGSize)targetSize;
 @end

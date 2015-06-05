@@ -83,40 +83,60 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 -(void)initContentScrollView
 {
-    CGRect StateBarRect;
-    StateBarRect = [[UIApplication sharedApplication] statusBarFrame];
-    CGRect rectNav = self.navigationController.navigationBar.frame;
-    
+//    CGRect StateBarRect;
+//    StateBarRect = [[UIApplication sharedApplication] statusBarFrame];
+//    CGRect rectNav = self.navigationController.navigationBar.frame;
+//    
     menuNameArray = @[@"HotGameView", @"MyGame",@"Classify"];
-    if(IS_iOS8){
-            self.conScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, StateBarRect.size.height+rectNav.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-StateBarRect.size.height-rectNav.size.height)];//[UIScreen mainScreen].bounds.size.height-49-64)];
-    }else
-    {
-            self.conScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-StateBarRect.size.height-rectNav.size.height)];//[UIScreen mainScreen].bounds.size.height-49-64)];
-    }
-
-    self.conScrollView.pagingEnabled = YES;
-    self.conScrollView.delegate = self;
-    self.conScrollView.bounces = NO;
-    self.conScrollView.showsHorizontalScrollIndicator = NO;
-    self.conScrollView.tag = 110;
-    self.conScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width*menuNameArray.count, 0);
-    [self.view addSubview:self.conScrollView];
+//    if(IS_iOS8){
+//            self.conScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, StateBarRect.size.height+rectNav.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-StateBarRect.size.height-rectNav.size.height)];//[UIScreen mainScreen].bounds.size.height-49-64)];
+//    }else
+//    {
+//            self.conScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-StateBarRect.size.height-rectNav.size.height)];//[UIScreen mainScreen].bounds.size.height-49-64)];
+//    }
+//
+//    self.conScrollView.pagingEnabled = YES;
+//    self.conScrollView.delegate = self;
+//    self.conScrollView.bounces = NO;
+//    self.conScrollView.showsHorizontalScrollIndicator = NO;
+//    self.conScrollView.tag = 110;
+//    self.conScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width*menuNameArray.count, 0);
+//    [self.view addSubview:self.conScrollView];
 //    NSLog(@"[%f][%f][%f][%f]", self.conScrollView.frame.origin.x, self.conScrollView.frame.origin.y, self.conScrollView.frame.size.width, self.conScrollView.frame.size.height);
 
 //    for (int i = 0; i < menuNameArray.count; i++)
-    for (int i = 0; i < 1; i++)
-    {
-        UIView *conView = (UIView *)[[[NSBundle mainBundle]loadNibNamed:[menuNameArray objectAtIndex:i] owner:self options:nil] objectAtIndex:0];
-        conView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width*i, 0,
-                                        self.conScrollView.frame.size.width, self.conScrollView.frame.size.height-44);
-        [self.conScrollView addSubview:conView];
-    }
+//    for (int i = 0; i < 1; i++)
+//    {
+//        UIView *conView = (UIView *)[[[NSBundle mainBundle]loadNibNamed:[menuNameArray objectAtIndex:i] owner:self options:nil] objectAtIndex:0];
+//        conView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width*i, 0,
+//                                        self.conScrollView.frame.size.width, self.conScrollView.frame.size.height-44);
+//        [self.conScrollView addSubview:conView];
+//    }
+//        if(IS_iOS8){
+//                self.conScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, StateBarRect.size.height+rectNav.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-StateBarRect.size.height-rectNav.size.height)];//[UIScreen mainScreen].bounds.size.height-49-64)];
+//        }else
+//        {
+//                self.conScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-StateBarRect.size.height-rectNav.size.height)];//[UIScreen mainScreen].bounds.size.height-49-64)];
+//        }
     
+//    UIView *conView = (UIView *)[[[NSBundle mainBundle]loadNibNamed:[menuNameArray objectAtIndex:0] owner:self options:nil] objectAtIndex:0];
+//    
+//    
+//    CGRect StateBarRect = [[UIApplication sharedApplication] statusBarFrame];
+//    CGRect rectNav = self.navigationController.navigationBar.frame;
+//    CGRect tabRect=self.tabBarController.tabBar.frame;
+//    float PointY=0;
+//    if(IS_iOS8){
+//        PointY= StateBarRect.size.height+rectNav.size.height;
+//    }
+//    conView.frame = CGRectMake(0, PointY,ScreenWidth,ScreenHeight-PointY-tabRect.size.height);
+////    [self.conScrollView addSubview:conView];
+//
+//     [self.view addSubview:conView];
     //过滤分割线
     UILabel *footLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 0)];
-    footLabel.backgroundColor = [UIColor clearColor];
-    self.hotGameTableView.tableFooterView = footLabel;
+//    footLabel.backgroundColor = [UIColor clearColor];
+//    self.hotGameTableView.tableFooterView = footLabel;
     self.myGameTableView.tableFooterView = footLabel;
     self.classifyTableView.tableFooterView = footLabel;
 }

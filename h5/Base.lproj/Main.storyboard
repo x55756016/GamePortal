@@ -1960,10 +1960,10 @@
                                                     <include reference="oFG-LM-Zrz"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <include reference="izC-QY-ttu"/>
                                                     <include reference="AAt-x0-yjG"/>
                                                     <include reference="GDe-rp-2Xr"/>
                                                     <include reference="TkK-RH-mcY"/>
-                                                    <include reference="izC-QY-ttu"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -2128,10 +2128,10 @@
                                                     <include reference="3a1-ya-nvS"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <include reference="L7o-z0-WRo"/>
                                                     <include reference="B4p-hG-OHg"/>
                                                     <include reference="DE4-D0-xP1"/>
                                                     <include reference="akP-0Z-p2z"/>
-                                                    <include reference="L7o-z0-WRo"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -2163,24 +2163,11 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qi-RX-uRN">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="Fse-9E-PRI">
-                                                            <variation key="heightClass=regular-widthClass=compact" constant="200"/>
-                                                        </constraint>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="Fse-9E-PRI"/>
-                                                        </mask>
-                                                    </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <mask key="constraints">
-                                                            <include reference="Fse-9E-PRI"/>
-                                                        </mask>
                                                     </variation>
                                                 </label>
                                             </subviews>
@@ -2188,6 +2175,7 @@
                                                 <constraint firstAttribute="centerY" secondItem="jv9-jy-edv" secondAttribute="centerY" constant="-0.5" id="3jk-An-nw5">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                                                 </constraint>
+                                                <constraint firstAttribute="trailing" secondItem="9Qi-RX-uRN" secondAttribute="trailing" constant="10" id="6XW-u1-Ucd"/>
                                                 <constraint firstItem="jv9-jy-edv" firstAttribute="leading" secondItem="VML-Pl-Izk" secondAttribute="leading" constant="10" id="7Uv-Fq-MmU"/>
                                                 <constraint firstItem="9Qi-RX-uRN" firstAttribute="centerY" secondItem="jv9-jy-edv" secondAttribute="centerY" id="lcH-9T-0Yu"/>
                                                 <constraint firstItem="9Qi-RX-uRN" firstAttribute="leading" secondItem="jv9-jy-edv" secondAttribute="trailing" constant="184" id="p0t-mV-IhF">
@@ -2212,6 +2200,7 @@
                                                 <mask key="constraints">
                                                     <include reference="3jk-An-nw5"/>
                                                     <include reference="7Uv-Fq-MmU"/>
+                                                    <include reference="6XW-u1-Ucd"/>
                                                     <include reference="lcH-9T-0Yu"/>
                                                     <include reference="p0t-mV-IhF"/>
                                                 </mask>
@@ -3489,8 +3478,9 @@
             <objects>
                 <tableViewController id="qds-it-b9V" userLabel="注册信息" customClass="SumbitViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Alc-1i-qD6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle=" " id="KKK-fT-oAE">
                                 <cells>
@@ -3611,11 +3601,11 @@
                                                     <exclude reference="pCa-qG-DBe"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="F03-sN-1j7"/>
-                                                    <exclude reference="aQd-aI-rYo"/>
                                                     <exclude reference="4yJ-BW-fvQ"/>
                                                     <exclude reference="Edr-ux-vOe"/>
                                                     <exclude reference="Tbn-QN-1fk"/>
+                                                    <exclude reference="F03-sN-1j7"/>
+                                                    <exclude reference="aQd-aI-rYo"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -3624,11 +3614,11 @@
                                                     <include reference="pCa-qG-DBe"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="F03-sN-1j7"/>
-                                                    <include reference="aQd-aI-rYo"/>
                                                     <include reference="4yJ-BW-fvQ"/>
                                                     <include reference="Edr-ux-vOe"/>
                                                     <include reference="Tbn-QN-1fk"/>
+                                                    <include reference="F03-sN-1j7"/>
+                                                    <include reference="aQd-aI-rYo"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -3680,11 +3670,11 @@
                                                     <exclude reference="vwF-aO-Z2F"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="1Vs-ee-5Rm"/>
-                                                    <exclude reference="ONS-Ei-PD1"/>
                                                     <exclude reference="LiQ-vG-Zsc"/>
                                                     <exclude reference="Zzo-XL-VtI"/>
                                                     <exclude reference="tzp-Rf-hNv"/>
+                                                    <exclude reference="1Vs-ee-5Rm"/>
+                                                    <exclude reference="ONS-Ei-PD1"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -3693,11 +3683,11 @@
                                                     <include reference="vwF-aO-Z2F"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="1Vs-ee-5Rm"/>
-                                                    <include reference="ONS-Ei-PD1"/>
                                                     <include reference="LiQ-vG-Zsc"/>
                                                     <include reference="Zzo-XL-VtI"/>
                                                     <include reference="tzp-Rf-hNv"/>
+                                                    <include reference="1Vs-ee-5Rm"/>
+                                                    <include reference="ONS-Ei-PD1"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -4550,7 +4540,7 @@
         <!--游戏列表Controller-->
         <scene sceneID="4vh-Ll-GgZ">
             <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="sYU-KH-67N" userLabel="游戏列表Controller" customClass="GameListViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" id="sYU-KH-67N" userLabel="游戏列表Controller" customClass="GameListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c4i-X4-erq"/>
                         <viewControllerLayoutGuide type="bottom" id="ttt-X6-wZk"/>
@@ -4558,10 +4548,46 @@
                     <view key="view" contentMode="scaleToFill" id="2BW-2a-GvQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4h5-tp-vJQ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="sYU-KH-67N" id="0le-2s-tqH"/>
+                                    <outlet property="delegate" destination="sYU-KH-67N" id="Vcu-TF-tzt"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4h5-tp-vJQ" secondAttribute="trailing" id="I16-jH-UZ5"/>
+                            <constraint firstItem="4h5-tp-vJQ" firstAttribute="leading" secondItem="2BW-2a-GvQ" secondAttribute="leading" id="NhN-cU-qTb"/>
+                            <constraint firstItem="4h5-tp-vJQ" firstAttribute="top" secondItem="2BW-2a-GvQ" secondAttribute="top" id="UDf-iT-Ggj"/>
+                            <constraint firstAttribute="bottom" secondItem="4h5-tp-vJQ" secondAttribute="bottom" id="VFA-MD-8Lf">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-64"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="4h5-tp-vJQ"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="4h5-tp-vJQ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="I16-jH-UZ5"/>
+                                <include reference="NhN-cU-qTb"/>
+                                <include reference="UDf-iT-Ggj"/>
+                                <include reference="VFA-MD-8Lf"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="KK游戏" id="Rcf-iO-Vf8"/>
                     <connections>
+                        <outlet property="hotGameTableView" destination="4h5-tp-vJQ" id="Gvr-uq-IyF"/>
                         <segue destination="NGF-ku-C98" kind="show" identifier="PushWebGame" id="d0U-lo-Ceb"/>
                         <segue destination="eub-4p-O1c" kind="show" identifier="showGameDetail" id="WTG-Qz-ySa"/>
                     </connections>
@@ -4717,11 +4743,11 @@
                         <viewControllerLayoutGuide type="bottom" id="kca-xK-9QE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Mh-nj-pnn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView tag="123" contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZr-Jy-9HG">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </webView>
                         </subviews>
                         <constraints>
@@ -4788,7 +4814,7 @@
             <objects>
                 <tableViewController id="eub-4p-O1c" userLabel="游戏详情" customClass="GameDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="TTo-bA-f1i">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -4993,6 +5019,7 @@
                             <outlet property="delegate" destination="eub-4p-O1c" id="6uu-ow-Fho"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="游戏详情" id="3Cc-v1-BEP"/>
                     <connections>
                         <outlet property="HeadTableViewCell" destination="wk2-Ck-Htu" id="ivt-wo-TlF"/>
@@ -5226,11 +5253,11 @@
                                                     <include reference="B5j-H2-IQO"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="lDh-PF-xCB"/>
-                                                    <include reference="mRg-bu-DkQ"/>
                                                     <include reference="4Cu-9p-8LO"/>
                                                     <include reference="WtZ-ZP-fah"/>
                                                     <include reference="uZf-5K-fPf"/>
+                                                    <include reference="lDh-PF-xCB"/>
+                                                    <include reference="mRg-bu-DkQ"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -5345,8 +5372,8 @@
         <image name="1_liansai" width="42" height="42"/>
         <image name="bg_input" width="306" height="37"/>
         <image name="general_button" width="130" height="62"/>
-        <image name="mainBoard_NavFound" width="40" height="40"/>
-        <image name="mainBoard_NavGame" width="40" height="40"/>
+        <image name="mainBoard_NavFound" width="48" height="48"/>
+        <image name="mainBoard_NavGame" width="58" height="58"/>
         <image name="mainBoard_found" width="63" height="44"/>
         <image name="mainBoard_foundSelected" width="63" height="44"/>
         <image name="mainBoard_friends" width="50" height="50"/>
@@ -5364,10 +5391,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="KS5-n6-cTt"/>
-        <segue reference="foh-gx-4Hm"/>
         <segue reference="WTG-Qz-ySa"/>
         <segue reference="FuQ-bi-L0s"/>
-        <segue reference="7ml-Ma-xWx"/>
         <segue reference="Jwx-wI-rdu"/>
+        <segue reference="zVw-oc-Kg7"/>
+        <segue reference="Wkf-TW-zIW"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -25,21 +25,14 @@
                 </tableView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="eiC-To-W7T" secondAttribute="trailing" id="Cs2-m1-SHP"/>
-                <constraint firstAttribute="bottom" secondItem="eiC-To-W7T" secondAttribute="bottom" id="ShE-Nj-exw"/>
-                <constraint firstItem="eiC-To-W7T" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kyX-WS-inY"/>
-                <constraint firstItem="eiC-To-W7T" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zeH-i7-vTl"/>
+                <constraint firstAttribute="bottom" secondItem="eiC-To-W7T" secondAttribute="bottom" id="1kY-8j-GPs"/>
+                <constraint firstItem="eiC-To-W7T" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3kp-5q-Pfx"/>
+                <constraint firstItem="eiC-To-W7T" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eSP-Jn-bkk"/>
+                <constraint firstAttribute="trailing" secondItem="eiC-To-W7T" secondAttribute="trailing" id="yhV-J8-RZA"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="eiC-To-W7T"/>
-                </mask>
-                <mask key="constraints">
-                    <exclude reference="Cs2-m1-SHP"/>
-                    <exclude reference="ShE-Nj-exw"/>
-                    <exclude reference="kyX-WS-inY"/>
-                    <exclude reference="zeH-i7-vTl"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -47,10 +40,10 @@
                     <include reference="eiC-To-W7T"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="Cs2-m1-SHP"/>
-                    <include reference="ShE-Nj-exw"/>
-                    <include reference="kyX-WS-inY"/>
-                    <include reference="zeH-i7-vTl"/>
+                    <include reference="1kY-8j-GPs"/>
+                    <include reference="3kp-5q-Pfx"/>
+                    <include reference="eSP-Jn-bkk"/>
+                    <include reference="yhV-J8-RZA"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="468" y="306"/>
