@@ -128,7 +128,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     if([mediaType isEqualToString:kUTType])
     {
         UIImage *headImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-        headImage=[KKUtility imageByScalingAndCroppingForSourceImage:headImage targetSize:CGSizeMake(100, 100)];
+        headImage=[KKUtility imageByScalingAndCroppingForSourceImage:headImage targetSize:CGSizeMake(500, 500)];
         
         uploadImageData = UIImageJPEGRepresentation(headImage, 0.1);
         self.headImageView.image = [UIImage imageWithData:uploadImageData];

@@ -50,6 +50,9 @@
     
     
     bool isSettingStatusBar;
+    
+    //横屏游戏需弹出提示框
+    UIAlertView *alertLoding;
 
 }
 @end
@@ -69,7 +72,7 @@
         userInfo=[KKUtility getUserInfoFromLocalFile];
         
         self.gameWebView.scrollView.scrollEnabled=false;//禁止滚动
-        
+        self.gameWebView.delegate=self;
         //科大讯飞创建语音听写的对象
         // 创建识别对象
         self.iFlySpeechRecognizer = [IFlySpeechRecognizer sharedInstance];
@@ -97,6 +100,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {        //恢复状态栏方向
+    landorprot=@"0";
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏初始状态
     isSettingStatusBar=false;
     self.view.transform =CGAffineTransformIdentity;
@@ -488,6 +492,14 @@
             kkAppDelegate.currentlogingUser.currentGamedirection=[NSNumber numberWithInteger:1];
             [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];  //设置状态栏横屏
             
+           
+            
+            alertLoding = [[UIAlertView alloc]initWithTitle:@"正在加载游戏资源，请稍等......"
+                                                                                 message:nil
+                                                                                delegate:nil
+                                                                       cancelButtonTitle:nil
+                                                                       otherButtonTitles:nil, nil];
+            [alertLoding show];
         }
         else
         {
@@ -571,10 +583,6 @@
 
 - (IBAction)exitAction:(id)sender
 {
-//    CGRect rect=  [[UIScreen mainScreen]bounds];
-    [KKUtility showViewGrenct:nil :nil];
-    
-    
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确定要退出?"
                                                    message:nil
                                                   delegate:self
@@ -597,11 +605,12 @@
 //---------------------------UIWebViewDelegate--------------------------//
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    NSLog(@"webViewDidFinishLoad");
+    [alertLoding dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    [alertLoding dismissWithClickedButtonIndex:0 animated:YES];
     [KKUtility showHttpErrorMsg:nil :error];
 }
 
@@ -658,26 +667,16 @@
 - (void)keyboardWillChangeFrame:(NSNotification *)notification
 {
     NSDictionary *info = [notification userInfo];
-    NSValue *value = [info objectForKey:UIKeyboardFrameBeginUserInfoKey];
-    CGSize keyboardSize = [value CGRectValue].size;
-    float fY =0;
-    UIDevice *device = [UIDevice currentDevice];
-    switch (device.orientation) {
-        case UIDeviceOrientationLandscapeLeft:
-          fY= 40 + keyboardSize.width; //横屏高度变成宽度了
-            break;
-            
-        case UIDeviceOrientationLandscapeRight:
-           fY= 40 + keyboardSize.width; //横屏高度变成宽度了
-            break;
-            default:
-            fY= 40 + keyboardSize.height;
-            break;
-    }
+//    NSValue *value = [info objectForKey:UIKeyboardFrameBeginUserInfoKey];    
+    CGRect beginKeyboardRect = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    CGRect endKeyboardRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+
+    float fY= 40 + endKeyboardRect.size.height;
+    NSLog(@"distanceToMove=%f,beginKeyboard=%f,endKeyboard=%f,fY=%f",beginKeyboardRect.size.height,endKeyboardRect.size.height,fY);
     [self.view removeConstraint:ButtomHeightconstraint];
     ButtomHeightconstraint = [NSLayoutConstraint constraintWithItem:ButtomBarView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:fY];
     [self.view addConstraint:ButtomHeightconstraint];
-    myButton.frame = CGRectMake(20, 20, 40, 40);
+    myButton.frame = CGRectMake(0, 40, 40, 40);
 }
 
 
@@ -1009,6 +1008,7 @@
 //         [UIView commitAnimations];
 //    
 //    }
+
 @end
 
 

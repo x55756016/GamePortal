@@ -60,6 +60,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[GameWebViewController keyboardWillChangeFrame:]:GameWebViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "device.orientation">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[GameDetailViewController loadGameDescImg]:GameDetailViewController.m">
       </ContextState>
       <ContextState

@@ -52,8 +52,16 @@ UIKIT_EXTERN NSString *userFolderPath;
         [KKUtility justAlert:@"请手工开启定位:设置 > 隐私 > 位置 > 定位服务 找到 KK玩 设置为始终,否则无法查找附近的好友。"];
         return;
     }
-    //加载附近数据
-    [self loadAround];
+    
+    //首次进来下拉刷新
+    __weak typeof(self) weakSelf = self;
+    [self.tableView addLegendHeaderWithRefreshingBlock:^{        
+        //加载附近数据
+        [weakSelf loadAround];
+    }];
+    [self.tableView.legendHeader beginRefreshing];
+
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,12 +111,16 @@ UIKIT_EXTERN NSString *userFolderPath;
 //        NSLog(@"aroundArray[%d][%@]", aroundArray.count, aroundArray);
     }
     [self.tableView reloadData];
+    [self.tableView.header endRefreshing];
+    [self.tableView.footer endRefreshing];
 }
 
 - (void)loadAroundFail:(ASIHTTPRequest *)req
 {
     [KKUtility showHttpErrorMsg:@"加载附近数据失败" :req.error];
     [self.tableView reloadData];
+    [self.tableView.header endRefreshing];
+    [self.tableView.footer endRefreshing];
 }
 
 //------------------------------------------ Table view data source --------------------------------------------//
