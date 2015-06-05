@@ -113,7 +113,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     cell.matchDetailLabel.text = [matchDict objectForKey:@"Summary"];
     [cell.btnOpenActiveDetail addTarget:self action:@selector(OpenActiveDetail:) forControlEvents:UIControlEventTouchUpInside];
 
-    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 //    NSArray *descImgArray = [[matchDict objectForKey:@"DescImg"] componentsSeparatedByString:@"||"];
     NSString *strUrl=[matchDict objectForKey:@"Logo"];
     [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:strUrl] placeholderImage:[UIImage imageNamed:@"mainBoard_adLogoDefault"]];
@@ -128,15 +128,15 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    NSDictionary *matchDict = matchArray[indexPath.row];
-//    NSString *strUrl=[NSString stringWithFormat:@"%@", [matchDict objectForKey:@"ContentPageID"]];
-//    
-//    NSString *strActive=[@"http://www.h5kk.com/KKActive/" stringByAppendingString:strUrl];
-//    strUrl =strActive;
-//    
-//    NSDictionary *adDic=[NSDictionary dictionaryWithObject:strUrl forKey:@"Url"];
+    NSDictionary *matchDict = matchArray[indexPath.row];
+    NSString *strUrl=[NSString stringWithFormat:@"%@", [matchDict objectForKey:@"ContentPageID"]];
+//
+    NSString *strActive=[@"http://www.h5kk.com/KKActive/" stringByAppendingString:strUrl];
+    strUrl =strActive;
+//
+    NSDictionary *adDic=[NSDictionary dictionaryWithObject:strUrl forKey:@"Url"];
 //    NSLog(@"查看联赛排名详情[%@]", adDic);
-//    [self performSegueWithIdentifier:@"openMatchInfoWeb" sender:adDic];
+    [self performSegueWithIdentifier:@"openMatchInfoWeb" sender:adDic];
     
 
 }

@@ -2301,10 +2301,10 @@
                                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="35" id="Cgx-H3-lgL">
-                                                                    <variation key="heightClass=regular-widthClass=compact" constant="31"/>
+                                                                    <variation key="heightClass=regular-widthClass=compact" constant="33"/>
                                                                 </constraint>
                                                                 <constraint firstAttribute="width" constant="120" id="aiV-6D-Hwi">
-                                                                    <variation key="heightClass=regular-widthClass=compact" constant="65"/>
+                                                                    <variation key="heightClass=regular-widthClass=compact" constant="90"/>
                                                                 </constraint>
                                                             </constraints>
                                                             <state key="normal" title="发送信息" backgroundImage="general_button">
@@ -2331,10 +2331,10 @@
                                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="35" id="3mG-a6-WAj">
-                                                                    <variation key="heightClass=regular-widthClass=compact" constant="31"/>
+                                                                    <variation key="heightClass=regular-widthClass=compact" constant="33"/>
                                                                 </constraint>
                                                                 <constraint firstAttribute="width" constant="120" id="kdV-oN-GF4">
-                                                                    <variation key="heightClass=regular-widthClass=compact" constant="65"/>
+                                                                    <variation key="heightClass=regular-widthClass=compact" constant="90"/>
                                                                 </constraint>
                                                             </constraints>
                                                             <state key="normal" title="加为好友" backgroundImage="general_button">
@@ -5391,10 +5391,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Jwx-wI-rdu"/>
-        <segue reference="7ml-Ma-xWx"/>
+        <segue reference="Wkf-TW-zIW"/>
         <segue reference="zVw-oc-Kg7"/>
-        <segue reference="KS5-n6-cTt"/>
-        <segue reference="WTG-Qz-ySa"/>
+        <segue reference="iID-OB-lrr"/>
         <segue reference="FuQ-bi-L0s"/>
+        <segue reference="KS5-n6-cTt"/>
     </inferredMetricsTieBreakers>
 </document>

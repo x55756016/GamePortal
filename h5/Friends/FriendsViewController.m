@@ -181,7 +181,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     [regularDataArr addObjectsFromArray:self.sortedArrForArrays];
     self.sortedArrForArrays = regularDataArr;
 
-    NSMutableArray *regularSectionHeadsKeysArr = [NSMutableArray arrayWithObjects:@"",@"", @"", nil];
+    NSMutableArray *regularSectionHeadsKeysArr = [NSMutableArray arrayWithObjects:@"", nil];
     [regularSectionHeadsKeysArr addObjectsFromArray:self.sectionHeadsKeys];
     self.sectionHeadsKeys = regularSectionHeadsKeysArr;
     
