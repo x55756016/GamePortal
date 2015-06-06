@@ -5,6 +5,11 @@
 //  Created by hf on 15/3/30.
 //  Copyright (c) 2015年 hf. All rights reserved.
 //
+#ifdef __OPTIMIZE__
+# define NSLog(...) {}
+#else
+# define NSLog(...) NSLog(__VA_ARGS__)
+#endif
 
 #import <UIKit/UIKit.h>
 #import "RCIM.h"

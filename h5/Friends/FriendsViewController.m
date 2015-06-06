@@ -49,6 +49,9 @@ UIKIT_EXTERN NSString *userFolderPath;
     [self UpAndDownPull];
     //加载好友数据
     //[self loadFriends];
+    self.dataArr = [[NSMutableArray alloc] init];
+    self.sortedArrForArrays = [[NSMutableArray alloc]init];
+    self.sectionHeadsKeys = [[NSMutableArray alloc]init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,33 +77,40 @@ UIKIT_EXTERN NSString *userFolderPath;
 //--------------------------------------加载好友数据-----------------------------------------------//
 -(void)loadFriends
 {
-    self.dataArr = [[NSMutableArray alloc] init];
-    self.sortedArrForArrays = [[NSMutableArray alloc]init];
-    self.sectionHeadsKeys = [[NSMutableArray alloc]init];
-    
-    NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *dataListName = @"friendList";
-    NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:dataListName];
-    
-    BOOL isUserInfoFolderCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserInfoFolder isDirectory:nil];
-    if (isUserInfoFolderCreate)
-    {
-        friendsArray = [NSArray arrayWithContentsOfFile:UserInfoFolder];
+    @try {
+        NSUserDefaults *saveDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *dataListName = @"friendList";
+        NSString *UserInfoFolder = [[userFolderPath stringByAppendingPathComponent:[saveDefaults objectForKey:@"currentId"]] stringByAppendingPathComponent:dataListName];
+        
+        BOOL isUserInfoFolderCreate = [[NSFileManager defaultManager] fileExistsAtPath:UserInfoFolder isDirectory:nil];
+        if (isUserInfoFolderCreate)
+        {
+            friendsArray = [NSArray arrayWithContentsOfFile:UserInfoFolder];
+            if(friendsArray.count==0)
+            {
+                return;
+            }
+        }
+        
+        NSString *urlStr = GET_FRIEND;
+        NSURL *url = [NSURL URLWithString:urlStr];
+        
+        request = [ASIFormDataRequest requestWithURL:url];
+        [request setTimeOutSeconds:10.0];
+        [request setDelegate:self];
+        [request setRequestMethod:@"POST"];
+        [request setPostValue:@"1.0" forKey:@"version"];
+        [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserId"]] forKey:@"UserId"];
+        [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserKey"]] forKey:@"UserKey"];
+        [request setDidFailSelector:@selector(loadFriendsFail:)];
+        [request setDidFinishSelector:@selector(loadFriendsFinish:)];
+        [request startAsynchronous];
     }
-   
-    NSString *urlStr = GET_FRIEND;
-    NSURL *url = [NSURL URLWithString:urlStr];
-    
-    request = [ASIFormDataRequest requestWithURL:url];
-    [request setTimeOutSeconds:10.0];
-    [request setDelegate:self];
-    [request setRequestMethod:@"POST"];
-    [request setPostValue:@"1.0" forKey:@"version"];
-    [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserId"]] forKey:@"UserId"];
-    [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserKey"]] forKey:@"UserKey"];
-    [request setDidFailSelector:@selector(loadFriendsFail:)];
-    [request setDidFinishSelector:@selector(loadFriendsFinish:)];
-    [request startAsynchronous];
+    @catch (NSException *exception) {
+        [self.friendTableView.header endRefreshing];
+        [self.friendTableView.footer endRefreshing];
+        [KKUtility logSystemErrorMsg:exception.reason :nil];
+    }
 }
 
 - (void)loadFriendsFinish:(ASIHTTPRequest *)req
@@ -111,13 +121,14 @@ UIKIT_EXTERN NSString *userFolderPath;
         NSError *error;
         NSData *responseData = [req responseData];
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
-        //    NSLog(@"friendsdict[%@]",dict);
-        
         if([[dict objectForKey:@"IsSuccess"] integerValue])
         {
+            [self.dataArr removeAllObjects];
+            [self.sortedArrForArrays removeAllObjects];
+            [self.sectionHeadsKeys removeAllObjects];
+            
             [self loadFriendsData:dict];
         }
-        
         [self sequence];
     }
     @catch (NSException *exception) {
@@ -142,7 +153,6 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     @try {
         friendsArray = [dict objectForKey:@"ObjData"];
-        //    NSLog(@"friendsArray[%lu]%@", (unsigned long)friendsArray.count, friendsArray);
         //加载的人的数据保存至本地
         [self savePeopleDate:0];
     }
@@ -247,7 +257,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     @try {
         
         NSLog(@"self.sortedArrForArrays=%ld,indexPath.section=%ld",(long)self.sortedArrForArrays.count,(long)indexPath.section);
-        if(self.sortedArrForArrays.count==0)return nil;
+
         
         NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
         if(indexPath.section > 0)

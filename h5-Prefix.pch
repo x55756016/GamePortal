@@ -1,0 +1,24 @@
+//
+//  PrefixHeader.pch
+//  ＋
+//
+//  Created by Administrator on 15/6/6.
+//  Copyright (c) 2015年 hf. All rights reserved.
+//
+
+#ifndef __PrefixHeader_pch
+#define __PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+#define debugMethod() NSLog(@"%s", __func__)
+#else
+#define NSLog(...)
+#define debugMethod()
+#endif
+
+
+
+#endif
