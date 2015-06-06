@@ -1000,32 +1000,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="77l-Ha-JMp" detailTextLabel="VuL-WG-hF7" style="IBUITableViewCellStyleValue1" id="zAf-Lg-u8L">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zAf-Lg-u8L" id="5Ua-Pv-ifs">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="等级" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="77l-Ha-JMp">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    </variation>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="请填写" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VuL-WG-hF7">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    </variation>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="oi0-sw-rMd" detailTextLabel="DrE-w4-LBr" style="IBUITableViewCellStyleValue1" id="bgC-VD-3aD">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bgC-VD-3aD" id="E8c-Gt-EbJ">
@@ -1212,7 +1186,6 @@
                         <outlet property="idCell" destination="VhM-QV-x7S" id="9Ro-U7-LBQ"/>
                         <outlet property="locationCell" destination="NKG-ug-BNv" id="h7i-BE-XNo"/>
                         <outlet property="nickNameCell" destination="bgC-VD-3aD" id="YyK-4t-G7m"/>
-                        <outlet property="rankCell" destination="zAf-Lg-u8L" id="IaB-67-Yrm"/>
                         <outlet property="saveCell" destination="odr-hq-3T2" id="JKX-Jm-xl0"/>
                         <outlet property="sexCell" destination="jNL-Hf-0UR" id="0bS-IA-emY"/>
                         <outlet property="signatureCell" destination="N8J-sK-HVd" id="27O-mb-p3y"/>
@@ -1878,7 +1851,7 @@
         <scene sceneID="MXv-uL-E46">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="iOZ-tB-4tL" userLabel="好友信息" customClass="UserInfoTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="jer-Nm-7gp">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="jer-Nm-7gp">
                         <rect key="frame" x="0.0" y="64" width="320" height="680"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
@@ -4540,7 +4513,7 @@
         <!--游戏列表Controller-->
         <scene sceneID="4vh-Ll-GgZ">
             <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" id="sYU-KH-67N" userLabel="游戏列表Controller" customClass="GameListViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" id="sYU-KH-67N" userLabel="游戏列表Controller" customClass="GameListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c4i-X4-erq"/>
                         <viewControllerLayoutGuide type="bottom" id="ttt-X6-wZk"/>
@@ -4743,11 +4716,11 @@
                         <viewControllerLayoutGuide type="bottom" id="kca-xK-9QE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Mh-nj-pnn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="680"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView tag="123" contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZr-Jy-9HG">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="680"/>
                             </webView>
                         </subviews>
                         <constraints>
@@ -4814,7 +4787,7 @@
             <objects>
                 <tableViewController id="eub-4p-O1c" userLabel="游戏详情" customClass="GameDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="TTo-bA-f1i">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="616"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -5390,11 +5363,11 @@
         <image name="userDefaultHead" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jwx-wI-rdu"/>
-        <segue reference="Wkf-TW-zIW"/>
-        <segue reference="zVw-oc-Kg7"/>
-        <segue reference="iID-OB-lrr"/>
-        <segue reference="FuQ-bi-L0s"/>
         <segue reference="KS5-n6-cTt"/>
+        <segue reference="d0U-lo-Ceb"/>
+        <segue reference="zVw-oc-Kg7"/>
+        <segue reference="Wkf-TW-zIW"/>
+        <segue reference="iID-OB-lrr"/>
+        <segue reference="Jwx-wI-rdu"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -27,7 +27,7 @@
 #import "UIButton+WebCache.h"
 #import "UIImageView+WebCache.h"
 #import "FindTableViewController.h"
-
+// [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -289,6 +289,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 //－－－－－－－添加删除好友
 - (IBAction)AddFriend:(id)sender
 {
+     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
     UIButton *btn=(UIButton*)sender;
     if([btn.currentTitle isEqualToString:@"删除好友"]){
         NSString *urlStr = FriendRemove;
@@ -331,17 +332,20 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)requestUserFriendAddFinish:(ASIHTTPRequest *)request
 {
+    [SVProgressHUD dismiss];
     [KKUtility justAlert:@"添加好友成功！"];
 
 }
 
 - (void)requestFriendAddFail:(ASIHTTPRequest *)req
 {
+    [SVProgressHUD dismiss];
    [KKUtility showHttpErrorMsg:@"添加好友失败 " :req.error];
 }
 
 - (void)requestUserFriendRemoveFinish:(ASIHTTPRequest *)request
 {
+    [SVProgressHUD dismiss];
     @try {
         
         [KKUtility justAlert:@"删除好友成功！"];
@@ -357,6 +361,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)requestFriendRemoveFail:(ASIHTTPRequest *)req
 {
+   [SVProgressHUD dismiss];
    [KKUtility showHttpErrorMsg:@"删除好友失败 " :req.error];
 }
 

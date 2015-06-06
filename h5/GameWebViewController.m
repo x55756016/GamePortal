@@ -491,15 +491,6 @@
             AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
             kkAppDelegate.currentlogingUser.currentGamedirection=[NSNumber numberWithInteger:1];
             [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];  //设置状态栏横屏
-            
-           
-            
-            alertLoding = [[UIAlertView alloc]initWithTitle:@"正在加载游戏资源，请稍等......"
-                                                                                 message:nil
-                                                                                delegate:nil
-                                                                       cancelButtonTitle:nil
-                                                                       otherButtonTitles:nil, nil];
-            [alertLoding show];
         }
         else
         {
@@ -508,6 +499,13 @@
             [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait]; //设置竖屏
             NSLog(@"不需要强制横屏");
         }
+        
+        alertLoding = [[UIAlertView alloc]initWithTitle:@"正在加载游戏资源，请稍等......"
+                                                message:nil
+                                               delegate:nil
+                                      cancelButtonTitle:nil
+                                      otherButtonTitles:nil, nil];
+        [alertLoding show];
         
         NSString *urlStr = [self.gameDetailDict objectForKey:@"Url"];
         NSString *reqStr = [NSString stringWithFormat:@"%@?UserId=%@&userkey=%@", urlStr,
@@ -672,7 +670,7 @@
     CGRect endKeyboardRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
 
     float fY= 40 + endKeyboardRect.size.height;
-    NSLog(@"distanceToMove=%f,beginKeyboard=%f,endKeyboard=%f,fY=%f",beginKeyboardRect.size.height,endKeyboardRect.size.height,fY);
+    NSLog(@"beginKeyboard=%f,endKeyboard=%f,fY=%f",beginKeyboardRect.size.height,endKeyboardRect.size.height,fY);
     [self.view removeConstraint:ButtomHeightconstraint];
     ButtomHeightconstraint = [NSLayoutConstraint constraintWithItem:ButtomBarView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:fY];
     [self.view addConstraint:ButtomHeightconstraint];

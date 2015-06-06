@@ -247,14 +247,14 @@ UIKIT_EXTERN NSString *userFolderPath;
 //    NSMutableArray *regularDataArr = [NSMutableArray arrayWithObjects:@"新的朋友", @"群聊", nil];
 //    [regularDataArr addObjectsFromArray:self.sortedArrForArrays];
 //    self.sortedArrForArrays = regularDataArr;
-    RCUserInfo *rcUserInfo = [RCUserInfo new];
-    rcUserInfo.userId =  [NSString stringWithFormat:@"%@", @"UserId"];
-    rcUserInfo.name = @"KK玩客服";
-    
-    NSString *HeadIMGstring = @"PicPath";
-    HeadIMGstring = [HeadIMGstring stringByReplacingOccurrencesOfString:@".jpg" withString:@"_b.jpg"];
-    rcUserInfo.portraitUri = HeadIMGstring;
-    [self.allFriendsArray addObject:rcUserInfo];
+//    RCUserInfo *rcUserInfo = [RCUserInfo new];
+//    rcUserInfo.userId =  [NSString stringWithFormat:@"%@", @"UserId"];
+//    rcUserInfo.name = @"KK玩客服";
+//    
+//    NSString *HeadIMGstring = @"PicPath";
+//    HeadIMGstring = [HeadIMGstring stringByReplacingOccurrencesOfString:@".jpg" withString:@"_b.jpg"];
+//    rcUserInfo.portraitUri = HeadIMGstring;
+//    [self.allFriendsArray addObject:rcUserInfo];
     
     
     for(int i= 0; i < friendsArray.count; i++)

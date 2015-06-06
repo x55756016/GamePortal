@@ -25,6 +25,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[FriendsViewController tableView:numberOfRowsInSection:]:FriendsViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.sortedArrForArrays">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[SquareTableViewController scrollViewDidEndDecelerating:]:SquareTableViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -41,6 +49,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[GameListViewController initContentScrollView]:GameListViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "ScreenWidth">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[SquareTableViewController scrollTimer]:SquareTableViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -52,18 +68,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[GameListViewController initContentScrollView]:GameListViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "ScreenWidth">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "-[GameWebViewController keyboardWillChangeFrame:]:GameWebViewController.m">
          <PersistentStrings>
             <PersistentString
                value = "device.orientation">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[FriendsViewController sequence]:FriendsViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.sortedArrForArrays">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -156,7 +172,7 @@
          contextName = "-[FriendsViewController tableView:cellForRowAtIndexPath:]:FriendsViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "commonTableViewCell.nickNameLabel.text">
+               value = "self.sortedArrForArrays">
             </PersistentString>
             <PersistentString
                value = "indexPath.section">

@@ -31,6 +31,7 @@
     return [self.topViewController shouldAutorotate];
     //传递入口2. self.topViewController=SquareTableViewController(home/index)
 }
+
 -(NSUInteger)supportedInterfaceOrientations
 {
     return [self.topViewController supportedInterfaceOrientations];

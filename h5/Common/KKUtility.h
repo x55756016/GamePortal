@@ -15,6 +15,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CurrentUser.h"
 #import "MJRefresh.h"
+#import "SVProgressHUD.h"
 
 @interface KKUtility:NSObject
 

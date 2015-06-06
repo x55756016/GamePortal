@@ -41,6 +41,8 @@
 		C342F94E1B17093D00725AA2 /* ProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C342F94C1B17093D00725AA2 /* ProductTableViewCell.m */; };
 		C342F94F1B17093D00725AA2 /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C342F94D1B17093D00725AA2 /* ProductTableViewCell.xib */; };
 		C342F9551B1717E400725AA2 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C342F9521B1717E400725AA2 /* IAPHelper.m */; };
+		C35BDCA11B22AAE600238E20 /* FootTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C35BDC9F1B22AAE600238E20 /* FootTableViewCell.m */; };
+		C35BDCA21B22AAE600238E20 /* FootTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35BDCA01B22AAE600238E20 /* FootTableViewCell.xib */; };
 		C35C77491B1319840032D1D5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C35C77481B1319840032D1D5 /* StoreKit.framework */; };
 		C38E41231B048E4700F42B7D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E41201B048E4700F42B7D /* libWeChatSDK.a */; };
 		C39D014C1B1063670080AC97 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C39D014E1B1063670080AC97 /* Localizable.strings */; };
@@ -258,6 +260,9 @@
 		C342F94D1B17093D00725AA2 /* ProductTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		C342F9511B1717E400725AA2 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
 		C342F9521B1717E400725AA2 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
+		C35BDC9E1B22AAE600238E20 /* FootTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootTableViewCell.h; sourceTree = "<group>"; };
+		C35BDC9F1B22AAE600238E20 /* FootTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootTableViewCell.m; sourceTree = "<group>"; };
+		C35BDCA01B22AAE600238E20 /* FootTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FootTableViewCell.xib; sourceTree = "<group>"; };
 		C35C77481B1319840032D1D5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C38E41201B048E4700F42B7D /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		C38E41211B048E4700F42B7D /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -876,7 +881,6 @@
 			children = (
 				C3C003F91AFC4F890049002A /* Webbrowser */,
 				CB4E606C1ADFB18C00471173 /* SquareNavigationController.h */,
-				CB0A69B81AC92B74003F7775 /* AppDelegate.h */,
 				CB4E606D1ADFB18C00471173 /* SquareNavigationController.m */,
 				CB4E606F1ADFB40800471173 /* SquareTableViewController.h */,
 				CB4E60701ADFB40800471173 /* SquareTableViewController.m */,
@@ -922,9 +926,10 @@
 		CB0A69B31AC92B74003F7775 /* h5 */ = {
 			isa = PBXGroup;
 			children = (
-				C31B07671B15E97B00BAD9FF /* Shop */,
 				C32D05A81B007EF7006B1773 /* Main.storyboard */,
+				CB0A69B81AC92B74003F7775 /* AppDelegate.h */,
 				CB0A69B91AC92B74003F7775 /* AppDelegate.m */,
+				C31B07671B15E97B00BAD9FF /* Shop */,
 				C3CEEA6C1AFA3BF80062970F /* Home */,
 				C38E411E1B048E4700F42B7D /* SDK */,
 				C3A9947C1AF8696700B2D317 /* GAME */,
@@ -1268,6 +1273,9 @@
 				CB83C94C1AE9D93A0075F045 /* CommonTableViewCell.h */,
 				CB83C94D1AE9D93A0075F045 /* CommonTableViewCell.m */,
 				CB83C94E1AE9D93A0075F045 /* CommonTableViewCell.xib */,
+				C35BDC9E1B22AAE600238E20 /* FootTableViewCell.h */,
+				C35BDC9F1B22AAE600238E20 /* FootTableViewCell.m */,
+				C35BDCA01B22AAE600238E20 /* FootTableViewCell.xib */,
 			);
 			path = CommonCell;
 			sourceTree = "<group>";
@@ -1497,6 +1505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C32D86371B0ED034008D7553 /* Main.storyboard in Resources */,
+				C35BDCA21B22AAE600238E20 /* FootTableViewCell.xib in Resources */,
 				C3A994891AF86F3200B2D317 /* HotGameView.xib in Resources */,
 				C3A994B71AF8798C00B2D317 /* CityRankView.xib in Resources */,
 				C3A994AB1AF8781C00B2D317 /* WorldRankView.xib in Resources */,
@@ -1556,6 +1565,7 @@
 				CBCBF79A1AD4084600FF417D /* SearchFriendsViewController.m in Sources */,
 				CB4E606E1ADFB18C00471173 /* SquareNavigationController.m in Sources */,
 				CB83C9641AE9F81F0075F045 /* FindMatchTableViewController.m in Sources */,
+				C35BDCA11B22AAE600238E20 /* FootTableViewCell.m in Sources */,
 				CB5C053E1AD14FA9008C347E /* FriendsViewController.m in Sources */,
 				CB6ED1FC1AD37A4100A33BB8 /* SDImageCache.m in Sources */,
 				CB89060A1ACA35AD00D12F8F /* MainTabBarController.m in Sources */,

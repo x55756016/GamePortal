@@ -21,6 +21,7 @@
 #import "AppDelegate.h"
 #import "ChatViewController.h"
 #import "KKUtility.h"
+#import "FootTableViewCell.h"
 
 UIKIT_EXTERN NSString *userFolderPath;
 
@@ -132,8 +133,8 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     [self.friendTableView.header endRefreshing];
     [self.friendTableView.footer endRefreshing];
-    [KKUtility showHttpErrorMsg:@"获取好友信息失败 " :req.error];
-    [self sequence];
+    [KKUtility showHttpErrorMsg:nil :nil];
+//    [self sequence];
 }
 
 //好友数据刷表
@@ -142,8 +143,6 @@ UIKIT_EXTERN NSString *userFolderPath;
     @try {
         friendsArray = [dict objectForKey:@"ObjData"];
         //    NSLog(@"friendsArray[%lu]%@", (unsigned long)friendsArray.count, friendsArray);
-        NSString *countFriend=[NSString stringWithFormat:@"%lu,%@" , (unsigned long)[friendsArray count], @"位联系人" ];
-        [self.labFriendcount setText:countFriend];
         //加载的人的数据保存至本地
         [self savePeopleDate:0];
     }
@@ -180,10 +179,19 @@ UIKIT_EXTERN NSString *userFolderPath;
      NSMutableArray *regularDataArr = [NSMutableArray arrayWithObjects:@"在线客服", nil];
     [regularDataArr addObjectsFromArray:self.sortedArrForArrays];
     self.sortedArrForArrays = regularDataArr;
-
+    //添加置低内容
+    NSString *FootMsg=[NSString stringWithFormat:@"%lu%@" , (unsigned long)[friendsArray count], @"位联系人" ];
+    NSMutableArray *lastarry= [NSMutableArray arrayWithObjects:FootMsg, nil];;
+    [self.sortedArrForArrays  addObjectsFromArray:lastarry];
+    
+    
     NSMutableArray *regularSectionHeadsKeysArr = [NSMutableArray arrayWithObjects:@"", nil];
     [regularSectionHeadsKeysArr addObjectsFromArray:self.sectionHeadsKeys];
     self.sectionHeadsKeys = regularSectionHeadsKeysArr;
+    
+    NSMutableArray *footHeadsKeysArr = [NSMutableArray arrayWithObjects:@"", nil];
+    [self.sectionHeadsKeys addObjectsFromArray:footHeadsKeysArr];
+
     
     [self.friendTableView reloadData];
 }
@@ -196,96 +204,114 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    if(section == 0 || section == 1|| section == 2)
-//    {
-//        return 1;
-//    }
-    if(section == 0 )
-    {
-        return 1;
+    @try {
+        if(section == 0 || section==(self.sortedArrForArrays.count-1))
+        {
+            return 1;
+        }
+        return  [[self.sortedArrForArrays objectAtIndex:section] count];
     }
-
-    
-    return  [[self.sortedArrForArrays objectAtIndex:section] count];
+    @catch (NSException *exception) {
+        return 0;
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-//    if(section == 0 || section == 1|| section == 2)
-//    {
-//        return nil;
-//    }
-    if(section == 0 )
-    {
-        return nil;
+    @try {
+        
+        if(section == 0 )
+        {
+            return nil;
+        }
+        return [self.sectionHeadsKeys objectAtIndex:section];
     }
-
-    
-    return [self.sectionHeadsKeys objectAtIndex:section];
+    @catch (NSException *exception) {
+           return nil;
+    }
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    return self.sectionHeadsKeys;
+    @try {
+        
+        return self.sectionHeadsKeys;
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *reuseIdentifier = @"commonCells";
-    [tableView registerNib:[UINib nibWithNibName:@"CommonTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
-    CommonTableViewCell *commonTableViewCell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
-    if(indexPath.section > 0)
-    {
-//        if(indexPath.row==arr.count-1)
-//        {
-//            [commonTableViewCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-//            
-//            UILabel *lable=[[UILabel alloc] initWithFrame:commonTableViewCell.frame];
-//            [lable setText:@"z总数多少页"];
-//           [commonTableViewCell addSubview:lable];
-            
-//        }else
-//        {
-        ChineseString *str = (ChineseString *) [arr objectAtIndex:indexPath.row];
+    @try {
         
-        commonTableViewCell.nickNameLabel.text = [NSString stringWithFormat:@"%@",[str.userInfoDict objectForKey:@"NickName"]];
-        NSString *HeadIMGstring = [str.userInfoDict objectForKey:@"PicPath"];
-        HeadIMGstring = [KKUtility getKKImagePath:HeadIMGstring:@"s"];
-        [commonTableViewCell.headImageView sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
-//        }
-        return commonTableViewCell;
+        NSLog(@"self.sortedArrForArrays=%ld,indexPath.section=%ld",(long)self.sortedArrForArrays.count,(long)indexPath.section);
+        if(self.sortedArrForArrays.count==0)return nil;
+        
+        NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
+        if(indexPath.section > 0)
+        {
+            if(indexPath.section==(self.sortedArrForArrays.count-1))
+            {
+                [tableView registerNib:[UINib nibWithNibName:@"FootTableViewCell" bundle:nil] forCellReuseIdentifier:@"FootTableViewCell"];
+                FootTableViewCell *footTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"FootTableViewCell" forIndexPath:indexPath];
+                [footTableViewCell.FootLabel setText:(NSString *)arr];
+                return footTableViewCell;
+                
+            }
+            else
+            {
+                static NSString *reuseIdentifier = @"commonCells";
+                [tableView registerNib:[UINib nibWithNibName:@"CommonTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
+                CommonTableViewCell *commonTableViewCell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+
+                ChineseString *str = (ChineseString *) [arr objectAtIndex:indexPath.row];
+                commonTableViewCell.nickNameLabel.text = [NSString stringWithFormat:@"%@",[str.userInfoDict objectForKey:@"NickName"]];
+                NSString *HeadIMGstring = [str.userInfoDict objectForKey:@"PicPath"];
+                HeadIMGstring = [KKUtility getKKImagePath:HeadIMGstring:@"s"];
+                [commonTableViewCell.headImageView sd_setImageWithURL:[NSURL URLWithString:HeadIMGstring] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
+                
+                return commonTableViewCell;
+            }
+        }
+        else
+        {
+            static NSString *reuseIdentifier = @"commonCells";
+            [tableView registerNib:[UINib nibWithNibName:@"CommonTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
+            CommonTableViewCell *commonTableViewCell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+
+            [commonTableViewCell.headImageView setImage:[UIImage imageNamed:@"kefu"]];
+            commonTableViewCell.nickNameLabel.text = (NSString *)arr;
+            return commonTableViewCell;
+        }
     }
-    else
-    {
-        [commonTableViewCell.headImageView setImage:[UIImage imageNamed:@"kefu"]];
-        commonTableViewCell.nickNameLabel.text = (NSString *)arr;
-        return commonTableViewCell;
+    @catch (NSException *exception) {
+        [KKUtility logSystemErrorMsg:exception.reason :nil];
     }
+    
+//    [self.labFriendcount setText:countFriend];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
-    if (indexPath.section == 0)//客服
-    {
-        [self chartTocustomerServices];
+    @try {
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
+        if (indexPath.section == 0)//客服
+        {
+            [self chartTocustomerServices];
+        }
+        else
+        {
+            ChineseString *str = (ChineseString *) [arr objectAtIndex:indexPath.row];
+            [self performSegueWithIdentifier:@"PushUserInfo" sender:str.userInfoDict];
+        }
     }
-//    else if (indexPath.section == 1)//新的朋友
-//    {
-//        
-//    }
-//    else if (indexPath.section == 2)//群聊
-//    {
-//        
-//    }
-    else
-    {
-        ChineseString *str = (ChineseString *) [arr objectAtIndex:indexPath.row];
-        [self performSegueWithIdentifier:@"PushUserInfo" sender:str.userInfoDict];
+    @catch (NSException *exception) {
+        [KKUtility logSystemErrorMsg:exception.reason :nil];
     }
 }
 

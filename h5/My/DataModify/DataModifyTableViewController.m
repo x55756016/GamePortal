@@ -294,7 +294,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 {
     if(section == 0)
     {
-        return 5;
+        return 4;
     }
     
     else if(section == 1)
@@ -326,10 +326,10 @@ UIKIT_EXTERN NSString *userFolderPath;
             cell = self.idCell;
         }
         
-        if(indexPath.row == 2)
-        {
-            cell = self.rankCell;
-        }
+//        if(indexPath.row == 2)
+//        {
+//            cell = self.rankCell;
+//        }
         
         if(indexPath.row == 3)
         {
