@@ -331,12 +331,12 @@ UIKIT_EXTERN NSString *userFolderPath;
 //            cell = self.rankCell;
 //        }
         
-        if(indexPath.row == 3)
+        if(indexPath.row == 2)
         {
             cell = self.nickNameCell;
         }
         
-        if(indexPath.row == 4)
+        if(indexPath.row == 3)
         {
             cell = self.ageCell;
         }

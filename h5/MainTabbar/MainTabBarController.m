@@ -70,21 +70,23 @@
 
 -(BOOL)shouldAutorotate
 {
-    AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-    NSNumber *strlon=kkAppDelegate.currentlogingUser.currentGamedirection;
-    if([strlon integerValue]==1)
-    {
-    }else
-    {
-        
-    }
-    if(IS_iOS8)
-    {
-        return  NO;
-    }else
-    {
-        return YES;
-    }
+    
+       return  NO;
+//    AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+//    NSNumber *strlon=kkAppDelegate.currentlogingUser.currentGamedirection;
+//    if([strlon integerValue]==1)
+//    {
+//    }else
+//    {
+//        
+//    }
+//    if(IS_iOS8)
+//    {
+//        return  NO;
+//    }else
+//    {
+//        return YES;
+//    }
     //    return [self.selectedViewController shouldAutorotate];
     //传递入口1.选择首页时self.selectedViewController＝SquareNavigationController（home/index）
 }
