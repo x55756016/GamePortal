@@ -389,7 +389,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     cell.msgLabel.text = [playerDict objectForKey:@"KKMsg"];
     
     NSString *HeadIMGstring = [playerDict objectForKey:@"UserPic"];
-    NSString *sHeadimg=[HeadIMGstring stringByReplacingOccurrencesOfString:@".jpg" withString:@"_s.jpg"];
+    NSString *sHeadimg=[KKUtility getKKImagePath:HeadIMGstring :@"s"];
     [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:sHeadimg] placeholderImage:[UIImage imageNamed:@"userDefaultHead"]];
     CALayer * l = [cell.headImageView layer];
     [l setMasksToBounds:YES];

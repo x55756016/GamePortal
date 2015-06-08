@@ -5354,17 +5354,17 @@
         <image name="mainBoard_meSelected" width="49" height="49"/>
         <image name="mainBoard_message" width="55" height="49"/>
         <image name="mainBoard_messageSelected" width="55" height="49"/>
-        <image name="mine_account" width="16" height="16"/>
-        <image name="mine_setup" width="16" height="16"/>
-        <image name="mine_vip" width="16" height="16"/>
+        <image name="mine_account" width="48" height="48"/>
+        <image name="mine_setup" width="48" height="48"/>
+        <image name="mine_vip" width="48" height="48"/>
         <image name="userDefaultHead" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ibz-Ui-e2Z"/>
+        <segue reference="bXQ-RE-HK5"/>
         <segue reference="KS5-n6-cTt"/>
-        <segue reference="d0U-lo-Ceb"/>
+        <segue reference="Q76-no-oEf"/>
         <segue reference="zVw-oc-Kg7"/>
-        <segue reference="Wkf-TW-zIW"/>
-        <segue reference="iID-OB-lrr"/>
         <segue reference="Jwx-wI-rdu"/>
     </inferredMetricsTieBreakers>
 </document>
