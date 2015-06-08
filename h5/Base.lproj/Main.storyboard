@@ -552,7 +552,6 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
-                                                    <exclude reference="PHs-hh-0SY"/>
                                                     <exclude reference="ao4-Vd-r0C"/>
                                                 </mask>
                                             </variation>
@@ -615,7 +614,6 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
-                                                    <exclude reference="Y9S-MF-2gy"/>
                                                     <exclude reference="s2Q-Wf-e9A"/>
                                                 </mask>
                                             </variation>
@@ -684,7 +682,6 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
-                                                    <exclude reference="0F6-G1-Ppi"/>
                                                     <exclude reference="hlC-nw-kGP"/>
                                                 </mask>
                                             </variation>
