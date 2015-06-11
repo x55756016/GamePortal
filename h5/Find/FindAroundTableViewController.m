@@ -19,18 +19,22 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 @interface FindAroundTableViewController ()
 {
-    NSArray *aroundArray;
+    NSMutableArray *aroundArray;
+    NSArray *FriendTempArray;
     NSDictionary *userInfo;
     ASIFormDataRequest *request;
+    NSInteger pageIndex;
+    BOOL addData;
 }
 @end
 
 @implementation FindAroundTableViewController
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    aroundArray=[NSMutableArray array];
     //过滤分割线
     UILabel *footLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 0)];
     footLabel.backgroundColor = [UIColor clearColor];
@@ -57,11 +61,23 @@ UIKIT_EXTERN NSString *userFolderPath;
     __weak typeof(self) weakSelf = self;
     [self.tableView addLegendHeaderWithRefreshingBlock:^{        
         //加载附近数据
+        pageIndex=1;
+        addData=false;
         [weakSelf loadAround];
     }];
     [self.tableView.legendHeader beginRefreshing];
 
+    [self.tableView addLegendFooterWithRefreshingBlock:^{
+        pageIndex=pageIndex+1;
+        addData=true;
+        [weakSelf loadAround];
+    }];
 
+
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    pageIndex=1;
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,7 +99,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request setPostValue:@"1.0" forKey:@"version"];
     [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserId"]] forKey:@"UserId"];
     [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserKey"]] forKey:@"UserKey"];
-    [request setPostValue:@"1" forKey:@"pageindex"];
+    [request setPostValue:[NSString stringWithFormat:@"%ld",(long)pageIndex] forKey:@"pageindex"];
     
     AppDelegate *kkAppDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     NSString *strlon=kkAppDelegate.currentlogingUser.Longitude;//经度
@@ -107,9 +123,17 @@ UIKIT_EXTERN NSString *userFolderPath;
     
     if([[dict objectForKey:@"IsSuccess"] integerValue])
     {
-        aroundArray = [dict objectForKey:@"ObjData"];
-//        NSLog(@"aroundArray[%d][%@]", aroundArray.count, aroundArray);
+        FriendTempArray = [dict objectForKey:@"ObjData"];
+        if(addData)
+        {
+            [aroundArray addObjectsFromArray:FriendTempArray];
+        }else
+        {
+            [aroundArray removeAllObjects];
+            [aroundArray addObjectsFromArray:FriendTempArray];
+        }
     }
+    
     [self.tableView reloadData];
     [self.tableView.header endRefreshing];
     [self.tableView.footer endRefreshing];

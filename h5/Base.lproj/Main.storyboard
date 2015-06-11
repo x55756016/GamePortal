@@ -515,7 +515,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Mk-0z-bxs" id="l0G-75-Xkg">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="mine_account" translatesAutoresizingMaskIntoConstraints="NO" id="PHs-hh-0SY">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" image="mine_account" translatesAutoresizingMaskIntoConstraints="NO" id="PHs-hh-0SY">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="rva-Es-XH7">
                                                             <variation key="heightClass=regular-widthClass=compact" constant="24"/>
@@ -577,7 +577,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vkf-Gu-Bjd" id="hkf-Gu-f3k">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="mine_vip" translatesAutoresizingMaskIntoConstraints="NO" id="Y9S-MF-2gy">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" image="mine_vip" translatesAutoresizingMaskIntoConstraints="NO" id="Y9S-MF-2gy">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="1gY-g1-QRZ">
                                                             <variation key="heightClass=regular-widthClass=compact" constant="24"/>
@@ -643,7 +643,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ywE-2Q-Dye" id="4Sy-ys-eal">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="mine_setup" translatesAutoresizingMaskIntoConstraints="NO" id="0F6-G1-Ppi">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" image="mine_setup" translatesAutoresizingMaskIntoConstraints="NO" id="0F6-G1-Ppi">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="WhO-Rk-sUD">
                                                             <variation key="heightClass=regular-widthClass=compact" constant="24"/>
@@ -4713,11 +4713,11 @@
                         <viewControllerLayoutGuide type="bottom" id="kca-xK-9QE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Mh-nj-pnn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="680"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView tag="123" contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZr-Jy-9HG">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="680"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                             </webView>
                         </subviews>
                         <constraints>
@@ -4784,7 +4784,7 @@
             <objects>
                 <tableViewController id="eub-4p-O1c" userLabel="游戏详情" customClass="GameDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="TTo-bA-f1i">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="616"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -5360,11 +5360,11 @@
         <image name="userDefaultHead" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ibz-Ui-e2Z"/>
+        <segue reference="Wkf-TW-zIW"/>
+        <segue reference="zVw-oc-Kg7"/>
+        <segue reference="Q76-no-oEf"/>
         <segue reference="bXQ-RE-HK5"/>
         <segue reference="KS5-n6-cTt"/>
-        <segue reference="Q76-no-oEf"/>
-        <segue reference="zVw-oc-Kg7"/>
         <segue reference="Jwx-wI-rdu"/>
     </inferredMetricsTieBreakers>
 </document>

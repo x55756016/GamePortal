@@ -92,9 +92,14 @@ UIKIT_EXTERN NSString *userFolderPath;
     }];
     [self.tableView.legendHeader beginRefreshing];
     
-//    [self.tableView addLegendFooterWithRefreshingBlock:^{
-//        [weakSelf loadMoreData];
-//    }];
+    [self.tableView addLegendFooterWithRefreshingBlock:^{
+        [weakSelf loadMoreData];
+    }];
+}
+-(void)loadMoreData
+{
+    //加载玩家动态
+    [self loadPlayer];
 }
 
 //广告墙

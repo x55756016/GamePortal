@@ -18,9 +18,12 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 @interface FindMatchTableViewController ()
 {
-    NSArray *matchArray;
+    NSMutableArray *matchArray;
+    NSArray *TempArray;
     NSDictionary *userInfo;
     ASIFormDataRequest *request;
+    NSInteger pageIndex;
+    BOOL addData;
 }
 @end
 
@@ -29,7 +32,7 @@ UIKIT_EXTERN NSString *userFolderPath;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    matchArray=[NSMutableArray array];
     //过滤分割线
     UILabel *footLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 0)];
     footLabel.backgroundColor = [UIColor clearColor];
@@ -37,12 +40,31 @@ UIKIT_EXTERN NSString *userFolderPath;
 
     //获取用户信息
      userInfo = [KKUtility getUserInfoFromLocalFile];
-    //加载联赛数据
-    [self loadMatch];
+    
+    //首次进来下拉刷新
+    __weak typeof(self) weakSelf = self;
+    [self.tableView addLegendHeaderWithRefreshingBlock:^{
+        //加载联赛数据
+        pageIndex=1;
+        addData=false;
+        [weakSelf loadMatch];
+    }];
+    [self.tableView.legendHeader beginRefreshing];
+    
+    [self.tableView addLegendFooterWithRefreshingBlock:^{
+        pageIndex=pageIndex+1;
+        addData=true;
+        [weakSelf loadMatch];
+    }];
+
     
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     backItem.title = @"返回";    
     self.navigationItem.backBarButtonItem = backItem;
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    pageIndex=1;
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,7 +84,7 @@ UIKIT_EXTERN NSString *userFolderPath;
     [request setRequestMethod:@"POST"];
     [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserId"]] forKey:@"UserId"];
     [request setPostValue:[NSString stringWithFormat:@"%@", [userInfo objectForKey:@"UserKey"]] forKey:@"UserKey"];
-    [request setPostValue:@"1" forKey:@"pageindex"];
+    [request setPostValue:[NSString stringWithFormat:@"%ld",(long)pageIndex] forKey:@"pageindex"];
     [request setPostValue:@"0" forKey:@"pageType"];;
     [request setDidFailSelector:@selector(loadMatchFail:)];
     [request setDidFinishSelector:@selector(loadMatchFinish:)];
@@ -71,18 +93,36 @@ UIKIT_EXTERN NSString *userFolderPath;
 
 - (void)loadMatchFinish:(ASIHTTPRequest *)req
 {
-    NSLog(@"loadMatchFinish");
-    NSError *error;
-    NSData *responseData = [req responseData];
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
-//    NSLog(@"Matchdict[%@]", dict);
-    
-    if([[dict objectForKey:@"IsSuccess"] integerValue])
-    {
-        matchArray = [dict objectForKey:@"ObjData"];
-//        NSLog(@"matchArray[%d][%@]", matchArray.count, matchArray);
+    @try {
+        NSError *error;
+        NSData *responseData = [req responseData];
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+        //    NSLog(@"Matchdict[%@]", dict);
+        
+        if([[dict objectForKey:@"IsSuccess"] integerValue])
+        {
+            TempArray = [dict objectForKey:@"ObjData"];
+            if(addData)
+            {
+                [matchArray addObjectsFromArray:TempArray];
+            }else
+            {
+                [matchArray removeAllObjects];
+                [matchArray addObjectsFromArray:TempArray];
+            }
+            
+        }
+        [self.tableView reloadData];
+
     }
-    [self.tableView reloadData];
+    @catch (NSException *exception) {
+        [KKUtility logSystemErrorMsg:exception.reason :nil];
+    }
+    @finally {
+        [self.tableView.header endRefreshing];
+        [self.tableView.footer endRefreshing];
+    }
+    
 }
 
 - (void)loadMatchFail:(ASIHTTPRequest *)req
